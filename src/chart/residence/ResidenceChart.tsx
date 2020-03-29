@@ -1,0 +1,103 @@
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  forwardRef,
+  useImperativeHandle
+} from "react";
+import { ResizeObserver } from "@juggle/resize-observer";
+import * as echarts from "echarts";
+import { mainService } from "../../shared/service/main.service";
+import AppProgress from "../../shared/component/progress/AppProgress";
+
+interface Props {
+  ref: any;
+  containerId: string;
+}
+
+// eslint-disable-next-line react/display-name
+const ResidenceChart: React.FC<Props> = forwardRef((props: Props, ref) => {
+  const chartRef = useRef<HTMLDivElement>(null);
+  const [eChart, setEChart] = useState<any>();
+  const [data, setData] = useState([]);
+
+  useImperativeHandle(ref, () => ({
+    reset() {
+      eChart?.resize();
+    }
+  }));
+
+  const option: any = {
+    tooltip: {
+      trigger: "item",
+      formatter: (params: any) =>
+        `${params.data.name}: ${params.data.value.toLocaleString()}`
+    },
+    series: [
+      {
+        name: "Confirmed Cases by Residence",
+        type: "treemap",
+        height: "100%",
+        width: "100%",
+        breadcrumb: {
+          show: false
+        }
+      }
+    ]
+  };
+
+  useEffect(() => {
+    mainService.getConfirmedCasesByResidence().then((response: any) => {
+      setData(
+        response.data.features.map((d: any) => {
+          return {
+            name: d.attributes.residence,
+            value: d.attributes.value
+          };
+        })
+      );
+    });
+  }, []);
+
+  useEffect(() => {
+    if (data.length > 0) {
+      const div: HTMLDivElement = chartRef.current as HTMLDivElement;
+      const chart = echarts.init(div);
+      setEChart(chart);
+      option.series[0].data = data;
+      chart.setOption(option);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [data]);
+
+  useEffect(() => {
+    if (eChart) {
+      // Workaround since echarts do not respond well on container resize
+      const resizeObserver = new ResizeObserver(() => eChart.resize());
+      const container: HTMLElement = document.getElementById(
+        props.containerId
+      ) as HTMLElement;
+      if (container) {
+        resizeObserver.observe(container);
+      }
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [eChart]);
+
+  return (
+    <>
+      {data.length === 0 ? (
+        <AppProgress />
+      ) : (
+        <>
+          <div
+            ref={chartRef}
+            style={{ minHeight: "100%", height: "100%", width: "100%" }}
+          ></div>
+        </>
+      )}
+    </>
+  );
+});
+
+export default ResidenceChart;
