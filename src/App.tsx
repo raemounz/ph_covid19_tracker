@@ -15,6 +15,7 @@ import Summary from "./summary/Summary";
 import AppCard from "./shared/component/card/AppCard";
 import ResidenceChart from "./chart/residence/ResidenceChart";
 import RefreshIcon from "@material-ui/icons/Refresh";
+import TimeChart from "./chart/time/TimeChart";
 
 const App: React.FC = () => {
   const residenceMapRef: any = useRef();
@@ -63,8 +64,14 @@ const App: React.FC = () => {
                       <AppCard
                         title="Confirmed Cases by Time"
                         style={{
-                          height: "500px"
+                          height: "500px",
+                          content: {
+                            height: "calc(100% - 60px)"
+                          }
                         }}
+                        content={
+                          <TimeChart />
+                        }
                       ></AppCard>
                     </Grid>
                     <Grid item xs={12}>

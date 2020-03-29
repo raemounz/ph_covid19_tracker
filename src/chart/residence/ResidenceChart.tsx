@@ -89,12 +89,10 @@ const ResidenceChart: React.FC<Props> = forwardRef((props: Props, ref) => {
       {data.length === 0 ? (
         <AppProgress />
       ) : (
-        <>
-          <div
-            ref={chartRef}
-            style={{ minHeight: "100%", height: "100%", width: "100%" }}
-          ></div>
-        </>
+        <div
+          ref={chartRef}
+          style={{ minHeight: "100%", height: "100%", width: "100%" }}
+        ></div>
       )}
     </>
   );

@@ -72,6 +72,10 @@ class MainService {
       "https://services5.arcgis.com/mnYJ21GiFTR97WFg/arcgis/rest/services/confirmed/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&orderByFields=date%20asc&resultOffset=0&resultRecordCount=2000&cacheHint=true"
     );
   }
+
+  getHistorical(): Promise<any> {
+    return axios.get("https://corona.lmao.ninja/v2/historical/philippines");
+  }
 }
 
 export const mainService = new MainService();
