@@ -49,12 +49,24 @@ const ResidenceChart: React.FC<Props> = forwardRef((props: Props, ref) => {
   useEffect(() => {
     mainService.getConfirmedCasesByResidence().then((response: any) => {
       setData(
-        response.data.features.map((d: any) => {
-          return {
-            name: d.attributes.residence,
-            value: d.attributes.value
-          };
-        })
+        response.data.features
+          .filter(
+            (d: any) =>
+              !["CHINA", "For Verification"].includes(d.attributes.residence)
+          )
+          .map((d: any) => {
+            const name =
+              d.attributes.residence.indexOf("�") > 0
+                ? d.attributes.residence.replace("�", "ñ")
+                : d.attributes.residence;
+            return {
+              name: name,
+              value: d.attributes.value,
+              label: {
+                formatter: "{b}\n{@value}"
+              }
+            };
+          })
       );
     });
   }, []);

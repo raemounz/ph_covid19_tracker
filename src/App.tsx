@@ -10,12 +10,12 @@ import {
   IconButton
 } from "@material-ui/core";
 import theme from "./shared/theme";
-import moment from "moment";
 import Summary from "./summary/Summary";
 import AppCard from "./shared/component/card/AppCard";
 import ResidenceChart from "./chart/residence/ResidenceChart";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import TimeChart from "./chart/time/TimeChart";
+import Header from "./header/Header";
 
 const App: React.FC = () => {
   const residenceMapRef: any = useRef();
@@ -26,8 +26,8 @@ const App: React.FC = () => {
       <ThemeProvider theme={theme}>
         <AppBar position="sticky">
           <Toolbar>
-            <Typography variant="h6">
-              PH COVID-19 Tracker (as of {moment().format("ll")})
+            <Typography variant="h6" style={{ width: "100%" }}>
+              <Header />
             </Typography>
           </Toolbar>
         </AppBar>
@@ -69,9 +69,7 @@ const App: React.FC = () => {
                             height: "calc(100% - 60px)"
                           }
                         }}
-                        content={
-                          <TimeChart />
-                        }
+                        content={<TimeChart />}
                       ></AppCard>
                     </Grid>
                     <Grid item xs={12}>
