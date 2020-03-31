@@ -119,15 +119,13 @@ const TimeChart: React.FC = () => {
       const totalCases = response[2].data.features[0].attributes.value;
       const lastDeathCases = deathSet.data[deathSet.data.length - 1];
       const lastConfCases = confirmedSet.data[confirmedSet.data.length - 1];
-      const today = new Date();
       if (
-        today.getDate() === lastDeathCases.x.getDate() &&
-        today.getMonth() === lastDeathCases.x.getMonth() &&
-        today.getFullYear() === lastDeathCases.x.getFullYear()
+        lastConfCases.x.setHours(0, 0, 0, 0) <
+        lastDeathCases.x.setHours(0, 0, 0, 0)
       ) {
         if (totalCases > lastConfCases.y) {
           confirmedSet.data.push({
-            x: today,
+            x: lastDeathCases.x,
             y: lastConfCases.y + (totalCases - lastConfCases.y)
           });
         }
