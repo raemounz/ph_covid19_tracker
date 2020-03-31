@@ -16,6 +16,7 @@ import ResidenceChart from "./chart/residence/ResidenceChart";
 import RefreshIcon from "@material-ui/icons/Refresh";
 import TimeChart from "./chart/time/TimeChart";
 import Header from "./header/Header";
+import DistributionMap from "./chart/distribution/DistributionMap";
 
 const App: React.FC = () => {
   const residenceMapRef: any = useRef();
@@ -25,7 +26,7 @@ const App: React.FC = () => {
       <CssBaseline />
       <ThemeProvider theme={theme}>
         <AppBar position="sticky">
-          <Toolbar>
+          <Toolbar style={{ paddingRight: "10px" }}>
             <Typography variant="h6" style={{ width: "100%" }}>
               <Header />
             </Typography>
@@ -50,7 +51,10 @@ const App: React.FC = () => {
                           </IconButton>
                         }
                         style={{
-                          height: "500px"
+                          height: "500px",
+                          content: {
+                            paddingTop: 0
+                          }
                         }}
                         content={
                           <ResidenceChart
@@ -86,20 +90,27 @@ const App: React.FC = () => {
                   <Grid container spacing={3}>
                     <Grid item xs={12}>
                       <AppCard
+                        id="distribution-map"
                         title="Confirmed Cases Distribution"
                         style={{
-                          height: "1024px"
+                          height: "1548px",
+                          content: {
+                            height: "calc(100% - 60px)"
+                          }
                         }}
+                        content={
+                          <DistributionMap containerId="distribution-map" />
+                        }
                       ></AppCard>
                     </Grid>
-                    <Grid item xs={12}>
+                    {/* <Grid item xs={12}>
                       <AppCard
                         title="Confirmed Cases Details"
                         style={{
                           height: "500px"
                         }}
                       ></AppCard>
-                    </Grid>
+                    </Grid> */}
                   </Grid>
                 </Grid>
               </Grid>

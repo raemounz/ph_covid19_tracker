@@ -18,8 +18,9 @@ interface Props {
 // eslint-disable-next-line react/display-name
 const ResidenceChart: React.FC<Props> = forwardRef((props: Props, ref) => {
   const chartRef = useRef<HTMLDivElement>(null);
-  const [eChart, setEChart] = useState<any>();
-  const [data, setData] = useState([]);
+  const [eChart, setEChart] = useState<echarts.ECharts>();
+  const [data, setData] = useState<any[]>([]);
+  const [forVerification, setForVerification] = useState();
 
   useImperativeHandle(ref, () => ({
     reset() {
@@ -48,26 +49,35 @@ const ResidenceChart: React.FC<Props> = forwardRef((props: Props, ref) => {
 
   useEffect(() => {
     mainService.getConfirmedCasesByResidence().then((response: any) => {
-      setData(
-        response.data.features
-          .filter(
-            (d: any) =>
-              !["CHINA", "For Verification"].includes(d.attributes.residence)
+      const residenceData: any[] = [];
+      response.data.features.forEach((d: any) => {
+        if (
+          ["CHINA", "For Verification", "For validation"].includes(
+            d.attributes.residence
           )
-          .map((d: any) => {
-            const name =
-              d.attributes.residence.indexOf("�") > 0
-                ? d.attributes.residence.replace("�", "ñ")
-                : d.attributes.residence;
-            return {
-              name: name,
-              value: d.attributes.value,
-              label: {
-                formatter: "{b}\n{@value}"
-              }
-            };
-          })
-      );
+        ) {
+          if (
+            ["For Verification", "For validation"].includes(
+              d.attributes.residence
+            )
+          ) {
+            setForVerification(d.attributes.value);
+          }
+        } else {
+          const name =
+            d.attributes.residence.indexOf("�") > 0
+              ? d.attributes.residence.replace("�", "ñ")
+              : d.attributes.residence;
+          residenceData.push({
+            name: name,
+            value: d.attributes.value,
+            label: {
+              formatter: "{b}\n{@value}"
+            }
+          });
+        }
+      });
+      setData(residenceData);
     });
   }, []);
 
@@ -101,10 +111,24 @@ const ResidenceChart: React.FC<Props> = forwardRef((props: Props, ref) => {
       {data.length === 0 ? (
         <AppProgress />
       ) : (
-        <div
-          ref={chartRef}
-          style={{ minHeight: "100%", height: "100%", width: "100%" }}
-        ></div>
+        <>
+          <div
+            style={{
+              height: "20px",
+              textAlign: "right",
+              fontStyle: "italic",
+              fontSize: ".85em"
+            }}
+          >{`${forVerification} cases for residence verification`}</div>
+          <div
+            ref={chartRef}
+            style={{
+              minHeight: "100px",
+              height: "calc(100% - 20px)",
+              width: "100%"
+            }}
+          ></div>
+        </>
       )}
     </>
   );
