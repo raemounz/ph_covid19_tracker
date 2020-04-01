@@ -30,7 +30,7 @@ const Header: React.FC = () => {
             <li>Department of Health of the Philippines (DOH)</li>
             <li>NovelCOVID/API</li>
           </ul>
-          <div style={{ marginTop: "10px" }}>Developed by:</div>
+          <div style={{ marginTop: "10px" }}>Developed by</div>
           <div>Raymond Halim</div>
         </div>
       </Dialog>

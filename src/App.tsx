@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef } from "react";
 import "./App.scss";
 import {
   CssBaseline,
@@ -7,7 +7,8 @@ import {
   Typography,
   ThemeProvider,
   Grid,
-  IconButton
+  IconButton,
+  useMediaQuery
 } from "@material-ui/core";
 import theme from "./shared/theme";
 import Summary from "./summary/Summary";
@@ -21,6 +22,7 @@ import AgeChart from "./chart/age/AgeChart";
 
 const App: React.FC = () => {
   const residenceMapRef: any = useRef();
+  const matches = useMediaQuery(theme.breakpoints.down("xs"));
 
   return (
     <div className="App">
@@ -95,7 +97,7 @@ const App: React.FC = () => {
                         id="distribution-map"
                         title="Confirmed Cases Distribution"
                         style={{
-                          height: "1548px",
+                          height: matches ? "800px" : "1548px",
                           content: {
                             height: "calc(100% - 60px)",
                             paddingTop: 0

@@ -25,6 +25,7 @@ export const headerStyles = makeStyles((theme: Theme) =>
       display: "flex",
       flexDirection: "column",
       width: "400px",
+      maxWidth: "calc(100vw - 80px)",
       padding: "0 24px 24px 24px"
     }
   })
