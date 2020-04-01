@@ -20,6 +20,12 @@ export const headerStyles = makeStyles((theme: Theme) =>
         fontSize: ".7em",
         marginBottom: "5px"
       }
+    },
+    about: {
+      display: "flex",
+      flexDirection: "column",
+      width: "400px",
+      padding: "0 24px 24px 24px"
     }
   })
 );

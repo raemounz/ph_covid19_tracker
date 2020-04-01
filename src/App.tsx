@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import "./App.scss";
 import {
   CssBaseline,
@@ -17,6 +17,7 @@ import RefreshIcon from "@material-ui/icons/Refresh";
 import TimeChart from "./chart/time/TimeChart";
 import Header from "./header/Header";
 import DistributionMap from "./chart/distribution/DistributionMap";
+import AgeChart from "./chart/age/AgeChart";
 
 const App: React.FC = () => {
   const residenceMapRef: any = useRef();
@@ -82,6 +83,7 @@ const App: React.FC = () => {
                         style={{
                           height: "500px"
                         }}
+                        content={<AgeChart />}
                       ></AppCard>
                     </Grid>
                   </Grid>
@@ -95,7 +97,8 @@ const App: React.FC = () => {
                         style={{
                           height: "1548px",
                           content: {
-                            height: "calc(100% - 60px)"
+                            height: "calc(100% - 60px)",
+                            paddingTop: 0
                           }
                         }}
                         content={
