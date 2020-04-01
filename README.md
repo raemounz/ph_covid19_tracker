@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This website provides timely information of COVID-19 cases in the Philippines.
 
 ## Available Scripts
 
