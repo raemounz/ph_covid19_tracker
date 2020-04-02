@@ -34,7 +34,7 @@ const DistributionMap: React.FC<Props> = (props: Props) => {
     },
     series: [
       {
-        zoom: 1.25,
+        zoom: 1.1,
         name: "Confirmed Cases",
         type: "map",
         mapType: "PH",
