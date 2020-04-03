@@ -1,11 +1,12 @@
 import React from "react";
+import clsx from "clsx";
 import { Paper, CircularProgress, Tooltip } from "@material-ui/core";
 import { bannerStyles } from "./app-banner.style";
 
 interface Props {
   label: string;
   desc?: string;
-  value: number | undefined;
+  value: number | string | undefined;
   style: { color: string; background: string };
 }
 
@@ -22,8 +23,14 @@ const AppBanner: React.FC<Props> = (props: Props) => {
         <Tooltip title={props.desc || ""} placement="top">
           <div>{props.label}</div>
         </Tooltip>
-        <div className={classes.value}>
-          {props.value?.toLocaleString() || <CircularProgress size={30} />}
+        <div
+          className={clsx(classes.value, {
+            [classes.valueNoData]: props.value === "No data"
+          })}
+        >
+          {props.value?.toLocaleString() || (
+            <CircularProgress color="secondary" size={30} />
+          )}
         </div>
       </div>
     </Paper>

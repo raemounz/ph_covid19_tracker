@@ -15,6 +15,12 @@ export const bannerStyles = makeStyles(() =>
     },
     value: {
       fontSize: "1.8em"
+    },
+    valueNoData: {
+      fontSize: ".9em",
+      height: "calc(100% - 32px)",
+      lineHeight: "50px",
+      fontWeight: "normal"
     }
   })
 );
