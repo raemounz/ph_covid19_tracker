@@ -52,7 +52,7 @@ const ResidenceChart: React.FC<Props> = forwardRef((props: Props, ref) => {
       const residenceData: any[] = [];
       response.data.features.forEach((d: any) => {
         if (
-          ["CHINA", "For Verification", "For validation"].includes(
+          ["CHINA", "For Verification", "For validation", "None"].includes(
             d.attributes.residence
           )
         ) {

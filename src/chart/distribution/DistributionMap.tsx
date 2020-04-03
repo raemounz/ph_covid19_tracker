@@ -86,7 +86,7 @@ const DistributionMap: React.FC<Props> = (props: Props) => {
         PHData[d.attributes.residence.trim().replace("�", "ñ")] =
           d.attributes.value;
         if (
-          !["For Verification", "For validation"].includes(
+          !["For Verification", "For validation", "None"].includes(
             d.attributes.residence
           )
         ) {
