@@ -1,7 +1,7 @@
 import React, { useRef, useState, useEffect } from "react";
 import { ResizeObserver } from "@juggle/resize-observer";
 import * as echarts from "echarts";
-import { mainService } from "../../shared/service/main.service";
+import { mainService, getMapName } from "../../shared/service/main.service";
 import AppProgress from "../../shared/component/progress/AppProgress";
 import PHMap from "./philippine.json";
 
@@ -41,25 +41,6 @@ const DistributionMap: React.FC<Props> = (props: Props) => {
         roam: true,
         label: {
           show: false
-        },
-        nameMap: {
-          "San Jose del Monte City": "City of San Jose Del Monte, Bulacan",
-          "Quezon City": "Quezon City, NCR, Second District",
-          "City of Makati": "City of Makati, NCR, Fourth District",
-          "City of San Juan": "City of San Juan, NCR, Second District",
-          "City of Pasig": "City of Pasig, NCR, Second District",
-          "City of Parañaque": "City of Parañaque, NCR, Fourth District",
-          "City of Mandaluyong": "City of Mandaluyong, NCR, Second District",
-          "Taguig City": "Taguig City, NCR, Fourth District",
-          "City of Muntinlupa": "City of Muntinlupa, NCR, Fourth District",
-          "City of Marikina": "City of Marikina, NCR, Second District",
-          "Caloocan City": "Caloocan City, NCR, Third District",
-          "City of Las Piñas": "City of Las Piñas, NCR, Fourth District",
-          "Pasay City": "Pasay City, NCR, Fourth District",
-          "City of Valenzuela": "City of Valenzuela, NCR, Third District",
-          "City of Malabon": "City of Malabon, NCR, Third District",
-          Pateros: "Pateros, NCR, Fourth District",
-          Navotas: "City of Navotas, NCR, Third District"
         }
       }
     ]
@@ -72,19 +53,16 @@ const DistributionMap: React.FC<Props> = (props: Props) => {
     const PHset = new Set();
     PHMap["features"].forEach((f: any) => PHset.add(f.properties.name));
 
-    // Mapped residence names
-    const mappedSet = Object.keys(option.series[0].nameMap).map(
-      (key: string) => option.series[0].nameMap[key]
-    );
-
     const set = new Set();
     const noSet = new Set();
     mainService.getConfirmedCasesByResidence().then((response: any) => {
       const valuesArr: any = [];
       response.data.features.forEach((d: any) => {
-        set.add(d.attributes.residence.trim().replace("�", "ñ"));
-        PHData[d.attributes.residence.trim().replace("�", "ñ")] =
-          d.attributes.value;
+        const residenceName = getMapName(
+          d.attributes.residence.trim().replace("�", "ñ")
+        );
+        set.add(residenceName);
+        PHData[residenceName] = d.attributes.value;
         if (
           !["For Verification", "For validation", "None"].includes(
             d.attributes.residence
@@ -103,7 +81,7 @@ const DistributionMap: React.FC<Props> = (props: Props) => {
         })
       );
       set.forEach((residence: any) => {
-        if (!PHset.has(residence) && !mappedSet.includes(residence)) {
+        if (!PHset.has(residence)) {
           noSet.add(residence);
         }
       });

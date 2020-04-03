@@ -7,7 +7,7 @@ import React, {
 } from "react";
 import { ResizeObserver } from "@juggle/resize-observer";
 import * as echarts from "echarts";
-import { mainService } from "../../shared/service/main.service";
+import { mainService, getMapName } from "../../shared/service/main.service";
 import AppProgress from "../../shared/component/progress/AppProgress";
 
 interface Props {
@@ -64,12 +64,11 @@ const ResidenceChart: React.FC<Props> = forwardRef((props: Props, ref) => {
             setForVerification(d.attributes.value);
           }
         } else {
-          const name =
-            d.attributes.residence.indexOf("�") > 0
-              ? d.attributes.residence.replace("�", "ñ")
-              : d.attributes.residence;
+          const residenceName = getMapName(
+            d.attributes.residence.trim().replace("�", "ñ")
+          );
           residenceData.push({
-            name: name,
+            name: residenceName,
             value: d.attributes.value,
             label: {
               formatter: "{b}\n{@value}"
