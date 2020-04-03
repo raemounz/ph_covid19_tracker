@@ -28,9 +28,7 @@ const AppBanner: React.FC<Props> = (props: Props) => {
             [classes.valueNoData]: props.value === "No data"
           })}
         >
-          {props.value?.toLocaleString() || (
-            <CircularProgress color="secondary" size={30} />
-          )}
+          {props.value?.toLocaleString() || <CircularProgress size={30} />}
         </div>
       </div>
     </Paper>
