@@ -76,7 +76,9 @@ const nameMap = {
   "Pagadian City": "Pagadian City, Zamboanga Del Sur",
   "City of Panabo, Davao Del Norte": "Panabo City, Davao Del Norte",
   "City of Talisay, Cebu": "Talisay City, Cebu",
-  "City of Urdaneta, Pangasinan": "Urdaneta City, Pangasinan"
+  "City of Urdaneta, Pangasinan": "Urdaneta City, Pangasinan",
+  "Tayabas City": "Tayabas City, Quezon",
+  "Datu Odin Sinsuat": "Datu Odin Sinsuat, Maguindanao"
 };
 
 export const getMapName = (name: string) => {
