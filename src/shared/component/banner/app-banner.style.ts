@@ -4,23 +4,33 @@ export const bannerStyles = makeStyles(() =>
   createStyles({
     container: {
       display: "flex",
-      height: "100%"
+      height: "100%",
     },
     banner: {
       padding: "16px",
       width: "100%",
       fontSize: "1.6em",
       fontWeight: 500,
-      textAlign: "center"
+      textAlign: "center",
     },
     value: {
-      fontSize: "1.8em"
+      fontSize: "1.8em",
     },
     valueNoData: {
       fontSize: ".9em",
       height: "calc(100% - 32px)",
       lineHeight: "50px",
-      fontWeight: "normal"
-    }
+      fontWeight: "normal",
+    },
+    increase: {
+      fontSize: ".9em",
+      height: "40px",
+      lineHeight: "40px",
+      minWidth: "100px",
+      maxWidth: "250px",
+      borderRadius: "6px",
+      margin: "10px auto auto auto",
+      background: "#ff9800",
+    },
   })
 );

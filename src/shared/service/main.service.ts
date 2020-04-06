@@ -78,7 +78,8 @@ const nameMap = {
   "City of Talisay, Cebu": "Talisay City, Cebu",
   "City of Urdaneta, Pangasinan": "Urdaneta City, Pangasinan",
   "Tayabas City": "Tayabas City, Quezon",
-  "Datu Odin Sinsuat": "Datu Odin Sinsuat, Maguindanao"
+  "Datu Odin Sinsuat": "Datu Odin Sinsuat, Maguindanao",
+  "Marawi City, Lanao del Sur": "Marawi City, Lanao Del Sur"
 };
 
 export const getMapName = (name: string) => {

@@ -7,11 +7,14 @@ interface Props {
   label: string;
   desc?: string;
   value: number | string | undefined;
+  oldValue: number | undefined;
   style: { color: string; background: string };
 }
 
 const AppBanner: React.FC<Props> = (props: Props) => {
   const classes = bannerStyles();
+  const newValue = Number(props.value);
+  const oldValue = Number(props.oldValue);
 
   return (
     <Paper
@@ -25,10 +28,17 @@ const AppBanner: React.FC<Props> = (props: Props) => {
         </Tooltip>
         <div
           className={clsx(classes.value, {
-            [classes.valueNoData]: props.value === "No data"
+            [classes.valueNoData]: props.value === "No data",
           })}
         >
           {props.value?.toLocaleString() || <CircularProgress size={30} />}
+        </div>
+        <div className={classes.increase}>
+          {!isNaN(oldValue)
+            ? newValue - oldValue > 0
+              ? `Up by ${(newValue - oldValue).toLocaleString()}`
+              : "No increase"
+            : ""}
         </div>
       </div>
     </Paper>

@@ -8,7 +8,7 @@ import {
   ThemeProvider,
   Grid,
   IconButton,
-  useMediaQuery
+  useMediaQuery,
 } from "@material-ui/core";
 import theme from "./shared/theme";
 import Summary from "./summary/Summary";
@@ -44,6 +44,18 @@ const App: React.FC = () => {
                   <Grid container spacing={3}>
                     <Grid item xs={12}>
                       <AppCard
+                        title="Confirmed Cases by Time"
+                        style={{
+                          height: "500px",
+                          content: {
+                            height: "calc(100% - 60px)",
+                          },
+                        }}
+                        content={<TimeChart />}
+                      ></AppCard>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <AppCard
                         id="residence-chart"
                         title="Confirmed Cases by Residence"
                         action={
@@ -56,8 +68,8 @@ const App: React.FC = () => {
                         style={{
                           height: "500px",
                           content: {
-                            paddingTop: 0
-                          }
+                            paddingTop: 0,
+                          },
                         }}
                         content={
                           <ResidenceChart
@@ -69,21 +81,9 @@ const App: React.FC = () => {
                     </Grid>
                     <Grid item xs={12}>
                       <AppCard
-                        title="Confirmed Cases by Time"
-                        style={{
-                          height: "500px",
-                          content: {
-                            height: "calc(100% - 60px)"
-                          }
-                        }}
-                        content={<TimeChart />}
-                      ></AppCard>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <AppCard
                         title="Confirmed Cases by Age Group"
                         style={{
-                          height: "500px"
+                          height: "500px",
                         }}
                         content={<AgeChart />}
                       ></AppCard>
@@ -100,8 +100,8 @@ const App: React.FC = () => {
                           height: matches ? "800px" : "1548px",
                           content: {
                             height: "calc(100% - 60px)",
-                            paddingTop: 0
-                          }
+                            paddingTop: 0,
+                          },
                         }}
                         content={
                           <DistributionMap containerId="distribution-map" />
