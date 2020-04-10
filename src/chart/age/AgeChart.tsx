@@ -24,17 +24,18 @@ const AgeChart: React.FC = () => {
     const femaleData = {};
     let femaleDataset;
     mainService.getConfirmedCasesByAgeGroup().then((response: any) => {
-      response.data.features.forEach((f: any) => {
-        if (f.attributes.sex.toLowerCase() === "male") {
-          maleData[f.attributes.age_categ] = f.attributes.value;
-        } else {
-          femaleData[f.attributes.age_categ] = f.attributes.value;
-        }
-        labelSet.add(f.attributes.age_categ);
-      });
-      labels = Array.from(labelSet).sort();
-      maleDataset = labels.map((label: string) => maleData[label]);
-      femaleDataset = labels.map((label: string) => femaleData[label]);
+      /* Old API not working */
+      // response.data.features.forEach((f: any) => {
+      //   if (f.attributes.sex.toLowerCase() === "male") {
+      //     maleData[f.attributes.age_categ] = f.attributes.value;
+      //   } else {
+      //     femaleData[f.attributes.age_categ] = f.attributes.value;
+      //   }
+      //   labelSet.add(f.attributes.age_categ);
+      // });
+      // labels = Array.from(labelSet).sort();
+      // maleDataset = labels.map((label: string) => maleData[label]);
+      // femaleDataset = labels.map((label: string) => femaleData[label]);
 
       setIsLoading(false);
       const canvas: HTMLCanvasElement = chartRef.current as HTMLCanvasElement;

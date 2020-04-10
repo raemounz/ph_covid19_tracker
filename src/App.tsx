@@ -19,10 +19,15 @@ import TimeChart from "./chart/time/TimeChart";
 import Header from "./header/Header";
 import DistributionMap from "./chart/distribution/DistributionMap";
 import AgeChart from "./chart/age/AgeChart";
+import MuiAlert from "@material-ui/lab/Alert";
 
 const App: React.FC = () => {
   const residenceMapRef: any = useRef();
   const matches = useMediaQuery(theme.breakpoints.down("xs"));
+
+  const Alert = (props: any) => {
+    return <MuiAlert elevation={6} variant="filled" {...props} />;
+  }  
 
   return (
     <div className="App">
@@ -37,6 +42,9 @@ const App: React.FC = () => {
         </AppBar>
         <main className="container">
           <Grid container spacing={3}>
+            <Grid item xs={12}>
+              <Alert severity="error">Due to unavailability of data from official sources, some charts will have empty data.</Alert>
+            </Grid>
             <Summary />
             <Grid item xs={12}>
               <Grid container spacing={3}>
