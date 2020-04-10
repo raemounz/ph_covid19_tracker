@@ -49,34 +49,35 @@ const ResidenceChart: React.FC<Props> = forwardRef((props: Props, ref) => {
 
   useEffect(() => {
     mainService.getConfirmedCasesByResidence().then((response: any) => {
-      const residenceData: any[] = [];
-      response.data.features.forEach((d: any) => {
-        if (
-          ["CHINA", "For Verification", "For validation", "None"].includes(
-            d.attributes.residence
-          )
-        ) {
-          if (
-            ["For Verification", "For validation"].includes(
-              d.attributes.residence
-            )
-          ) {
-            setForVerification(d.attributes.value);
-          }
-        } else {
-          const residenceName = getMapName(
-            d.attributes.residence.trim().replace("�", "ñ")
-          );
-          residenceData.push({
-            name: residenceName,
-            value: d.attributes.value,
-            label: {
-              formatter: "{b}\n{@value}"
-            }
-          });
-        }
-      });
-      setData(residenceData);
+      /* Old API not working */
+      // const residenceData: any[] = [];
+      // response.data.features.forEach((d: any) => {
+      //   if (
+      //     ["CHINA", "For Verification", "For validation", "None"].includes(
+      //       d.attributes.residence
+      //     )
+      //   ) {
+      //     if (
+      //       ["For Verification", "For validation"].includes(
+      //         d.attributes.residence
+      //       )
+      //     ) {
+      //       setForVerification(d.attributes.value);
+      //     }
+      //   } else {
+      //     const residenceName = getMapName(
+      //       d.attributes.residence.trim().replace("�", "ñ")
+      //     );
+      //     residenceData.push({
+      //       name: residenceName,
+      //       value: d.attributes.value,
+      //       label: {
+      //         formatter: "{b}\n{@value}"
+      //       }
+      //     });
+      //   }
+      // });
+      // setData(residenceData);
     });
   }, []);
 
@@ -107,9 +108,9 @@ const ResidenceChart: React.FC<Props> = forwardRef((props: Props, ref) => {
 
   return (
     <>
-      {data.length === 0 ? (
+      {/* {data.length === 0 ? (
         <AppProgress />
-      ) : (
+      ) : ( */}
         <>
           <div
             style={{
@@ -128,7 +129,7 @@ const ResidenceChart: React.FC<Props> = forwardRef((props: Props, ref) => {
             }}
           ></div>
         </>
-      )}
+      {/* )} */}
     </>
   );
 });

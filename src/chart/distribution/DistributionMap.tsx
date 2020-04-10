@@ -56,39 +56,40 @@ const DistributionMap: React.FC<Props> = (props: Props) => {
     const set = new Set();
     const noSet = new Set();
     mainService.getConfirmedCasesByResidence().then((response: any) => {
-      const valuesArr: any = [];
-      response.data.features.forEach((d: any) => {
-        const residenceName = getMapName(
-          d.attributes.residence.trim().replace("�", "ñ")
-        );
-        set.add(residenceName);
-        PHData[residenceName] = d.attributes.value;
-        if (
-          !["For Verification", "For validation", "None"].includes(
-            d.attributes.residence
-          )
-        ) {
-          valuesArr.push(d.attributes.value);
-        }
-      });
-      setValues(valuesArr);
-      setData(
-        Object.keys(PHData).map((d: string) => {
-          return {
-            name: d,
-            value: PHData[d]
-          };
-        })
-      );
-      set.forEach((residence: any) => {
-        if (!PHset.has(residence)) {
-          noSet.add(residence);
-        }
-      });
-      const tempObj = {};
-      let index = 0;
-      noSet.forEach(s => (tempObj[index++] = s));
-      console.log("new residences", noSet);
+      /* Old API not working */
+      // const valuesArr: any = [];
+      // response.data.features.forEach((d: any) => {
+      //   const residenceName = getMapName(
+      //     d.attributes.residence.trim().replace("�", "ñ")
+      //   );
+      //   set.add(residenceName);
+      //   PHData[residenceName] = d.attributes.value;
+      //   if (
+      //     !["For Verification", "For validation", "None"].includes(
+      //       d.attributes.residence
+      //     )
+      //   ) {
+      //     valuesArr.push(d.attributes.value);
+      //   }
+      // });
+      // setValues(valuesArr);
+      // setData(
+      //   Object.keys(PHData).map((d: string) => {
+      //     return {
+      //       name: d,
+      //       value: PHData[d]
+      //     };
+      //   })
+      // );
+      // set.forEach((residence: any) => {
+      //   if (!PHset.has(residence)) {
+      //     noSet.add(residence);
+      //   }
+      // });
+      // const tempObj = {};
+      // let index = 0;
+      // noSet.forEach(s => (tempObj[index++] = s));
+      // console.log("new residences", noSet);
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -123,9 +124,9 @@ const DistributionMap: React.FC<Props> = (props: Props) => {
 
   return (
     <>
-      {data.length === 0 ? (
+      {/* {data.length === 0 ? (
         <AppProgress />
-      ) : (
+      ) : ( */}
         <div
           ref={chartRef}
           style={{
@@ -135,7 +136,7 @@ const DistributionMap: React.FC<Props> = (props: Props) => {
             background: "#bad6db"
           }}
         ></div>
-      )}
+      {/* )} */}
     </>
   );
 };

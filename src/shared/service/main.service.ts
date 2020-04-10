@@ -58,7 +58,8 @@ const nameMap = {
   "Lucena City , Quezon": "Lucena City, Quezon",
   "Kalibo , Aklan": "Kalibo, Aklan",
   "Bayombong , Nueva Vizcaya": "Bayombong, Nueva Vizcaya",
-  "Cagayan De Oro City , Misamis Oriental": "Cagayan De Oro City, Misamis Oriental",
+  "Cagayan De Oro City , Misamis Oriental":
+    "Cagayan De Oro City, Misamis Oriental",
   "City of Calapan , Oriental Mindoro": "Calapan City, Oriental Mindoro",
   "Calbayog City": "Calbayog City, Samar",
   "City of Balanga , Bataan": "Balanga City, Bataan",
@@ -66,7 +67,8 @@ const nameMap = {
   "Cavite City": "Cavite City, Cavite",
   "City of Digos , Davao Del Sur": "Digos City, Davao Del Sur",
   "Dumaguete City , Negros Oriental": "Dumaguete City, Negros Oriental",
-  "Enrique B. Magalona (Saravia), Negros Occidental": "Enrique B. Magalona, Negros Occidental",
+  "Enrique B. Magalona (Saravia), Negros Occidental":
+    "Enrique B. Magalona, Negros Occidental",
   "La Carlota City": "La Carlota City, Negros Occidental",
   "La Trinidad , Benguet": "La Trinidad, Benguet",
   "Lambayong (Mariano Marcos), Sultan Kudarat": "Lambayong, Sultan Kudarat",
@@ -79,7 +81,7 @@ const nameMap = {
   "City of Urdaneta, Pangasinan": "Urdaneta City, Pangasinan",
   "Tayabas City": "Tayabas City, Quezon",
   "Datu Odin Sinsuat": "Datu Odin Sinsuat, Maguindanao",
-  "Marawi City, Lanao del Sur": "Marawi City, Lanao Del Sur"
+  "Marawi City, Lanao del Sur": "Marawi City, Lanao Del Sur",
 };
 
 export const getMapName = (name: string) => {
@@ -87,6 +89,12 @@ export const getMapName = (name: string) => {
 };
 
 class MainService {
+  getSummary(): Promise<any> {
+    return axios.get(
+      "https://api.coronatracker.com/v3/stats/worldometer/country?countryCode=PH"
+    );
+  }
+
   getConfirmedCases(): Promise<any> {
     return axios.get(
       "https://services5.arcgis.com/mnYJ21GiFTR97WFg/arcgis/rest/services/slide_fig/FeatureServer/0/query?f=json&where=1%3D1&returnGeometry=false&spatialRel=esriSpatialRelIntersects&outFields=*&outStatistics=%5B%7B%22statisticType%22%3A%22sum%22%2C%22onStatisticField%22%3A%22confirmed%22%2C%22outStatisticFieldName%22%3A%22value%22%7D%5D&cacheHint=true"

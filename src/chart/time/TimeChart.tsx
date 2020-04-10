@@ -22,9 +22,9 @@ const TimeChart: React.FC = () => {
       yAxes: [
         {
           ticks: {
-            beginAtZero: true
-          }
-        }
+            beginAtZero: true,
+          },
+        },
       ],
       xAxes: [
         {
@@ -34,10 +34,10 @@ const TimeChart: React.FC = () => {
             callback: (value: any) => {
               const date = Date.parse(value);
               return !isNaN(date) ? moment(date).format("MMM DD") : value;
-            }
-          }
-        }
-      ]
+            },
+          },
+        },
+      ],
     },
     tooltips: {
       callbacks: {
@@ -53,9 +53,9 @@ const TimeChart: React.FC = () => {
             )}: ${tooltipItem.yLabel.toLocaleString()}`;
           }
           return label;
-        }
-      }
-    }
+        },
+      },
+    },
   };
 
   const dataset: any = [
@@ -64,29 +64,32 @@ const TimeChart: React.FC = () => {
       fill: false,
       borderColor: "#ff5500",
       backgroundColor: "#ff5500",
-      data: []
+      data: [],
     },
     {
       label: capitalize(recovered),
       fill: false,
       borderColor: "#38a800",
       backgroundColor: "#38a800",
-      data: []
+      data: [],
     },
     {
       label: capitalize(deaths),
       borderColor: "#464646",
       backgroundColor: "#464646",
       fill: false,
-      data: []
-    }
+      data: [],
+    },
   ];
 
   useEffect(() => {
     const requests = [
-      mainService.getConfirmedCasesTrends(),
+      /* Old API not working */
+      // mainService.getConfirmedCasesTrends(),
+      // mainService.getHistorical(),
+      // mainService.getConfirmedCases()
+      mainService.getSummary(),
       mainService.getHistorical(),
-      mainService.getConfirmedCases()
     ];
     Promise.all(requests).then((response: any) => {
       const recoveredSet = dataset.find(
@@ -98,35 +101,94 @@ const TimeChart: React.FC = () => {
       const confirmedSet = dataset.find(
         (d: any) => d.label.toLowerCase() === confirmed.toLowerCase()
       );
-      response[0].data.features.forEach((d: any) => {
-        recoveredSet.data.push({
-          x: new Date(d.attributes.date),
-          y: d.attributes[recovered]
-        });
-        deathSet.data.push({
-          x: new Date(d.attributes.date),
-          y: d.attributes[deaths]
-        });
-      });
+      /* Old API not working */
+      // response[0].data.features.forEach((d: any) => {
+      //   recoveredSet.data.push({
+      //     x: new Date(d.attributes.date),
+      //     y: d.attributes[recovered]
+      //   });
+      //   deathSet.data.push({
+      //     x: new Date(d.attributes.date),
+      //     y: d.attributes[deaths]
+      //   });
+      // });
+      // const cases = response[1].data.timeline.cases;
+      // Object.keys(cases).forEach((c: any) => {
+      //   confirmedSet.data.push({
+      //     x: new Date(c),
+      //     y: cases[c]
+      //   });
+      // });
+      // Compute the new cases (old API)
+      // const totalCases = response[2].data.features[0].attributes.value;
+      // const lastDeathCases = deathSet.data[deathSet.data.length - 1];
+      // const lastConfCases = confirmedSet.data[confirmedSet.data.length - 1];
+      // if (
+      //   lastConfCases.x.setHours(0, 0, 0, 0) <
+      //   lastDeathCases.x.setHours(0, 0, 0, 0)
+      // ) {
+      //   if (totalCases > lastConfCases.y) {
+      //     confirmedSet.data.push({
+      //       x: lastDeathCases.x,
+      //       y: lastConfCases.y + (totalCases - lastConfCases.y)
+      //     });
+      //   }
+      // }
+      let lastConfirmed: any;
       const cases = response[1].data.timeline.cases;
       Object.keys(cases).forEach((c: any) => {
-        confirmedSet.data.push({
+        const d = {
           x: new Date(c),
-          y: cases[c]
-        });
+          y: cases[c],
+        };
+        confirmedSet.data.push(d);
+        lastConfirmed = d;
       });
-      // Compute the new cases
-      const totalCases = response[2].data.features[0].attributes.value;
-      const lastDeathCases = deathSet.data[deathSet.data.length - 1];
-      const lastConfCases = confirmedSet.data[confirmedSet.data.length - 1];
+      let lastRecovered: any;
+      const casesRecovered = response[1].data.timeline.recovered;
+      Object.keys(cases).forEach((c: any) => {
+        const d = {
+          x: new Date(c),
+          y: casesRecovered[c],
+        };
+        recoveredSet.data.push(d);
+        lastRecovered = d;
+      });
+      let lastDeath: any;
+      const casesDeath = response[1].data.timeline.deaths;
+      Object.keys(cases).forEach((c: any) => {
+        const d = {
+          x: new Date(c),
+          y: casesDeath[c],
+        };
+        deathSet.data.push(d);
+        lastDeath = d;
+      });
+      // Compute the new cases (old API)
+      const totalConfirmed = response[0].data[0].totalConfirmed;
+      const totalRecovered = response[0].data[0].totalRecovered;
+      const totalDeaths = response[0].data[0].totalDeaths;
+      const lastUpdated = response[0].data[0].lastUpdated;
+      const latestDate = new Date(lastUpdated);
       if (
-        lastConfCases.x.setHours(0, 0, 0, 0) <
-        lastDeathCases.x.setHours(0, 0, 0, 0)
+        latestDate.setHours(0, 0, 0, 0) > lastConfirmed.x.setHours(0, 0, 0, 0)
       ) {
-        if (totalCases > lastConfCases.y) {
+        if (totalConfirmed > lastConfirmed.y) {
           confirmedSet.data.push({
-            x: lastDeathCases.x,
-            y: lastConfCases.y + (totalCases - lastConfCases.y)
+            x: latestDate,
+            y: totalConfirmed,
+          });
+        }
+        if (totalRecovered > lastRecovered.y) {
+          recoveredSet.data.push({
+            x: latestDate,
+            y: totalRecovered,
+          });
+        }
+        if (totalDeaths > lastDeath.y) {
+          deathSet.data.push({
+            x: latestDate,
+            y: totalDeaths,
           });
         }
       }
@@ -137,9 +199,9 @@ const TimeChart: React.FC = () => {
       chart = new Chart(canvas, {
         type: "line",
         data: {
-          datasets: dataset
+          datasets: dataset,
         },
-        options: option
+        options: option,
       });
       chart.update();
     });

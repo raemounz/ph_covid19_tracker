@@ -28,6 +28,7 @@ const Header: React.FC = () => {
           <div style={{ marginTop: "10px" }}>Sources:</div>
           <ul>
             <li>Department of Health of the Philippines (DOH)</li>
+            <li>CoronaTracker.com</li>
             <li>NovelCOVID/API</li>
           </ul>
           <div style={{ marginTop: "10px" }}>Developed by</div>

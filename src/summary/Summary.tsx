@@ -5,35 +5,55 @@ import AppBanner from "../shared/component/banner/AppBanner";
 
 const Summary: React.FC = () => {
   const [confirmed, setConfirmed] = useState<number | string>();
-  const [pui, setPUI] = useState<number | string>();
-  const [pum, setPUM] = useState<number | string>();
+  // const [pui, setPUI] = useState<number | string>();
+  // const [pum, setPUM] = useState<number | string>();
   const [recovered, setRecovered] = useState<number | string>();
   const [death, setDeath] = useState<number | string>();
-  const [tests, setTests] = useState<number | string>();
+  // const [tests, setTests] = useState<number | string>();
   const [confirmedOld, setConfirmedOld] = useState<number>();
   const [recoveredOld, setRecoveredOld] = useState<number>();
   const [deathOld, setDeathOld] = useState<number>();
 
   useEffect(() => {
+    /* Old API not working */
+    // const requests = [
+    //   mainService.getConfirmedCases(),
+    //   mainService.getPUICases(),
+    //   mainService.getPUMCases(),
+    //   mainService.getRecoveredCases(),
+    //   mainService.getDeathCases(),
+    //   mainService.getTestsConducted(),
+    //   mainService.getHistorical()
+    // ];
+    // Promise.all(requests).then((response: any[]) => {
+    //   setConfirmed(response[0].data.features[0].attributes.value || "No data");
+    //   setPUI(response[1].data.features[0].attributes.value || "No data");
+    //   setPUM(response[2].data.features[0].attributes.value || "No data");
+    //   setRecovered(response[3].data.features[0].attributes.value || "No data");
+    //   setDeath(response[4].data.features[0].attributes.value || "No data");
+    //   setTests(response[5].data.features[0].attributes.value || "No data");
+    //   setConfirmedOld(Number(Object.values(response[6].data.timeline.cases).pop()));
+    //   setRecoveredOld(Number(Object.values(response[6].data.timeline.recovered).pop()));
+    //   setDeathOld(Number(Object.values(response[6].data.timeline.deaths).pop()));
+    // });
     const requests = [
-      mainService.getConfirmedCases(),
-      mainService.getPUICases(),
-      mainService.getPUMCases(),
-      mainService.getRecoveredCases(),
-      mainService.getDeathCases(),
-      mainService.getTestsConducted(),
-      mainService.getHistorical()
-    ];
-    Promise.all(requests).then((response: any[]) => {
-      setConfirmed(response[0].data.features[0].attributes.value || "No data");
-      setPUI(response[1].data.features[0].attributes.value || "No data");
-      setPUM(response[2].data.features[0].attributes.value || "No data");
-      setRecovered(response[3].data.features[0].attributes.value || "No data");
-      setDeath(response[4].data.features[0].attributes.value || "No data");
-      setTests(response[5].data.features[0].attributes.value || "No data");
-      setConfirmedOld(Number(Object.values(response[6].data.timeline.cases).pop()));
-      setRecoveredOld(Number(Object.values(response[6].data.timeline.recovered).pop()));
-      setDeathOld(Number(Object.values(response[6].data.timeline.deaths).pop()));
+      mainService.getHistorical(),
+      mainService.getSummary()
+    ]
+    Promise.all(requests).then((response: any) => {
+      const data = response[1].data[0];
+      setConfirmed(data.totalConfirmed);
+      setConfirmedOld(data.totalConfirmed - data.dailyConfirmed);
+      setRecovered(data.totalRecovered);
+      setDeath(data.totalDeaths);
+      setDeathOld(data.totalDeaths - data.dailyDeaths);
+      // Get last recovered
+      const recoveredTimeline = response[0].data.timeline.recovered;
+      const recoveredTimes = Object.keys(recoveredTimeline);
+      const lastRecovered = recoveredTimeline[recoveredTimes[recoveredTimes.length - 1]];
+      if (lastRecovered < data.totalRecovered) {
+        setRecoveredOld(lastRecovered);
+      }
     });
   }, []);
 
