@@ -36,24 +36,23 @@ const Summary: React.FC = () => {
     //   setRecoveredOld(Number(Object.values(response[6].data.timeline.recovered).pop()));
     //   setDeathOld(Number(Object.values(response[6].data.timeline.deaths).pop()));
     // });
-    const requests = [
-      mainService.getHistorical(),
-      mainService.getSummary()
-    ]
+    const requests = [mainService.getHistorical(), mainService.getSummary()];
     Promise.all(requests).then((response: any) => {
       const data = response[1].data[0];
       setConfirmed(data.totalConfirmed);
-      setConfirmedOld(data.totalConfirmed - data.dailyConfirmed);
       setRecovered(data.totalRecovered);
       setDeath(data.totalDeaths);
-      setDeathOld(data.totalDeaths - data.dailyDeaths);
       // Get last recovered
-      const recoveredTimeline = response[0].data.timeline.recovered;
-      const recoveredTimes = Object.keys(recoveredTimeline);
-      const lastRecovered = recoveredTimeline[recoveredTimes[recoveredTimes.length - 1]];
-      if (lastRecovered < data.totalRecovered) {
-        setRecoveredOld(lastRecovered);
-      }
+      let prevConfirmedDate: any;
+      const cases = response[0].data.timeline.cases;
+      Object.keys(cases).forEach((key: string) => {
+        if (cases[key] !== data.totalConfirmed) {
+          prevConfirmedDate = key;
+        }
+      });
+      setConfirmedOld(response[0].data.timeline.cases[prevConfirmedDate]);
+      setRecoveredOld(response[0].data.timeline.recovered[prevConfirmedDate]);
+      setDeathOld(response[0].data.timeline.deaths[prevConfirmedDate]);
     });
   }, []);
 

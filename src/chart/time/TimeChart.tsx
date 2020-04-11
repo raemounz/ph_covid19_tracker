@@ -134,6 +134,7 @@ const TimeChart: React.FC = () => {
       //     });
       //   }
       // }
+      let lastDate: any;
       let lastConfirmed: any;
       const cases = response[1].data.timeline.cases;
       Object.keys(cases).forEach((c: any) => {
@@ -143,6 +144,7 @@ const TimeChart: React.FC = () => {
         };
         confirmedSet.data.push(d);
         lastConfirmed = d;
+        lastDate = new Date(c);
       });
       let lastRecovered: any;
       const casesRecovered = response[1].data.timeline.recovered;
@@ -164,33 +166,28 @@ const TimeChart: React.FC = () => {
         deathSet.data.push(d);
         lastDeath = d;
       });
-      // Compute the new cases (old API)
+      // Compute the new cases
       const totalConfirmed = response[0].data[0].totalConfirmed;
       const totalRecovered = response[0].data[0].totalRecovered;
       const totalDeaths = response[0].data[0].totalDeaths;
-      const lastUpdated = response[0].data[0].lastUpdated;
-      const latestDate = new Date(lastUpdated);
-      if (
-        latestDate.setHours(0, 0, 0, 0) > lastConfirmed.x.setHours(0, 0, 0, 0)
-      ) {
-        if (totalConfirmed > lastConfirmed.y) {
-          confirmedSet.data.push({
-            x: latestDate,
-            y: totalConfirmed,
-          });
-        }
-        if (totalRecovered > lastRecovered.y) {
-          recoveredSet.data.push({
-            x: latestDate,
-            y: totalRecovered,
-          });
-        }
-        if (totalDeaths > lastDeath.y) {
-          deathSet.data.push({
-            x: latestDate,
-            y: totalDeaths,
-          });
-        }
+      const latestDate = moment(lastDate).add(1, "day");
+      if (totalConfirmed > lastConfirmed.y) {
+        confirmedSet.data.push({
+          x: latestDate,
+          y: totalConfirmed,
+        });
+      }
+      if (totalRecovered > lastRecovered.y) {
+        recoveredSet.data.push({
+          x: latestDate,
+          y: totalRecovered,
+        });
+      }
+      if (totalDeaths > lastDeath.y) {
+        deathSet.data.push({
+          x: latestDate,
+          y: totalDeaths,
+        });
       }
 
       setIsLoading(false);
