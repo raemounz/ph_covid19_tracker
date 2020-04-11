@@ -50,6 +50,7 @@ const Summary: React.FC = () => {
           prevConfirmedDate = key;
         }
       });
+      console.log(prevConfirmedDate);
       setConfirmedOld(response[0].data.timeline.cases[prevConfirmedDate]);
       setRecoveredOld(response[0].data.timeline.recovered[prevConfirmedDate]);
       setDeathOld(response[0].data.timeline.deaths[prevConfirmedDate]);
