@@ -33,7 +33,10 @@ const AppBanner: React.FC<Props> = (props: Props) => {
         >
           {props.value?.toLocaleString() || <CircularProgress size={30} />}
         </div>
-        <div className={classes.increase}>
+        <div
+          className={classes.increase}
+          style={{ color: props.style.background }}
+        >
           {!isNaN(oldValue)
             ? newValue - oldValue > 0
               ? `Up by ${(newValue - oldValue).toLocaleString()}`

@@ -1,13 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { mainService } from "../../shared/service/main.service";
-import { List, ListItem } from "@material-ui/core";
+import {
+  List,
+  ListItem,
+  createMuiTheme,
+  useMediaQuery,
+} from "@material-ui/core";
 import { globalListStyles } from "./global-list.style";
 import AppProgress from "../../shared/component/progress/AppProgress";
+import clsx from "clsx";
 
 const GlobalList: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [cases, setCases] = useState([]);
   const classes = globalListStyles();
+  const theme = createMuiTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("xs"));
 
   useEffect(() => {
     mainService.getGlobalCases().then((response: any) => {
@@ -36,17 +44,31 @@ const GlobalList: React.FC = () => {
           {cases.map((d: any) => {
             return (
               <ListItem key={d.country}>
-                <div className={classes.container}>
-                  <img src={d.flag} className={classes.flag}></img>
-                  <div className={classes.country}>{d.country}</div>
-                  <div className={classes.cases}>
-                    {d.cases.toLocaleString()}
+                <div
+                  className={clsx(classes.container, {
+                    [classes.containerCol]: matches,
+                  })}
+                >
+                  <div className={classes.flagCountry}>
+                    <img src={d.flag} className={classes.flag}></img>
+                    <div className={classes.country}>{d.country}</div>
                   </div>
-                  <div className={classes.recovered}>
-                    {d.recovered.toLocaleString()}
-                  </div>
-                  <div className={classes.deaths}>
-                    {d.deaths.toLocaleString()}
+                  <div
+                    style={{
+                      display: "flex",
+                      flexDirection: "row",
+                      marginTop: matches ? "10px" : 0,
+                    }}
+                  >
+                    <div className={`${classes.metric} ${classes.cases}`}>
+                      {d.cases.toLocaleString()}
+                    </div>
+                    <div className={`${classes.metric} ${classes.recovered}`}>
+                      {d.recovered.toLocaleString()}
+                    </div>
+                    <div className={`${classes.metric} ${classes.deaths}`}>
+                      {d.deaths.toLocaleString()}
+                    </div>
                   </div>
                 </div>
               </ListItem>

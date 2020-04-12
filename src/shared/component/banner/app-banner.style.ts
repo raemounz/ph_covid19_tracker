@@ -30,7 +30,8 @@ export const bannerStyles = makeStyles(() =>
       maxWidth: "250px",
       borderRadius: "6px",
       margin: "10px auto auto auto",
-      background: "#ff9800",
+      background: "#fff",
+      fontWeight: "bold",
     },
   })
 );

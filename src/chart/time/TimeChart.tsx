@@ -62,6 +62,9 @@ const TimeChart: React.FC = () => {
     {
       label: capitalize(confirmed),
       fill: false,
+      lineTension: 0,
+      pointStyle: "circle",
+      pointRadius: 0,
       borderColor: "#ff5500",
       backgroundColor: "#ff5500",
       data: [],
@@ -69,12 +72,18 @@ const TimeChart: React.FC = () => {
     {
       label: capitalize(recovered),
       fill: false,
+      lineTension: 0,
+      pointStyle: "circle",
+      pointRadius: 0,
       borderColor: "#38a800",
       backgroundColor: "#38a800",
       data: [],
     },
     {
       label: capitalize(deaths),
+      lineTension: 0,
+      pointStyle: "circle",
+      pointRadius: 0,
       borderColor: "#464646",
       backgroundColor: "#464646",
       fill: false,
