@@ -170,6 +170,10 @@ class MainService {
   getHistorical(): Promise<any> {
     return axios.get("https://corona.lmao.ninja/v2/historical/philippines");
   }
+
+  getGlobalCases(): Promise<any> {
+    return axios.get("https://corona.lmao.ninja/v2/countries");
+  }
 }
 
 export const mainService = new MainService();

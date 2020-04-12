@@ -20,14 +20,15 @@ import Header from "./header/Header";
 import DistributionMap from "./chart/distribution/DistributionMap";
 import AgeChart from "./chart/age/AgeChart";
 import MuiAlert from "@material-ui/lab/Alert";
+import GlobalList from "./chart/list/GlobalList";
 
 const App: React.FC = () => {
   const residenceMapRef: any = useRef();
   const matches = useMediaQuery(theme.breakpoints.down("xs"));
 
   const Alert = (props: any) => {
-    return <MuiAlert elevation={6} variant="filled" {...props} />;
-  }  
+    return <MuiAlert variant="outlined" {...props} />;
+  };
 
   return (
     <div className="App">
@@ -43,7 +44,10 @@ const App: React.FC = () => {
         <main className="container">
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <Alert severity="error">Due to unavailability of data from official sources, some charts will have empty data.</Alert>
+              <Alert severity="error">
+                Due to unavailability of data from official sources, some charts
+                will have empty data.
+              </Alert>
             </Grid>
             <Summary />
             <Grid item xs={12}>
@@ -54,7 +58,7 @@ const App: React.FC = () => {
                       <AppCard
                         title="Confirmed Cases by Time"
                         style={{
-                          height: "500px",
+                          height: "640px",
                           content: {
                             height: "calc(100% - 60px)",
                           },
@@ -102,10 +106,25 @@ const App: React.FC = () => {
                   <Grid container spacing={3}>
                     <Grid item xs={12}>
                       <AppCard
+                        title="Global Cases"
+                        style={{
+                          height: "640px",
+                          content: {
+                            height: "calc(100% - 76px)",
+                            padding: "0 0 16px 10px",
+                            overflow: "auto",
+                            marginBottom: "16px",
+                          },
+                        }}
+                        content={<GlobalList />}
+                      ></AppCard>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <AppCard
                         id="distribution-map"
                         title="Confirmed Cases Distribution"
                         style={{
-                          height: matches ? "800px" : "1548px",
+                          height: matches ? "800px" : "1024px",
                           content: {
                             height: "calc(100% - 60px)",
                             paddingTop: 0,

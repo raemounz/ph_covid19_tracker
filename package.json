@@ -32,7 +32,7 @@
   },
   "scripts": {
     "start": "node server/server.js",
-    "build": "react-scripts build",
+    "build": "brunch build -p",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -52,6 +52,7 @@
     ]
   },
   "devDependencies": {
-    "eslint-plugin-react-hooks": "^2.5.1"
+    "eslint-plugin-react-hooks": "^2.5.1",
+    "terser-brunch": "^4.0.0"
   }
 }

@@ -10,6 +10,10 @@ const Header: React.FC = () => {
 
   return (
     <div className={classes.container}>
+      <img
+        src="https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/ph.png"
+        className={classes.flag}
+      />
       <div className={classes.title}>
         <div>PH COVID-19 Tracker&nbsp;</div>
         <div className={classes.date}>(as of {moment().format("ll")})</div>
