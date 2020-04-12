@@ -32,7 +32,7 @@
   },
   "scripts": {
     "start": "node server/server.js",
-    "build": "brunch build -p",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
