@@ -61,13 +61,13 @@ const GlobalList: React.FC = () => {
                     }}
                   >
                     <div className={`${classes.metric} ${classes.cases}`}>
-                      {d.cases ? d.cases.toLocaleString() : 0}
+                      {d.cases ? d.cases.toLocaleString() : "-"}
                     </div>
                     <div className={`${classes.metric} ${classes.recovered}`}>
-                      {d.recovered ? d.recovered.toLocaleString() : 0}
+                      {d.recovered ? d.recovered.toLocaleString() : "-"}
                     </div>
                     <div className={`${classes.metric} ${classes.deaths}`}>
-                      {d.deaths ? d.deaths.toLocaleString() : 0}
+                      {d.deaths ? d.deaths.toLocaleString() : "-"}
                     </div>
                   </div>
                 </div>
