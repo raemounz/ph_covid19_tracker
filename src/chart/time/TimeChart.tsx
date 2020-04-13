@@ -3,6 +3,7 @@ import Chart from "chart.js";
 import { mainService } from "../../shared/service/main.service";
 import moment from "moment";
 import AppProgress from "../../shared/component/progress/AppProgress";
+import * as ChartAnnotation from "chartjs-plugin-annotation";
 
 const TimeChart: React.FC = () => {
   const chartRef = useRef<HTMLCanvasElement>(null);
@@ -56,37 +57,83 @@ const TimeChart: React.FC = () => {
         },
       },
     },
+    annotation: {
+      annotations: [
+        {
+          type: "line",
+          mode: "vertical",
+          scaleID: "x-axis-0",
+          value: Date.parse("15 Mar 2020"),
+          borderDash: [8, 4],
+          label: {
+            content: "Community Quarantine",
+            fontFamily: "Roboto",
+            enabled: true,
+            xAdjust: 74,
+            yAdjust: 150,
+          },
+        },
+        {
+          type: "line",
+          mode: "vertical",
+          scaleID: "x-axis-0",
+          value: Date.parse("17 Mar 2020"),
+          borderDash: [8, 4],
+          label: {
+            content: "Luzon ECQ",
+            fontFamily: "Roboto",
+            enabled: true,
+            xAdjust: 42,
+            yAdjust: 95,
+          },
+        },
+        {
+          type: "line",
+          mode: "vertical",
+          scaleID: "x-axis-0",
+          value: Date.parse("7 Apr 2020"),
+          borderDash: [8, 4],
+          label: {
+            content: "Extended Luzon ECQ",
+            fontFamily: "Roboto",
+            enabled: true,
+            xAdjust: 68,
+            yAdjust: 50,
+          },
+        },
+      ],
+    },
   };
 
   const dataset: any = [
     {
-      label: capitalize(confirmed),
-      fill: false,
-      lineTension: 0,
-      pointStyle: "circle",
-      pointRadius: 0,
-      borderColor: "#ff5500",
-      backgroundColor: "#ff5500",
-      data: [],
-    },
-    {
       label: capitalize(recovered),
-      fill: false,
+      fill: true,
       lineTension: 0,
       pointStyle: "circle",
       pointRadius: 0,
       borderColor: "#38a800",
-      backgroundColor: "#38a800",
+      backgroundColor: "#4ce300",
       data: [],
     },
     {
       label: capitalize(deaths),
+      fill: true,
       lineTension: 0,
       pointStyle: "circle",
       pointRadius: 0,
       borderColor: "#464646",
-      backgroundColor: "#464646",
-      fill: false,
+      backgroundColor: "#8b8b8b",
+      data: [],
+    },
+    {
+      label: capitalize(confirmed),
+      fill: true,
+      lineTension: 0,
+      pointStyle: "circle",
+      pointRadius: 0,
+      borderColor: "#ff5500",
+      backgroundColor: "#ffbe9d",
       data: [],
     },
   ];
@@ -208,6 +255,7 @@ const TimeChart: React.FC = () => {
           datasets: dataset,
         },
         options: option,
+        plugins: [ChartAnnotation],
       });
       chart.update();
     });

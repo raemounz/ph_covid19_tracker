@@ -41,9 +41,12 @@ const GlobalList: React.FC = () => {
         <AppProgress />
       ) : (
         <List>
-          {cases.map((d: any) => {
+          {cases.map((d: any, index: number) => {
             return (
-              <ListItem key={d.country}>
+              <ListItem
+                key={d.country}
+                className={clsx({ [classes.odd]: index % 2 === 0 })}
+              >
                 <div
                   className={clsx(classes.container, {
                     [classes.containerCol]: matches,

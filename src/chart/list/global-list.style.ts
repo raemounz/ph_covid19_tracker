@@ -41,8 +41,12 @@ export const globalListStyles = makeStyles(() =>
       background: "#38a800",
     },
     deaths: {
-      margin: "0 10px 0 0",
+      margin: 0,
       background: "#464646",
+    },
+    odd: {
+      background: "#e9e9e9",
+      borderRadius: "5px",
     },
   })
 );

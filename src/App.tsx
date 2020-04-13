@@ -111,7 +111,7 @@ const App: React.FC = () => {
                           height: "640px",
                           content: {
                             height: "calc(100% - 76px)",
-                            padding: "0 0 16px 10px",
+                            padding: "0 10px 16px 10px",
                             overflow: "auto",
                             marginBottom: "16px",
                           },
