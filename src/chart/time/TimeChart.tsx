@@ -65,6 +65,7 @@ const TimeChart: React.FC = () => {
           scaleID: "x-axis-0",
           value: Date.parse("15 Mar 2020"),
           borderDash: [8, 4],
+          borderColor: "red",
           label: {
             content: "Community Quarantine",
             fontFamily: "Roboto",
@@ -79,6 +80,7 @@ const TimeChart: React.FC = () => {
           scaleID: "x-axis-0",
           value: Date.parse("17 Mar 2020"),
           borderDash: [8, 4],
+          borderColor: "red",
           label: {
             content: "Luzon ECQ",
             fontFamily: "Roboto",
@@ -93,6 +95,7 @@ const TimeChart: React.FC = () => {
           scaleID: "x-axis-0",
           value: Date.parse("7 Apr 2020"),
           borderDash: [8, 4],
+          borderColor: "red",
           label: {
             content: "Extended Luzon ECQ",
             fontFamily: "Roboto",
@@ -106,6 +109,16 @@ const TimeChart: React.FC = () => {
   };
 
   const dataset: any = [
+    {
+      label: capitalize(confirmed),
+      fill: true,
+      lineTension: 0,
+      pointStyle: "circle",
+      pointRadius: 0,
+      borderColor: "#ff5500",
+      backgroundColor: "rgba(255, 190, 157, .6)",
+      data: [],
+    },
     {
       label: capitalize(recovered),
       fill: true,
@@ -124,16 +137,6 @@ const TimeChart: React.FC = () => {
       pointRadius: 0,
       borderColor: "#464646",
       backgroundColor: "#8b8b8b",
-      data: [],
-    },
-    {
-      label: capitalize(confirmed),
-      fill: true,
-      lineTension: 0,
-      pointStyle: "circle",
-      pointRadius: 0,
-      borderColor: "#ff5500",
-      backgroundColor: "#ffbe9d",
       data: [],
     },
   ];
