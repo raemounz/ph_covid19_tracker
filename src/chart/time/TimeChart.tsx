@@ -1,5 +1,5 @@
 import React, { useRef, useEffect, useState } from "react";
-import Chart from "chart.js";
+import Chart, { InteractionMode } from "chart.js";
 import { mainService } from "../../shared/service/main.service";
 import moment from "moment";
 import AppProgress from "../../shared/component/progress/AppProgress";
@@ -12,6 +12,7 @@ const TimeChart: React.FC = () => {
   const confirmed = "confirmed";
   const recovered = "recovered";
   const deaths = "deaths";
+  const tooltipMode: InteractionMode = "x";
 
   const capitalize = (text: string) => {
     return text.charAt(0).toUpperCase() + text.slice(1);
@@ -41,6 +42,8 @@ const TimeChart: React.FC = () => {
       ],
     },
     tooltips: {
+      mode: tooltipMode,
+      intersect: false,
       callbacks: {
         title: (tooltipItem: any) => {
           const date = Date.parse(tooltipItem[0].label);
@@ -100,7 +103,7 @@ const TimeChart: React.FC = () => {
             content: "Extended Luzon ECQ",
             fontFamily: "Roboto",
             enabled: true,
-            xAdjust: 68,
+            xAdjust: -69,
             yAdjust: 50,
           },
         },
