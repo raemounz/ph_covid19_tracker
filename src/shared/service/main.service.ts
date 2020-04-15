@@ -1,4 +1,5 @@
 import axios from "axios";
+import cases from "../../data/case.json";
 
 const nameMap = {
   "City of Manila": "Manila City",
@@ -169,6 +170,14 @@ class MainService {
 
   getHistorical(): Promise<any> {
     return axios.get("https://corona.lmao.ninja/v2/historical/philippines?lastdays=all");
+  }
+
+  getPHCases(): Promise<any> {
+    return new Promise((resolve: any) => {
+      setTimeout(() => {
+        resolve(cases);
+      }, 500);
+    })
   }
 
   getGlobalCases(): Promise<any> {

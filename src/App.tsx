@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import "./App.scss";
 import {
   CssBaseline,
@@ -21,14 +21,33 @@ import DistributionMap from "./chart/distribution/DistributionMap";
 import AgeChart from "./chart/age/AgeChart";
 import MuiAlert from "@material-ui/lab/Alert";
 import GlobalList from "./chart/list/GlobalList";
+import { mainService } from "./shared/service/main.service";
 
 const App: React.FC = () => {
   const residenceMapRef: any = useRef();
   const matches = useMediaQuery(theme.breakpoints.down("xs"));
+  const [isLoading, setIsLoading] = useState(true);
+  const [summary, setSummary] = useState(undefined);
+  const [historical, setHistorical] = useState(undefined);
+  const [cases, setCases] = useState([]);
 
   const Alert = (props: any) => {
     return <MuiAlert variant="outlined" {...props} />;
   };
+
+  useEffect(() => {
+    const requests = [
+      mainService.getSummary(),
+      mainService.getHistorical(),
+      mainService.getPHCases(),
+    ];
+    Promise.all(requests).then((response: any) => {
+      setSummary(response[0].data[0]);
+      setHistorical(response[1].data.timeline);
+      setCases(response[2]);
+      setIsLoading(false);
+    });
+  }, []);
 
   return (
     <div className="App">
@@ -43,12 +62,12 @@ const App: React.FC = () => {
         </AppBar>
         <main className="container">
           <Grid container spacing={3}>
-            <Grid item xs={12}>
+            {/* <Grid item xs={12}>
               <Alert severity="error">
                 Due to unavailability of data from official sources, some charts
                 will have empty data.
               </Alert>
-            </Grid>
+            </Grid> */}
             <Summary />
             <Grid item xs={12}>
               <Grid container spacing={3}>
@@ -58,7 +77,7 @@ const App: React.FC = () => {
                       <AppCard
                         title="Confirmed Cases by Time"
                         style={{
-                          height: "640px",
+                          height: "630px",
                           content: {
                             height: "calc(100% - 60px)",
                           },
@@ -66,7 +85,7 @@ const App: React.FC = () => {
                         content={<TimeChart />}
                       ></AppCard>
                     </Grid>
-                    <Grid item xs={12}>
+                    {/* <Grid item xs={12}>
                       <AppCard
                         id="residence-chart"
                         title="Confirmed Cases by Residence"
@@ -90,8 +109,8 @@ const App: React.FC = () => {
                           />
                         }
                       ></AppCard>
-                    </Grid>
-                    <Grid item xs={12}>
+                    </Grid> */}
+                    {/* <Grid item xs={12}>
                       <AppCard
                         title="Confirmed Cases by Age Group"
                         style={{
@@ -99,7 +118,7 @@ const App: React.FC = () => {
                         }}
                         content={<AgeChart />}
                       ></AppCard>
-                    </Grid>
+                    </Grid> */}
                   </Grid>
                 </Grid>
                 <Grid item xs={12} md={6}>
@@ -108,7 +127,7 @@ const App: React.FC = () => {
                       <AppCard
                         title="Global Cases"
                         style={{
-                          height: "640px",
+                          height: "630px",
                           content: {
                             height: "calc(100% - 76px)",
                             padding: "0 10px 16px 10px",
@@ -119,7 +138,7 @@ const App: React.FC = () => {
                         content={<GlobalList />}
                       ></AppCard>
                     </Grid>
-                    <Grid item xs={12}>
+                    {/* <Grid item xs={12}>
                       <AppCard
                         id="distribution-map"
                         title="Confirmed Cases Distribution"
@@ -134,7 +153,7 @@ const App: React.FC = () => {
                           <DistributionMap containerId="distribution-map" />
                         }
                       ></AppCard>
-                    </Grid>
+                    </Grid> */}
                     {/* <Grid item xs={12}>
                       <AppCard
                         title="Confirmed Cases Details"

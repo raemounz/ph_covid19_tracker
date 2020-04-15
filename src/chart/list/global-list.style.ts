@@ -16,16 +16,16 @@ export const globalListStyles = makeStyles(() =>
       flexGrow: 1,
     },
     flag: {
-      height: "27px",
+      height: "20px",
       width: "40px",
       marginRight: "10px",
     },
     country: {
-      fontSize: "1.3em",
+      fontSize: "1em",
     },
     metric: {
       width: "90px",
-      fontSize: "1.3em",
+      fontSize: "1em",
       textAlign: "center",
       color: "#fff",
       padding: "0 10px",

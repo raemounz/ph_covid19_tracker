@@ -48,7 +48,7 @@ const ResidenceChart: React.FC<Props> = forwardRef((props: Props, ref) => {
   };
 
   useEffect(() => {
-    mainService.getConfirmedCasesByResidence().then((response: any) => {
+    // mainService.getConfirmedCasesByResidence().then((response: any) => {
       /* Old API not working */
       // const residenceData: any[] = [];
       // response.data.features.forEach((d: any) => {
@@ -78,7 +78,7 @@ const ResidenceChart: React.FC<Props> = forwardRef((props: Props, ref) => {
       //   }
       // });
       // setData(residenceData);
-    });
+    // });
   }, []);
 
   useEffect(() => {

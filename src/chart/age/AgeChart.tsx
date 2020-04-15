@@ -23,7 +23,7 @@ const AgeChart: React.FC = () => {
     let maleDataset;
     const femaleData = {};
     let femaleDataset;
-    mainService.getConfirmedCasesByAgeGroup().then((response: any) => {
+    // mainService.getConfirmedCasesByAgeGroup().then((response: any) => {
       /* Old API not working */
       // response.data.features.forEach((f: any) => {
       //   if (f.attributes.sex.toLowerCase() === "male") {
@@ -38,29 +38,29 @@ const AgeChart: React.FC = () => {
       // femaleDataset = labels.map((label: string) => femaleData[label]);
 
       setIsLoading(false);
-      const canvas: HTMLCanvasElement = chartRef.current as HTMLCanvasElement;
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      chart = new Chart(canvas, {
-        type: "bar",
-        data: {
-          labels: labels,
-          datasets: [
-            {
-              label: "Male",
-              backgroundColor: "#8ECEFD",
-              data: maleDataset
-            },
-            {
-              label: "Female",
-              backgroundColor: "#F88B9D",
-              data: femaleDataset
-            }
-          ]
-        },
-        options: option
-      });
-      chart.update();
-    });
+      // const canvas: HTMLCanvasElement = chartRef.current as HTMLCanvasElement;
+      // // eslint-disable-next-line react-hooks/exhaustive-deps
+      // chart = new Chart(canvas, {
+      //   type: "bar",
+      //   data: {
+      //     labels: labels,
+      //     datasets: [
+      //       {
+      //         label: "Male",
+      //         backgroundColor: "#8ECEFD",
+      //         data: maleDataset
+      //       },
+      //       {
+      //         label: "Female",
+      //         backgroundColor: "#F88B9D",
+      //         data: femaleDataset
+      //       }
+      //     ]
+      //   },
+      //   options: option
+      // });
+      // chart.update();
+    // });
   }, []);
 
   return (

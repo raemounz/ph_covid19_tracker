@@ -45,6 +45,7 @@ const GlobalList: React.FC = () => {
             return (
               <ListItem
                 key={d.country}
+                style={{ paddingRight: "8px", paddingLeft: "8px" }}
                 className={clsx({ [classes.odd]: index % 2 === 0 })}
               >
                 <div
