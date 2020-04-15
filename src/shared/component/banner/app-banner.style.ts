@@ -13,8 +13,12 @@ export const bannerStyles = makeStyles(() =>
       fontWeight: 500,
       textAlign: "center",
     },
+    label: {
+      fontWeight: 500
+    },
     value: {
-      fontSize: "1.8em",
+      fontSize: "1.9em",
+      fontWeight: "bold"
     },
     valueNoData: {
       fontSize: ".9em",

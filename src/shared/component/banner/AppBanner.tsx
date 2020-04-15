@@ -24,7 +24,7 @@ const AppBanner: React.FC<Props> = (props: Props) => {
     >
       <div className={classes.banner}>
         <Tooltip title={props.desc || ""} placement="top">
-          <div>{props.label}</div>
+          <div className={classes.label}>{props.label}</div>
         </Tooltip>
         <div
           className={clsx(classes.value, {
@@ -39,7 +39,7 @@ const AppBanner: React.FC<Props> = (props: Props) => {
         >
           {!isNaN(oldValue)
             ? newValue - oldValue > 0
-              ? `Up by ${(newValue - oldValue).toLocaleString()}`
+              ? `up by ${(newValue - oldValue).toLocaleString()}`
               : "No increase"
             : ""}
         </div>

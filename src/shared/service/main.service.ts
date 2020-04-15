@@ -168,7 +168,7 @@ class MainService {
   }
 
   getHistorical(): Promise<any> {
-    return axios.get("https://corona.lmao.ninja/v2/historical/philippines");
+    return axios.get("https://corona.lmao.ninja/v2/historical/philippines?lastdays=all");
   }
 
   getGlobalCases(): Promise<any> {
