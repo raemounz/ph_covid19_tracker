@@ -162,45 +162,6 @@ const TimeChart: React.FC<Props> = (props: Props) => {
   ];
 
   useEffect(() => {
-    /* Old API not working */
-    // const requests = [
-    // mainService.getConfirmedCasesTrends(),
-    // mainService.getHistorical(),
-    // mainService.getConfirmedCases()
-    // ];
-    // response[0].data.features.forEach((d: any) => {
-    //   recoveredSet.data.push({
-    //     x: new Date(d.attributes.date),
-    //     y: d.attributes[recovered]
-    //   });
-    //   deathSet.data.push({
-    //     x: new Date(d.attributes.date),
-    //     y: d.attributes[deaths]
-    //   });
-    // });
-    // const cases = response[1].data.timeline.cases;
-    // Object.keys(cases).forEach((c: any) => {
-    //   confirmedSet.data.push({
-    //     x: new Date(c),
-    //     y: cases[c]
-    //   });
-    // });
-    // Compute the new cases (old API)
-    // const totalCases = response[2].data.features[0].attributes.value;
-    // const lastDeathCases = deathSet.data[deathSet.data.length - 1];
-    // const lastConfCases = confirmedSet.data[confirmedSet.data.length - 1];
-    // if (
-    //   lastConfCases.x.setHours(0, 0, 0, 0) <
-    //   lastDeathCases.x.setHours(0, 0, 0, 0)
-    // ) {
-    //   if (totalCases > lastConfCases.y) {
-    //     confirmedSet.data.push({
-    //       x: lastDeathCases.x,
-    //       y: lastConfCases.y + (totalCases - lastConfCases.y)
-    //     });
-    //   }
-    // }
-
     if (props.data) {
       const recoveredSet = dataset.find(
         (d: any) => d.label.toLowerCase() === recovered.toLowerCase()
