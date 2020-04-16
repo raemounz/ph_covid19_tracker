@@ -125,17 +125,18 @@ const App: React.FC = () => {
                   {/* <Grid container spacing={3}>
                     <Grid item xs={12}> */}
                   <AppCard
-                    title="Global Cases"
+                    title="Local Cases"
                     style={{
                       height: "630px",
                       content: {
+                        position: "relative",
                         height: "calc(100% - 76px)",
                         padding: "0 10px 16px 10px",
                         overflow: "auto",
                         marginBottom: "16px",
                       },
                     }}
-                    content={<GlobalList />}
+                    content={<ResidenceBarChart data={cases} />}
                   ></AppCard>
                   {/* </Grid> */}
                   {/* <Grid item xs={12}>
@@ -166,7 +167,7 @@ const App: React.FC = () => {
                 </Grid>
               </Grid>
             </Grid>
-            {/* <Grid item xs={12}>
+            <Grid item xs={12}>
               <Grid container spacing={3}>
                 <Grid item xs={12} md={6}>
                   <AppCard
@@ -193,7 +194,7 @@ const App: React.FC = () => {
                   ></AppCard>
                 </Grid>
               </Grid>
-            </Grid> */}
+            </Grid>
           </Grid>
         </main>
       </ThemeProvider>
