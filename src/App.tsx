@@ -22,13 +22,12 @@ import AgeChart from "./chart/age/AgeChart";
 import MuiAlert from "@material-ui/lab/Alert";
 import GlobalList from "./chart/list/GlobalList";
 import { mainService } from "./shared/service/main.service";
+import ResidenceBarChart from "./chart/residence/ResidenceBarChart";
 
 const App: React.FC = () => {
   const residenceMapRef: any = useRef();
   const matches = useMediaQuery(theme.breakpoints.down("xs"));
-  const [isLoading, setIsLoading] = useState(true);
-  const [summary, setSummary] = useState(undefined);
-  const [historical, setHistorical] = useState(undefined);
+  const [data, setData] = useState<any>();
   const [cases, setCases] = useState([]);
 
   const Alert = (props: any) => {
@@ -42,10 +41,11 @@ const App: React.FC = () => {
       mainService.getPHCases(),
     ];
     Promise.all(requests).then((response: any) => {
-      setSummary(response[0].data[0]);
-      setHistorical(response[1].data.timeline);
+      setData({
+        summary: response[0].data[0],
+        historical: response[1].data.timeline,
+      });
       setCases(response[2]);
-      setIsLoading(false);
     });
   }, []);
 
@@ -68,24 +68,24 @@ const App: React.FC = () => {
                 will have empty data.
               </Alert>
             </Grid> */}
-            <Summary />
+            <Summary data={data} />
             <Grid item xs={12}>
               <Grid container spacing={3}>
                 <Grid item xs={12} md={6}>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12}>
-                      <AppCard
-                        title="Confirmed Cases by Time"
-                        style={{
-                          height: "630px",
-                          content: {
-                            height: "calc(100% - 60px)",
-                          },
-                        }}
-                        content={<TimeChart />}
-                      ></AppCard>
-                    </Grid>
-                    {/* <Grid item xs={12}>
+                  {/* <Grid container spacing={3}>
+                    <Grid item xs={12}> */}
+                  <AppCard
+                    title="Confirmed Cases by Time"
+                    style={{
+                      height: "630px",
+                      content: {
+                        height: "calc(100% - 60px)",
+                      },
+                    }}
+                    content={<TimeChart data={data} />}
+                  ></AppCard>
+                  {/* </Grid> */}
+                  {/* <Grid item xs={12}>
                       <AppCard
                         id="residence-chart"
                         title="Confirmed Cases by Residence"
@@ -110,7 +110,7 @@ const App: React.FC = () => {
                         }
                       ></AppCard>
                     </Grid> */}
-                    {/* <Grid item xs={12}>
+                  {/* <Grid item xs={12}>
                       <AppCard
                         title="Confirmed Cases by Age Group"
                         style={{
@@ -119,26 +119,26 @@ const App: React.FC = () => {
                         content={<AgeChart />}
                       ></AppCard>
                     </Grid> */}
-                  </Grid>
+                  {/* </Grid> */}
                 </Grid>
                 <Grid item xs={12} md={6}>
-                  <Grid container spacing={3}>
-                    <Grid item xs={12}>
-                      <AppCard
-                        title="Global Cases"
-                        style={{
-                          height: "630px",
-                          content: {
-                            height: "calc(100% - 76px)",
-                            padding: "0 10px 16px 10px",
-                            overflow: "auto",
-                            marginBottom: "16px",
-                          },
-                        }}
-                        content={<GlobalList />}
-                      ></AppCard>
-                    </Grid>
-                    {/* <Grid item xs={12}>
+                  {/* <Grid container spacing={3}>
+                    <Grid item xs={12}> */}
+                  <AppCard
+                    title="Global Cases"
+                    style={{
+                      height: "630px",
+                      content: {
+                        height: "calc(100% - 76px)",
+                        padding: "0 10px 16px 10px",
+                        overflow: "auto",
+                        marginBottom: "16px",
+                      },
+                    }}
+                    content={<GlobalList />}
+                  ></AppCard>
+                  {/* </Grid> */}
+                  {/* <Grid item xs={12}>
                       <AppCard
                         id="distribution-map"
                         title="Confirmed Cases Distribution"
@@ -154,7 +154,7 @@ const App: React.FC = () => {
                         }
                       ></AppCard>
                     </Grid> */}
-                    {/* <Grid item xs={12}>
+                  {/* <Grid item xs={12}>
                       <AppCard
                         title="Confirmed Cases Details"
                         style={{
@@ -162,10 +162,38 @@ const App: React.FC = () => {
                         }}
                       ></AppCard>
                     </Grid> */}
-                  </Grid>
+                  {/* </Grid> */}
                 </Grid>
               </Grid>
             </Grid>
+            {/* <Grid item xs={12}>
+              <Grid container spacing={3}>
+                <Grid item xs={12} md={6}>
+                  <AppCard
+                    title="Global Cases"
+                    style={{
+                      height: "630px",
+                      content: {
+                        height: "calc(100% - 76px)",
+                        padding: "0 10px 16px 10px",
+                        overflow: "auto",
+                        marginBottom: "16px",
+                      },
+                    }}
+                    content={<GlobalList />}
+                  ></AppCard>
+                </Grid>
+                <Grid item xs={12} md={6}>
+                  <AppCard
+                    title="Confirmed Cases by Age Group"
+                    style={{
+                      height: "630px",
+                    }}
+                    content={<AgeChart />}
+                  ></AppCard>
+                </Grid>
+              </Grid>
+            </Grid> */}
           </Grid>
         </main>
       </ThemeProvider>

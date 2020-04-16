@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from "react";
 import { Grid } from "@material-ui/core";
-import { mainService } from "../shared/service/main.service";
 import AppBanner from "../shared/component/banner/AppBanner";
 
-const Summary: React.FC = () => {
+interface Props {
+  data: any;
+}
+
+const Summary: React.FC<Props> = (props: Props) => {
   const [confirmed, setConfirmed] = useState<number | string>();
-  // const [pui, setPUI] = useState<number | string>();
-  // const [pum, setPUM] = useState<number | string>();
   const [recovered, setRecovered] = useState<number | string>();
   const [death, setDeath] = useState<number | string>();
-  // const [tests, setTests] = useState<number | string>();
   const [confirmedOld, setConfirmedOld] = useState<number>();
   const [recoveredOld, setRecoveredOld] = useState<number>();
   const [deathOld, setDeathOld] = useState<number>();
+  /* Old API not working */
+  // const [pui, setPUI] = useState<number | string>();
+  // const [pum, setPUM] = useState<number | string>();
+  // const [tests, setTests] = useState<number | string>();
 
   useEffect(() => {
     /* Old API not working */
@@ -36,26 +40,25 @@ const Summary: React.FC = () => {
     //   setRecoveredOld(Number(Object.values(response[6].data.timeline.recovered).pop()));
     //   setDeathOld(Number(Object.values(response[6].data.timeline.deaths).pop()));
     // });
-    const requests = [mainService.getHistorical(), mainService.getSummary()];
-    Promise.all(requests).then((response: any) => {
-      const data = response[1].data[0];
+    if (props.data) {
+      const data = props.data.summary;
       setConfirmed(data.totalConfirmed);
       setRecovered(data.totalRecovered);
       setDeath(data.totalDeaths);
       // Get last recovered
       let prevConfirmedDate: any;
-      const cases = response[0].data.timeline.cases;
+      const cases = props.data.historical.cases;
       Object.keys(cases).forEach((key: string) => {
         if (cases[key] !== data.totalConfirmed) {
           prevConfirmedDate = key;
         }
       });
       console.log(prevConfirmedDate);
-      setConfirmedOld(response[0].data.timeline.cases[prevConfirmedDate]);
-      setRecoveredOld(response[0].data.timeline.recovered[prevConfirmedDate]);
-      setDeathOld(response[0].data.timeline.deaths[prevConfirmedDate]);
-    });
-  }, []);
+      setConfirmedOld(props.data.historical.cases[prevConfirmedDate]);
+      setRecoveredOld(props.data.historical.recovered[prevConfirmedDate]);
+      setDeathOld(props.data.historical.deaths[prevConfirmedDate]);
+    }
+  }, [props.data]);
 
   return (
     <Grid item xs={12}>

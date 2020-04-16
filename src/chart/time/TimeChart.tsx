@@ -1,14 +1,16 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import Chart, { InteractionMode } from "chart.js";
-import { mainService } from "../../shared/service/main.service";
 import moment from "moment";
 import AppProgress from "../../shared/component/progress/AppProgress";
 import * as ChartAnnotation from "chartjs-plugin-annotation";
 
-const TimeChart: React.FC = () => {
+interface Props {
+  data: any;
+}
+
+const TimeChart: React.FC<Props> = (props: Props) => {
   const chartRef = useRef<HTMLCanvasElement>(null);
   let chart: Chart;
-  const [isLoading, setIsLoading] = useState(true);
   const confirmed = "confirmed";
   const recovered = "recovered";
   const deaths = "deaths";
@@ -160,15 +162,46 @@ const TimeChart: React.FC = () => {
   ];
 
   useEffect(() => {
-    const requests = [
-      /* Old API not working */
-      // mainService.getConfirmedCasesTrends(),
-      // mainService.getHistorical(),
-      // mainService.getConfirmedCases()
-      mainService.getSummary(),
-      mainService.getHistorical(),
-    ];
-    Promise.all(requests).then((response: any) => {
+    /* Old API not working */
+    // const requests = [
+    // mainService.getConfirmedCasesTrends(),
+    // mainService.getHistorical(),
+    // mainService.getConfirmedCases()
+    // ];
+    // response[0].data.features.forEach((d: any) => {
+    //   recoveredSet.data.push({
+    //     x: new Date(d.attributes.date),
+    //     y: d.attributes[recovered]
+    //   });
+    //   deathSet.data.push({
+    //     x: new Date(d.attributes.date),
+    //     y: d.attributes[deaths]
+    //   });
+    // });
+    // const cases = response[1].data.timeline.cases;
+    // Object.keys(cases).forEach((c: any) => {
+    //   confirmedSet.data.push({
+    //     x: new Date(c),
+    //     y: cases[c]
+    //   });
+    // });
+    // Compute the new cases (old API)
+    // const totalCases = response[2].data.features[0].attributes.value;
+    // const lastDeathCases = deathSet.data[deathSet.data.length - 1];
+    // const lastConfCases = confirmedSet.data[confirmedSet.data.length - 1];
+    // if (
+    //   lastConfCases.x.setHours(0, 0, 0, 0) <
+    //   lastDeathCases.x.setHours(0, 0, 0, 0)
+    // ) {
+    //   if (totalCases > lastConfCases.y) {
+    //     confirmedSet.data.push({
+    //       x: lastDeathCases.x,
+    //       y: lastConfCases.y + (totalCases - lastConfCases.y)
+    //     });
+    //   }
+    // }
+
+    if (props.data) {
       const recoveredSet = dataset.find(
         (d: any) => d.label.toLowerCase() === recovered.toLowerCase()
       );
@@ -178,42 +211,9 @@ const TimeChart: React.FC = () => {
       const confirmedSet = dataset.find(
         (d: any) => d.label.toLowerCase() === confirmed.toLowerCase()
       );
-      /* Old API not working */
-      // response[0].data.features.forEach((d: any) => {
-      //   recoveredSet.data.push({
-      //     x: new Date(d.attributes.date),
-      //     y: d.attributes[recovered]
-      //   });
-      //   deathSet.data.push({
-      //     x: new Date(d.attributes.date),
-      //     y: d.attributes[deaths]
-      //   });
-      // });
-      // const cases = response[1].data.timeline.cases;
-      // Object.keys(cases).forEach((c: any) => {
-      //   confirmedSet.data.push({
-      //     x: new Date(c),
-      //     y: cases[c]
-      //   });
-      // });
-      // Compute the new cases (old API)
-      // const totalCases = response[2].data.features[0].attributes.value;
-      // const lastDeathCases = deathSet.data[deathSet.data.length - 1];
-      // const lastConfCases = confirmedSet.data[confirmedSet.data.length - 1];
-      // if (
-      //   lastConfCases.x.setHours(0, 0, 0, 0) <
-      //   lastDeathCases.x.setHours(0, 0, 0, 0)
-      // ) {
-      //   if (totalCases > lastConfCases.y) {
-      //     confirmedSet.data.push({
-      //       x: lastDeathCases.x,
-      //       y: lastConfCases.y + (totalCases - lastConfCases.y)
-      //     });
-      //   }
-      // }
       let lastDate: any;
       let lastConfirmed: any;
-      const cases = response[1].data.timeline.cases;
+      const cases = props.data.historical.cases;
       Object.keys(cases).forEach((c: any) => {
         const d = {
           x: new Date(c),
@@ -224,7 +224,7 @@ const TimeChart: React.FC = () => {
         lastDate = new Date(c);
       });
       let lastRecovered: any;
-      const casesRecovered = response[1].data.timeline.recovered;
+      const casesRecovered = props.data.historical.recovered;
       Object.keys(cases).forEach((c: any) => {
         const d = {
           x: new Date(c),
@@ -234,7 +234,7 @@ const TimeChart: React.FC = () => {
         lastRecovered = d;
       });
       let lastDeath: any;
-      const casesDeath = response[1].data.timeline.deaths;
+      const casesDeath = props.data.historical.deaths;
       Object.keys(cases).forEach((c: any) => {
         const d = {
           x: new Date(c),
@@ -244,9 +244,9 @@ const TimeChart: React.FC = () => {
         lastDeath = d;
       });
       // Compute the new cases
-      const totalConfirmed = response[0].data[0].totalConfirmed;
-      const totalRecovered = response[0].data[0].totalRecovered;
-      const totalDeaths = response[0].data[0].totalDeaths;
+      const totalConfirmed = props.data.summary.totalConfirmed;
+      const totalRecovered = props.data.summary.totalRecovered;
+      const totalDeaths = props.data.summary.totalDeaths;
       const latestDate = moment(lastDate).add(1, "day");
       if (totalConfirmed > lastConfirmed.y) {
         confirmedSet.data.push({
@@ -267,7 +267,6 @@ const TimeChart: React.FC = () => {
         });
       }
 
-      setIsLoading(false);
       const canvas: HTMLCanvasElement = chartRef.current as HTMLCanvasElement;
       // eslint-disable-next-line react-hooks/exhaustive-deps
       chart = new Chart(canvas, {
@@ -279,16 +278,13 @@ const TimeChart: React.FC = () => {
         plugins: [ChartAnnotation],
       });
       chart.update();
-    });
-  }, []);
+    }
+  }, [props.data]);
 
   return (
     <>
-      {isLoading ? (
-        <AppProgress />
-      ) : (
-        <canvas ref={chartRef} style={{ height: "100% !important" }}></canvas>
-      )}
+      {!props.data && <AppProgress />}
+      <canvas ref={chartRef} style={{ height: "100% !important" }}></canvas>
     </>
   );
 };
