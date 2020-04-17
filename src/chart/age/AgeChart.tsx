@@ -1,5 +1,5 @@
 import React, { useRef, useEffect } from "react";
-import Chart, { InteractionMode } from "chart.js";
+import Chart from "chart.js";
 import AppProgress from "../../shared/component/progress/AppProgress";
 
 interface Props {
@@ -9,18 +9,13 @@ interface Props {
 const AgeChart: React.FC<Props> = (props: Props) => {
   const chartRef = useRef<HTMLCanvasElement>(null);
   let chart: Chart;
-  const tooltipMode: InteractionMode = "x";
 
   const option = {
     maintainAspectRatio: false,
     scales: {
       xAxes: [{ stacked: true }],
       yAxes: [{ stacked: true }],
-    },
-    tooltips: {
-      mode: tooltipMode,
-      intersect: false,
-    },
+    }
   };
 
   useEffect(() => {
