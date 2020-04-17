@@ -36,16 +36,21 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const requests = [
-      mainService.getSummary(),
+      // mainService.getSummary(),
       mainService.getHistorical(),
       mainService.getPHCases(),
     ];
     Promise.all(requests).then((response: any) => {
       setData({
-        summary: response[0].data[0],
-        historical: response[1].data.timeline,
+        // summary: response[0].data[0],
+        summary: {
+          totalConfirmed: 5878,
+          totalRecovered: 487,
+          totalDeaths: 387
+        },
+        historical: response[0].data.timeline,
       });
-      setCases(response[2]);
+      setCases(response[1]);
     });
   }, []);
 
