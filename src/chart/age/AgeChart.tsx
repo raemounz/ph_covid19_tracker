@@ -51,7 +51,7 @@ const AgeChart: React.FC<Props> = (props: Props) => {
       const canvas: HTMLCanvasElement = chartRef.current as HTMLCanvasElement;
       // eslint-disable-next-line react-hooks/exhaustive-deps
       chart = new Chart(canvas, {
-        type: "bar",
+        type: "horizontalBar",
         data: {
           labels: labels,
           datasets: [

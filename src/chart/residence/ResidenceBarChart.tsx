@@ -113,7 +113,7 @@ const ResidenceBarChart: React.FC<Props> = (props: Props) => {
   }, [props.data]);
 
   return (
-    <div style={{ height: "10200px", overflowY: "scroll" }}>
+    <div style={{ height: "10200px" }}>
       {!props.data && <AppProgress />}
       <canvas
         ref={chartRef}
