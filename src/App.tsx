@@ -54,15 +54,21 @@ const App: React.FC = () => {
         cases: response[2],
       });
       /* In case the summary endpoint has problem */
+      // const summary = {
+      //   totalConfirmed: 6087,
+      //   totalRecovered: 516,
+      //   totalDeaths: 397,
+      // };
       // setData({
-      //   summary: {
-      //     totalConfirmed: 5878,
-      //     totalRecovered: 487,
-      //     totalDeaths: 387
-      //   },
+      //   summary: summary,
       //   historical: response[0].data.timeline,
       // });
       // setCases(response[1]);
+      // setHistoricalCases({
+      //   summary: summary,
+      //   historical: response[0].data.timeline,
+      //   cases: response[1],
+      // });
     });
   }, []);
 
