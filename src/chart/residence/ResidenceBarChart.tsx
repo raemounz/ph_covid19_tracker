@@ -10,7 +10,7 @@ const ResidenceBarChart: React.FC<Props> = (props: Props) => {
   const chartRef = useRef<HTMLCanvasElement>(null);
   let chart: Chart;
 
-  const option = {
+  const option: any = {
     maintainAspectRatio: false,
     scales: {
       xAxes: [
@@ -31,6 +31,16 @@ const ResidenceBarChart: React.FC<Props> = (props: Props) => {
           },
         },
       ],
+    },
+    tooltips: {
+      callbacks: {
+        footer: (tooltipItem: any) => {
+          return `Total: ${tooltipItem.reduce(
+            (a: any, b: any) => a + Number(b.value),
+            0
+          )}`;
+        },
+      },
     },
   };
 

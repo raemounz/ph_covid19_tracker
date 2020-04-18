@@ -23,12 +23,14 @@ import MuiAlert from "@material-ui/lab/Alert";
 import GlobalList from "./chart/list/GlobalList";
 import { mainService } from "./shared/service/main.service";
 import ResidenceBarChart from "./chart/residence/ResidenceBarChart";
+import DailyTimeChart from "./chart/time/DailyTimeChart";
 
 const App: React.FC = () => {
   const residenceMapRef: any = useRef();
   const matches = useMediaQuery(theme.breakpoints.down("xs"));
   const [data, setData] = useState<any>();
   const [cases, setCases] = useState([]);
+  const [historicalCases, setHistoricalCases] = useState<any>();
 
   const Alert = (props: any) => {
     return <MuiAlert variant="outlined" {...props} />;
@@ -36,21 +38,31 @@ const App: React.FC = () => {
 
   useEffect(() => {
     const requests = [
-      // mainService.getSummary(),
+      mainService.getSummary(),
       mainService.getHistorical(),
       mainService.getPHCases(),
     ];
     Promise.all(requests).then((response: any) => {
       setData({
-        // summary: response[0].data[0],
-        summary: {
-          totalConfirmed: 5878,
-          totalRecovered: 487,
-          totalDeaths: 387
-        },
-        historical: response[0].data.timeline,
+        summary: response[0].data[0],
+        historical: response[1].data.timeline,
       });
-      setCases(response[1]);
+      setCases(response[2]);
+      setHistoricalCases({
+        summary: response[0].data[0],
+        historical: response[1].data.timeline,
+        cases: response[2],
+      });
+      /* In case the summary endpoint has problem */
+      // setData({
+      //   summary: {
+      //     totalConfirmed: 5878,
+      //     totalRecovered: 487,
+      //     totalDeaths: 387
+      //   },
+      //   historical: response[0].data.timeline,
+      // });
+      // setCases(response[1]);
     });
   }, []);
 
@@ -85,7 +97,7 @@ const App: React.FC = () => {
                         height: "calc(100% - 60px)",
                       },
                     }}
-                    content={<TimeChart data={data} />}
+                    content={<DailyTimeChart data={historicalCases} />}
                   ></AppCard>
                   {/* <Grid item xs={12}>
                       <AppCard

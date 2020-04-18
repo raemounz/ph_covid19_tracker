@@ -15,7 +15,24 @@ const AgeChart: React.FC<Props> = (props: Props) => {
     scales: {
       xAxes: [{ stacked: true }],
       yAxes: [{ stacked: true }],
+    },
+    tooltips: {
+      callbacks: {
+        footer: (tooltipItem: any) => {
+          return `Total: ${tooltipItem.reduce(
+            (a: any, b: any) => a + Number(b.value),
+            0
+          )}`;
+        },
+      },
+    },
+  };
+
+  const getAge = (ageGroup: string) => {
+    if (ageGroup === "80+") {
+      return 80;
     }
+    return Number(ageGroup.split(" ")[0]);
   };
 
   useEffect(() => {
@@ -38,8 +55,8 @@ const AgeChart: React.FC<Props> = (props: Props) => {
       const labels = Object.keys(ageMap)
         .filter((group: string) => group)
         .sort((group1: string, group2: string) => {
-          const grp1 = Number(group1.split(" ")[0]);
-          const grp2 = Number(group2.split(" ")[0]);
+          const grp1 = getAge(group1);
+          const grp2 = getAge(group2);
           return grp1 - grp2;
         });
 
