@@ -178,20 +178,32 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
       const totalConfirmed = props.data.summary.totalConfirmed;
       const totalRecovered = props.data.summary.totalRecovered;
       const totalDeaths = props.data.summary.totalDeaths;
+      let newCase = {
+        confirmed: 0,
+        recovered: 0,
+        deaths: 0,
+      };
+      let hasNewCase = false;
       const latestDate = moment(lastDate).add(1, "day").toDate();
       if (totalConfirmed > lastConfirmed.y) {
+        newCase.confirmed = totalConfirmed - lastConfirmed.y;
+        hasNewCase = true;
         confirmedSet.data.push({
           x: latestDate,
           y: totalConfirmed,
         });
       }
       if (totalRecovered > lastRecovered.y) {
+        newCase.recovered = totalRecovered - lastRecovered.y;
+        hasNewCase = true;
         recoveredSet.data.push({
           x: latestDate,
           y: totalRecovered,
         });
       }
       if (totalDeaths > lastDeath.y) {
+        newCase.deaths = totalDeaths - lastDeath.y;
+        hasNewCase = true;
         deathSet.data.push({
           x: latestDate,
           y: totalDeaths,
@@ -224,6 +236,13 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
           dailyMap[d.DateRepConf].active = dailyMap[d.DateRepConf].active + 1;
         }
       });
+      if (hasNewCase) {
+        dailyMap[moment(latestDate).format("M/D/YYYY")] = {
+          active: newCase.confirmed,
+          recovered: newCase.recovered,
+          death: newCase.deaths,
+        };
+      }
       Object.keys(dailyMap)
         .sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
         .forEach((date: string) => {
