@@ -105,7 +105,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
       type: "line",
     },
     {
-      label: "Daily Active",
+      label: "Daily Confirmed",
       backgroundColor: "rgba(255, 190, 157, .6)",
       data: [],
       yAxisID: "daily-axis",
@@ -247,7 +247,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
         .sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
         .forEach((date: string) => {
           dataset
-            .find((d: any) => d.label === "Daily Active")
+            .find((d: any) => d.label === "Daily Confirmed")
             .data.push({
               x: new Date(date),
               y: dailyMap[date].active,
