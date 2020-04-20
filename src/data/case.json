@@ -272,7 +272,7 @@
     "Sex": "Male",
     "DateRepConf": "4/15/2020",
     "DateRecover": "",
-    "DateDied": "",
+    "DateDied": "4/14/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/19/2020",
     "Admitted": "Yes",
@@ -306,6 +306,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
+  },
+  {
+    "CaseCode": "C102962",
+    "Age": 37,
+    "AgeGroup": "35 to 39",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Parañaque"
   },
   {
     "CaseCode": "C103118",
@@ -404,6 +418,20 @@
     "Admitted": "Yes",
     "RegionRes": "Quezon",
     "ProvCityRes": "Tiaong"
+  },
+  {
+    "CaseCode": "C104206",
+    "Age": 32,
+    "AgeGroup": "30 to 34",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
   },
   {
     "CaseCode": "C104241",
@@ -616,6 +644,20 @@
     "ProvCityRes": "Pasay City"
   },
   {
+    "CaseCode": "C105372",
+    "Age": 64,
+    "AgeGroup": "60 to 64",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "Quezon City"
+  },
+  {
     "CaseCode": "C105379",
     "Age": 63,
     "AgeGroup": "60 to 64",
@@ -625,7 +667,7 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "",
+    "Admitted": "No",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Makati"
   },
@@ -854,6 +896,20 @@
     "ProvCityRes": "City of Pasig"
   },
   {
+    "CaseCode": "C108229",
+    "Age": 28,
+    "AgeGroup": "25 to 29",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Manila"
+  },
+  {
     "CaseCode": "C108474",
     "Age": 18,
     "AgeGroup": "15 to 19",
@@ -866,6 +922,20 @@
     "Admitted": "",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
+  },
+  {
+    "CaseCode": "C108595",
+    "Age": 55,
+    "AgeGroup": "55 to 59",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Rizal",
+    "ProvCityRes": "City of Antipolo (Capital)"
   },
   {
     "CaseCode": "C108997",
@@ -908,6 +978,20 @@
     "Admitted": "",
     "RegionRes": "",
     "ProvCityRes": ""
+  },
+  {
+    "CaseCode": "C109549",
+    "Age": 31,
+    "AgeGroup": "30 to 34",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Laguna",
+    "ProvCityRes": "Los Baños"
   },
   {
     "CaseCode": "C110039",
@@ -1176,6 +1260,20 @@
     "ProvCityRes": ""
   },
   {
+    "CaseCode": "C112337",
+    "Age": 72,
+    "AgeGroup": "70 to 74",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "Taguig City"
+  },
+  {
     "CaseCode": "C112357",
     "Age": 60,
     "AgeGroup": "60 to 64",
@@ -1253,8 +1351,8 @@
     "DateRepConf": "3/31/2020",
     "DateRecover": "",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Died",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Parañaque"
@@ -1393,8 +1491,8 @@
     "DateRepConf": "3/29/2020",
     "DateRecover": "",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Died",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Makati"
@@ -1524,6 +1622,20 @@
     "Admitted": "Yes",
     "RegionRes": "Laguna",
     "ProvCityRes": "City of Biñan"
+  },
+  {
+    "CaseCode": "C116220",
+    "Age": 25,
+    "AgeGroup": "25 to 29",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Manila"
   },
   {
     "CaseCode": "C116314",
@@ -1680,6 +1792,20 @@
     "ProvCityRes": "Quezon City"
   },
   {
+    "CaseCode": "C117591",
+    "Age": 11,
+    "AgeGroup": "10 to 14",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Bulacan",
+    "ProvCityRes": "San Miguel"
+  },
+  {
     "CaseCode": "C117623",
     "Age": 61,
     "AgeGroup": "60 to 64",
@@ -1720,6 +1846,20 @@
     "Admitted": "",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
+  },
+  {
+    "CaseCode": "C117773",
+    "Age": 42,
+    "AgeGroup": "40 to 44",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
   },
   {
     "CaseCode": "C118263",
@@ -2002,6 +2142,34 @@
     "ProvCityRes": "City of Pasig"
   },
   {
+    "CaseCode": "C120800",
+    "Age": 48,
+    "AgeGroup": "45 to 49",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "Pateros"
+  },
+  {
+    "CaseCode": "C120874",
+    "Age": 62,
+    "AgeGroup": "60 to 64",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "Taguig City"
+  },
+  {
     "CaseCode": "C120987",
     "Age": 40,
     "AgeGroup": "40 to 44",
@@ -2205,8 +2373,8 @@
     "DateRepConf": "3/22/2020",
     "DateRecover": "",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Manila"
@@ -2574,6 +2742,20 @@
     "Admitted": "",
     "RegionRes": "",
     "ProvCityRes": ""
+  },
+  {
+    "CaseCode": "C125856",
+    "Age": 29,
+    "AgeGroup": "25 to 29",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Cebu City (Capital)"
   },
   {
     "CaseCode": "C125906",
@@ -3072,9 +3254,9 @@
     "Sex": "Male",
     "DateRepConf": "4/8/2020",
     "DateRecover": "",
-    "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "DateDied": "4/3/2020",
+    "RemovalType": "Died",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Caloocan City"
@@ -3117,7 +3299,7 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "",
+    "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
   },
@@ -3450,7 +3632,7 @@
     "Sex": "Male",
     "DateRepConf": "4/12/2020",
     "DateRecover": "",
-    "DateDied": "",
+    "DateDied": "4/9/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/17/2020",
     "Admitted": "Yes",
@@ -3512,6 +3694,20 @@
     "Admitted": "",
     "RegionRes": "NCR",
     "ProvCityRes": "City of San Juan"
+  },
+  {
+    "CaseCode": "C134955",
+    "Age": 31,
+    "AgeGroup": "30 to 34",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Muntinlupa"
   },
   {
     "CaseCode": "C134980",
@@ -4125,7 +4321,7 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "",
+    "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Pasig"
   },
@@ -4178,9 +4374,9 @@
     "Sex": "Female",
     "DateRepConf": "4/18/2020",
     "DateRecover": "",
-    "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "DateDied": "4/11/2020",
+    "RemovalType": "Died",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
@@ -4597,10 +4793,10 @@
     "AgeGroup": "60 to 64",
     "Sex": "Female",
     "DateRepConf": "3/29/2020",
-    "DateRecover": "",
+    "DateRecover": "4/10/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
@@ -5124,6 +5320,20 @@
     "ProvCityRes": "Bacoor City"
   },
   {
+    "CaseCode": "C150411",
+    "Age": 58,
+    "AgeGroup": "55 to 59",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "Pasay City"
+  },
+  {
     "CaseCode": "C150444",
     "Age": 60,
     "AgeGroup": "60 to 64",
@@ -5320,15 +5530,29 @@
     "ProvCityRes": "Santa Rosa"
   },
   {
+    "CaseCode": "C152146",
+    "Age": 5,
+    "AgeGroup": "5 to 9",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Rizal",
+    "ProvCityRes": "City of Antipolo (Capital)"
+  },
+  {
     "CaseCode": "C152192",
     "Age": 33,
     "AgeGroup": "30 to 34",
     "Sex": "Male",
     "DateRepConf": "4/1/2020",
-    "DateRecover": "",
+    "DateRecover": "4/13/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "Davao del Norte",
     "ProvCityRes": "City of Tagum (Capital)"
@@ -5780,6 +6004,20 @@
     "Admitted": "",
     "RegionRes": "Rizal",
     "ProvCityRes": "City of Antipolo (Capital)"
+  },
+  {
+    "CaseCode": "C156554",
+    "Age": 63,
+    "AgeGroup": "60 to 64",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
   },
   {
     "CaseCode": "C156581",
@@ -6391,9 +6629,9 @@
     "DateRepConf": "3/21/2020",
     "DateRecover": "",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
-    "Admitted": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
+    "Admitted": "Yes",
     "RegionRes": "Bataan",
     "ProvCityRes": "Limay"
   },
@@ -6622,6 +6860,20 @@
     "ProvCityRes": "City of Manila"
   },
   {
+    "CaseCode": "C165006",
+    "Age": 24,
+    "AgeGroup": "20 to 24",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C165009",
     "Age": 25,
     "AgeGroup": "25 to 29",
@@ -6676,6 +6928,20 @@
     "Admitted": "",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Muntinlupa"
+  },
+  {
+    "CaseCode": "C165276",
+    "Age": 19,
+    "AgeGroup": "15 to 19",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Manila"
   },
   {
     "CaseCode": "C165460",
@@ -6930,6 +7196,20 @@
     "ProvCityRes": "Taguig City"
   },
   {
+    "CaseCode": "C168841",
+    "Age": 48,
+    "AgeGroup": "45 to 49",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "Laguna",
+    "ProvCityRes": "City of Biñan"
+  },
+  {
     "CaseCode": "C168933",
     "Age": 78,
     "AgeGroup": "75 to 79",
@@ -6982,8 +7262,36 @@
     "RemovalType": "",
     "DateRepRem": "",
     "Admitted": "No",
+    "RegionRes": "NCR",
+    "ProvCityRes": "Quezon City"
+  },
+  {
+    "CaseCode": "C169264",
+    "Age": 47,
+    "AgeGroup": "45 to 49",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
     "RegionRes": "",
     "ProvCityRes": ""
+  },
+  {
+    "CaseCode": "C169293",
+    "Age": 46,
+    "AgeGroup": "45 to 49",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Manila"
   },
   {
     "CaseCode": "C169364",
@@ -7443,7 +7751,7 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "",
+    "Admitted": "Yes",
     "RegionRes": "Quezon",
     "ProvCityRes": "Calauag"
   },
@@ -7868,6 +8176,20 @@
     "ProvCityRes": "Manabo"
   },
   {
+    "CaseCode": "C179812",
+    "Age": 68,
+    "AgeGroup": "65 to 69",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "Lanao del Sur",
+    "ProvCityRes": "Marawi City (Capital)"
+  },
+  {
     "CaseCode": "C179884",
     "Age": 63,
     "AgeGroup": "60 to 64",
@@ -7978,6 +8300,20 @@
     "Admitted": "No",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Pasig"
+  },
+  {
+    "CaseCode": "C180676",
+    "Age": 32,
+    "AgeGroup": "30 to 34",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Mandaluyong"
   },
   {
     "CaseCode": "C181020",
@@ -8633,6 +8969,20 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "Quezon City"
+  },
+  {
+    "CaseCode": "C187181",
+    "Age": 73,
+    "AgeGroup": "70 to 74",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
     "Admitted": "",
     "RegionRes": "",
     "ProvCityRes": ""
@@ -8874,6 +9224,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of San Juan"
+  },
+  {
+    "CaseCode": "C188895",
+    "Age": 63,
+    "AgeGroup": "60 to 64",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Manila"
   },
   {
     "CaseCode": "C189001",
@@ -9618,6 +9982,20 @@
     "ProvCityRes": "Bongabong"
   },
   {
+    "CaseCode": "C196791",
+    "Age": 57,
+    "AgeGroup": "55 to 59",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Pasig"
+  },
+  {
     "CaseCode": "C197034",
     "Age": 50,
     "AgeGroup": "50 to 54",
@@ -10120,6 +10498,20 @@
     "Admitted": "",
     "RegionRes": "Laguna",
     "ProvCityRes": "City of Calamba"
+  },
+  {
+    "CaseCode": "C200440",
+    "Age": 47,
+    "AgeGroup": "45 to 49",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
   },
   {
     "CaseCode": "C200680",
@@ -10822,6 +11214,20 @@
     "ProvCityRes": "Quezon City"
   },
   {
+    "CaseCode": "C207058",
+    "Age": 60,
+    "AgeGroup": "60 to 64",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C207410",
     "Age": 27,
     "AgeGroup": "25 to 29",
@@ -10878,6 +11284,20 @@
     "ProvCityRes": "City of Parañaque"
   },
   {
+    "CaseCode": "C207633",
+    "Age": 71,
+    "AgeGroup": "70 to 74",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "Davao del Sur",
+    "ProvCityRes": "Davao City"
+  },
+  {
     "CaseCode": "C207683",
     "Age": 44,
     "AgeGroup": "40 to 44",
@@ -10912,9 +11332,9 @@
     "Sex": "Male",
     "DateRepConf": "4/17/2020",
     "DateRecover": "",
-    "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "DateDied": "4/10/2020",
+    "RemovalType": "Died",
+    "DateRepRem": "4/20/2020",
     "Admitted": "",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
@@ -10929,7 +11349,7 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "No",
+    "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
   },
@@ -11965,7 +12385,7 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "Yes",
+    "Admitted": "",
     "RegionRes": "Laguna",
     "ProvCityRes": "City of San Pedro"
   },
@@ -12077,9 +12497,9 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "",
-    "RegionRes": "",
-    "ProvCityRes": ""
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "Quezon City"
   },
   {
     "CaseCode": "C218501",
@@ -12152,6 +12572,20 @@
     "ProvCityRes": "City of Makati"
   },
   {
+    "CaseCode": "C219129",
+    "Age": 22,
+    "AgeGroup": "20 to 24",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Cebu City (Capital)"
+  },
+  {
     "CaseCode": "C219159",
     "Age": 31,
     "AgeGroup": "30 to 34",
@@ -12213,10 +12647,10 @@
     "AgeGroup": "50 to 54",
     "Sex": "Male",
     "DateRepConf": "3/28/2020",
-    "DateRecover": "",
+    "DateRecover": "4/16/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "Rizal",
     "ProvCityRes": "San Mateo"
@@ -12754,6 +13188,20 @@
     "ProvCityRes": "City of Las Piñas"
   },
   {
+    "CaseCode": "C224131",
+    "Age": 35,
+    "AgeGroup": "35 to 39",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Manila"
+  },
+  {
     "CaseCode": "C224155",
     "Age": 66,
     "AgeGroup": "65 to 69",
@@ -12974,8 +13422,8 @@
     "RemovalType": "",
     "DateRepRem": "",
     "Admitted": "",
-    "RegionRes": "",
-    "ProvCityRes": ""
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Mandaluyong"
   },
   {
     "CaseCode": "C226876",
@@ -13060,6 +13508,20 @@
     "Admitted": "Yes",
     "RegionRes": "Laguna",
     "ProvCityRes": "Cabuyao City"
+  },
+  {
+    "CaseCode": "C227765",
+    "Age": 7,
+    "AgeGroup": "5 to 9",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Laguna",
+    "ProvCityRes": "Los Baños"
   },
   {
     "CaseCode": "C227875",
@@ -13286,6 +13748,20 @@
     "ProvCityRes": ""
   },
   {
+    "CaseCode": "C229457",
+    "Age": 55,
+    "AgeGroup": "55 to 59",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C229479",
     "Age": 78,
     "AgeGroup": "75 to 79",
@@ -13326,6 +13802,20 @@
     "Admitted": "",
     "RegionRes": "Cavite",
     "ProvCityRes": "Bacoor City"
+  },
+  {
+    "CaseCode": "C229948",
+    "Age": 44,
+    "AgeGroup": "40 to 44",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Cebu City (Capital)"
   },
   {
     "CaseCode": "C230031",
@@ -13648,6 +14138,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Manila"
+  },
+  {
+    "CaseCode": "C232561",
+    "Age": 36,
+    "AgeGroup": "35 to 39",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Makati"
   },
   {
     "CaseCode": "C232566",
@@ -14250,6 +14754,20 @@
     "Admitted": "",
     "RegionRes": "Bataan",
     "ProvCityRes": "City of Balanga (Capital)"
+  },
+  {
+    "CaseCode": "C239175",
+    "Age": 66,
+    "AgeGroup": "65 to 69",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Pasig"
   },
   {
     "CaseCode": "C239185",
@@ -14933,7 +15451,7 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "",
+    "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Caloocan City"
   },
@@ -15260,6 +15778,20 @@
     "ProvCityRes": "City of Mandaluyong"
   },
   {
+    "CaseCode": "C251496",
+    "Age": 58,
+    "AgeGroup": "55 to 59",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C251512",
     "Age": 57,
     "AgeGroup": "55 to 59",
@@ -15344,6 +15876,20 @@
     "ProvCityRes": "Quezon City"
   },
   {
+    "CaseCode": "C252475",
+    "Age": 50,
+    "AgeGroup": "50 to 54",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "Albay",
+    "ProvCityRes": "Legazpi City (Capital)"
+  },
+  {
     "CaseCode": "C252627",
     "Age": 39,
     "AgeGroup": "35 to 39",
@@ -15412,6 +15958,20 @@
     "Admitted": "Yes",
     "RegionRes": "",
     "ProvCityRes": ""
+  },
+  {
+    "CaseCode": "C253131",
+    "Age": 70,
+    "AgeGroup": "70 to 74",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Mandaluyong"
   },
   {
     "CaseCode": "C253136",
@@ -15708,6 +16268,20 @@
     "ProvCityRes": "Pasay City"
   },
   {
+    "CaseCode": "C255595",
+    "Age": 49,
+    "AgeGroup": "45 to 49",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C255630",
     "Age": 83,
     "AgeGroup": "80+",
@@ -15927,7 +16501,7 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "Yes",
+    "Admitted": "",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
   },
@@ -16112,6 +16686,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Marikina"
+  },
+  {
+    "CaseCode": "C259115",
+    "Age": 58,
+    "AgeGroup": "55 to 59",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
   },
   {
     "CaseCode": "C259236",
@@ -16534,6 +17122,20 @@
     "ProvCityRes": "San Rafael"
   },
   {
+    "CaseCode": "C262363",
+    "Age": 39,
+    "AgeGroup": "35 to 39",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "Taguig City"
+  },
+  {
     "CaseCode": "C262515",
     "Age": 55,
     "AgeGroup": "55 to 59",
@@ -16544,8 +17146,8 @@
     "RemovalType": "",
     "DateRepRem": "",
     "Admitted": "Yes",
-    "RegionRes": "Davao del Sur",
-    "ProvCityRes": "Davao City"
+    "RegionRes": "NCR",
+    "ProvCityRes": "Quezon City"
   },
   {
     "CaseCode": "C262520",
@@ -17108,6 +17710,20 @@
     "ProvCityRes": "Quezon City"
   },
   {
+    "CaseCode": "C267406",
+    "Age": 59,
+    "AgeGroup": "55 to 59",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C267576",
     "Age": 49,
     "AgeGroup": "45 to 49",
@@ -17218,6 +17834,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Parañaque"
+  },
+  {
+    "CaseCode": "C269086",
+    "Age": 67,
+    "AgeGroup": "65 to 69",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "Quezon City"
   },
   {
     "CaseCode": "C269362",
@@ -17454,8 +18084,8 @@
     "RemovalType": "",
     "DateRepRem": "",
     "Admitted": "",
-    "RegionRes": "Batangas",
-    "ProvCityRes": "Lemery"
+    "RegionRes": "Rizal",
+    "ProvCityRes": "City of Antipolo (Capital)"
   },
   {
     "CaseCode": "C271328",
@@ -17540,6 +18170,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
+  },
+  {
+    "CaseCode": "C271928",
+    "Age": 71,
+    "AgeGroup": "70 to 74",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
   },
   {
     "CaseCode": "C271948",
@@ -17730,9 +18374,9 @@
     "Sex": "Female",
     "DateRepConf": "4/19/2020",
     "DateRecover": "",
-    "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "DateDied": "4/12/2020",
+    "RemovalType": "Died",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Mandaluyong"
@@ -18253,7 +18897,7 @@
     "DateRepRem": "4/12/2020",
     "Admitted": "Yes",
     "RegionRes": "Batangas",
-    "ProvCityRes": "Talisay"
+    "ProvCityRes": "Lipa City"
   },
   {
     "CaseCode": "C281194",
@@ -18597,10 +19241,10 @@
     "AgeGroup": "60 to 64",
     "Sex": "Female",
     "DateRepConf": "3/30/2020",
-    "DateRecover": "",
+    "DateRecover": "4/3/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "Davao Oriental",
     "ProvCityRes": "City of Mati (Capital)"
@@ -18704,6 +19348,20 @@
     "ProvCityRes": "City of Parañaque"
   },
   {
+    "CaseCode": "C285567",
+    "Age": 33,
+    "AgeGroup": "30 to 34",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C285782",
     "Age": 39,
     "AgeGroup": "35 to 39",
@@ -18785,7 +19443,7 @@
     "DateRepRem": "",
     "Admitted": "",
     "RegionRes": "NCR",
-    "ProvCityRes": "Pasay City"
+    "ProvCityRes": "City of Mandaluyong"
   },
   {
     "CaseCode": "C286715",
@@ -19054,6 +19712,20 @@
     "ProvCityRes": ""
   },
   {
+    "CaseCode": "C289578",
+    "Age": 61,
+    "AgeGroup": "60 to 64",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Las Piñas"
+  },
+  {
     "CaseCode": "C289677",
     "Age": 75,
     "AgeGroup": "75 to 79",
@@ -19152,6 +19824,20 @@
     "ProvCityRes": "City of Mandaluyong"
   },
   {
+    "CaseCode": "C290556",
+    "Age": 72,
+    "AgeGroup": "70 to 74",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C290693",
     "Age": 42,
     "AgeGroup": "40 to 44",
@@ -19228,7 +19914,7 @@
     "Sex": "Female",
     "DateRepConf": "4/3/2020",
     "DateRecover": "",
-    "DateDied": "",
+    "DateDied": "3/29/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/12/2020",
     "Admitted": "Yes",
@@ -19259,9 +19945,9 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "Yes",
-    "RegionRes": "",
-    "ProvCityRes": ""
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Las Piñas"
   },
   {
     "CaseCode": "C291545",
@@ -19480,7 +20166,7 @@
     "Sex": "Male",
     "DateRepConf": "3/31/2020",
     "DateRecover": "",
-    "DateDied": "",
+    "DateDied": "3/23/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/11/2020",
     "Admitted": "Yes",
@@ -19498,8 +20184,8 @@
     "RemovalType": "",
     "DateRepRem": "",
     "Admitted": "",
-    "RegionRes": "Misamis Occidental",
-    "ProvCityRes": "Tudela"
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Parañaque"
   },
   {
     "CaseCode": "C294335",
@@ -20446,7 +21132,7 @@
     "Sex": "Male",
     "DateRepConf": "4/6/2020",
     "DateRecover": "",
-    "DateDied": "",
+    "DateDied": "4/7/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/19/2020",
     "Admitted": "Yes",
@@ -20592,6 +21278,20 @@
     "Admitted": "Yes",
     "RegionRes": "Bulacan",
     "ProvCityRes": "City of San Jose Del Monte"
+  },
+  {
+    "CaseCode": "C305333",
+    "Age": 54,
+    "AgeGroup": "50 to 54",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Marikina"
   },
   {
     "CaseCode": "C305444",
@@ -20832,6 +21532,20 @@
     "ProvCityRes": "Quezon City"
   },
   {
+    "CaseCode": "C307189",
+    "Age": 23,
+    "AgeGroup": "20 to 24",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Cebu City (Capital)"
+  },
+  {
     "CaseCode": "C307272",
     "Age": 71,
     "AgeGroup": "70 to 74",
@@ -20935,10 +21649,10 @@
     "AgeGroup": "35 to 39",
     "Sex": "Male",
     "DateRepConf": "4/1/2020",
-    "DateRecover": "",
+    "DateRecover": "4/6/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Valenzuela"
@@ -20956,6 +21670,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Valenzuela"
+  },
+  {
+    "CaseCode": "C308072",
+    "Age": 27,
+    "AgeGroup": "25 to 29",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Cebu City (Capital)"
   },
   {
     "CaseCode": "C308118",
@@ -21322,6 +22050,20 @@
     "ProvCityRes": ""
   },
   {
+    "CaseCode": "C310823",
+    "Age": 41,
+    "AgeGroup": "40 to 44",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "Davao del Sur",
+    "ProvCityRes": "Davao City"
+  },
+  {
     "CaseCode": "C310867",
     "Age": 69,
     "AgeGroup": "65 to 69",
@@ -21345,7 +22087,7 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "",
+    "Admitted": "No",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Parañaque"
   },
@@ -21636,7 +22378,7 @@
     "Sex": "Female",
     "DateRepConf": "3/28/2020",
     "DateRecover": "",
-    "DateDied": "",
+    "DateDied": "3/24/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/17/2020",
     "Admitted": "Yes",
@@ -22288,6 +23030,20 @@
     "ProvCityRes": "City of Manila"
   },
   {
+    "CaseCode": "C320157",
+    "Age": 33,
+    "AgeGroup": "30 to 34",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "No",
+    "RegionRes": "Antique",
+    "ProvCityRes": "Pandan"
+  },
+  {
     "CaseCode": "C320219",
     "Age": 44,
     "AgeGroup": "40 to 44",
@@ -22428,6 +23184,20 @@
     "ProvCityRes": "City of Parañaque"
   },
   {
+    "CaseCode": "C321882",
+    "Age": 70,
+    "AgeGroup": "70 to 74",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Manila"
+  },
+  {
     "CaseCode": "C321930",
     "Age": 26,
     "AgeGroup": "25 to 29",
@@ -22448,7 +23218,7 @@
     "Sex": "Male",
     "DateRepConf": "3/27/2020",
     "DateRecover": "",
-    "DateDied": "",
+    "DateDied": "3/25/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/19/2020",
     "Admitted": "Yes",
@@ -22482,6 +23252,20 @@
     "Admitted": "Yes",
     "RegionRes": "Cavite",
     "ProvCityRes": "Bacoor City"
+  },
+  {
+    "CaseCode": "C322409",
+    "Age": 39,
+    "AgeGroup": "35 to 39",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "Quezon City"
   },
   {
     "CaseCode": "C322410",
@@ -22675,7 +23459,7 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "No",
+    "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Manila"
   },
@@ -22952,7 +23736,7 @@
     "Sex": "Female",
     "DateRepConf": "4/6/2020",
     "DateRecover": "",
-    "DateDied": "",
+    "DateDied": "4/6/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/15/2020",
     "Admitted": "Yes",
@@ -23749,10 +24533,10 @@
     "AgeGroup": "25 to 29",
     "Sex": "Male",
     "DateRepConf": "3/30/2020",
-    "DateRecover": "",
+    "DateRecover": "4/16/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Taguig City"
@@ -24033,9 +24817,9 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "",
-    "RegionRes": "",
-    "ProvCityRes": ""
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Manila"
   },
   {
     "CaseCode": "C343398",
@@ -24142,7 +24926,7 @@
     "Sex": "Male",
     "DateRepConf": "3/31/2020",
     "DateRecover": "",
-    "DateDied": "",
+    "DateDied": "3/22/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/17/2020",
     "Admitted": "Yes",
@@ -24190,6 +24974,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Las Piñas"
+  },
+  {
+    "CaseCode": "C344991",
+    "Age": 32,
+    "AgeGroup": "30 to 34",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Cebu City (Capital)"
   },
   {
     "CaseCode": "C345016",
@@ -24338,9 +25136,9 @@
     "Sex": "Male",
     "DateRepConf": "4/17/2020",
     "DateRecover": "",
-    "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "DateDied": "4/10/2020",
+    "RemovalType": "Died",
+    "DateRepRem": "4/20/2020",
     "Admitted": "",
     "RegionRes": "",
     "ProvCityRes": ""
@@ -24635,7 +25433,7 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "",
+    "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
   },
@@ -24834,6 +25632,34 @@
     "Admitted": "",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Parañaque"
+  },
+  {
+    "CaseCode": "C351448",
+    "Age": 70,
+    "AgeGroup": "70 to 74",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
+    "CaseCode": "C351571",
+    "Age": 32,
+    "AgeGroup": "30 to 34",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Cebu City (Capital)"
   },
   {
     "CaseCode": "C351714",
@@ -25284,6 +26110,20 @@
     "ProvCityRes": "City of Manila"
   },
   {
+    "CaseCode": "C355792",
+    "Age": 17,
+    "AgeGroup": "15 to 19",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Cebu City (Capital)"
+  },
+  {
     "CaseCode": "C355868",
     "Age": 56,
     "AgeGroup": "55 to 59",
@@ -25528,7 +26368,7 @@
     "Sex": "Female",
     "DateRepConf": "4/3/2020",
     "DateRecover": "",
-    "DateDied": "",
+    "DateDied": "4/6/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/17/2020",
     "Admitted": "Yes",
@@ -25772,6 +26612,20 @@
     "Admitted": "",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Mandaluyong"
+  },
+  {
+    "CaseCode": "C361240",
+    "Age": 72,
+    "AgeGroup": "70 to 74",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Pasig"
   },
   {
     "CaseCode": "C361258",
@@ -26376,6 +27230,20 @@
     "ProvCityRes": "City of Manila"
   },
   {
+    "CaseCode": "C367034",
+    "Age": 39,
+    "AgeGroup": "35 to 39",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Pasig"
+  },
+  {
     "CaseCode": "C367429",
     "Age": 29,
     "AgeGroup": "25 to 29",
@@ -26654,6 +27522,20 @@
     "Admitted": "Yes",
     "RegionRes": "Bulacan",
     "ProvCityRes": "City of Meycauayan"
+  },
+  {
+    "CaseCode": "C369884",
+    "Age": 22,
+    "AgeGroup": "20 to 24",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Cebu City (Capital)"
   },
   {
     "CaseCode": "C369982",
@@ -27104,6 +27986,20 @@
     "ProvCityRes": "Cebu City (Capital)"
   },
   {
+    "CaseCode": "C373690",
+    "Age": 47,
+    "AgeGroup": "45 to 49",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C373724",
     "Age": 44,
     "AgeGroup": "40 to 44",
@@ -27342,6 +28238,20 @@
     "ProvCityRes": "City of Muntinlupa"
   },
   {
+    "CaseCode": "C376450",
+    "Age": 28,
+    "AgeGroup": "25 to 29",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "No",
+    "RegionRes": "Antique",
+    "ProvCityRes": "Pandan"
+  },
+  {
     "CaseCode": "C376505",
     "Age": 70,
     "AgeGroup": "70 to 74",
@@ -27382,6 +28292,20 @@
     "Admitted": "",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Valenzuela"
+  },
+  {
+    "CaseCode": "C376759",
+    "Age": 13,
+    "AgeGroup": "10 to 14",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Cebu City (Capital)"
   },
   {
     "CaseCode": "C376781",
@@ -27726,7 +28650,7 @@
     "Sex": "Male",
     "DateRepConf": "4/3/2020",
     "DateRecover": "",
-    "DateDied": "",
+    "DateDied": "3/31/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/17/2020",
     "Admitted": "No",
@@ -27785,7 +28709,7 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "No",
+    "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
   },
@@ -27844,6 +28768,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Parañaque"
+  },
+  {
+    "CaseCode": "C380964",
+    "Age": 37,
+    "AgeGroup": "35 to 39",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Laguna",
+    "ProvCityRes": "Lumban"
   },
   {
     "CaseCode": "C381036",
@@ -28266,6 +29204,20 @@
     "ProvCityRes": "City of Mandaluyong"
   },
   {
+    "CaseCode": "C386203",
+    "Age": 28,
+    "AgeGroup": "25 to 29",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Manila"
+  },
+  {
     "CaseCode": "C386314",
     "Age": 31,
     "AgeGroup": "30 to 34",
@@ -28462,6 +29414,20 @@
     "ProvCityRes": "Quezon City"
   },
   {
+    "CaseCode": "C388302",
+    "Age": 35,
+    "AgeGroup": "35 to 39",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "Davao del Sur",
+    "ProvCityRes": "Davao City"
+  },
+  {
     "CaseCode": "C388431",
     "Age": 39,
     "AgeGroup": "35 to 39",
@@ -28483,11 +29449,25 @@
     "DateRepConf": "3/24/2020",
     "DateRecover": "",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Died",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Parañaque"
+  },
+  {
+    "CaseCode": "C388735",
+    "Age": 24,
+    "AgeGroup": "20 to 24",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Mandaluyong"
   },
   {
     "CaseCode": "C388788",
@@ -28518,6 +29498,20 @@
     "ProvCityRes": ""
   },
   {
+    "CaseCode": "C389152",
+    "Age": 50,
+    "AgeGroup": "50 to 54",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C389280",
     "Age": 41,
     "AgeGroup": "40 to 44",
@@ -28527,7 +29521,7 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "Yes",
+    "Admitted": "",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Las Piñas"
   },
@@ -28894,6 +29888,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
+  },
+  {
+    "CaseCode": "C391858",
+    "Age": 28,
+    "AgeGroup": "25 to 29",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Pasig"
   },
   {
     "CaseCode": "C391892",
@@ -29732,8 +30740,8 @@
     "RemovalType": "",
     "DateRepRem": "",
     "Admitted": "",
-    "RegionRes": "",
-    "ProvCityRes": ""
+    "RegionRes": "NCR",
+    "ProvCityRes": "Quezon City"
   },
   {
     "CaseCode": "C400176",
@@ -30025,7 +31033,7 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "",
+    "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Manila"
   },
@@ -30541,8 +31549,8 @@
     "DateRepConf": "4/11/2020",
     "DateRecover": "",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
@@ -30758,6 +31766,20 @@
     "ProvCityRes": "Quezon City"
   },
   {
+    "CaseCode": "C410310",
+    "Age": 82,
+    "AgeGroup": "80+",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "Davao del Sur",
+    "ProvCityRes": "Davao City"
+  },
+  {
     "CaseCode": "C410404",
     "Age": 39,
     "AgeGroup": "35 to 39",
@@ -30810,6 +31832,20 @@
     "RemovalType": "",
     "DateRepRem": "",
     "Admitted": "Yes",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
+    "CaseCode": "C410783",
+    "Age": 34,
+    "AgeGroup": "30 to 34",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
     "RegionRes": "",
     "ProvCityRes": ""
   },
@@ -30996,6 +32032,20 @@
     "ProvCityRes": "Quezon City"
   },
   {
+    "CaseCode": "C411872",
+    "Age": 82,
+    "AgeGroup": "80+",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Makati"
+  },
+  {
     "CaseCode": "C412061",
     "Age": 37,
     "AgeGroup": "35 to 39",
@@ -31049,7 +32099,7 @@
     "DateRepRem": "",
     "Admitted": "Yes",
     "RegionRes": "Batangas",
-    "ProvCityRes": "Batangas City (Capital)"
+    "ProvCityRes": "Lian"
   },
   {
     "CaseCode": "C412707",
@@ -31268,10 +32318,10 @@
     "Sex": "Female",
     "DateRepConf": "4/13/2020",
     "DateRecover": "",
-    "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
-    "Admitted": "Yes",
+    "DateDied": "4/8/2020",
+    "RemovalType": "Died",
+    "DateRepRem": "4/20/2020",
+    "Admitted": "",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
   },
@@ -31302,6 +32352,20 @@
     "Admitted": "No",
     "RegionRes": "NCR",
     "ProvCityRes": "City of San Juan"
+  },
+  {
+    "CaseCode": "C415045",
+    "Age": 51,
+    "AgeGroup": "50 to 54",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Manila"
   },
   {
     "CaseCode": "C415155",
@@ -31654,6 +32718,20 @@
     "ProvCityRes": "Quezon City"
   },
   {
+    "CaseCode": "C418807",
+    "Age": 34,
+    "AgeGroup": "30 to 34",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Cebu City (Capital)"
+  },
+  {
     "CaseCode": "C418871",
     "Age": 66,
     "AgeGroup": "65 to 69",
@@ -31813,10 +32891,10 @@
     "AgeGroup": "25 to 29",
     "Sex": "Female",
     "DateRepConf": "4/4/2020",
-    "DateRecover": "",
+    "DateRecover": "4/19/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
@@ -32047,15 +33125,15 @@
   },
   {
     "CaseCode": "C423333",
-    "Age": 51,
-    "AgeGroup": "50 to 54",
-    "Sex": "Male",
+    "Age": 64,
+    "AgeGroup": "60 to 64",
+    "Sex": "Female",
     "DateRepConf": "4/16/2020",
     "DateRecover": "",
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "Yes",
+    "Admitted": "",
     "RegionRes": "",
     "ProvCityRes": ""
   },
@@ -32235,8 +33313,8 @@
     "DateRepConf": "3/21/2020",
     "DateRecover": "",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
@@ -32485,10 +33563,10 @@
     "AgeGroup": "60 to 64",
     "Sex": "Male",
     "DateRepConf": "3/30/2020",
-    "DateRecover": "",
+    "DateRecover": "4/3/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "Davao Oriental",
     "ProvCityRes": "City of Mati (Capital)"
@@ -33124,6 +34202,20 @@
     "ProvCityRes": "Caloocan City"
   },
   {
+    "CaseCode": "C430099",
+    "Age": 58,
+    "AgeGroup": "55 to 59",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Cebu City (Capital)"
+  },
+  {
     "CaseCode": "C430124",
     "Age": 39,
     "AgeGroup": "35 to 39",
@@ -33214,7 +34306,7 @@
     "Sex": "Male",
     "DateRepConf": "4/11/2020",
     "DateRecover": "",
-    "DateDied": "",
+    "DateDied": "4/9/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/16/2020",
     "Admitted": "Yes",
@@ -33227,10 +34319,10 @@
     "AgeGroup": "50 to 54",
     "Sex": "Male",
     "DateRepConf": "3/28/2020",
-    "DateRecover": "",
+    "DateRecover": "4/2/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "Davao del Sur",
     "ProvCityRes": "Davao City"
@@ -33262,6 +34354,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Pasay City"
+  },
+  {
+    "CaseCode": "C431002",
+    "Age": 50,
+    "AgeGroup": "50 to 54",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Lapu-Lapu City (Opon)"
   },
   {
     "CaseCode": "C431123",
@@ -33550,7 +34656,7 @@
     "Sex": "Female",
     "DateRepConf": "4/5/2020",
     "DateRecover": "",
-    "DateDied": "",
+    "DateDied": "4/1/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/17/2020",
     "Admitted": "Yes",
@@ -33563,10 +34669,10 @@
     "AgeGroup": "40 to 44",
     "Sex": "Male",
     "DateRepConf": "3/30/2020",
-    "DateRecover": "",
+    "DateRecover": "4/12/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "Cavite",
     "ProvCityRes": "Mendez (Mendez-Nuñez)"
@@ -33745,10 +34851,10 @@
     "AgeGroup": "60 to 64",
     "Sex": "Female",
     "DateRepConf": "3/21/2020",
-    "DateRecover": "",
+    "DateRecover": "4/7/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Manila"
@@ -34664,6 +35770,20 @@
     "ProvCityRes": "Quezon City"
   },
   {
+    "CaseCode": "C444297",
+    "Age": 87,
+    "AgeGroup": "80+",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Manila"
+  },
+  {
     "CaseCode": "C444435",
     "Age": 44,
     "AgeGroup": "40 to 44",
@@ -35555,9 +36675,9 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "",
-    "RegionRes": "",
-    "ProvCityRes": ""
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Manila"
   },
   {
     "CaseCode": "C451813",
@@ -35572,6 +36692,34 @@
     "Admitted": "Yes",
     "RegionRes": "Tarlac",
     "ProvCityRes": "Paniqui"
+  },
+  {
+    "CaseCode": "C452307",
+    "Age": 14,
+    "AgeGroup": "10 to 14",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Cebu City (Capital)"
+  },
+  {
+    "CaseCode": "C452572",
+    "Age": 63,
+    "AgeGroup": "60 to 64",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Cebu City (Capital)"
   },
   {
     "CaseCode": "C452779",
@@ -35812,13 +36960,27 @@
     "ProvCityRes": ""
   },
   {
+    "CaseCode": "C455190",
+    "Age": 46,
+    "AgeGroup": "45 to 49",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C455296",
     "Age": 69,
     "AgeGroup": "65 to 69",
     "Sex": "Female",
     "DateRepConf": "3/29/2020",
     "DateRecover": "",
-    "DateDied": "",
+    "DateDied": "4/5/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/13/2020",
     "Admitted": "Yes",
@@ -35896,6 +37058,20 @@
     "ProvCityRes": "Mahinog"
   },
   {
+    "CaseCode": "C456316",
+    "Age": 40,
+    "AgeGroup": "40 to 44",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C456435",
     "Age": 89,
     "AgeGroup": "80+",
@@ -35950,6 +37126,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
+  },
+  {
+    "CaseCode": "C457025",
+    "Age": 31,
+    "AgeGroup": "30 to 34",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Makati"
   },
   {
     "CaseCode": "C457506",
@@ -36020,6 +37210,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
+  },
+  {
+    "CaseCode": "C458216",
+    "Age": 26,
+    "AgeGroup": "25 to 29",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Manila"
   },
   {
     "CaseCode": "C458227",
@@ -36658,7 +37862,7 @@
     "Sex": "Male",
     "DateRepConf": "3/31/2020",
     "DateRecover": "",
-    "DateDied": "",
+    "DateDied": "3/20/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/11/2020",
     "Admitted": "",
@@ -37037,8 +38241,8 @@
     "DateRepConf": "4/2/2020",
     "DateRecover": "",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
@@ -37511,10 +38715,10 @@
     "AgeGroup": "50 to 54",
     "Sex": "Male",
     "DateRepConf": "3/30/2020",
-    "DateRecover": "",
+    "DateRecover": "4/8/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "Davao del Norte",
     "ProvCityRes": "City of Panabo"
@@ -38108,6 +39312,20 @@
     "ProvCityRes": ""
   },
   {
+    "CaseCode": "C477862",
+    "Age": 25,
+    "AgeGroup": "25 to 29",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Cebu City (Capital)"
+  },
+  {
     "CaseCode": "C478073",
     "Age": 67,
     "AgeGroup": "65 to 69",
@@ -38115,8 +39333,8 @@
     "DateRepConf": "4/14/2020",
     "DateRecover": "",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Died",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Makati"
@@ -39256,6 +40474,20 @@
     "ProvCityRes": "Silang"
   },
   {
+    "CaseCode": "C488385",
+    "Age": 28,
+    "AgeGroup": "25 to 29",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C488404",
     "Age": 56,
     "AgeGroup": "55 to 59",
@@ -39310,6 +40542,20 @@
     "Admitted": "No",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
+  },
+  {
+    "CaseCode": "C488554",
+    "Age": 29,
+    "AgeGroup": "25 to 29",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Mandaluyong"
   },
   {
     "CaseCode": "C488715",
@@ -39408,6 +40654,20 @@
     "Admitted": "Yes",
     "RegionRes": "Rizal",
     "ProvCityRes": "Cainta"
+  },
+  {
+    "CaseCode": "C489600",
+    "Age": 39,
+    "AgeGroup": "35 to 39",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Rizal",
+    "ProvCityRes": "Baras"
   },
   {
     "CaseCode": "C489817",
@@ -39853,7 +41113,7 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "",
+    "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
   },
@@ -41025,11 +42285,11 @@
     "AgeGroup": "45 to 49",
     "Sex": "Female",
     "DateRepConf": "4/11/2020",
-    "DateRecover": "",
+    "DateRecover": "4/16/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
-    "Admitted": "No",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
+    "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Makati"
   },
@@ -41440,6 +42700,20 @@
     "ProvCityRes": "City of Makati"
   },
   {
+    "CaseCode": "C510802",
+    "Age": 63,
+    "AgeGroup": "60 to 64",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "Catanduanes",
+    "ProvCityRes": "Virac (Capital)"
+  },
+  {
     "CaseCode": "C511240",
     "Age": 46,
     "AgeGroup": "45 to 49",
@@ -41592,6 +42866,20 @@
     "Admitted": "No",
     "RegionRes": "Rizal",
     "ProvCityRes": "Cardona"
+  },
+  {
+    "CaseCode": "C512584",
+    "Age": 46,
+    "AgeGroup": "45 to 49",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
   },
   {
     "CaseCode": "C512661",
@@ -41944,6 +43232,20 @@
     "ProvCityRes": "City of Mandaluyong"
   },
   {
+    "CaseCode": "C516821",
+    "Age": 50,
+    "AgeGroup": "50 to 54",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C516842",
     "Age": 47,
     "AgeGroup": "45 to 49",
@@ -41963,10 +43265,10 @@
     "AgeGroup": "50 to 54",
     "Sex": "Male",
     "DateRepConf": "3/28/2020",
-    "DateRecover": "",
+    "DateRecover": "4/19/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Taguig City"
@@ -42364,6 +43666,20 @@
     "ProvCityRes": "City of Manila"
   },
   {
+    "CaseCode": "C520919",
+    "Age": 33,
+    "AgeGroup": "30 to 34",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "Laguna",
+    "ProvCityRes": "City of Calamba"
+  },
+  {
     "CaseCode": "C520938",
     "Age": 27,
     "AgeGroup": "25 to 29",
@@ -42453,10 +43769,10 @@
     "AgeGroup": "40 to 44",
     "Sex": "Female",
     "DateRepConf": "4/1/2020",
-    "DateRecover": "",
+    "DateRecover": "4/3/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "No",
     "RegionRes": "Davao Oriental",
     "ProvCityRes": "City of Mati (Capital)"
@@ -42474,6 +43790,20 @@
     "Admitted": "Yes",
     "RegionRes": "Laguna",
     "ProvCityRes": "City of Santa Rosa"
+  },
+  {
+    "CaseCode": "C522094",
+    "Age": 42,
+    "AgeGroup": "40 to 44",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
   },
   {
     "CaseCode": "C522177",
@@ -42495,10 +43825,10 @@
     "AgeGroup": "30 to 34",
     "Sex": "Male",
     "DateRepConf": "4/2/2020",
-    "DateRecover": "",
+    "DateRecover": "4/19/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "No",
     "RegionRes": "Nueva Vizcaya",
     "ProvCityRes": "Solano"
@@ -42908,6 +44238,20 @@
     "Admitted": "Yes",
     "RegionRes": "Batangas",
     "ProvCityRes": "Nasugbu"
+  },
+  {
+    "CaseCode": "C527864",
+    "Age": 84,
+    "AgeGroup": "80+",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
   },
   {
     "CaseCode": "C527987",
@@ -43745,7 +45089,7 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "",
+    "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
   },
@@ -43834,6 +45178,20 @@
     "ProvCityRes": "City of Las Piñas"
   },
   {
+    "CaseCode": "C539440",
+    "Age": 10,
+    "AgeGroup": "10 to 14",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Laguna",
+    "ProvCityRes": "Los Baños"
+  },
+  {
     "CaseCode": "C539457",
     "Age": 42,
     "AgeGroup": "40 to 44",
@@ -43885,9 +45243,9 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "",
-    "RegionRes": "",
-    "ProvCityRes": ""
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Manila"
   },
   {
     "CaseCode": "C540041",
@@ -43944,6 +45302,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Muntinlupa"
+  },
+  {
+    "CaseCode": "C540842",
+    "Age": 56,
+    "AgeGroup": "55 to 59",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Manila"
   },
   {
     "CaseCode": "C540936",
@@ -44148,7 +45520,7 @@
     "Sex": "Female",
     "DateRepConf": "4/5/2020",
     "DateRecover": "",
-    "DateDied": "",
+    "DateDied": "4/6/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/19/2020",
     "Admitted": "Yes",
@@ -44470,7 +45842,7 @@
     "Sex": "Female",
     "DateRepConf": "3/31/2020",
     "DateRecover": "",
-    "DateDied": "",
+    "DateDied": "3/24/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/16/2020",
     "Admitted": "Yes",
@@ -44604,6 +45976,20 @@
     "ProvCityRes": "City of Antipolo (Capital)"
   },
   {
+    "CaseCode": "C547356",
+    "Age": 59,
+    "AgeGroup": "55 to 59",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "Quezon City"
+  },
+  {
     "CaseCode": "C547371",
     "Age": 38,
     "AgeGroup": "35 to 39",
@@ -44644,6 +46030,20 @@
     "Admitted": "Yes",
     "RegionRes": "Pangasinan",
     "ProvCityRes": "Infanta"
+  },
+  {
+    "CaseCode": "C547728",
+    "Age": 36,
+    "AgeGroup": "35 to 39",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Cebu City (Capital)"
   },
   {
     "CaseCode": "C548120",
@@ -44707,10 +46107,10 @@
     "AgeGroup": "25 to 29",
     "Sex": "Female",
     "DateRepConf": "3/30/2020",
-    "DateRecover": "",
+    "DateRecover": "4/13/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of San Juan"
@@ -44721,10 +46121,10 @@
     "AgeGroup": "50 to 54",
     "Sex": "Male",
     "DateRepConf": "3/22/2020",
-    "DateRecover": "",
+    "DateRecover": "4/13/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
@@ -44935,9 +46335,9 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "",
-    "RegionRes": "",
-    "ProvCityRes": ""
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Manila"
   },
   {
     "CaseCode": "C550635",
@@ -45120,6 +46520,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Muntinlupa"
+  },
+  {
+    "CaseCode": "C552611",
+    "Age": 39,
+    "AgeGroup": "35 to 39",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Parañaque"
   },
   {
     "CaseCode": "C552791",
@@ -45400,6 +46814,20 @@
     "Admitted": "Yes",
     "RegionRes": "Cebu",
     "ProvCityRes": "Cebu City (Capital)"
+  },
+  {
+    "CaseCode": "C555849",
+    "Age": 53,
+    "AgeGroup": "50 to 54",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Quezon",
+    "ProvCityRes": "City of Tayabas"
   },
   {
     "CaseCode": "C555911",
@@ -45710,6 +47138,20 @@
     "ProvCityRes": "City of Las Piñas"
   },
   {
+    "CaseCode": "C559391",
+    "Age": 49,
+    "AgeGroup": "45 to 49",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Laguna",
+    "ProvCityRes": "City of San Pedro"
+  },
+  {
     "CaseCode": "C559530",
     "Age": 70,
     "AgeGroup": "70 to 74",
@@ -45792,6 +47234,20 @@
     "Admitted": "Yes",
     "RegionRes": "Cavite",
     "ProvCityRes": "Imus City"
+  },
+  {
+    "CaseCode": "C560387",
+    "Age": 43,
+    "AgeGroup": "40 to 44",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "Pasay City"
   },
   {
     "CaseCode": "C560399",
@@ -45948,6 +47404,20 @@
     "ProvCityRes": "Caloocan City"
   },
   {
+    "CaseCode": "C562912",
+    "Age": 58,
+    "AgeGroup": "55 to 59",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C563069",
     "Age": 45,
     "AgeGroup": "45 to 49",
@@ -46074,6 +47544,20 @@
     "ProvCityRes": "City of Makati"
   },
   {
+    "CaseCode": "C565080",
+    "Age": 28,
+    "AgeGroup": "25 to 29",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "Albay",
+    "ProvCityRes": "Daraga (Locsin)"
+  },
+  {
     "CaseCode": "C565109",
     "Age": 67,
     "AgeGroup": "65 to 69",
@@ -46142,6 +47626,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Malabon"
+  },
+  {
+    "CaseCode": "C566378",
+    "Age": 30,
+    "AgeGroup": "30 to 34",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
   },
   {
     "CaseCode": "C566450",
@@ -46352,6 +47850,20 @@
     "Admitted": "",
     "RegionRes": "Rizal",
     "ProvCityRes": "Cainta"
+  },
+  {
+    "CaseCode": "C568461",
+    "Age": 22,
+    "AgeGroup": "20 to 24",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Muntinlupa"
   },
   {
     "CaseCode": "C568634",
@@ -46746,6 +48258,20 @@
     "ProvCityRes": "City of Manila"
   },
   {
+    "CaseCode": "C573122",
+    "Age": 49,
+    "AgeGroup": "45 to 49",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C573160",
     "Age": 53,
     "AgeGroup": "50 to 54",
@@ -46802,6 +48328,20 @@
     "ProvCityRes": "City of Mandaluyong"
   },
   {
+    "CaseCode": "C573589",
+    "Age": 41,
+    "AgeGroup": "40 to 44",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C573678",
     "Age": 71,
     "AgeGroup": "70 to 74",
@@ -46823,8 +48363,8 @@
     "DateRepConf": "4/11/2020",
     "DateRecover": "",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Valenzuela"
@@ -47276,6 +48816,20 @@
     "Admitted": "Yes",
     "RegionRes": "Zambales",
     "ProvCityRes": "Cabangan"
+  },
+  {
+    "CaseCode": "C577266",
+    "Age": 54,
+    "AgeGroup": "50 to 54",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "Laguna",
+    "ProvCityRes": "Victoria"
   },
   {
     "CaseCode": "C577343",
@@ -48655,10 +50209,10 @@
     "AgeGroup": "60 to 64",
     "Sex": "Male",
     "DateRepConf": "3/30/2020",
-    "DateRecover": "",
+    "DateRecover": "4/4/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "Davao del Sur",
     "ProvCityRes": "Davao City"
@@ -48718,6 +50272,20 @@
     "Admitted": "Yes",
     "RegionRes": "Bulacan",
     "ProvCityRes": "City of San Jose Del Monte"
+  },
+  {
+    "CaseCode": "C593709",
+    "Age": 30,
+    "AgeGroup": "30 to 34",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
   },
   {
     "CaseCode": "C594149",
@@ -48866,10 +50434,10 @@
     "Sex": "Female",
     "DateRepConf": "4/18/2020",
     "DateRecover": "",
-    "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
-    "Admitted": "",
+    "DateDied": "4/12/2020",
+    "RemovalType": "Died",
+    "DateRepRem": "4/20/2020",
+    "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Manila"
   },
@@ -49628,6 +51196,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
+  },
+  {
+    "CaseCode": "C603158",
+    "Age": 56,
+    "AgeGroup": "55 to 59",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
   },
   {
     "CaseCode": "C603215",
@@ -50531,7 +52113,7 @@
     "AgeGroup": "20 to 24",
     "Sex": "Female",
     "DateRepConf": "4/6/2020",
-    "DateRecover": "",
+    "DateRecover": "4/18/2020",
     "DateDied": "",
     "RemovalType": "Recovered",
     "DateRepRem": "4/18/2020",
@@ -50580,6 +52162,20 @@
     "Admitted": "",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
+  },
+  {
+    "CaseCode": "C610270",
+    "Age": 34,
+    "AgeGroup": "30 to 34",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
   },
   {
     "CaseCode": "C610342",
@@ -51179,7 +52775,7 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "",
+    "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Manila"
   },
@@ -51389,7 +52985,7 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "Yes",
+    "Admitted": "",
     "RegionRes": "NCR",
     "ProvCityRes": "Taguig City"
   },
@@ -51406,6 +53002,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Mandaluyong"
+  },
+  {
+    "CaseCode": "C619270",
+    "Age": 53,
+    "AgeGroup": "50 to 54",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "Bataan",
+    "ProvCityRes": "Orani"
   },
   {
     "CaseCode": "C619332",
@@ -52262,6 +53872,20 @@
     "ProvCityRes": "Davao City"
   },
   {
+    "CaseCode": "C629041",
+    "Age": 44,
+    "AgeGroup": "40 to 44",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C629613",
     "Age": 29,
     "AgeGroup": "25 to 29",
@@ -52551,7 +54175,7 @@
     "DateDied": "4/6/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/17/2020",
-    "Admitted": "",
+    "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Malabon"
   },
@@ -52836,6 +54460,20 @@
     "ProvCityRes": "City of Pasig"
   },
   {
+    "CaseCode": "C634527",
+    "Age": 54,
+    "AgeGroup": "50 to 54",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "Albay",
+    "ProvCityRes": "Legazpi City (Capital)"
+  },
+  {
     "CaseCode": "C634851",
     "Age": 59,
     "AgeGroup": "55 to 59",
@@ -52874,8 +54512,8 @@
     "RemovalType": "",
     "DateRepRem": "",
     "Admitted": "",
-    "RegionRes": "",
-    "ProvCityRes": ""
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Parañaque"
   },
   {
     "CaseCode": "C635067",
@@ -53452,6 +55090,34 @@
     "ProvCityRes": "Bamban"
   },
   {
+    "CaseCode": "C640889",
+    "Age": 42,
+    "AgeGroup": "40 to 44",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Mandaluyong"
+  },
+  {
+    "CaseCode": "C640904",
+    "Age": 61,
+    "AgeGroup": "60 to 64",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C641065",
     "Age": 52,
     "AgeGroup": "50 to 54",
@@ -53699,7 +55365,7 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "",
+    "Admitted": "Yes",
     "RegionRes": "",
     "ProvCityRes": ""
   },
@@ -54306,6 +55972,20 @@
     "ProvCityRes": "Quezon City"
   },
   {
+    "CaseCode": "C651153",
+    "Age": 49,
+    "AgeGroup": "45 to 49",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "Caloocan City"
+  },
+  {
     "CaseCode": "C651208",
     "Age": 86,
     "AgeGroup": "80+",
@@ -54430,6 +56110,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Pasay City"
+  },
+  {
+    "CaseCode": "C653207",
+    "Age": 41,
+    "AgeGroup": "40 to 44",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Cebu City (Capital)"
   },
   {
     "CaseCode": "C653264",
@@ -54656,6 +56350,20 @@
     "ProvCityRes": "Malvar"
   },
   {
+    "CaseCode": "C655895",
+    "Age": 51,
+    "AgeGroup": "50 to 54",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "Quezon City"
+  },
+  {
     "CaseCode": "C655934",
     "Age": 42,
     "AgeGroup": "40 to 44",
@@ -54789,8 +56497,8 @@
     "DateRepConf": "4/11/2020",
     "DateRecover": "",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Died",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Pasay City"
@@ -55211,7 +56919,7 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "",
+    "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Makati"
   },
@@ -56616,6 +58324,34 @@
     "ProvCityRes": "Puerto Galera"
   },
   {
+    "CaseCode": "C674046",
+    "Age": 56,
+    "AgeGroup": "55 to 59",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
+    "CaseCode": "C674226",
+    "Age": 29,
+    "AgeGroup": "25 to 29",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Laguna",
+    "ProvCityRes": "Santa Cruz (Capital)"
+  },
+  {
     "CaseCode": "C674437",
     "Age": 51,
     "AgeGroup": "50 to 54",
@@ -57092,6 +58828,20 @@
     "ProvCityRes": "City of Parañaque"
   },
   {
+    "CaseCode": "C679770",
+    "Age": 47,
+    "AgeGroup": "45 to 49",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Manila"
+  },
+  {
     "CaseCode": "C680168",
     "Age": 31,
     "AgeGroup": "30 to 34",
@@ -57330,6 +59080,20 @@
     "ProvCityRes": "City of Mandaluyong"
   },
   {
+    "CaseCode": "C682464",
+    "Age": 24,
+    "AgeGroup": "20 to 24",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Parañaque"
+  },
+  {
     "CaseCode": "C682524",
     "Age": 60,
     "AgeGroup": "60 to 64",
@@ -57339,7 +59103,7 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "",
+    "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Mandaluyong"
   },
@@ -57447,10 +59211,10 @@
     "AgeGroup": "35 to 39",
     "Sex": "Female",
     "DateRepConf": "3/30/2020",
-    "DateRecover": "",
+    "DateRecover": "4/5/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Caloocan City"
@@ -57475,10 +59239,10 @@
     "AgeGroup": "50 to 54",
     "Sex": "Male",
     "DateRepConf": "4/1/2020",
-    "DateRecover": "",
+    "DateRecover": "4/9/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "Davao del Norte",
     "ProvCityRes": "City of Tagum (Capital)"
@@ -57552,6 +59316,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Mandaluyong"
+  },
+  {
+    "CaseCode": "C685122",
+    "Age": 41,
+    "AgeGroup": "40 to 44",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Manila"
   },
   {
     "CaseCode": "C685224",
@@ -57869,8 +59647,8 @@
     "DateRepConf": "3/29/2020",
     "DateRecover": "",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "Pampanga",
     "ProvCityRes": "City of San Fernando (Capital)"
@@ -57994,7 +59772,7 @@
     "Sex": "Male",
     "DateRepConf": "4/6/2020",
     "DateRecover": "",
-    "DateDied": "",
+    "DateDied": "4/8/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/17/2020",
     "Admitted": "",
@@ -58072,6 +59850,20 @@
     "ProvCityRes": "Quezon City"
   },
   {
+    "CaseCode": "C691117",
+    "Age": 31,
+    "AgeGroup": "30 to 34",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "Cavite",
+    "ProvCityRes": "Silang"
+  },
+  {
     "CaseCode": "C691133",
     "Age": 64,
     "AgeGroup": "60 to 64",
@@ -58098,6 +59890,20 @@
     "Admitted": "No",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Mandaluyong"
+  },
+  {
+    "CaseCode": "C691516",
+    "Age": 53,
+    "AgeGroup": "50 to 54",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Cebu City (Capital)"
   },
   {
     "CaseCode": "C691801",
@@ -58249,7 +60055,7 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "",
+    "Admitted": "Yes",
     "RegionRes": "Quezon",
     "ProvCityRes": "Lucena City (Capital)"
   },
@@ -58294,6 +60100,20 @@
     "Admitted": "Yes",
     "RegionRes": "Laguna",
     "ProvCityRes": "City of Santa Rosa"
+  },
+  {
+    "CaseCode": "C693809",
+    "Age": 54,
+    "AgeGroup": "50 to 54",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Las Piñas"
   },
   {
     "CaseCode": "C693829",
@@ -58366,6 +60186,20 @@
     "ProvCityRes": "City of Dasmariñas"
   },
   {
+    "CaseCode": "C694532",
+    "Age": 58,
+    "AgeGroup": "55 to 59",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Cebu City (Capital)"
+  },
+  {
     "CaseCode": "C694644",
     "Age": 29,
     "AgeGroup": "25 to 29",
@@ -58422,6 +60256,20 @@
     "ProvCityRes": "Taguig City"
   },
   {
+    "CaseCode": "C695147",
+    "Age": 26,
+    "AgeGroup": "25 to 29",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "Caloocan City"
+  },
+  {
     "CaseCode": "C695216",
     "Age": 39,
     "AgeGroup": "35 to 39",
@@ -58448,6 +60296,20 @@
     "Admitted": "",
     "RegionRes": "Laguna",
     "ProvCityRes": "City of Biñan"
+  },
+  {
+    "CaseCode": "C695653",
+    "Age": 29,
+    "AgeGroup": "25 to 29",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
   },
   {
     "CaseCode": "C695704",
@@ -58590,6 +60452,20 @@
     "ProvCityRes": "City of Makati"
   },
   {
+    "CaseCode": "C697440",
+    "Age": 58,
+    "AgeGroup": "55 to 59",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Cebu City (Capital)"
+  },
+  {
     "CaseCode": "C697549",
     "Age": 50,
     "AgeGroup": "50 to 54",
@@ -58618,6 +60494,20 @@
     "ProvCityRes": "Nasugbu"
   },
   {
+    "CaseCode": "C697640",
+    "Age": 41,
+    "AgeGroup": "40 to 44",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C697668",
     "Age": 74,
     "AgeGroup": "70 to 74",
@@ -58644,6 +60534,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Manila"
+  },
+  {
+    "CaseCode": "C697685",
+    "Age": 57,
+    "AgeGroup": "55 to 59",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Cebu City (Capital)"
   },
   {
     "CaseCode": "C697722",
@@ -58770,6 +60674,20 @@
     "Admitted": "",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Mandaluyong"
+  },
+  {
+    "CaseCode": "C698959",
+    "Age": 55,
+    "AgeGroup": "55 to 59",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Laguna",
+    "ProvCityRes": "City of San Pedro"
   },
   {
     "CaseCode": "C699437",
@@ -59696,6 +61614,20 @@
     "ProvCityRes": "City of Antipolo (Capital)"
   },
   {
+    "CaseCode": "C707798",
+    "Age": 51,
+    "AgeGroup": "50 to 54",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "Quezon City"
+  },
+  {
     "CaseCode": "C707799",
     "Age": 82,
     "AgeGroup": "80+",
@@ -59864,6 +61796,20 @@
     "ProvCityRes": "City of Muntinlupa"
   },
   {
+    "CaseCode": "C709991",
+    "Age": 42,
+    "AgeGroup": "40 to 44",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C710016",
     "Age": 57,
     "AgeGroup": "55 to 59",
@@ -59888,8 +61834,8 @@
     "RemovalType": "",
     "DateRepRem": "",
     "Admitted": "",
-    "RegionRes": "",
-    "ProvCityRes": ""
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Mandaluyong"
   },
   {
     "CaseCode": "C710303",
@@ -60368,6 +62314,20 @@
     "ProvCityRes": "Taguig City"
   },
   {
+    "CaseCode": "C714071",
+    "Age": 26,
+    "AgeGroup": "25 to 29",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Mandaluyong"
+  },
+  {
     "CaseCode": "C714158",
     "Age": 37,
     "AgeGroup": "35 to 39",
@@ -60648,6 +62608,20 @@
     "ProvCityRes": "City of Biñan"
   },
   {
+    "CaseCode": "C718185",
+    "Age": 74,
+    "AgeGroup": "70 to 74",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Manila"
+  },
+  {
     "CaseCode": "C718186",
     "Age": 58,
     "AgeGroup": "55 to 59",
@@ -60711,8 +62685,8 @@
     "DateRepConf": "4/9/2020",
     "DateRecover": "",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
@@ -60783,6 +62757,20 @@
     "DateDied": "",
     "RemovalType": "Recovered",
     "DateRepRem": "4/16/2020",
+    "Admitted": "Yes",
+    "RegionRes": "Davao del Sur",
+    "ProvCityRes": "Davao City"
+  },
+  {
+    "CaseCode": "C720023",
+    "Age": 40,
+    "AgeGroup": "40 to 44",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
     "Admitted": "Yes",
     "RegionRes": "Davao del Sur",
     "ProvCityRes": "Davao City"
@@ -61166,6 +63154,20 @@
     "ProvCityRes": "City of Pasig"
   },
   {
+    "CaseCode": "C723827",
+    "Age": 60,
+    "AgeGroup": "60 to 64",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Makati"
+  },
+  {
     "CaseCode": "C723973",
     "Age": 19,
     "AgeGroup": "15 to 19",
@@ -61178,6 +63180,20 @@
     "Admitted": "Yes",
     "RegionRes": "Laguna",
     "ProvCityRes": "City of San Pedro"
+  },
+  {
+    "CaseCode": "C723974",
+    "Age": 26,
+    "AgeGroup": "25 to 29",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Makati"
   },
   {
     "CaseCode": "C724500",
@@ -61768,6 +63784,20 @@
     "ProvCityRes": "Santa Cruz (Capital)"
   },
   {
+    "CaseCode": "C730496",
+    "Age": 39,
+    "AgeGroup": "35 to 39",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C730524",
     "Age": 52,
     "AgeGroup": "50 to 54",
@@ -62004,6 +64034,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Marikina"
+  },
+  {
+    "CaseCode": "C734491",
+    "Age": 0,
+    "AgeGroup": "0 to 4",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Parañaque"
   },
   {
     "CaseCode": "C734657",
@@ -62398,6 +64442,34 @@
     "ProvCityRes": "Cebu City (Capital)"
   },
   {
+    "CaseCode": "C739926",
+    "Age": 69,
+    "AgeGroup": "65 to 69",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "Quezon City"
+  },
+  {
+    "CaseCode": "C739976",
+    "Age": 50,
+    "AgeGroup": "50 to 54",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Cebu City (Capital)"
+  },
+  {
     "CaseCode": "C740026",
     "Age": 31,
     "AgeGroup": "30 to 34",
@@ -62474,7 +64546,7 @@
     "Sex": "Male",
     "DateRepConf": "4/1/2020",
     "DateRecover": "",
-    "DateDied": "",
+    "DateDied": "3/31/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/11/2020",
     "Admitted": "Yes",
@@ -63350,6 +65422,20 @@
     "ProvCityRes": ""
   },
   {
+    "CaseCode": "C751802",
+    "Age": 34,
+    "AgeGroup": "30 to 34",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "Rizal",
+    "ProvCityRes": "City of Antipolo (Capital)"
+  },
+  {
     "CaseCode": "C751815",
     "Age": 67,
     "AgeGroup": "65 to 69",
@@ -63455,8 +65541,8 @@
     "DateRepConf": "3/30/2020",
     "DateRecover": "",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Taguig City"
@@ -63756,6 +65842,20 @@
     "ProvCityRes": "City of Manila"
   },
   {
+    "CaseCode": "C756491",
+    "Age": 30,
+    "AgeGroup": "30 to 34",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C756585",
     "Age": 25,
     "AgeGroup": "25 to 29",
@@ -63782,6 +65882,20 @@
     "Admitted": "",
     "RegionRes": "Rizal",
     "ProvCityRes": "City of Antipolo (Capital)"
+  },
+  {
+    "CaseCode": "C756651",
+    "Age": 27,
+    "AgeGroup": "25 to 29",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
   },
   {
     "CaseCode": "C756879",
@@ -64260,6 +66374,20 @@
     "ProvCityRes": "City of Muntinlupa"
   },
   {
+    "CaseCode": "C760590",
+    "Age": 30,
+    "AgeGroup": "30 to 34",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "Quezon City"
+  },
+  {
     "CaseCode": "C760925",
     "Age": 67,
     "AgeGroup": "65 to 69",
@@ -64342,6 +66470,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
+  },
+  {
+    "CaseCode": "C762289",
+    "Age": 31,
+    "AgeGroup": "30 to 34",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Manila"
   },
   {
     "CaseCode": "C762314",
@@ -64582,6 +66724,20 @@
     "ProvCityRes": "City of Balanga (Capital)"
   },
   {
+    "CaseCode": "C764206",
+    "Age": 33,
+    "AgeGroup": "30 to 34",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C764217",
     "Age": 64,
     "AgeGroup": "60 to 64",
@@ -64650,6 +66806,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Marikina"
+  },
+  {
+    "CaseCode": "C764541",
+    "Age": 43,
+    "AgeGroup": "40 to 44",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
   },
   {
     "CaseCode": "C764593",
@@ -65137,7 +67307,7 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "",
+    "Admitted": "No",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
   },
@@ -65261,8 +67431,8 @@
     "DateRepConf": "4/2/2020",
     "DateRecover": "",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Died",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Makati"
@@ -65667,8 +67837,8 @@
     "DateRepConf": "3/21/2020",
     "DateRecover": "",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "Bulacan",
     "ProvCityRes": "Santa Maria"
@@ -65870,6 +68040,20 @@
     "ProvCityRes": "Bacoor City"
   },
   {
+    "CaseCode": "C774599",
+    "Age": 36,
+    "AgeGroup": "35 to 39",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Makati"
+  },
+  {
     "CaseCode": "C774602",
     "Age": 67,
     "AgeGroup": "65 to 69",
@@ -66050,6 +68234,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Manila"
+  },
+  {
+    "CaseCode": "C777336",
+    "Age": 49,
+    "AgeGroup": "45 to 49",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
   },
   {
     "CaseCode": "C777356",
@@ -66983,8 +69181,8 @@
     "DateRepConf": "4/13/2020",
     "DateRecover": "",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Died",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Makati"
@@ -67100,6 +69298,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Parañaque"
+  },
+  {
+    "CaseCode": "C786311",
+    "Age": 56,
+    "AgeGroup": "55 to 59",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
   },
   {
     "CaseCode": "C786825",
@@ -68255,10 +70467,10 @@
     "AgeGroup": "50 to 54",
     "Sex": "Male",
     "DateRepConf": "3/29/2020",
-    "DateRecover": "",
+    "DateRecover": "4/7/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Pasig"
@@ -68332,6 +70544,20 @@
     "Admitted": "",
     "RegionRes": "",
     "ProvCityRes": ""
+  },
+  {
+    "CaseCode": "C801870",
+    "Age": 60,
+    "AgeGroup": "60 to 64",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Parañaque"
   },
   {
     "CaseCode": "C801919",
@@ -68511,7 +70737,7 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "Yes",
+    "Admitted": "",
     "RegionRes": "",
     "ProvCityRes": ""
   },
@@ -68838,6 +71064,20 @@
     "ProvCityRes": "Quezon City"
   },
   {
+    "CaseCode": "C807081",
+    "Age": 32,
+    "AgeGroup": "30 to 34",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Parañaque"
+  },
+  {
     "CaseCode": "C807159",
     "Age": 75,
     "AgeGroup": "75 to 79",
@@ -69076,6 +71316,34 @@
     "ProvCityRes": "City of Manila"
   },
   {
+    "CaseCode": "C809610",
+    "Age": 57,
+    "AgeGroup": "55 to 59",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "Albay",
+    "ProvCityRes": "Daraga (Locsin)"
+  },
+  {
+    "CaseCode": "C809759",
+    "Age": 32,
+    "AgeGroup": "30 to 34",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "No",
+    "RegionRes": "Antique",
+    "ProvCityRes": "Pandan"
+  },
+  {
     "CaseCode": "C809801",
     "Age": 32,
     "AgeGroup": "30 to 34",
@@ -69292,7 +71560,7 @@
     "Sex": "Female",
     "DateRepConf": "4/3/2020",
     "DateRecover": "",
-    "DateDied": "",
+    "DateDied": "3/28/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/12/2020",
     "Admitted": "Yes",
@@ -69762,6 +72030,20 @@
     "ProvCityRes": "Teresa"
   },
   {
+    "CaseCode": "C817062",
+    "Age": 27,
+    "AgeGroup": "25 to 29",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Mandaluyong"
+  },
+  {
     "CaseCode": "C817111",
     "Age": 46,
     "AgeGroup": "45 to 49",
@@ -70182,6 +72464,20 @@
     "ProvCityRes": "Quezon City"
   },
   {
+    "CaseCode": "C820639",
+    "Age": 43,
+    "AgeGroup": "40 to 44",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "Davao del Sur",
+    "ProvCityRes": "Davao City"
+  },
+  {
     "CaseCode": "C820905",
     "Age": 25,
     "AgeGroup": "25 to 29",
@@ -70231,8 +72527,8 @@
     "DateRepConf": "4/13/2020",
     "DateRecover": "",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Makati"
@@ -70376,6 +72672,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Pasig"
+  },
+  {
+    "CaseCode": "C823085",
+    "Age": 56,
+    "AgeGroup": "55 to 59",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "Caloocan City"
   },
   {
     "CaseCode": "C823182",
@@ -70938,6 +73248,20 @@
     "ProvCityRes": "City of Biñan"
   },
   {
+    "CaseCode": "C829828",
+    "Age": 3,
+    "AgeGroup": "0 to 4",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C829852",
     "Age": 57,
     "AgeGroup": "55 to 59",
@@ -71155,8 +73479,8 @@
     "DateRepConf": "4/16/2020",
     "DateRecover": "",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Las Piñas"
@@ -71433,10 +73757,10 @@
     "AgeGroup": "50 to 54",
     "Sex": "Male",
     "DateRepConf": "3/23/2020",
-    "DateRecover": "",
+    "DateRecover": "4/19/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "No",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Manila"
@@ -71666,11 +73990,39 @@
     "ProvCityRes": "City of Mandaluyong"
   },
   {
+    "CaseCode": "C837446",
+    "Age": 81,
+    "AgeGroup": "80+",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C837498",
     "Age": 43,
     "AgeGroup": "40 to 44",
     "Sex": "Female",
     "DateRepConf": "4/3/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
+    "CaseCode": "C837561",
+    "Age": 33,
+    "AgeGroup": "30 to 34",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
     "DateRecover": "",
     "DateDied": "",
     "RemovalType": "",
@@ -72716,6 +75068,20 @@
     "ProvCityRes": "Taguig City"
   },
   {
+    "CaseCode": "C845692",
+    "Age": 21,
+    "AgeGroup": "20 to 24",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Muntinlupa"
+  },
+  {
     "CaseCode": "C845889",
     "Age": 83,
     "AgeGroup": "80+",
@@ -72834,7 +75200,7 @@
     "Sex": "Female",
     "DateRepConf": "4/3/2020",
     "DateRecover": "",
-    "DateDied": "",
+    "DateDied": "4/9/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/17/2020",
     "Admitted": "Yes",
@@ -72938,6 +75304,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Marikina"
+  },
+  {
+    "CaseCode": "C847252",
+    "Age": 50,
+    "AgeGroup": "50 to 54",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
   },
   {
     "CaseCode": "C847526",
@@ -73423,8 +75803,8 @@
     "DateRepConf": "3/28/2020",
     "DateRecover": "",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Died",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Parañaque"
@@ -73456,6 +75836,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Muntinlupa"
+  },
+  {
+    "CaseCode": "C852197",
+    "Age": 61,
+    "AgeGroup": "60 to 64",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
   },
   {
     "CaseCode": "C852268",
@@ -73696,6 +76090,20 @@
     "ProvCityRes": "Bacoor City"
   },
   {
+    "CaseCode": "C854609",
+    "Age": 14,
+    "AgeGroup": "10 to 14",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Cebu City (Capital)"
+  },
+  {
     "CaseCode": "C854780",
     "Age": 28,
     "AgeGroup": "25 to 29",
@@ -73864,6 +76272,20 @@
     "ProvCityRes": "City of Pasig"
   },
   {
+    "CaseCode": "C856513",
+    "Age": 42,
+    "AgeGroup": "40 to 44",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C856804",
     "Age": 41,
     "AgeGroup": "40 to 44",
@@ -73912,7 +76334,7 @@
     "Sex": "Male",
     "DateRepConf": "4/5/2020",
     "DateRecover": "",
-    "DateDied": "",
+    "DateDied": "3/31/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/16/2020",
     "Admitted": "Yes",
@@ -74948,7 +77370,7 @@
     "Sex": "Male",
     "DateRepConf": "4/7/2020",
     "DateRecover": "",
-    "DateDied": "",
+    "DateDied": "4/2/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/16/2020",
     "Admitted": "Yes",
@@ -75236,6 +77658,20 @@
     "ProvCityRes": "Quezon City"
   },
   {
+    "CaseCode": "C869714",
+    "Age": 37,
+    "AgeGroup": "35 to 39",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Cebu City (Capital)"
+  },
+  {
     "CaseCode": "C869815",
     "Age": 51,
     "AgeGroup": "50 to 54",
@@ -75326,9 +77762,9 @@
     "Sex": "Male",
     "DateRepConf": "4/18/2020",
     "DateRecover": "",
-    "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "DateDied": "4/17/2020",
+    "RemovalType": "Died",
+    "DateRepRem": "4/20/2020",
     "Admitted": "",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Manila"
@@ -75844,7 +78280,7 @@
     "Sex": "Male",
     "DateRepConf": "4/13/2020",
     "DateRecover": "",
-    "DateDied": "",
+    "DateDied": "4/8/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/17/2020",
     "Admitted": "Yes",
@@ -75983,6 +78419,20 @@
     "AgeGroup": "40 to 44",
     "Sex": "Female",
     "DateRepConf": "4/4/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "Caloocan City"
+  },
+  {
+    "CaseCode": "C879211",
+    "Age": 33,
+    "AgeGroup": "30 to 34",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
     "DateRecover": "",
     "DateDied": "",
     "RemovalType": "",
@@ -76734,6 +79184,20 @@
     "ProvCityRes": "Quezon City"
   },
   {
+    "CaseCode": "C889743",
+    "Age": 25,
+    "AgeGroup": "25 to 29",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "Quezon City"
+  },
+  {
     "CaseCode": "C889994",
     "Age": 54,
     "AgeGroup": "50 to 54",
@@ -77294,6 +79758,20 @@
     "ProvCityRes": "Paombong"
   },
   {
+    "CaseCode": "C895414",
+    "Age": 31,
+    "AgeGroup": "30 to 34",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Manila"
+  },
+  {
     "CaseCode": "C895429",
     "Age": 29,
     "AgeGroup": "25 to 29",
@@ -77463,7 +79941,7 @@
   },
   {
     "CaseCode": "C896473",
-    "Age": 50,
+    "Age": 51,
     "AgeGroup": "50 to 54",
     "Sex": "Female",
     "DateRepConf": "4/17/2020",
@@ -77472,8 +79950,8 @@
     "RemovalType": "",
     "DateRepRem": "",
     "Admitted": "",
-    "RegionRes": "",
-    "ProvCityRes": ""
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Mandaluyong"
   },
   {
     "CaseCode": "C896960",
@@ -77588,6 +80066,20 @@
     "ProvCityRes": "Quezon City"
   },
   {
+    "CaseCode": "C898297",
+    "Age": 21,
+    "AgeGroup": "20 to 24",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of San Juan"
+  },
+  {
     "CaseCode": "C898341",
     "Age": 72,
     "AgeGroup": "70 to 74",
@@ -77622,7 +80114,7 @@
     "Sex": "Male",
     "DateRepConf": "4/3/2020",
     "DateRecover": "",
-    "DateDied": "",
+    "DateDied": "3/28/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/14/2020",
     "Admitted": "Yes",
@@ -78204,6 +80696,20 @@
     "ProvCityRes": "City of Makati"
   },
   {
+    "CaseCode": "C904662",
+    "Age": 39,
+    "AgeGroup": "35 to 39",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C904690",
     "Age": 23,
     "AgeGroup": "20 to 24",
@@ -78302,6 +80808,20 @@
     "ProvCityRes": "City of Mandaluyong"
   },
   {
+    "CaseCode": "C905345",
+    "Age": 37,
+    "AgeGroup": "35 to 39",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C905439",
     "Age": 23,
     "AgeGroup": "20 to 24",
@@ -78344,6 +80864,20 @@
     "ProvCityRes": "Quezon City"
   },
   {
+    "CaseCode": "C906080",
+    "Age": 58,
+    "AgeGroup": "55 to 59",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Cebu City (Capital)"
+  },
+  {
     "CaseCode": "C906123",
     "Age": 27,
     "AgeGroup": "25 to 29",
@@ -78363,13 +80897,13 @@
     "AgeGroup": "30 to 34",
     "Sex": "Male",
     "DateRepConf": "3/30/2020",
-    "DateRecover": "",
+    "DateRecover": "4/6/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
-    "RegionRes": "",
-    "ProvCityRes": ""
+    "RegionRes": "Rizal",
+    "ProvCityRes": "City of Antipolo (Capital)"
   },
   {
     "CaseCode": "C906398",
@@ -78384,6 +80918,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
+  },
+  {
+    "CaseCode": "C906545",
+    "Age": 28,
+    "AgeGroup": "25 to 29",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Manila"
   },
   {
     "CaseCode": "C906571",
@@ -78592,8 +81140,8 @@
     "RemovalType": "",
     "DateRepRem": "",
     "Admitted": "",
-    "RegionRes": "",
-    "ProvCityRes": ""
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Mandaluyong"
   },
   {
     "CaseCode": "C908835",
@@ -78643,11 +81191,11 @@
     "AgeGroup": "25 to 29",
     "Sex": "Male",
     "DateRepConf": "3/29/2020",
-    "DateRecover": "",
+    "DateRecover": "4/12/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
-    "Admitted": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
+    "Admitted": "Yes",
     "RegionRes": "Nueva Ecija",
     "ProvCityRes": "City of Gapan"
   },
@@ -78944,6 +81492,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Parañaque"
+  },
+  {
+    "CaseCode": "C912204",
+    "Age": 31,
+    "AgeGroup": "30 to 34",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Laguna",
+    "ProvCityRes": "City of Calamba"
   },
   {
     "CaseCode": "C912284",
@@ -80057,7 +82619,7 @@
     "AgeGroup": "80+",
     "Sex": "Female",
     "DateRepConf": "3/24/2020",
-    "DateRecover": "",
+    "DateRecover": "3/29/2020",
     "DateDied": "",
     "RemovalType": "Died",
     "DateRepRem": "4/19/2020",
@@ -80379,10 +82941,10 @@
     "AgeGroup": "25 to 29",
     "Sex": "Female",
     "DateRepConf": "3/28/2020",
-    "DateRecover": "",
+    "DateRecover": "4/18/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Manila"
@@ -80889,7 +83451,7 @@
     "DateRepRem": "",
     "Admitted": "Yes",
     "RegionRes": "NCR",
-    "ProvCityRes": "Pasay City"
+    "ProvCityRes": "City of Parañaque"
   },
   {
     "CaseCode": "C933497",
@@ -81193,8 +83755,8 @@
     "DateRepConf": "3/31/2020",
     "DateRecover": "",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Died",
+    "DateRepRem": "4/20/2020",
     "Admitted": "No",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Manila"
@@ -81212,6 +83774,20 @@
     "Admitted": "Yes",
     "RegionRes": "Cagayan",
     "ProvCityRes": "Tuguegarao City (Capital)"
+  },
+  {
+    "CaseCode": "C937014",
+    "Age": 29,
+    "AgeGroup": "25 to 29",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Mandaluyong"
   },
   {
     "CaseCode": "C937032",
@@ -81620,6 +84196,20 @@
     "ProvCityRes": "City of San Pedro"
   },
   {
+    "CaseCode": "C941062",
+    "Age": 36,
+    "AgeGroup": "35 to 39",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C941315",
     "Age": 29,
     "AgeGroup": "25 to 29",
@@ -81730,6 +84320,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Pasig"
+  },
+  {
+    "CaseCode": "C942056",
+    "Age": 61,
+    "AgeGroup": "60 to 64",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
   },
   {
     "CaseCode": "C942315",
@@ -81990,9 +84594,9 @@
     "Sex": "Male",
     "DateRepConf": "4/15/2020",
     "DateRecover": "",
-    "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "DateDied": "4/19/2020",
+    "RemovalType": "Died",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "Albay",
     "ProvCityRes": "Legazpi City (Capital)"
@@ -82024,6 +84628,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of San Juan"
+  },
+  {
+    "CaseCode": "C944488",
+    "Age": 32,
+    "AgeGroup": "30 to 34",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
   },
   {
     "CaseCode": "C944549",
@@ -82248,6 +84866,20 @@
     "Admitted": "",
     "RegionRes": "",
     "ProvCityRes": ""
+  },
+  {
+    "CaseCode": "C946694",
+    "Age": 44,
+    "AgeGroup": "40 to 44",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "Quezon City"
   },
   {
     "CaseCode": "C946701",
@@ -82679,7 +85311,7 @@
     "DateDied": "",
     "RemovalType": "",
     "DateRepRem": "",
-    "Admitted": "Yes",
+    "Admitted": "",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Parañaque"
   },
@@ -83165,10 +85797,10 @@
     "AgeGroup": "10 to 14",
     "Sex": "Male",
     "DateRepConf": "4/5/2020",
-    "DateRecover": "",
+    "DateRecover": "4/9/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "Davao del Norte",
     "ProvCityRes": "City of Tagum (Capital)"
@@ -83193,10 +85825,10 @@
     "AgeGroup": "20 to 24",
     "Sex": "Male",
     "DateRepConf": "4/1/2020",
-    "DateRecover": "",
+    "DateRecover": "4/13/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "",
     "RegionRes": "Davao del Norte",
     "ProvCityRes": "City of Tagum (Capital)"
@@ -83298,6 +85930,20 @@
     "Admitted": "",
     "RegionRes": "Cavite",
     "ProvCityRes": "Bacoor City"
+  },
+  {
+    "CaseCode": "C956016",
+    "Age": 39,
+    "AgeGroup": "35 to 39",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
   },
   {
     "CaseCode": "C956227",
@@ -83510,6 +86156,20 @@
     "ProvCityRes": "Imus City"
   },
   {
+    "CaseCode": "C957841",
+    "Age": 30,
+    "AgeGroup": "30 to 34",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C957877",
     "Age": 58,
     "AgeGroup": "55 to 59",
@@ -83536,6 +86196,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Quezon City"
+  },
+  {
+    "CaseCode": "C958088",
+    "Age": 38,
+    "AgeGroup": "35 to 39",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "Taguig City"
   },
   {
     "CaseCode": "C958556",
@@ -83650,6 +86324,20 @@
     "ProvCityRes": "City of Muntinlupa"
   },
   {
+    "CaseCode": "C959521",
+    "Age": 63,
+    "AgeGroup": "60 to 64",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C959623",
     "Age": 53,
     "AgeGroup": "50 to 54",
@@ -83690,6 +86378,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Manila"
+  },
+  {
+    "CaseCode": "C960120",
+    "Age": 85,
+    "AgeGroup": "80+",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
   },
   {
     "CaseCode": "C960256",
@@ -83746,6 +86448,20 @@
     "Admitted": "",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Pasig"
+  },
+  {
+    "CaseCode": "C960570",
+    "Age": 53,
+    "AgeGroup": "50 to 54",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "NCR",
+    "ProvCityRes": "Pasay City"
   },
   {
     "CaseCode": "C960617",
@@ -84588,6 +87304,20 @@
     "ProvCityRes": "City of Mandaluyong"
   },
   {
+    "CaseCode": "C970319",
+    "Age": 42,
+    "AgeGroup": "40 to 44",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Rizal",
+    "ProvCityRes": "City of Antipolo (Capital)"
+  },
+  {
     "CaseCode": "C970364",
     "Age": 22,
     "AgeGroup": "20 to 24",
@@ -84600,6 +87330,20 @@
     "Admitted": "No",
     "RegionRes": "Iloilo",
     "ProvCityRes": "Miagao"
+  },
+  {
+    "CaseCode": "C970640",
+    "Age": 73,
+    "AgeGroup": "70 to 74",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Manila"
   },
   {
     "CaseCode": "C970686",
@@ -85545,10 +88289,10 @@
     "AgeGroup": "40 to 44",
     "Sex": "Female",
     "DateRepConf": "4/5/2020",
-    "DateRecover": "",
+    "DateRecover": "4/16/2020",
     "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "RemovalType": "Recovered",
+    "DateRepRem": "4/20/2020",
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "City of Pasig"
@@ -85784,12 +88528,12 @@
     "Sex": "Male",
     "DateRepConf": "4/14/2020",
     "DateRecover": "",
-    "DateDied": "",
-    "RemovalType": "",
-    "DateRepRem": "",
+    "DateDied": "4/12/2020",
+    "RemovalType": "Died",
+    "DateRepRem": "4/20/2020",
     "Admitted": "",
-    "RegionRes": "",
-    "ProvCityRes": ""
+    "RegionRes": "NCR",
+    "ProvCityRes": "City of Manila"
   },
   {
     "CaseCode": "C982583",
@@ -85887,7 +88631,21 @@
     "DateRepRem": "4/12/2020",
     "Admitted": "Yes",
     "RegionRes": "Batangas",
-    "ProvCityRes": "Batangas City (Capital)"
+    "ProvCityRes": "Nasugbu"
+  },
+  {
+    "CaseCode": "C983518",
+    "Age": 63,
+    "AgeGroup": "60 to 64",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "Yes",
+    "RegionRes": "NCR",
+    "ProvCityRes": "Quezon City"
   },
   {
     "CaseCode": "C983548",
@@ -86128,6 +88886,20 @@
     "ProvCityRes": "Taguig City"
   },
   {
+    "CaseCode": "C986038",
+    "Age": 60,
+    "AgeGroup": "60 to 64",
+    "Sex": "Male",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
+  },
+  {
     "CaseCode": "C986136",
     "Age": 33,
     "AgeGroup": "30 to 34",
@@ -86260,7 +89032,7 @@
     "Sex": "Male",
     "DateRepConf": "4/6/2020",
     "DateRecover": "",
-    "DateDied": "",
+    "DateDied": "4/2/2020",
     "RemovalType": "Died",
     "DateRepRem": "4/12/2020",
     "Admitted": "Yes",
@@ -86308,6 +89080,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Pasay City"
+  },
+  {
+    "CaseCode": "C987972",
+    "Age": 54,
+    "AgeGroup": "50 to 54",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "Cebu",
+    "ProvCityRes": "Cebu City (Capital)"
   },
   {
     "CaseCode": "C988001",
@@ -87232,6 +90018,20 @@
     "Admitted": "Yes",
     "RegionRes": "NCR",
     "ProvCityRes": "Caloocan City"
+  },
+  {
+    "CaseCode": "C996393",
+    "Age": 35,
+    "AgeGroup": "35 to 39",
+    "Sex": "Female",
+    "DateRepConf": "4/20/2020",
+    "DateRecover": "",
+    "DateDied": "",
+    "RemovalType": "",
+    "DateRepRem": "",
+    "Admitted": "",
+    "RegionRes": "",
+    "ProvCityRes": ""
   },
   {
     "CaseCode": "C996745",
