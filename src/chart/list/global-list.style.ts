@@ -17,7 +17,7 @@ export const globalListStyles = makeStyles(() =>
     },
     flag: {
       height: "20px",
-      width: "40px",
+      width: "30px",
       marginRight: "10px",
     },
     country: {
