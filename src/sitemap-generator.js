@@ -11,7 +11,7 @@ function generateSitemap() {
   return (
     new Sitemap(router())
       .build("https://covid19ph-tracker.herokuapp.com")
-      .save("public/sitemap.xml")
+      .save("build/sitemap.xml")
   );
 }
 

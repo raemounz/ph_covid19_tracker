@@ -37,8 +37,8 @@
     "vis-network": "^7.5.2"
   },
   "scripts": {
-    "start": "node src/sitemap-generator.js && node server/server.js",
-    "build": "react-scripts build",
+    "start": "node server/server.js",
+    "build": "react-scripts build && node src/sitemap-generator.js",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
