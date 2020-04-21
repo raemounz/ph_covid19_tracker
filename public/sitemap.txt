@@ -1,2 +1,0 @@
-http://covid19ph-tracker.herokuapp.com
-http://bit.ly/covid19ph-tracker
