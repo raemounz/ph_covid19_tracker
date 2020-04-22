@@ -232,8 +232,9 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
         ) {
           dailyMap[d.DateRepRem].recovered =
             dailyMap[d.DateRepRem].recovered + 1;
-        } else if (new Date(d.DateRepConf).getTime() >= cutoff) {
-          dailyMap[d.DateRepConf].active = dailyMap[d.DateRepConf].active + 1;
+        } else if (Date.parse(d.DateRepConf) >= cutoff) {
+          const confDate = moment(new Date(d.DateRepConf)).format("M/D/YYYY");
+          dailyMap[confDate].active = dailyMap[confDate].active + 1;
         }
       });
       if (hasNewCase) {
