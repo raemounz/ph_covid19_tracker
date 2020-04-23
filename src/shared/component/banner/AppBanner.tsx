@@ -7,14 +7,13 @@ interface Props {
   label: string;
   desc?: string;
   value: number | string | undefined;
-  oldValue: number | undefined;
+  increase: number | undefined;
   style: { color: string; background: string };
 }
 
 const AppBanner: React.FC<Props> = (props: Props) => {
   const classes = bannerStyles();
-  const newValue = Number(props.value);
-  const oldValue = Number(props.oldValue);
+  const increase = Number(props.increase);
 
   return (
     <Paper
@@ -37,11 +36,7 @@ const AppBanner: React.FC<Props> = (props: Props) => {
           className={classes.increase}
           style={{ color: props.style.background }}
         >
-          {!isNaN(oldValue)
-            ? newValue - oldValue > 0
-              ? `up by ${(newValue - oldValue).toLocaleString()}`
-              : "No increase"
-            : ""}
+          {increase > 0 ? `up by ${increase.toLocaleString()}` : "No increase"}
         </div>
       </div>
     </Paper>

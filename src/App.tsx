@@ -19,56 +19,20 @@ import TimeChart from "./chart/time/TimeChart";
 import Header from "./header/Header";
 import DistributionMap from "./chart/distribution/DistributionMap";
 import AgeChart from "./chart/age/AgeChart";
-import MuiAlert from "@material-ui/lab/Alert";
 import GlobalList from "./chart/list/GlobalList";
-import { mainService } from "./shared/service/main.service";
+import { mainService, PHCase } from "./shared/service/main.service";
 import ResidenceBarChart from "./chart/residence/ResidenceBarChart";
 import DailyTimeChart from "./chart/time/DailyTimeChart";
 
 const App: React.FC = () => {
   const residenceMapRef: any = useRef();
   const matches = useMediaQuery(theme.breakpoints.down("xs"));
-  const [data, setData] = useState<any>();
-  const [cases, setCases] = useState([]);
-  const [historicalCases, setHistoricalCases] = useState<any>();
-
-  const Alert = (props: any) => {
-    return <MuiAlert variant="outlined" {...props} />;
-  };
+  const date = "4/23/2020";
+  const [data, setData] = useState<PHCase[]>();
 
   useEffect(() => {
-    const requests = [
-      mainService.getSummary(),
-      mainService.getHistorical(),
-      mainService.getPHCases(),
-    ];
-    Promise.all(requests).then((response: any) => {
-      setData({
-        summary: response[0].data[0],
-        historical: response[1].data.timeline,
-      });
-      setCases(response[2]);
-      setHistoricalCases({
-        summary: response[0].data[0],
-        historical: response[1].data.timeline,
-        cases: response[2],
-      });
-      /* In case the summary endpoint has problem */
-      // const summary = {
-      //   totalConfirmed: 6087,
-      //   totalRecovered: 516,
-      //   totalDeaths: 397,
-      // };
-      // setData({
-      //   summary: summary,
-      //   historical: response[0].data.timeline,
-      // });
-      // setCases(response[1]);
-      // setHistoricalCases({
-      //   summary: summary,
-      //   historical: response[0].data.timeline,
-      //   cases: response[1],
-      // });
+    mainService.getPHCases().then((response: any) => {
+      setData(response);
     });
   }, []);
 
@@ -79,19 +43,13 @@ const App: React.FC = () => {
         <AppBar position="sticky">
           <Toolbar style={{ paddingRight: "10px" }}>
             <Typography variant="h6" style={{ width: "100%" }}>
-              <Header />
+              <Header date={date} />
             </Typography>
           </Toolbar>
         </AppBar>
         <main className="container">
           <Grid container spacing={3}>
-            {/* <Grid item xs={12}>
-              <Alert severity="error">
-                Due to unavailability of data from official sources, some charts
-                will have empty data.
-              </Alert>
-            </Grid> */}
-            <Summary data={data} />
+            <Summary data={data} date={date} />
             <Grid item xs={12}>
               <Grid container spacing={3}>
                 <Grid item xs={12} md={6}>
@@ -103,7 +61,7 @@ const App: React.FC = () => {
                         height: "calc(100% - 60px)",
                       },
                     }}
-                    content={<DailyTimeChart data={historicalCases} />}
+                    content={<DailyTimeChart data={data} />}
                   ></AppCard>
                   {/* <Grid item xs={12}>
                       <AppCard
@@ -144,7 +102,7 @@ const App: React.FC = () => {
                         marginBottom: "16px",
                       },
                     }}
-                    content={<ResidenceBarChart data={cases} />}
+                    content={<ResidenceBarChart data={data} />}
                   ></AppCard>
                   {/* <Grid item xs={12}>
                       <AppCard
@@ -173,7 +131,7 @@ const App: React.FC = () => {
                     style={{
                       height: "630px",
                     }}
-                    content={<AgeChart data={cases} />}
+                    content={<AgeChart data={data} />}
                   ></AppCard>
                 </Grid>
                 <Grid item xs={12} md={6}>

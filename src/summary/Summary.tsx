@@ -1,63 +1,34 @@
 import React, { useEffect, useState } from "react";
 import { Grid } from "@material-ui/core";
 import AppBanner from "../shared/component/banner/AppBanner";
+import { PHCase, RemovalType } from "../shared/service/main.service";
+import moment from "moment";
 
 interface Props {
-  data: any;
+  data: PHCase[] | undefined;
+  date: string;
 }
 
 const Summary: React.FC<Props> = (props: Props) => {
   const [confirmed, setConfirmed] = useState<number | string>();
   const [recovered, setRecovered] = useState<number | string>();
   const [death, setDeath] = useState<number | string>();
-  const [confirmedOld, setConfirmedOld] = useState<number>();
-  const [recoveredOld, setRecoveredOld] = useState<number>();
-  const [deathOld, setDeathOld] = useState<number>();
-  /* Old API not working */
-  // const [pui, setPUI] = useState<number | string>();
-  // const [pum, setPUM] = useState<number | string>();
-  // const [tests, setTests] = useState<number | string>();
+  const [confirmedNew, setConfirmedNew] = useState<number>();
+  const [recoveredNew, setRecoveredNew] = useState<number>();
+  const [deathNew, setDeathNew] = useState<number>();
 
   useEffect(() => {
-    /* Old API not working */
-    // const requests = [
-    //   mainService.getConfirmedCases(),
-    //   mainService.getPUICases(),
-    //   mainService.getPUMCases(),
-    //   mainService.getRecoveredCases(),
-    //   mainService.getDeathCases(),
-    //   mainService.getTestsConducted(),
-    //   mainService.getHistorical()
-    // ];
-    // Promise.all(requests).then((response: any[]) => {
-    //   setConfirmed(response[0].data.features[0].attributes.value || "No data");
-    //   setPUI(response[1].data.features[0].attributes.value || "No data");
-    //   setPUM(response[2].data.features[0].attributes.value || "No data");
-    //   setRecovered(response[3].data.features[0].attributes.value || "No data");
-    //   setDeath(response[4].data.features[0].attributes.value || "No data");
-    //   setTests(response[5].data.features[0].attributes.value || "No data");
-    //   setConfirmedOld(Number(Object.values(response[6].data.timeline.cases).pop()));
-    //   setRecoveredOld(Number(Object.values(response[6].data.timeline.recovered).pop()));
-    //   setDeathOld(Number(Object.values(response[6].data.timeline.deaths).pop()));
-    // });
     if (props.data) {
-      const data = props.data.summary;
-      setConfirmed(data.totalConfirmed);
-      setRecovered(data.totalRecovered);
-      setDeath(data.totalDeaths);
-      // Get last recovered
-      let prevConfirmedDate: any;
-      const cases = props.data.historical.cases;
-      Object.keys(cases).forEach((key: string) => {
-        if (cases[key] !== data.totalConfirmed) {
-          prevConfirmedDate = key;
-        }
-      });
-      console.log(prevConfirmedDate);
-      setConfirmedOld(props.data.historical.cases[prevConfirmedDate]);
-      setRecoveredOld(props.data.historical.recovered[prevConfirmedDate]);
-      setDeathOld(props.data.historical.deaths[prevConfirmedDate]);
+      setConfirmed(props.data.length);
+      setRecovered(props.data.filter((d: PHCase) => d.RemovalType === RemovalType.Recovered).length);
+      setDeath(props.data.filter((d: PHCase) => d.RemovalType === RemovalType.Died).length);
+      const prevDate = moment(props.date, "M/D/YYYY").format("DD-MMM-YYYY");
+      const prevDateRem = moment(props.date, "M/D/YYYY").format("M/D/YYYY");
+      setConfirmedNew(props.data.filter((d: PHCase) => d.DateRepConf === prevDate).length);
+      setRecoveredNew(props.data.filter((d: PHCase) => d.DateRepRem === prevDateRem && d.RemovalType === RemovalType.Recovered).length);
+      setDeathNew(props.data.filter((d: PHCase) => d.DateRepRem === prevDateRem && d.RemovalType === RemovalType.Died).length);
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.data]);
 
   return (
@@ -67,7 +38,7 @@ const Summary: React.FC<Props> = (props: Props) => {
           <AppBanner
             label="Confirmed"
             value={confirmed}
-            oldValue={confirmedOld}
+            increase={confirmedNew}
             style={{ color: "#fff", background: "#ff5500" }}
           />
         </Grid>
@@ -75,7 +46,7 @@ const Summary: React.FC<Props> = (props: Props) => {
           <AppBanner
             label="Recovered"
             value={recovered}
-            oldValue={recoveredOld}
+            increase={recoveredNew}
             style={{ color: "#fff", background: "#38a800" }}
           />
         </Grid>
@@ -83,33 +54,10 @@ const Summary: React.FC<Props> = (props: Props) => {
           <AppBanner
             label="Deaths"
             value={death}
-            oldValue={deathOld}
+            increase={deathNew}
             style={{ color: "#fff", background: "#464646" }}
           />
         </Grid>
-        {/* <Grid item xs={12} sm={4} md={2}>
-          <AppBanner
-            label="PUIs"
-            desc="Persons under investigation"
-            value={pui}
-            style={{ color: "inherit", background: "#fff" }}
-          />
-        </Grid>
-        <Grid item xs={12} sm={4} md={2}>
-          <AppBanner
-            label="PUMs"
-            desc="Persons under monitoring"
-            value={pum}
-            style={{ color: "inherit", background: "#fff" }}
-          />
-        </Grid>
-        <Grid item xs={12} sm={4} md={2}>
-          <AppBanner
-            label="Tests"
-            value={tests}
-            style={{ color: "inherit", background: "#fff" }}
-          />
-        </Grid> */}
       </Grid>
     </Grid>
   );

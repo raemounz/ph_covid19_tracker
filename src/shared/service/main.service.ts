@@ -85,6 +85,29 @@ const nameMap = {
   "Marawi City, Lanao del Sur": "Marawi City, Lanao Del Sur",
 };
 
+export interface PHCase {
+  Admitted: string;
+  Age: string;
+  AgeGroup: string;
+  CaseCode: string;
+  DateDied: string;
+  DateRecover: string;
+  DateRepConf: string;
+  DateRepRem: string;
+  MunCityPSGC: string;
+  ProvCityRes: string;
+  ProvPSGC: string;
+  RegionPSGC: string;
+  RegionRes: string;
+  RemovalType: RemovalType;
+  Sex: string;
+}
+
+export enum RemovalType {
+  Recovered = "Recovered",
+  Died = "Died"
+}
+
 export const getMapName = (name: string) => {
   return nameMap[name] || name;
 };

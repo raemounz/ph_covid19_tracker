@@ -4,19 +4,21 @@ import { headerStyles } from "./header.style";
 import { IconButton, Dialog, DialogTitle } from "@material-ui/core";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 
-const Header: React.FC = () => {
+interface Props {
+  date: string;
+}
+
+const Header: React.FC<Props> = (props: Props) => {
   const classes = headerStyles();
   const [showAbout, setShowAbout] = useState(false);
 
   return (
     <div className={classes.container}>
-      {/* <img
-        src="https://raw.githubusercontent.com/NovelCOVID/API/master/assets/flags/ph.png"
-        className={classes.flag}
-      /> */}
       <div className={classes.title}>
         <div>PH COVID-19 Tracker&nbsp;</div>
-        <div className={classes.date}>(as of {moment().format("ll")})</div>
+        <div className={classes.date}>
+          (as of {moment(props.date, "M/D/YYYY").format("ll")})
+        </div>
       </div>
       <span style={{ flexGrow: 1 }}></span>
       <IconButton style={{ color: "#fff" }} onClick={() => setShowAbout(true)}>
@@ -32,7 +34,6 @@ const Header: React.FC = () => {
           <div style={{ marginTop: "10px" }}>Sources:</div>
           <ul>
             <li>Department of Health of the Philippines (DOH)</li>
-            <li>CoronaTracker.com</li>
             <li>NovelCOVID/API</li>
           </ul>
           <div style={{ marginTop: "10px" }}>Developed by</div>

@@ -2,9 +2,10 @@ import React, { useRef, useEffect } from "react";
 import Chart, { InteractionMode } from "chart.js";
 import moment from "moment";
 import AppProgress from "../../shared/component/progress/AppProgress";
+import { PHCase } from "../../shared/service/main.service";
 
 interface Props {
-  data: any;
+  data: PHCase[] | undefined;
 }
 
 const DailyTimeChart: React.FC<Props> = (props: Props) => {
@@ -124,147 +125,101 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
     },
   ];
 
+  const createMetric = () => {
+    return {
+      confirmed: 0,
+      recovered: 0,
+      death: 0,
+    };
+  };
+
   useEffect(() => {
     const cutoff = Date.parse("03/01/2020");
     if (props.data) {
-      const recoveredSet = dataset.find(
-        (d: any) => d.label.toLowerCase() === recovered.toLowerCase()
-      );
-      const deathSet = dataset.find(
-        (d: any) => d.label.toLowerCase() === deaths.toLowerCase()
-      );
-      const confirmedSet = dataset.find(
-        (d: any) => d.label.toLowerCase() === confirmed.toLowerCase()
-      );
-      let lastDate: any;
-      let lastConfirmed: any;
-      const cases = props.data.historical.cases;
-      Object.keys(cases)
-        .filter((c: any) => new Date(c).getTime() >= cutoff)
-        .forEach((c: any) => {
-          const d = {
-            x: new Date(c),
-            y: cases[c],
-          };
-          confirmedSet.data.push(d);
-          lastConfirmed = d;
-          lastDate = new Date(c);
-        });
-      let lastRecovered: any;
-      const casesRecovered = props.data.historical.recovered;
-      Object.keys(cases)
-        .filter((c: any) => new Date(c).getTime() >= cutoff)
-        .forEach((c: any) => {
-          const d = {
-            x: new Date(c),
-            y: casesRecovered[c],
-          };
-          recoveredSet.data.push(d);
-          lastRecovered = d;
-        });
-      let lastDeath: any;
-      const casesDeath = props.data.historical.deaths;
-      Object.keys(cases)
-        .filter((c: any) => new Date(c).getTime() >= cutoff)
-        .forEach((c: any) => {
-          const d = {
-            x: new Date(c),
-            y: casesDeath[c],
-          };
-          deathSet.data.push(d);
-          lastDeath = d;
-        });
-      // Compute the new cases
-      const totalConfirmed = props.data.summary.totalConfirmed;
-      const totalRecovered = props.data.summary.totalRecovered;
-      const totalDeaths = props.data.summary.totalDeaths;
-      let newCase = {
-        confirmed: 0,
-        recovered: 0,
-        deaths: 0,
-      };
-      let hasNewCase = false;
-      const latestDate = moment(lastDate).add(1, "day").toDate();
-      if (totalConfirmed > lastConfirmed.y) {
-        newCase.confirmed = totalConfirmed - lastConfirmed.y;
-        hasNewCase = true;
-        confirmedSet.data.push({
-          x: latestDate,
-          y: totalConfirmed,
-        });
-      }
-      if (totalRecovered > lastRecovered.y) {
-        newCase.recovered = totalRecovered - lastRecovered.y;
-        hasNewCase = true;
-        recoveredSet.data.push({
-          x: latestDate,
-          y: totalRecovered,
-        });
-      }
-      if (totalDeaths > lastDeath.y) {
-        newCase.deaths = totalDeaths - lastDeath.y;
-        hasNewCase = true;
-        deathSet.data.push({
-          x: latestDate,
-          y: totalDeaths,
-        });
-      }
-
       // Daily cases
       const dailyMap = {};
-      dataset[0].data.forEach(
-        (c: any) =>
-          (dailyMap[moment(c.x).format("M/D/YYYY")] = {
-            active: 0,
-            recovered: 0,
-            death: 0,
-          })
-      );
-      props.data.cases.forEach((d: any) => {
-        if (
-          d.RemovalType === "Died" &&
-          new Date(d.DateRepRem).getTime() >= cutoff
-        ) {
-          dailyMap[d.DateRepRem].death = dailyMap[d.DateRepRem].death + 1;
-        } else if (
-          d.RemovalType === "Recovered" &&
-          new Date(d.DateRepRem).getTime() >= cutoff
-        ) {
-          dailyMap[d.DateRepRem].recovered =
-            dailyMap[d.DateRepRem].recovered + 1;
-        } else if (Date.parse(d.DateRepConf) >= cutoff) {
-          const confDate = moment(new Date(d.DateRepConf)).format("M/D/YYYY");
-          dailyMap[confDate].active = dailyMap[confDate].active + 1;
+      const sameRemConfDate: any = [];
+      props.data.forEach((d: PHCase) => {
+        const confDate = moment(new Date(d.DateRepConf)).format("M/D/YYYY");
+        const repRemDate = moment(new Date(d.DateRepRem)).format("M/D/YYYY");
+        if (d.RemovalType === "Died") {
+          if (!dailyMap[repRemDate]) {
+            dailyMap[repRemDate] = createMetric();
+          }
+          dailyMap[repRemDate].death = dailyMap[repRemDate].death + 1;
+        } else if (d.RemovalType === "Recovered") {
+          if (!dailyMap[repRemDate]) {
+            dailyMap[repRemDate] = createMetric();
+          }
+          dailyMap[repRemDate].recovered = dailyMap[repRemDate].recovered + 1;
         }
+        if (!dailyMap[confDate]) {
+          dailyMap[confDate] = createMetric();
+        }
+        dailyMap[confDate].confirmed = dailyMap[confDate].confirmed + 1;
       });
-      if (hasNewCase) {
-        dailyMap[moment(latestDate).format("M/D/YYYY")] = {
-          active: newCase.confirmed,
-          recovered: newCase.recovered,
-          death: newCase.deaths,
-        };
-      }
+      let lastConfirmed = 0;
+      let lastRecovered = 0;
+      let lastDeath = 0;
       Object.keys(dailyMap)
         .sort((a, b) => new Date(a).getTime() - new Date(b).getTime())
         .forEach((date: string) => {
-          dataset
-            .find((d: any) => d.label === "Daily Confirmed")
-            .data.push({
-              x: new Date(date),
-              y: dailyMap[date].active,
-            });
-          dataset
-            .find((d: any) => d.label === "Daily Recovered")
-            .data.push({
-              x: new Date(date),
-              y: dailyMap[date].recovered,
-            });
-          dataset
-            .find((d: any) => d.label === "Daily Deaths")
-            .data.push({
-              x: new Date(date),
-              y: dailyMap[date].death,
-            });
+          if (new Date(date).getTime() >= cutoff) {
+            dataset
+              .find(
+                (d: any) => d.label.toLowerCase() === recovered.toLowerCase()
+              )
+              .data.push({
+                x: new Date(date),
+                y: lastRecovered + dailyMap[date].recovered,
+              });
+          }
+          lastRecovered = lastRecovered + dailyMap[date].recovered;
+          if (new Date(date).getTime() >= cutoff) {
+            dataset
+              .find((d: any) => d.label.toLowerCase() === deaths.toLowerCase())
+              .data.push({
+                x: new Date(date),
+                y: lastDeath + dailyMap[date].death,
+              });
+          }
+          lastDeath = lastDeath + dailyMap[date].death;
+          let totalConfirmed = lastConfirmed + dailyMap[date].confirmed;
+          if (sameRemConfDate.includes(date)) {
+            totalConfirmed =
+              totalConfirmed + dailyMap[date].recovered + dailyMap[date].death;
+          }
+          if (new Date(date).getTime() >= cutoff) {
+            dataset
+              .find(
+                (d: any) => d.label.toLowerCase() === confirmed.toLowerCase()
+              )
+              .data.push({
+                x: new Date(date),
+                y: totalConfirmed,
+              });
+          }
+          lastConfirmed = totalConfirmed;
+          if (new Date(date).getTime() >= cutoff) {
+            dataset
+              .find((d: any) => d.label === "Daily Confirmed")
+              .data.push({
+                x: new Date(date),
+                y: dailyMap[date].confirmed,
+              });
+            dataset
+              .find((d: any) => d.label === "Daily Recovered")
+              .data.push({
+                x: new Date(date),
+                y: dailyMap[date].recovered,
+              });
+            dataset
+              .find((d: any) => d.label === "Daily Deaths")
+              .data.push({
+                x: new Date(date),
+                y: dailyMap[date].death,
+              });
+          }
         });
 
       const canvas: HTMLCanvasElement = chartRef.current as HTMLCanvasElement;
