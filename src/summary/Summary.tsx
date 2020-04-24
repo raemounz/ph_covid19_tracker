@@ -22,11 +22,9 @@ const Summary: React.FC<Props> = (props: Props) => {
       setConfirmed(props.data.length);
       setRecovered(props.data.filter((d: PHCase) => d.RemovalType === RemovalType.Recovered).length);
       setDeath(props.data.filter((d: PHCase) => d.RemovalType === RemovalType.Died).length);
-      const prevDate = moment(props.date, "M/D/YYYY").format("DD-MMM-YYYY");
-      const prevDateRem = moment(props.date, "M/D/YYYY").format("M/D/YYYY");
-      setConfirmedNew(props.data.filter((d: PHCase) => d.DateRepConf === prevDate).length);
-      setRecoveredNew(props.data.filter((d: PHCase) => d.DateRepRem === prevDateRem && d.RemovalType === RemovalType.Recovered).length);
-      setDeathNew(props.data.filter((d: PHCase) => d.DateRepRem === prevDateRem && d.RemovalType === RemovalType.Died).length);
+      setConfirmedNew(props.data.filter((d: PHCase) => d.DateRepConf === props.date).length);
+      setRecoveredNew(props.data.filter((d: PHCase) => d.DateRepRem === props.date && d.RemovalType === RemovalType.Recovered).length);
+      setDeathNew(props.data.filter((d: PHCase) => d.DateRepRem === props.date && d.RemovalType === RemovalType.Died).length);
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.data]);
