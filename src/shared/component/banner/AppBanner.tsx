@@ -36,7 +36,11 @@ const AppBanner: React.FC<Props> = (props: Props) => {
           className={classes.increase}
           style={{ color: props.style.background }}
         >
-          {increase > 0 ? `up by ${increase.toLocaleString()}` : "No increase"}
+          {increase > 0
+            ? `up by ${increase.toLocaleString()}`
+            : props.value
+            ? "No increase"
+            : ""}
         </div>
       </div>
     </Paper>
