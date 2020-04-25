@@ -62,7 +62,7 @@ const App: React.FC = () => {
                         paddingTop: 0
                       },
                     }}
-                    content={<DailyTimeChart data={data} />}
+                    content={<DailyTimeChart data={data} date={date} />}
                   ></AppCard>
                   {/* <Grid item xs={12}>
                       <AppCard
