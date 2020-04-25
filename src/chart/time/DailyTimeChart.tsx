@@ -152,12 +152,11 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
       // Regions and Provinces
       const regMap = {};
       props.data.forEach((d: PHCase) => {
-        if (d.RegionRes) {
-          if (!regMap[d.RegionRes]) {
-            regMap[d.RegionRes] = new Set();
-          }
-          regMap[d.RegionRes].add(d.ProvCityRes || forValidation);
+        const region = d.RegionRes || forValidation;
+        if (!regMap[region]) {
+          regMap[region] = new Set();
         }
+        regMap[region].add(d.ProvCityRes || forValidation);
       });
       setRegionMap(regMap);
 
@@ -174,7 +173,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
 
       populateDataset(_chart, props.data, province, city);
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.data]);
 
   const populateDataset = (
@@ -199,18 +198,22 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
           );
         } else {
           filteredData = data.filter(
-            (d: PHCase) => d.RegionRes !== _province && d.ProvCityRes === _city
+            (d: PHCase) =>
+              d.RegionRes !== _province &&
+              (d.ProvCityRes || forValidation) === _city
           );
         }
       } else {
         if (_city === allCities) {
           filteredData = data.filter(
             (d: PHCase) => d.RegionRes === _province && d.ProvCityRes !== _city
-          );  
+          );
         } else {
           filteredData = data.filter(
-            (d: PHCase) => d.RegionRes === _province && d.ProvCityRes === _city
-          );  
+            (d: PHCase) =>
+              d.RegionRes === _province &&
+              (d.ProvCityRes || forValidation) === _city
+          );
         }
       }
       filteredData.forEach((d: PHCase) => {
@@ -352,7 +355,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
           style={{ minWidth: "150px", marginBottom: "15px" }}
         >
           <Select value={city} onChange={onChangeCity}>
-            <MenuItem value={allCities} style={{ fontSize: ".9em" }}>
+            <MenuItem id={`${province}-${allCities}`} value={allCities} style={{ fontSize: ".9em" }}>
               {allCities}
             </MenuItem>
             {province === allProvinces
