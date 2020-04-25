@@ -128,9 +128,13 @@ const App: React.FC = () => {
               <Grid container spacing={3}>
                 <Grid item xs={12} md={6}>
                   <AppCard
-                    title="Confirmed Cases by Age Group"
+                    title="Cases by Age Group"
                     style={{
                       height: "630px",
+                      content: {
+                        height: "calc(100% - 60px)",
+                        paddingTop: 0
+                      },
                     }}
                     content={<AgeChart data={data} />}
                   ></AppCard>

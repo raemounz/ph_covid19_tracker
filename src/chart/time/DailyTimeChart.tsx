@@ -43,11 +43,19 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
           type: "linear",
           position: "left",
           stacked: true,
+          scaleLabel: {
+            labelString: "Daily",
+            display: true,
+          },
         },
         {
           id: "cumulative-axis",
           type: "linear",
           position: "right",
+          scaleLabel: {
+            labelString: "Cummulative",
+            display: true,
+          },
         },
       ],
       xAxes: [
@@ -332,7 +340,12 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
   return (
     <>
       {!props.data && <AppProgress />}
-      <div style={{ display: "flex", flexDirection: "column" }}>
+      <div
+        style={{
+          display: !props.data ? "none" : "flex",
+          flexDirection: "column",
+        }}
+      >
         <FormControl
           variant="outlined"
           style={{ minWidth: "150px", marginBottom: "5px" }}
