@@ -1,8 +1,14 @@
-import React, { useRef, useEffect } from "react";
+import React, { useRef, useEffect, useState } from "react";
 import Chart, { InteractionMode } from "chart.js";
 import moment from "moment";
 import AppProgress from "../../shared/component/progress/AppProgress";
 import { PHCase } from "../../shared/service/main.service";
+import {
+  FormControl,
+  Select,
+  MenuItem,
+  ListSubheader,
+} from "@material-ui/core";
 
 interface Props {
   data: PHCase[] | undefined;
@@ -10,11 +16,19 @@ interface Props {
 
 const DailyTimeChart: React.FC<Props> = (props: Props) => {
   const chartRef = useRef<HTMLCanvasElement>(null);
-  let chart: Chart;
+  const [chart, setChart] = useState<Chart>();
   const confirmed = "confirmed";
   const recovered = "recovered";
   const deaths = "deaths";
   const tooltipMode: InteractionMode = "index";
+  const cutoff = Date.parse("03/01/2020");
+
+  const allProvinces = "All Provinces";
+  const allCities = "All Cities";
+  const forValidation = "For Validation";
+  const [regionMap, setRegionMap] = useState({});
+  const [province, setProvince] = useState(allProvinces);
+  const [city, setCity] = useState(allCities);
 
   const capitalize = (text: string) => {
     return text.charAt(0).toUpperCase() + text.slice(1);
@@ -134,12 +148,72 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
   };
 
   useEffect(() => {
-    const cutoff = Date.parse("03/01/2020");
     if (props.data) {
+      // Regions and Provinces
+      const regMap = {};
+      props.data.forEach((d: PHCase) => {
+        if (d.RegionRes) {
+          if (!regMap[d.RegionRes]) {
+            regMap[d.RegionRes] = new Set();
+          }
+          regMap[d.RegionRes].add(d.ProvCityRes || forValidation);
+        }
+      });
+      setRegionMap(regMap);
+
+      const canvas: HTMLCanvasElement = chartRef.current as HTMLCanvasElement;
+      // eslint-disable-next-line react-hooks/exhaustive-deps
+      const _chart = new Chart(canvas, {
+        type: "bar",
+        data: {
+          datasets: dataset,
+        },
+        options: option,
+      });
+      setChart(_chart);
+
+      populateDataset(_chart, props.data, province, city);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [props.data]);
+
+  const populateDataset = (
+    _chart: Chart | undefined,
+    data: PHCase[] | undefined,
+    _province: string,
+    _city: string
+  ) => {
+    if (data) {
       // Daily cases
       const dailyMap = {};
       const sameRemConfDate: any = [];
-      props.data.forEach((d: PHCase) => {
+      let filteredData: PHCase[];
+
+      // Clear chart data
+      dataset.forEach((d: any) => (d.data = []));
+
+      if (_province === allProvinces) {
+        if (_city === allCities) {
+          filteredData = data.filter(
+            (d: PHCase) => d.RegionRes !== _province && d.ProvCityRes !== _city
+          );
+        } else {
+          filteredData = data.filter(
+            (d: PHCase) => d.RegionRes !== _province && d.ProvCityRes === _city
+          );
+        }
+      } else {
+        if (_city === allCities) {
+          filteredData = data.filter(
+            (d: PHCase) => d.RegionRes === _province && d.ProvCityRes !== _city
+          );  
+        } else {
+          filteredData = data.filter(
+            (d: PHCase) => d.RegionRes === _province && d.ProvCityRes === _city
+          );  
+        }
+      }
+      filteredData.forEach((d: PHCase) => {
         const confDate = moment(new Date(d.DateRepConf)).format("M/D/YYYY");
         const repRemDate = moment(new Date(d.DateRepRem)).format("M/D/YYYY");
         if (d.RemovalType === "Died") {
@@ -158,6 +232,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
         }
         dailyMap[confDate].confirmed = dailyMap[confDate].confirmed + 1;
       });
+
       let lastConfirmed = 0;
       let lastRecovered = 0;
       let lastDeath = 0;
@@ -222,23 +297,108 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
           }
         });
 
-      const canvas: HTMLCanvasElement = chartRef.current as HTMLCanvasElement;
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      chart = new Chart(canvas, {
-        type: "bar",
-        data: {
-          datasets: dataset,
-        },
-        options: option,
-      });
-      chart.update();
+      if (_chart) {
+        _chart.data.datasets = dataset;
+        _chart.update();
+      } else if (chart) {
+        chart.data.datasets = dataset;
+        chart.update();
+      }
     }
-  }, [props.data]);
+  };
+
+  const onChangeProvince = (event: any) => {
+    setProvince(event.target.value);
+    setCity(allCities);
+    populateDataset(undefined, props.data, event.target.value, allCities);
+  };
+
+  const onChangeCity = (event: any, child: any) => {
+    if (event.target.value) {
+      let _province = allProvinces;
+      if (child.props.id) {
+        _province = child.props.id.split("-")[0];
+      }
+      setCity(event.target.value);
+      populateDataset(undefined, props.data, _province, event.target.value);
+    }
+  };
 
   return (
     <>
       {!props.data && <AppProgress />}
-      <canvas ref={chartRef} style={{ height: "100% !important" }}></canvas>
+      <div style={{ display: "flex", flexDirection: "column" }}>
+        <FormControl
+          variant="outlined"
+          style={{ minWidth: "150px", marginBottom: "5px" }}
+        >
+          <Select value={province} onChange={onChangeProvince}>
+            <MenuItem value={allProvinces} style={{ fontSize: ".9em" }}>
+              {allProvinces}
+            </MenuItem>
+            {Object.keys(regionMap)
+              .sort()
+              .map((r: string) => {
+                return (
+                  <MenuItem key={r} value={r} style={{ fontSize: ".9em" }}>
+                    {r}
+                  </MenuItem>
+                );
+              })}
+          </Select>
+        </FormControl>
+        <FormControl
+          variant="outlined"
+          style={{ minWidth: "150px", marginBottom: "15px" }}
+        >
+          <Select value={city} onChange={onChangeCity}>
+            <MenuItem value={allCities} style={{ fontSize: ".9em" }}>
+              {allCities}
+            </MenuItem>
+            {province === allProvinces
+              ? Object.keys(regionMap)
+                  .sort()
+                  .map((r: string) => {
+                    const group = [<ListSubheader key={r}>{r}</ListSubheader>];
+                    Array.from(regionMap[r])
+                      .sort()
+                      .forEach((c: any) => {
+                        group.push(
+                          <MenuItem
+                            id={`${r}-${c}`}
+                            key={`${r}-${c}`}
+                            value={c}
+                            style={{ fontSize: ".9em" }}
+                          >
+                            {c}
+                          </MenuItem>
+                        );
+                      });
+                    return group;
+                  })
+              : Array.from(regionMap[province])
+                  .sort()
+                  .map((c: any) => {
+                    return (
+                      <MenuItem
+                        id={`${province}-${c}`}
+                        key={`${province}-${c}`}
+                        value={c}
+                        style={{ fontSize: ".9em" }}
+                      >
+                        {c}
+                      </MenuItem>
+                    );
+                  })}
+          </Select>
+        </FormControl>
+        <div style={{ height: "480px" }}>
+          <canvas
+            ref={chartRef}
+            style={{ height: "100% !important", flexGrow: 1 }}
+          ></canvas>
+        </div>
+      </div>
     </>
   );
 };

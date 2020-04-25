@@ -54,11 +54,12 @@ const App: React.FC = () => {
               <Grid container spacing={3}>
                 <Grid item xs={12} md={6}>
                   <AppCard
-                    title="Confirmed Cases by Time"
+                    title="Cases by Time"
                     style={{
-                      height: "630px",
+                      height: "650px",
                       content: {
                         height: "calc(100% - 60px)",
+                        paddingTop: 0
                       },
                     }}
                     content={<DailyTimeChart data={data} />}
@@ -93,7 +94,7 @@ const App: React.FC = () => {
                   <AppCard
                     title="Local Cases"
                     style={{
-                      height: "630px",
+                      height: "650px",
                       content: {
                         position: "relative",
                         height: "calc(100% - 76px)",
