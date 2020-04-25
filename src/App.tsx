@@ -27,7 +27,7 @@ import DailyTimeChart from "./chart/time/DailyTimeChart";
 const App: React.FC = () => {
   const residenceMapRef: any = useRef();
   const matches = useMediaQuery(theme.breakpoints.down("xs"));
-  const date = "24-Apr-2020";
+  const date = "25-Apr-2020";
   const [data, setData] = useState<PHCase[]>();
 
   useEffect(() => {
