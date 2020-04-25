@@ -48,6 +48,10 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
             labelString: "Daily",
             display: true,
           },
+          ticks: {
+            beginAtZero: true,
+            precision: 0
+         }
         },
         {
           id: "cumulative-axis",
@@ -57,6 +61,10 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
             labelString: "Cummulative",
             display: true,
           },
+          ticks: {
+            beginAtZero: true,
+            precision: 0
+         }
         },
       ],
       xAxes: [
