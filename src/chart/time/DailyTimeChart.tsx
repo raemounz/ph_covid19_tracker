@@ -206,12 +206,14 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
       } else {
         if (_city === allCities) {
           filteredData = data.filter(
-            (d: PHCase) => d.RegionRes === _province && d.ProvCityRes !== _city
+            (d: PHCase) =>
+              (d.RegionRes || forValidation) === _province &&
+              d.ProvCityRes !== _city
           );
         } else {
           filteredData = data.filter(
             (d: PHCase) =>
-              d.RegionRes === _province &&
+              (d.RegionRes || forValidation) === _province &&
               (d.ProvCityRes || forValidation) === _city
           );
         }
@@ -355,7 +357,11 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
           style={{ minWidth: "150px", marginBottom: "15px" }}
         >
           <Select value={city} onChange={onChangeCity}>
-            <MenuItem id={`${province}-${allCities}`} value={allCities} style={{ fontSize: ".9em" }}>
+            <MenuItem
+              id={`${province}-${allCities}`}
+              value={allCities}
+              style={{ fontSize: ".9em" }}
+            >
               {allCities}
             </MenuItem>
             {province === allProvinces
