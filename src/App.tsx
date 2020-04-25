@@ -145,10 +145,8 @@ const App: React.FC = () => {
                     style={{
                       height: "630px",
                       content: {
-                        height: "calc(100% - 76px)",
-                        padding: "0 10px 16px 10px",
-                        overflow: "auto",
-                        marginBottom: "16px",
+                        height: "calc(100% - 60px)",
+                        paddingTop: 0
                       },
                     }}
                     content={<GlobalList />}

@@ -19,6 +19,7 @@ export const globalListStyles = makeStyles(() =>
       height: "20px",
       width: "30px",
       marginRight: "10px",
+      background: "lightgrey"
     },
     country: {
       fontSize: "1em",
