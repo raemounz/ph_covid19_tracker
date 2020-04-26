@@ -18,6 +18,7 @@ const AppCard: React.FC<Props> = (props: Props) => {
         title={props.title}
         titleTypographyProps={{ variant: "subtitle1" }}
         action={props.action}
+        style={{ ...props.style.header }}
       ></CardHeader>
       <CardContent
         className={classes.content}

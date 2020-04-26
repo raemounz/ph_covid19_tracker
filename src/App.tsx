@@ -9,6 +9,7 @@ import {
   Grid,
   IconButton,
   useMediaQuery,
+  Tooltip,
 } from "@material-ui/core";
 import theme from "./shared/theme";
 import Summary from "./summary/Summary";
@@ -23,11 +24,13 @@ import GlobalList from "./chart/list/GlobalList";
 import { mainService, PHCase } from "./shared/service/main.service";
 import ResidenceBarChart from "./chart/residence/ResidenceBarChart";
 import DailyTimeChart from "./chart/time/DailyTimeChart";
+import CameraAltIcon from "@material-ui/icons/CameraAlt";
+import html2canvas from "html2canvas";
 
 const App: React.FC = () => {
   const residenceMapRef: any = useRef();
   const matches = useMediaQuery(theme.breakpoints.down("xs"));
-  const date = "25-Apr-2020";
+  const date = "26-Apr-2020";
   const [data, setData] = useState<PHCase[]>();
 
   useEffect(() => {
@@ -35,6 +38,19 @@ const App: React.FC = () => {
       setData(response);
     });
   }, []);
+
+  const takeScreenshot = (id: string) => {
+    const element = document.getElementById(id) as HTMLElement;
+    html2canvas(element).then((canvas) => {
+      const dataUrl = canvas.toDataURL();
+      const win: any = window.open();
+      win.document.write(
+        '<iframe src="' +
+          dataUrl +
+          '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe>'
+      );
+    });
+  };
 
   return (
     <div className="App">
@@ -54,14 +70,27 @@ const App: React.FC = () => {
               <Grid container spacing={3}>
                 <Grid item xs={12} md={6}>
                   <AppCard
+                    id="casesByTime"
                     title="Cases by Time"
                     style={{
                       height: "650px",
+                      header: {
+                        height: "60px",
+                      },
                       content: {
                         height: "calc(100% - 60px)",
-                        paddingTop: 0
+                        paddingTop: 0,
                       },
                     }}
+                    action={
+                      <Tooltip title="Take a screenshot">
+                        <IconButton
+                          onClick={() => takeScreenshot("casesByTime")}
+                        >
+                          <CameraAltIcon />
+                        </IconButton>
+                      </Tooltip>
+                    }
                     content={<DailyTimeChart data={data} date={date} />}
                   ></AppCard>
                   {/* <Grid item xs={12}>
@@ -133,7 +162,7 @@ const App: React.FC = () => {
                       height: "630px",
                       content: {
                         height: "calc(100% - 60px)",
-                        paddingTop: 0
+                        paddingTop: 0,
                       },
                     }}
                     content={<AgeChart data={data} />}
@@ -146,7 +175,7 @@ const App: React.FC = () => {
                       height: "630px",
                       content: {
                         height: "calc(100% - 60px)",
-                        paddingTop: 0
+                        paddingTop: 0,
                       },
                     }}
                     content={<GlobalList />}
