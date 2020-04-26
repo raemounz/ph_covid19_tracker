@@ -42,7 +42,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
         {
           id: "daily-axis",
           type: "linear",
-          position: "left",
+          position: "right",
           stacked: true,
           scaleLabel: {
             labelString: "Daily",
