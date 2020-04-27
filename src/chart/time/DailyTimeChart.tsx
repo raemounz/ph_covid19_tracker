@@ -24,7 +24,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
   const tooltipMode: InteractionMode = "index";
   const cutoff = Date.parse("03/01/2020");
 
-  const allProvinces = "All Provinces";
+  const allProvinces = "All Regions";
   const allCities = "All Cities";
   const forValidation = "For Validation";
   const [regionMap, setRegionMap] = useState({});
@@ -173,7 +173,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
         if (!regMap[region]) {
           regMap[region] = new Set();
         }
-        regMap[region].add(d.ProvCityRes || forValidation);
+        regMap[region].add(d.CityMunRes || forValidation);
       });
       setRegionMap(regMap);
 
@@ -211,13 +211,13 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
       if (_province === allProvinces) {
         if (_city === allCities) {
           filteredData = data.filter(
-            (d: PHCase) => d.RegionRes !== _province && d.ProvCityRes !== _city
+            (d: PHCase) => d.RegionRes !== _province && d.CityMunRes !== _city
           );
         } else {
           filteredData = data.filter(
             (d: PHCase) =>
               d.RegionRes !== _province &&
-              (d.ProvCityRes || forValidation) === _city
+              (d.CityMunRes || forValidation) === _city
           );
         }
       } else {
@@ -225,13 +225,13 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
           filteredData = data.filter(
             (d: PHCase) =>
               (d.RegionRes || forValidation) === _province &&
-              d.ProvCityRes !== _city
+              d.CityMunRes !== _city
           );
         } else {
           filteredData = data.filter(
             (d: PHCase) =>
               (d.RegionRes || forValidation) === _province &&
-              (d.ProvCityRes || forValidation) === _city
+              (d.CityMunRes || forValidation) === _city
           );
         }
       }

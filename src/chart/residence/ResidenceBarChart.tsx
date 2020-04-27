@@ -48,8 +48,8 @@ const ResidenceBarChart: React.FC<Props> = (props: Props) => {
     if (props.data) {
       const residenceMap = {};
       props.data.forEach((d: any) => {
-        if (!residenceMap[d.ProvCityRes]) {
-          residenceMap[d.ProvCityRes] = {
+        if (!residenceMap[d.CityMunRes]) {
+          residenceMap[d.CityMunRes] = {
             admitted: 0,
             recovered: 0,
             death: 0,
@@ -57,17 +57,17 @@ const ResidenceBarChart: React.FC<Props> = (props: Props) => {
           };
         }
         if (d.RemovalType === "Died") {
-          residenceMap[d.ProvCityRes].death =
-            residenceMap[d.ProvCityRes].death + 1;
+          residenceMap[d.CityMunRes].death =
+            residenceMap[d.CityMunRes].death + 1;
         } else if (d.RemovalType === "Recovered") {
-          residenceMap[d.ProvCityRes].recovered =
-            residenceMap[d.ProvCityRes].recovered + 1;
+          residenceMap[d.CityMunRes].recovered =
+            residenceMap[d.CityMunRes].recovered + 1;
         } else if (d.Admitted === "Yes") {
-          residenceMap[d.ProvCityRes].admitted =
-            residenceMap[d.ProvCityRes].admitted + 1;
+          residenceMap[d.CityMunRes].admitted =
+            residenceMap[d.CityMunRes].admitted + 1;
         } else {
-          residenceMap[d.ProvCityRes].notAdmitted =
-            residenceMap[d.ProvCityRes].notAdmitted + 1;
+          residenceMap[d.CityMunRes].notAdmitted =
+            residenceMap[d.CityMunRes].notAdmitted + 1;
         }
       });
 
@@ -123,7 +123,7 @@ const ResidenceBarChart: React.FC<Props> = (props: Props) => {
   }, [props.data]);
 
   return (
-    <div style={{ height: "10350px" }}>
+    <div style={{ height: "10500px" }}>
       {!props.data && <AppProgress />}
       <canvas
         ref={chartRef}

@@ -95,7 +95,7 @@ export interface PHCase {
   DateRepConf: string;
   DateRepRem: string;
   MunCityPSGC: string;
-  ProvCityRes: string;
+  CityMunRes: string;
   ProvPSGC: string;
   RegionPSGC: string;
   RegionRes: string;
