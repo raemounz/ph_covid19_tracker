@@ -30,6 +30,10 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
   const [regionMap, setRegionMap] = useState({});
   const [province, setProvince] = useState(allProvinces);
   const [city, setCity] = useState(allCities);
+  const collator = new Intl.Collator(undefined, {
+    numeric: true,
+    sensitivity: "base",
+  });
 
   const capitalize = (text: string) => {
     return text.charAt(0).toUpperCase() + text.slice(1);
@@ -50,8 +54,9 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
           },
           ticks: {
             beginAtZero: true,
-            precision: 0
-         }
+            precision: 0,
+            maxTicksLimit: 25,
+          },
         },
         {
           id: "cumulative-axis",
@@ -63,8 +68,8 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
           },
           ticks: {
             beginAtZero: true,
-            precision: 0
-         }
+            precision: 0,
+          },
         },
       ],
       xAxes: [
@@ -72,6 +77,9 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
           type: "time",
           stacked: true,
           offset: true,
+          gridLines: {
+            display: false,
+          },
         },
       ],
     },
@@ -169,7 +177,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
       // Regions and Provinces
       const regMap = {};
       props.data.forEach((d: PHCase) => {
-        const region = d.RegionRes || forValidation;
+        const region = `${d.RegionRes}` || forValidation;
         if (!regMap[region]) {
           regMap[region] = new Set();
         }
@@ -211,12 +219,13 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
       if (_province === allProvinces) {
         if (_city === allCities) {
           filteredData = data.filter(
-            (d: PHCase) => d.RegionRes !== _province && d.CityMunRes !== _city
+            (d: PHCase) =>
+              `${d.RegionRes}` !== _province && d.CityMunRes !== _city
           );
         } else {
           filteredData = data.filter(
             (d: PHCase) =>
-              d.RegionRes !== _province &&
+              `${d.RegionRes}` !== _province &&
               (d.CityMunRes || forValidation) === _city
           );
         }
@@ -224,13 +233,13 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
         if (_city === allCities) {
           filteredData = data.filter(
             (d: PHCase) =>
-              (d.RegionRes || forValidation) === _province &&
+              (`${d.RegionRes}` || forValidation) === _province &&
               d.CityMunRes !== _city
           );
         } else {
           filteredData = data.filter(
             (d: PHCase) =>
-              (d.RegionRes || forValidation) === _province &&
+              (`${d.RegionRes}` || forValidation) === _province &&
               (d.CityMunRes || forValidation) === _city
           );
         }
@@ -322,28 +331,57 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
       // Populate date for latest date
       const latestDate = new Date(props.date);
       const confirmedData = dataset[0].data;
-      if (confirmedData.length > 0 && confirmedData[confirmedData.length - 1].x.getTime() < latestDate.getTime()) {
-        confirmedData.push({x: latestDate, y: confirmedData[confirmedData.length - 1].y});
+      if (
+        confirmedData.length > 0 &&
+        confirmedData[confirmedData.length - 1].x.getTime() <
+          latestDate.getTime()
+      ) {
+        confirmedData.push({
+          x: latestDate,
+          y: confirmedData[confirmedData.length - 1].y,
+        });
       }
       const recoveredData = dataset[1].data;
-      if (recoveredData.length > 0 && recoveredData[recoveredData.length - 1].x.getTime() < latestDate.getTime()) {
-        recoveredData.push({x: latestDate, y: recoveredData[recoveredData.length - 1].y});
+      if (
+        recoveredData.length > 0 &&
+        recoveredData[recoveredData.length - 1].x.getTime() <
+          latestDate.getTime()
+      ) {
+        recoveredData.push({
+          x: latestDate,
+          y: recoveredData[recoveredData.length - 1].y,
+        });
       }
       const deathData = dataset[2].data;
-      if (deathData.length > 0 && deathData[deathData.length - 1].x.getTime() < latestDate.getTime()) {
-        deathData.push({x: latestDate, y: deathData[deathData.length - 1].y});
+      if (
+        deathData.length > 0 &&
+        deathData[deathData.length - 1].x.getTime() < latestDate.getTime()
+      ) {
+        deathData.push({ x: latestDate, y: deathData[deathData.length - 1].y });
       }
       const confirmedDataDaily = dataset[3].data;
-      if (confirmedDataDaily.length > 0 && confirmedDataDaily[confirmedDataDaily.length - 1].x.getTime() < latestDate.getTime()) {
-        confirmedDataDaily.push({x: latestDate, y: 0});
+      if (
+        confirmedDataDaily.length > 0 &&
+        confirmedDataDaily[confirmedDataDaily.length - 1].x.getTime() <
+          latestDate.getTime()
+      ) {
+        confirmedDataDaily.push({ x: latestDate, y: 0 });
       }
       const recoveredDataDaily = dataset[4].data;
-      if (recoveredDataDaily.length > 0 && recoveredDataDaily[recoveredDataDaily.length - 1].x.getTime() < latestDate.getTime()) {
-        recoveredDataDaily.push({x: latestDate, y: 0});
+      if (
+        recoveredDataDaily.length > 0 &&
+        recoveredDataDaily[recoveredDataDaily.length - 1].x.getTime() <
+          latestDate.getTime()
+      ) {
+        recoveredDataDaily.push({ x: latestDate, y: 0 });
       }
       const deathDataDaily = dataset[5].data;
-      if (deathDataDaily.length > 0 && deathDataDaily[deathDataDaily.length - 1].x.getTime() < latestDate.getTime()) {
-        deathDataDaily.push({x: latestDate, y: 0});
+      if (
+        deathDataDaily.length > 0 &&
+        deathDataDaily[deathDataDaily.length - 1].x.getTime() <
+          latestDate.getTime()
+      ) {
+        deathDataDaily.push({ x: latestDate, y: 0 });
       }
 
       if (_chart) {
@@ -391,7 +429,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
               {allProvinces}
             </MenuItem>
             {Object.keys(regionMap)
-              .sort()
+              .sort(collator.compare)
               .map((r: string) => {
                 return (
                   <MenuItem key={r} value={r} style={{ fontSize: ".9em" }}>
