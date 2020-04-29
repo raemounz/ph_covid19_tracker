@@ -19,7 +19,7 @@ export const globalListStyles = makeStyles(() =>
       height: "20px",
       width: "30px",
       marginRight: "10px",
-      background: "lightgrey"
+      background: "lightgrey",
     },
     country: {
       fontSize: "1em",
@@ -33,8 +33,12 @@ export const globalListStyles = makeStyles(() =>
       borderRadius: "5px",
       fontWeight: 500,
     },
-    cases: {
+    active: {
       margin: "0 10px",
+      background: "#ffae42",
+    },
+    cases: {
+      margin: "0 10px 0 0",
       background: "#ff5500",
     },
     recovered: {
@@ -48,6 +52,27 @@ export const globalListStyles = makeStyles(() =>
     odd: {
       background: "#e9e9e9",
       borderRadius: "5px",
+    },
+    legend: {
+      display: "flex",
+      flexDirection: "row",
+      flexWrap: "wrap",
+      margin: "6px auto",
+    },
+    legendItem: {
+      display: "flex",
+      flexDirection: "row",
+      margin: "2px 5px",
+    },
+    legendLabel: {
+      fontSize: ".83em",
+      lineHeight: "14px",
+      color: "#4c4c52",
+    },
+    legendBox: {
+      width: "40px",
+      height: "14px",
+      marginRight: "10px",
     },
   })
 );

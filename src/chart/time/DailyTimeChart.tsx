@@ -18,6 +18,7 @@ interface Props {
 const DailyTimeChart: React.FC<Props> = (props: Props) => {
   const chartRef = useRef<HTMLCanvasElement>(null);
   const [chart, setChart] = useState<Chart>();
+  const active = "active";
   const confirmed = "confirmed";
   const recovered = "recovered";
   const deaths = "deaths";
@@ -105,6 +106,19 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
   };
 
   const dataset: any = [
+    {
+      label: capitalize(active),
+      fill: false,
+      lineTension: 0,
+      pointStyle: "circle",
+      pointRadius: 0,
+      borderWidth: 4,
+      borderColor: "#ffae42",
+      backgroundColor: "#ffae42",
+      data: [],
+      yAxisID: "cumulative-axis",
+      type: "line",
+    },
     {
       label: capitalize(confirmed),
       fill: false,
@@ -330,7 +344,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
 
       // Populate date for latest date
       const latestDate = new Date(props.date);
-      const confirmedData = dataset[0].data;
+      const confirmedData = dataset[1].data;
       if (
         confirmedData.length > 0 &&
         confirmedData[confirmedData.length - 1].x.getTime() <
@@ -341,7 +355,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
           y: confirmedData[confirmedData.length - 1].y,
         });
       }
-      const recoveredData = dataset[1].data;
+      const recoveredData = dataset[2].data;
       if (
         recoveredData.length > 0 &&
         recoveredData[recoveredData.length - 1].x.getTime() <
@@ -352,14 +366,14 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
           y: recoveredData[recoveredData.length - 1].y,
         });
       }
-      const deathData = dataset[2].data;
+      const deathData = dataset[3].data;
       if (
         deathData.length > 0 &&
         deathData[deathData.length - 1].x.getTime() < latestDate.getTime()
       ) {
         deathData.push({ x: latestDate, y: deathData[deathData.length - 1].y });
       }
-      const confirmedDataDaily = dataset[3].data;
+      const confirmedDataDaily = dataset[4].data;
       if (
         confirmedDataDaily.length > 0 &&
         confirmedDataDaily[confirmedDataDaily.length - 1].x.getTime() <
@@ -367,7 +381,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
       ) {
         confirmedDataDaily.push({ x: latestDate, y: 0 });
       }
-      const recoveredDataDaily = dataset[4].data;
+      const recoveredDataDaily = dataset[5].data;
       if (
         recoveredDataDaily.length > 0 &&
         recoveredDataDaily[recoveredDataDaily.length - 1].x.getTime() <
@@ -375,7 +389,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
       ) {
         recoveredDataDaily.push({ x: latestDate, y: 0 });
       }
-      const deathDataDaily = dataset[5].data;
+      const deathDataDaily = dataset[6].data;
       if (
         deathDataDaily.length > 0 &&
         deathDataDaily[deathDataDaily.length - 1].x.getTime() <
@@ -383,6 +397,24 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
       ) {
         deathDataDaily.push({ x: latestDate, y: 0 });
       }
+
+      // Populate active cases
+      const activeData = dataset[0].data;
+      dataset[1].data.forEach((d: any) => {
+        const activeRecovered = dataset[2].data.find(
+          (r: any) => r.x.getTime() === d.x.getTime()
+        );
+        const activeDeath = dataset[3].data.find(
+          (r: any) => r.x.getTime() === d.x.getTime()
+        );
+        activeData.push({
+          x: d.x,
+          y:
+            d.y -
+            (activeRecovered ? activeRecovered.y : 0) -
+            (activeDeath ? activeDeath.y : 0),
+        });
+      });
 
       if (_chart) {
         _chart.data.datasets = dataset;

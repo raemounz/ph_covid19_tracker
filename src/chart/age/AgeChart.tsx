@@ -10,24 +10,30 @@ interface Props {
 const AgeChart: React.FC<Props> = (props: Props) => {
   const chartRef = useRef<HTMLCanvasElement>(null);
   const [chart, setChart] = useState<Chart>();
-  const [caseType, setCaseType] = useState("confirmed");
+  const [caseType, setCaseType] = useState("active");
   const [dataMap, setDataMap] = useState({});
   const [labels, setLabels] = useState<string[]>([]);
 
   const caseColor = {
-    confirmed: {male: "#ff5500", female: "rgba(255, 190, 157, .6)"},
-    recovered: {male: "#38a800", female: "rgba(56, 168, 0, .6)"},
-    death: {male: "#464646", female: "rgba(70, 70, 70, .6)"}
-  }
+    active: { male: "#ffae42", female: "rgba(255, 174, 66, .6)" },
+    confirmed: { male: "#ff5500", female: "rgba(255, 190, 157, .6)" },
+    recovered: { male: "#38a800", female: "rgba(56, 168, 0, .6)" },
+    death: { male: "#464646", female: "rgba(70, 70, 70, .6)" },
+  };
 
   const option = {
     maintainAspectRatio: false,
     scales: {
       xAxes: [{ stacked: true }],
-      yAxes: [{ stacked: true, scaleLabel: {
-        labelString: "Age Group",
-        display: true,
-      }, }],
+      yAxes: [
+        {
+          stacked: true,
+          scaleLabel: {
+            labelString: "Age Group",
+            display: true,
+          },
+        },
+      ],
     },
     tooltips: {
       callbacks: {
@@ -54,36 +60,58 @@ const AgeChart: React.FC<Props> = (props: Props) => {
       props.data.forEach((d: any) => {
         if (!ageMap[d.AgeGroup]) {
           ageMap[d.AgeGroup] = {
+            active: {
+              male: 0,
+              female: 0,
+            },
             confirmed: {
               male: 0,
-              female: 0,  
+              female: 0,
             },
             recovered: {
               male: 0,
-              female: 0,  
+              female: 0,
             },
             death: {
               male: 0,
-              female: 0,  
-            }
+              female: 0,
+            },
           };
         }
         if (d.Sex === "Male") {
-          ageMap[d.AgeGroup].confirmed.male = ageMap[d.AgeGroup].confirmed.male + 1;
+          ageMap[d.AgeGroup].confirmed.male =
+            ageMap[d.AgeGroup].confirmed.male + 1;
           if (d.RemovalType === "Died") {
             ageMap[d.AgeGroup].death.male = ageMap[d.AgeGroup].death.male + 1;
           } else if (d.RemovalType === "Recovered") {
-            ageMap[d.AgeGroup].recovered.male = ageMap[d.AgeGroup].recovered.male + 1;
+            ageMap[d.AgeGroup].recovered.male =
+              ageMap[d.AgeGroup].recovered.male + 1;
           }
         } else {
-          ageMap[d.AgeGroup].confirmed.female = ageMap[d.AgeGroup].confirmed.female + 1;
+          ageMap[d.AgeGroup].confirmed.female =
+            ageMap[d.AgeGroup].confirmed.female + 1;
           if (d.RemovalType === "Died") {
-            ageMap[d.AgeGroup].death.female = ageMap[d.AgeGroup].death.female + 1;
+            ageMap[d.AgeGroup].death.female =
+              ageMap[d.AgeGroup].death.female + 1;
           } else if (d.RemovalType === "Recovered") {
-            ageMap[d.AgeGroup].recovered.female = ageMap[d.AgeGroup].recovered.female + 1;
+            ageMap[d.AgeGroup].recovered.female =
+              ageMap[d.AgeGroup].recovered.female + 1;
           }
         }
       });
+      // Populate active cases
+      Object.keys(ageMap).forEach((group: any) => {
+        const _ageGroup = ageMap[group];
+        _ageGroup.active.male =
+          _ageGroup.confirmed.male -
+          _ageGroup.recovered.male -
+          _ageGroup.death.male;
+        _ageGroup.active.female =
+          _ageGroup.confirmed.female -
+          _ageGroup.recovered.female -
+          _ageGroup.death.female;
+      });
+
       setDataMap(ageMap);
 
       const _labels = Object.keys(ageMap)
@@ -110,7 +138,12 @@ const AgeChart: React.FC<Props> = (props: Props) => {
     }
   }, [props.data]);
 
-  const populateDataset = (_chart: Chart | undefined, data: any, _labels: string[], _caseType: string) => {
+  const populateDataset = (
+    _chart: Chart | undefined,
+    data: any,
+    _labels: string[],
+    _caseType: string
+  ) => {
     let dataset = [
       {
         label: "Male",
@@ -130,12 +163,12 @@ const AgeChart: React.FC<Props> = (props: Props) => {
       chart.data.datasets = dataset;
       chart.update();
     }
-  }
+  };
 
   const onChangeCaseType = (event) => {
     setCaseType(event.target.value);
     populateDataset(undefined, dataMap, labels, event.target.value);
-  }
+  };
 
   return (
     <>
@@ -151,9 +184,18 @@ const AgeChart: React.FC<Props> = (props: Props) => {
           style={{ minWidth: "150px", marginBottom: "15px" }}
         >
           <Select value={caseType} onChange={onChangeCaseType}>
-            <MenuItem value="confirmed" style={{ fontSize: ".9em" }}>Confirmed</MenuItem>
-            <MenuItem value="recovered" style={{ fontSize: ".9em" }}>Recovered</MenuItem>
-            <MenuItem value="death" style={{ fontSize: ".9em" }}>Death</MenuItem>
+            <MenuItem value="active" style={{ fontSize: ".9em" }}>
+              Active
+            </MenuItem>
+            <MenuItem value="confirmed" style={{ fontSize: ".9em" }}>
+              Confirmed
+            </MenuItem>
+            <MenuItem value="recovered" style={{ fontSize: ".9em" }}>
+              Recovered
+            </MenuItem>
+            <MenuItem value="death" style={{ fontSize: ".9em" }}>
+              Deaths
+            </MenuItem>
           </Select>
         </FormControl>
         <div style={{ height: "500px" }}>

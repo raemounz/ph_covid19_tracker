@@ -38,6 +38,13 @@ const GlobalList: React.FC = () => {
     "Vietnam",
   ];
 
+  const legends = [
+    { label: "Active", background: "#ffae42" },
+    { label: "Confirmed", background: "#ff5500" },
+    { label: "Recovered", background: "#38a800" },
+    { label: "Deaths", background: "#464646" },
+  ];
+
   useEffect(() => {
     const _continentMap = {};
     mainService.getGlobalCases().then((response: any) => {
@@ -118,6 +125,19 @@ const GlobalList: React.FC = () => {
               })}
             </Select>
           </FormControl>
+          <div className={classes.legend}>
+            {legends.map((legend: any) => {
+              return (
+                <div className={classes.legendItem} key={legend.label}>
+                  <div
+                    className={classes.legendBox}
+                    style={{ background: legend.background }}
+                  ></div>
+                  <div className={classes.legendLabel}>{legend.label}</div>
+                </div>
+              );
+            })}
+          </div>
           <div style={{ height: "100%", flexGrow: 1, overflow: "auto" }}>
             <List>
               {cases
@@ -149,8 +169,18 @@ const GlobalList: React.FC = () => {
                             display: "flex",
                             flexDirection: "row",
                             marginTop: matches ? "10px" : 0,
+                            overflow: "auto",
                           }}
                         >
+                          <div
+                            className={`${classes.metric} ${classes.active}`}
+                          >
+                            {(
+                              d.cases -
+                              d.recovered -
+                              d.deaths
+                            ).toLocaleString()}
+                          </div>
                           <div className={`${classes.metric} ${classes.cases}`}>
                             {d.cases ? d.cases.toLocaleString() : "-"}
                           </div>
