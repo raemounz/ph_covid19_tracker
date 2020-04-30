@@ -259,8 +259,8 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
         }
       }
       filteredData.forEach((d: PHCase) => {
-        const confDate = moment(new Date(d.DateRepConf)).format("M/D/YYYY");
-        const repRemDate = moment(new Date(d.DateRepRem)).format("M/D/YYYY");
+        const confDate = moment(new Date(d.DateRepConf)).format("M/D/YY");
+        const repRemDate = moment(new Date(d.DateRepRem)).format("M/D/YY");
         if (d.RemovalType === "Died") {
           if (!dailyMap[repRemDate]) {
             dailyMap[repRemDate] = createMetric();

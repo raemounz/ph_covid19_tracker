@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Grid } from "@material-ui/core";
 import AppBanner from "../shared/component/banner/AppBanner";
 import { PHCase, RemovalType } from "../shared/service/main.service";
+import moment from "moment";
 
 interface Props {
   data: PHCase[] | undefined;
@@ -20,6 +21,8 @@ const Summary: React.FC<Props> = (props: Props) => {
 
   useEffect(() => {
     if (props.data) {
+      const currentDate = moment(new Date(props.date)).format("DD-MMM-YY");
+
       const _confirmed = props.data.length;
       const _recovered = props.data.filter(
         (d: PHCase) => d.RemovalType === RemovalType.Recovered
@@ -28,15 +31,15 @@ const Summary: React.FC<Props> = (props: Props) => {
         (d: PHCase) => d.RemovalType === RemovalType.Died
       ).length;
       const _confirmedNew = props.data.filter(
-        (d: PHCase) => d.DateRepConf === props.date
+        (d: PHCase) => d.DateRepConf === currentDate
       ).length;
       const _recoveredNew = props.data.filter(
         (d: PHCase) =>
-          d.DateRepRem === props.date && d.RemovalType === RemovalType.Recovered
+          d.DateRepRem === currentDate && d.RemovalType === RemovalType.Recovered
       ).length;
       const _deathNew = props.data.filter(
         (d: PHCase) =>
-          d.DateRepRem === props.date && d.RemovalType === RemovalType.Died
+          d.DateRepRem === currentDate && d.RemovalType === RemovalType.Died
       ).length;
       setConfirmed(_confirmed);
       setRecovered(_recovered);
