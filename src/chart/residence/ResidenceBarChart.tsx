@@ -15,7 +15,6 @@ const ResidenceBarChart: React.FC<Props> = (props: Props) => {
     scales: {
       xAxes: [
         {
-          stacked: true,
           position: "top",
           ticks: {
             fontSize: 13,
@@ -24,7 +23,7 @@ const ResidenceBarChart: React.FC<Props> = (props: Props) => {
       ],
       yAxes: [
         {
-          stacked: true,
+          barPercentage: 1,
           ticks: {
             autoSkip: false,
             fontSize: 13,
@@ -35,10 +34,9 @@ const ResidenceBarChart: React.FC<Props> = (props: Props) => {
     tooltips: {
       callbacks: {
         footer: (tooltipItem: any) => {
-          return `Total: ${tooltipItem.reduce(
-            (a: any, b: any) => a + Number(b.value),
-            0
-          )}`;
+          return `Total: ${tooltipItem
+            .filter((item: any) => item.datasetIndex > 0)
+            .reduce((a: any, b: any) => a + Number(b.value), 0)}`;
         },
       },
     },
@@ -87,24 +85,38 @@ const ResidenceBarChart: React.FC<Props> = (props: Props) => {
 
       const datasets = [
         {
+          label: "Active",
+          backgroundColor: "#ffae42",
+          data: labels.map((label: string) => {
+            const _totalActive =
+              residenceMap[label].admitted + residenceMap[label].notAdmitted;
+            return _totalActive >= 0 ? _totalActive : 0;
+          }),
+          stack: "active",
+        },
+        {
           label: "Admitted",
           backgroundColor: "#ff5500",
           data: labels.map((label: string) => residenceMap[label].admitted),
+          stack: "cases",
         },
         {
           label: "Recovered",
           backgroundColor: "#38a800",
           data: labels.map((label: string) => residenceMap[label].recovered),
+          stack: "cases",
         },
         {
           label: "Deaths",
           backgroundColor: "#464646",
           data: labels.map((label: string) => residenceMap[label].death),
+          stack: "cases",
         },
         {
           label: "Not Admitted",
           backgroundColor: "rgba(255, 190, 157, .6)",
           data: labels.map((label: string) => residenceMap[label].notAdmitted),
+          stack: "cases",
         },
       ];
 
@@ -123,7 +135,7 @@ const ResidenceBarChart: React.FC<Props> = (props: Props) => {
   }, [props.data]);
 
   return (
-    <div style={{ height: "10500px" }}>
+    <div style={{ height: "10000px" }}>
       {!props.data && <AppProgress />}
       <canvas
         ref={chartRef}

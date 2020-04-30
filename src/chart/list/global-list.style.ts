@@ -72,7 +72,7 @@ export const globalListStyles = makeStyles(() =>
     legendBox: {
       width: "40px",
       height: "14px",
-      marginRight: "10px",
+      marginRight: "5px",
     },
   })
 );
