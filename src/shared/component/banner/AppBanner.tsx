@@ -38,6 +38,8 @@ const AppBanner: React.FC<Props> = (props: Props) => {
         >
           {increase > 0
             ? `up by ${increase.toLocaleString()}`
+            : increase < 0
+            ? `down by ${increase.toLocaleString()}`
             : props.value
             ? "No increase"
             : ""}
