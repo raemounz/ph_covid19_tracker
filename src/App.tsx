@@ -121,6 +121,7 @@ const App: React.FC = () => {
                 </Grid>
                 <Grid item xs={12} md={6}>
                   <AppCard
+                    id="localCases"
                     title="Local Cases"
                     style={{
                       height: "650px",
@@ -132,6 +133,15 @@ const App: React.FC = () => {
                         marginBottom: "16px",
                       },
                     }}
+                    action={
+                      <Tooltip title="Take a screenshot">
+                        <IconButton
+                          onClick={() => takeScreenshot("localCases")}
+                        >
+                          <CameraAltIcon />
+                        </IconButton>
+                      </Tooltip>
+                    }
                     content={<ResidenceBarChart data={data} />}
                   ></AppCard>
                   {/* <Grid item xs={12}>
@@ -157,6 +167,7 @@ const App: React.FC = () => {
               <Grid container spacing={3}>
                 <Grid item xs={12} md={6}>
                   <AppCard
+                    id='casesByAgeGroup'
                     title="Cases by Age Group"
                     style={{
                       height: "630px",
@@ -170,6 +181,7 @@ const App: React.FC = () => {
                 </Grid>
                 <Grid item xs={12} md={6}>
                   <AppCard
+                    id="globalCases"
                     title="Global Cases"
                     style={{
                       height: "630px",

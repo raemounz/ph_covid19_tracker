@@ -135,7 +135,7 @@ const ResidenceBarChart: React.FC<Props> = (props: Props) => {
   }, [props.data]);
 
   return (
-    <div style={{ height: "10000px" }}>
+    <div style={{ height: "10800px" }}>
       {!props.data && <AppProgress />}
       <canvas
         ref={chartRef}
