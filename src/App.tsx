@@ -127,10 +127,9 @@ const App: React.FC = () => {
                       height: "650px",
                       content: {
                         position: "relative",
-                        height: "calc(100% - 76px)",
-                        padding: "0 10px 16px 10px",
-                        overflow: "auto",
-                        marginBottom: "16px",
+                        height: "calc(100% - 92px)",
+                        padding: "0 16px",
+                        overflow: "auto"
                       },
                     }}
                     action={
