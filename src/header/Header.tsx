@@ -25,7 +25,7 @@ const Header: React.FC<Props> = (props: Props) => {
         <InfoOutlinedIcon />
       </IconButton>
       <Dialog onClose={() => setShowAbout(false)} open={showAbout}>
-        <DialogTitle>COVID-19 Philippines Tracker</DialogTitle>
+        <DialogTitle>PH COVID-19 Tracker</DialogTitle>
         <div className={classes.about}>
           <div>
             This website provides timely information of COVID-19 cases in the
