@@ -15,7 +15,7 @@ const Header: React.FC<Props> = (props: Props) => {
   return (
     <div className={classes.container}>
       <div className={classes.title}>
-        <div>COVID-19 Philippines Tracker&nbsp;</div>
+        <div>PH COVID-19 Tracker&nbsp;</div>
         <div className={classes.date}>
           (as of {moment(props.date, "DD-MMM-YYYY").format("ll")})
         </div>
