@@ -343,60 +343,60 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
         });
 
       // Populate date for latest date
-      const latestDate = new Date(props.date);
-      const confirmedData = dataset[1].data;
-      if (
-        confirmedData.length > 0 &&
-        confirmedData[confirmedData.length - 1].x.getTime() <
-          latestDate.getTime()
-      ) {
-        confirmedData.push({
-          x: latestDate,
-          y: confirmedData[confirmedData.length - 1].y,
-        });
-      }
-      const recoveredData = dataset[2].data;
-      if (
-        recoveredData.length > 0 &&
-        recoveredData[recoveredData.length - 1].x.getTime() <
-          latestDate.getTime()
-      ) {
-        recoveredData.push({
-          x: latestDate,
-          y: recoveredData[recoveredData.length - 1].y,
-        });
-      }
-      const deathData = dataset[3].data;
-      if (
-        deathData.length > 0 &&
-        deathData[deathData.length - 1].x.getTime() < latestDate.getTime()
-      ) {
-        deathData.push({ x: latestDate, y: deathData[deathData.length - 1].y });
-      }
-      const confirmedDataDaily = dataset[4].data;
-      if (
-        confirmedDataDaily.length > 0 &&
-        confirmedDataDaily[confirmedDataDaily.length - 1].x.getTime() <
-          latestDate.getTime()
-      ) {
-        confirmedDataDaily.push({ x: latestDate, y: 0 });
-      }
-      const recoveredDataDaily = dataset[5].data;
-      if (
-        recoveredDataDaily.length > 0 &&
-        recoveredDataDaily[recoveredDataDaily.length - 1].x.getTime() <
-          latestDate.getTime()
-      ) {
-        recoveredDataDaily.push({ x: latestDate, y: 0 });
-      }
-      const deathDataDaily = dataset[6].data;
-      if (
-        deathDataDaily.length > 0 &&
-        deathDataDaily[deathDataDaily.length - 1].x.getTime() <
-          latestDate.getTime()
-      ) {
-        deathDataDaily.push({ x: latestDate, y: 0 });
-      }
+      // const latestDate = new Date(props.date);
+      // const confirmedData = dataset[1].data;
+      // if (
+      //   confirmedData.length > 0 &&
+      //   confirmedData[confirmedData.length - 1].x.getTime() <
+      //     latestDate.getTime()
+      // ) {
+      //   confirmedData.push({
+      //     x: latestDate,
+      //     y: confirmedData[confirmedData.length - 1].y,
+      //   });
+      // }
+      // const recoveredData = dataset[2].data;
+      // if (
+      //   recoveredData.length > 0 &&
+      //   recoveredData[recoveredData.length - 1].x.getTime() <
+      //     latestDate.getTime()
+      // ) {
+      //   recoveredData.push({
+      //     x: latestDate,
+      //     y: recoveredData[recoveredData.length - 1].y,
+      //   });
+      // }
+      // const deathData = dataset[3].data;
+      // if (
+      //   deathData.length > 0 &&
+      //   deathData[deathData.length - 1].x.getTime() < latestDate.getTime()
+      // ) {
+      //   deathData.push({ x: latestDate, y: deathData[deathData.length - 1].y });
+      // }
+      // const confirmedDataDaily = dataset[4].data;
+      // if (
+      //   confirmedDataDaily.length > 0 &&
+      //   confirmedDataDaily[confirmedDataDaily.length - 1].x.getTime() <
+      //     latestDate.getTime()
+      // ) {
+      //   confirmedDataDaily.push({ x: latestDate, y: 0 });
+      // }
+      // const recoveredDataDaily = dataset[5].data;
+      // if (
+      //   recoveredDataDaily.length > 0 &&
+      //   recoveredDataDaily[recoveredDataDaily.length - 1].x.getTime() <
+      //     latestDate.getTime()
+      // ) {
+      //   recoveredDataDaily.push({ x: latestDate, y: 0 });
+      // }
+      // const deathDataDaily = dataset[6].data;
+      // if (
+      //   deathDataDaily.length > 0 &&
+      //   deathDataDaily[deathDataDaily.length - 1].x.getTime() <
+      //     latestDate.getTime()
+      // ) {
+      //   deathDataDaily.push({ x: latestDate, y: 0 });
+      // }
 
       // Populate active cases
       const activeData = dataset[0].data;
