@@ -21,7 +21,8 @@ const Summary: React.FC<Props> = (props: Props) => {
 
   useEffect(() => {
     if (props.data) {
-      const currentDate = moment(new Date(props.date)).format("YYYY-MM-DD");
+      // const currentDate = moment(new Date(props.date)).format("YYYY-MM-DD");
+      const currentDate = props.date;
 
       const _confirmed = props.data.length;
       const _recovered = props.data.filter(
