@@ -261,7 +261,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
       filteredData.forEach((d: PHCase) => {
         // const confDate = moment(d.DateRepConf, "DD/MM/YYYY").format("M/D/YY");
         // const repRemDate = moment(d.DateRepRem, "DD/MM/YYYY").format("M/D/YY");
-        const confDate = moment(new Date(d.DateRepConf)).format("M/D/YY");
+        const confDate = moment(new Date(d.DateRepConf || "2020-06-03")).format("M/D/YY");
         const repRemDate = moment(new Date(d.DateRepRem)).format("M/D/YY");
         if (d.RemovalType === "Died") {
           if (!dailyMap[repRemDate]) {
