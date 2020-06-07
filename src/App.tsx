@@ -30,7 +30,7 @@ import html2canvas from "html2canvas";
 const App: React.FC = () => {
   const residenceMapRef: any = useRef();
   const matches = useMediaQuery(theme.breakpoints.down("xs"));
-  const date = "2020-06-05";
+  const date = "2020-06-07";
   const [data, setData] = useState<PHCase[]>();
 
   useEffect(() => {
