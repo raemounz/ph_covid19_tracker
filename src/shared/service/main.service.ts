@@ -101,6 +101,8 @@ export interface PHCase {
   RegionRes: string;
   RemovalType: RemovalType;
   Sex: string;
+  DateSpecimen: string;
+  DateOnset: string;
 }
 
 export enum RemovalType {

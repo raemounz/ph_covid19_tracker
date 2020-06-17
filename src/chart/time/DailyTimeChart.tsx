@@ -23,7 +23,8 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
   const recovered = "recovered";
   const deaths = "deaths";
   const tooltipMode: InteractionMode = "index";
-  const cutoff = Date.parse("03/01/2020");
+  // const cutoff = Date.parse("03/01/2020");
+  const cutoff = Date.parse("02/01/2020");
 
   const allProvinces = "All Regions";
   const allCities = "All Cities";
@@ -56,6 +57,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
           ticks: {
             beginAtZero: true,
             precision: 0,
+            min: 0,
             maxTicksLimit: 25,
           },
         },
@@ -70,6 +72,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
           ticks: {
             beginAtZero: true,
             precision: 0,
+            min: 0
           },
         },
       ],
@@ -261,18 +264,19 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
       filteredData.forEach((d: PHCase) => {
         // const confDate = moment(d.DateRepConf, "DD/MM/YYYY").format("M/D/YY");
         // const repRemDate = moment(d.DateRepRem, "DD/MM/YYYY").format("M/D/YY");
-        const confDate = moment(new Date(d.DateRepConf)).format("M/D/YY");
-        const repRemDate = moment(new Date(d.DateRepRem)).format("M/D/YY");
+        const confDate = moment(new Date(d.DateOnset || d.DateSpecimen || d.DateRepConf)).format("M/D/YY");
         if (d.RemovalType === "Died") {
-          if (!dailyMap[repRemDate]) {
-            dailyMap[repRemDate] = createMetric();
+          const diedDate = moment(new Date(d.DateDied || d.DateRepRem)).format("M/D/YY");
+          if (!dailyMap[diedDate]) {
+            dailyMap[diedDate] = createMetric();
           }
-          dailyMap[repRemDate].death = dailyMap[repRemDate].death + 1;
+          dailyMap[diedDate].death = dailyMap[diedDate].death + 1;
         } else if (d.RemovalType === "Recovered") {
-          if (!dailyMap[repRemDate]) {
-            dailyMap[repRemDate] = createMetric();
+          const recoveredDate = moment(new Date(d.DateRecover || d.DateRepRem)).format("M/D/YY");
+          if (!dailyMap[recoveredDate]) {
+            dailyMap[recoveredDate] = createMetric();
           }
-          dailyMap[repRemDate].recovered = dailyMap[repRemDate].recovered + 1;
+          dailyMap[recoveredDate].recovered = dailyMap[recoveredDate].recovered + 1;
         }
         if (!dailyMap[confDate]) {
           dailyMap[confDate] = createMetric();
