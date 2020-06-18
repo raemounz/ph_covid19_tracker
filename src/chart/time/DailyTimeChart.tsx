@@ -526,7 +526,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
                   })}
           </Select>
         </FormControl>
-        <div style={{ height: "480px" }}>
+        <div style={{ height: "530px" }}>
           <canvas
             ref={chartRef}
             style={{ height: "100% !important", flexGrow: 1 }}

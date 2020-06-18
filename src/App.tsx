@@ -68,12 +68,12 @@ const App: React.FC = () => {
             <Summary data={data} date={date} />
             <Grid item xs={12}>
               <Grid container spacing={3}>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={12}>
                   <AppCard
                     id="casesByTime"
                     title="Cases by Time"
                     style={{
-                      height: "650px",
+                      height: "700px",
                       header: {
                         height: "60px",
                       },
@@ -119,6 +119,10 @@ const App: React.FC = () => {
                       ></AppCard>
                     </Grid> */}
                 </Grid>
+              </Grid>
+            </Grid>
+            <Grid item xs={12}>
+              <Grid container spacing={3}>
                 <Grid item xs={12} md={6}>
                   <AppCard
                     id="localCases"
@@ -129,7 +133,7 @@ const App: React.FC = () => {
                         position: "relative",
                         height: "calc(100% - 92px)",
                         padding: "0 16px",
-                        overflow: "auto"
+                        overflow: "auto",
                       },
                     }}
                     action={
@@ -160,16 +164,12 @@ const App: React.FC = () => {
                       ></AppCard>
                     </Grid> */}
                 </Grid>
-              </Grid>
-            </Grid>
-            <Grid item xs={12}>
-              <Grid container spacing={3}>
                 <Grid item xs={12} md={6}>
                   <AppCard
-                    id='casesByAgeGroup'
+                    id="casesByAgeGroup"
                     title="Cases by Age Group"
                     style={{
-                      height: "630px",
+                      height: "650px",
                       content: {
                         height: "calc(100% - 60px)",
                         paddingTop: 0,
@@ -178,7 +178,7 @@ const App: React.FC = () => {
                     content={<AgeChart data={data} />}
                   ></AppCard>
                 </Grid>
-                <Grid item xs={12} md={6}>
+                <Grid item xs={12} md={12}>
                   <AppCard
                     id="globalCases"
                     title="Global Cases"
