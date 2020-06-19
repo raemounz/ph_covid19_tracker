@@ -17,9 +17,9 @@ const Header: React.FC<Props> = (props: Props) => {
       <div className={classes.title}>
         <div>PH COVID-19 Tracker&nbsp;</div>
         <div className={classes.date}>
-          (as of {moment(props.date, "YYYY-MM-DD").format("ll")})
+          {/* (as of {moment(props.date, "YYYY-MM-DD").format("ll")}) */}
           {/*Hardcode values since data is not available*/}
-          {/* (as of {moment("2020-06-04", "YYYY-MM-DD").format("ll")}) */}
+          (as of {moment("2020-06-19", "YYYY-MM-DD").format("ll")})
         </div>
       </div>
       <span style={{ flexGrow: 1 }}></span>
