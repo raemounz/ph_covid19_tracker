@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import clsx from "clsx";
 import { Paper, CircularProgress, Tooltip } from "@material-ui/core";
 import { bannerStyles } from "./app-banner.style";
@@ -8,23 +8,36 @@ interface Props {
   desc?: string;
   value: number | string | undefined;
   increase: number | undefined;
-  style: { color: string; background: string };
+  selectable: boolean;
+  style: { background: string };
 }
 
 const AppBanner: React.FC<Props> = (props: Props) => {
   const classes = bannerStyles();
   const increase = Number(props.increase);
+  const [selected, setSelected] = useState("Confirmed-TODO");
 
   return (
     <Paper
       elevation={3}
       className={classes.container}
-      style={{ ...props.style }}
+      style={{
+        ...props.style,
+        color: "#fff",
+        borderRadius: 0,
+        boxShadow: "unset",
+      }}
     >
-      <div className={classes.banner}>
-        <Tooltip title={props.desc || ""} placement="top">
-          <div className={classes.label}>{props.label}</div>
-        </Tooltip>
+      <div
+        className={clsx(classes.banner, {
+          [classes.selectable]: props.selectable,
+        })}
+        style={{
+          borderRight: props.label === selected
+            ? "#f6b44e 10px solid"
+            : `${props.style.background} 10px solid`,
+        }}
+      >
         <div
           className={clsx(classes.value, {
             [classes.valueNoData]: props.value === "No data",
@@ -32,17 +45,17 @@ const AppBanner: React.FC<Props> = (props: Props) => {
         >
           {props.value?.toLocaleString() || <CircularProgress size={30} />}
         </div>
-        <div
-          className={classes.increase}
-          style={{ color: props.style.background }}
-        >
+        <Tooltip title={props.desc || ""} placement="top">
+          <div>{props.label}</div>
+        </Tooltip>
+        <div className={classes.increase}>
           {increase > 0
-            ? `up by ${increase.toLocaleString()}`
+            ? `+ ${increase.toLocaleString()}`
             : increase < 0
-            ? `down by ${Math.abs(increase).toLocaleString()}`
+            ? `- ${Math.abs(increase).toLocaleString()}`
             : props.value
             ? "No increase"
-            : ""}
+            : "---"}
         </div>
       </div>
     </Paper>

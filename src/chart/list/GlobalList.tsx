@@ -39,10 +39,10 @@ const GlobalList: React.FC = () => {
   ];
 
   const legends = [
-    { label: "Active", background: "#ffae42" },
-    { label: "Confirmed", background: "#ff5500" },
-    { label: "Recovered", background: "#38a800" },
-    { label: "Deaths", background: "#464646" },
+    { label: "Active", background: "#f6b44e" },
+    { label: "Confirmed", background: "#df734f" },
+    { label: "Recovered", background: "#bfa37e" },
+    { label: "Deaths", background: "#4b4743" },
   ];
 
   useEffect(() => {
@@ -153,7 +153,7 @@ const GlobalList: React.FC = () => {
                     <ListItem
                       key={d.country}
                       style={{ paddingRight: "8px", paddingLeft: "8px" }}
-                      className={clsx({ [classes.odd]: index % 2 === 0 })}
+                      className={clsx({ [classes.odd]: index % 2 === 0 }, classes.listItem)}
                     >
                       <div
                         className={clsx(classes.container, {

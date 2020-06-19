@@ -7,18 +7,19 @@ export const bannerStyles = makeStyles(() =>
       height: "100%",
     },
     banner: {
-      padding: "16px",
+      padding: "16px 6px 16px 16px",
       width: "100%",
       fontSize: "1.6em",
-      fontWeight: 500,
       textAlign: "center",
+      "&:hover": {
+        borderRight: "#f6b44e 10px solid !important"
+      }
     },
-    label: {
-      fontWeight: 500
+    selectable: {
+      cursor: "pointer"
     },
     value: {
-      fontSize: "1.9em",
-      fontWeight: "bold"
+      fontSize: "2.1em",
     },
     valueNoData: {
       fontSize: ".9em",
@@ -27,15 +28,7 @@ export const bannerStyles = makeStyles(() =>
       fontWeight: "normal",
     },
     increase: {
-      fontSize: ".9em",
-      height: "40px",
-      lineHeight: "40px",
-      minWidth: "100px",
-      maxWidth: "250px",
-      borderRadius: "6px",
-      margin: "10px auto auto auto",
-      background: "#fff",
-      fontWeight: "bold",
+      fontSize: ".8em"
     },
   })
 );

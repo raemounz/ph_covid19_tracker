@@ -23,7 +23,7 @@ const Header: React.FC<Props> = (props: Props) => {
         </div>
       </div>
       <span style={{ flexGrow: 1 }}></span>
-      <IconButton style={{ color: "#fff" }} onClick={() => setShowAbout(true)}>
+      <IconButton color="secondary" onClick={() => setShowAbout(true)}>
         <InfoOutlinedIcon />
       </IconButton>
       <Dialog onClose={() => setShowAbout(false)} open={showAbout}>

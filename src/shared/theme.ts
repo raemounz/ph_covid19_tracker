@@ -1,8 +1,8 @@
 import { createMuiTheme } from "@material-ui/core";
 
 const palette = {
-  primary: { main: "#e54e1e" },
-  secondary: { main: "#1de9b6" }
+  primary: { main: "#4b4743" },
+  secondary: { main: "#df734f" }
 };
 
 export default createMuiTheme({ palette });

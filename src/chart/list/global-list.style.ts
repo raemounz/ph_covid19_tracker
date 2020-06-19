@@ -35,22 +35,28 @@ export const globalListStyles = makeStyles(() =>
     },
     active: {
       margin: "0 10px",
-      background: "#ffae42",
+      background: "#f6b44e",
     },
     cases: {
       margin: "0 10px 0 0",
-      background: "#ff5500",
+      background: "#df734f",
     },
     recovered: {
       margin: "0 10px 0 0",
-      background: "#38a800",
+      background: "#bfa37e",
     },
     deaths: {
       margin: 0,
-      background: "#464646",
+      background: "#4b4743",
+    },
+    listItem: {
+      border: "1px solid #fff",
+      "&:hover": {
+        border: "1px solid #bfa37e"
+      }
     },
     odd: {
-      background: "#e9e9e9",
+      background: "#f0e9e3",
       borderRadius: "5px",
     },
     legend: {

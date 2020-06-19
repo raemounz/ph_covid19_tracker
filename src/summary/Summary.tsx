@@ -67,36 +67,40 @@ const Summary: React.FC<Props> = (props: Props) => {
   return (
     <Grid item xs={12}>
       <Grid container spacing={3}>
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={12}>
           <AppBanner
             label="Active"
             value={active}
             increase={activeNew}
-            style={{ color: "#fff", background: "#ffae42" }}
+            selectable={false}
+            style={{ background: "#f6b44e" }}
           />
         </Grid>
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={12}>
           <AppBanner
             label="Confirmed"
             value={confirmed}
             increase={confirmedNew}
-            style={{ color: "#fff", background: "#ff5500" }}
+            selectable={true}
+            style={{ background: "#df734f" }}
           />
         </Grid>
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={12}>
           <AppBanner
             label="Recovered"
             value={recovered}
             increase={recoveredNew}
-            style={{ color: "#fff", background: "#38a800" }}
+            selectable={true}
+            style={{ background: "#bfa37e" }}
           />
         </Grid>
-        <Grid item xs={12} sm={3}>
+        <Grid item xs={12}>
           <AppBanner
             label="Deaths"
             value={death}
             increase={deathNew}
-            style={{ color: "#fff", background: "#464646" }}
+            selectable={true}
+            style={{ background: "#4b4743" }}
           />
         </Grid>
       </Grid>

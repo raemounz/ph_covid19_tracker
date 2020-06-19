@@ -65,15 +65,17 @@ const App: React.FC = () => {
         </AppBar>
         <main className="container">
           <Grid container spacing={3}>
-            <Summary data={data} date={date} />
             <Grid item xs={12}>
               <Grid container spacing={3}>
-                <Grid item xs={12} md={12}>
+                <Grid item xs={12} md={3}>
+                  <Summary data={data} date={date} />
+                </Grid>
+                <Grid item xs={12} md={9}>
                   <AppCard
                     id="casesByTime"
                     title="Cases by Time"
                     style={{
-                      height: "700px",
+                      height: "696px",
                       header: {
                         height: "60px",
                       },
@@ -183,7 +185,7 @@ const App: React.FC = () => {
                     id="globalCases"
                     title="Global Cases"
                     style={{
-                      height: "630px",
+                      height: "580px",
                       content: {
                         height: "calc(100% - 60px)",
                         paddingTop: 0,

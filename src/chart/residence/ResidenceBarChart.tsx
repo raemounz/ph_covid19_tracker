@@ -86,7 +86,7 @@ const ResidenceBarChart: React.FC<Props> = (props: Props) => {
       const datasets = [
         {
           label: "Active",
-          backgroundColor: "#ffae42",
+          backgroundColor: "#f6b44e",
           data: labels.map((label: string) => {
             const _totalActive =
               residenceMap[label].admitted + residenceMap[label].notAdmitted;
@@ -96,25 +96,25 @@ const ResidenceBarChart: React.FC<Props> = (props: Props) => {
         },
         {
           label: "Admitted",
-          backgroundColor: "#ff5500",
+          backgroundColor: "#df734f",
           data: labels.map((label: string) => residenceMap[label].admitted),
           stack: "cases",
         },
         {
           label: "Recovered",
-          backgroundColor: "#38a800",
+          backgroundColor: "#bfa37e",
           data: labels.map((label: string) => residenceMap[label].recovered),
           stack: "cases",
         },
         {
           label: "Deaths",
-          backgroundColor: "#464646",
+          backgroundColor: "#4b4743",
           data: labels.map((label: string) => residenceMap[label].death),
           stack: "cases",
         },
         {
           label: "Not Admitted",
-          backgroundColor: "rgba(255, 190, 157, .6)",
+          backgroundColor: "rgba(223, 115, 79, .6)",
           data: labels.map((label: string) => residenceMap[label].notAdmitted),
           stack: "cases",
         },
@@ -135,12 +135,12 @@ const ResidenceBarChart: React.FC<Props> = (props: Props) => {
   }, [props.data]);
 
   return (
-    <div style={{ height: "11800px" }}>
+    <div style={{ height: "15000px" }}>
       {!props.data && <AppProgress />}
       <canvas
         ref={chartRef}
         style={{
-          height: "11800px !important",
+          height: "15000px !important",
           position: "absolute",
           left: 0,
           top: 0,

@@ -10,15 +10,15 @@ interface Props {
 const AgeChart: React.FC<Props> = (props: Props) => {
   const chartRef = useRef<HTMLCanvasElement>(null);
   const [chart, setChart] = useState<Chart>();
-  const [caseType, setCaseType] = useState("active");
+  const [caseType, setCaseType] = useState("confirmed");
   const [dataMap, setDataMap] = useState({});
   const [labels, setLabels] = useState<string[]>([]);
 
   const caseColor = {
-    active: { male: "#ffae42", female: "rgba(255, 174, 66, .6)" },
-    confirmed: { male: "#ff5500", female: "rgba(255, 190, 157, .6)" },
-    recovered: { male: "#38a800", female: "rgba(56, 168, 0, .6)" },
-    death: { male: "#464646", female: "rgba(70, 70, 70, .6)" },
+    active: { male: "#f6b44e", female: "rgba(246, 180, 78, .6)" },
+    confirmed: { male: "#df734f", female: "rgba(223, 115, 79, .6)" },
+    recovered: { male: "#bfa37e", female: "rgba(191, 163, 126, .6)" },
+    death: { male: "#4b4743", female: "rgba(75, 71, 67, .6)" },
   };
 
   const option = {
@@ -198,7 +198,7 @@ const AgeChart: React.FC<Props> = (props: Props) => {
             </MenuItem>
           </Select>
         </FormControl>
-        <div style={{ height: "500px" }}>
+        <div style={{ height: "520px" }}>
           <canvas
             ref={chartRef}
             style={{ height: "100% !important", flexGrow: 1 }}

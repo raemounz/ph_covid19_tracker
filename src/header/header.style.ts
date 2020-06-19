@@ -20,6 +20,7 @@ export const headerStyles = makeStyles((theme: Theme) =>
         fontSize: ".7em",
         marginBottom: "5px",
       },
+      fontWeight: "normal"
     },
     about: {
       display: "flex",
