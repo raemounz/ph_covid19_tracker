@@ -8,7 +8,9 @@ import {
   Select,
   MenuItem,
   ListSubheader,
+  useMediaQuery,
 } from "@material-ui/core";
+import theme from "../../shared/theme";
 
 interface Props {
   data: PHCase[] | undefined;
@@ -25,6 +27,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
   const tooltipMode: InteractionMode = "index";
   // const cutoff = Date.parse("03/01/2020");
   const cutoff = Date.parse("02/01/2020");
+  const matches = useMediaQuery(theme.breakpoints.down("xs"));
 
   const allProvinces = "All Regions";
   const allCities = "All Cities";
@@ -72,7 +75,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
           ticks: {
             beginAtZero: true,
             precision: 0,
-            min: 0
+            min: 0,
           },
         },
       ],
@@ -264,19 +267,26 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
       filteredData.forEach((d: PHCase) => {
         // const confDate = moment(d.DateRepConf, "DD/MM/YYYY").format("M/D/YY");
         // const repRemDate = moment(d.DateRepRem, "DD/MM/YYYY").format("M/D/YY");
-        const confDate = moment(new Date(d.DateOnset || d.DateSpecimen || d.DateRepConf)).format("M/D/YY");
+        const confDate = moment(
+          new Date(d.DateOnset || d.DateSpecimen || d.DateRepConf)
+        ).format("M/D/YY");
         if (d.RemovalType === "Died") {
-          const diedDate = moment(new Date(d.DateDied || d.DateRepRem)).format("M/D/YY");
+          const diedDate = moment(new Date(d.DateDied || d.DateRepRem)).format(
+            "M/D/YY"
+          );
           if (!dailyMap[diedDate]) {
             dailyMap[diedDate] = createMetric();
           }
           dailyMap[diedDate].death = dailyMap[diedDate].death + 1;
         } else if (d.RemovalType === "Recovered") {
-          const recoveredDate = moment(new Date(d.DateRecover || d.DateRepRem)).format("M/D/YY");
+          const recoveredDate = moment(
+            new Date(d.DateRecover || d.DateRepRem)
+          ).format("M/D/YY");
           if (!dailyMap[recoveredDate]) {
             dailyMap[recoveredDate] = createMetric();
           }
-          dailyMap[recoveredDate].recovered = dailyMap[recoveredDate].recovered + 1;
+          dailyMap[recoveredDate].recovered =
+            dailyMap[recoveredDate].recovered + 1;
         }
         if (!dailyMap[confDate]) {
           dailyMap[confDate] = createMetric();
@@ -458,75 +468,82 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
           flexDirection: "column",
         }}
       >
-        <FormControl
-          variant="outlined"
-          style={{ minWidth: "150px", marginBottom: "5px" }}
+        <div
+          style={{ display: "flex", flexDirection: matches ? "column" : "row" }}
         >
-          <Select value={province} onChange={onChangeProvince}>
-            <MenuItem value={allProvinces} style={{ fontSize: ".9em" }}>
-              {allProvinces}
-            </MenuItem>
-            {Object.keys(regionMap)
-              .sort(collator.compare)
-              .map((r: string) => {
-                return (
-                  <MenuItem key={r} value={r} style={{ fontSize: ".9em" }}>
-                    {r}
-                  </MenuItem>
-                );
-              })}
-          </Select>
-        </FormControl>
-        <FormControl
-          variant="outlined"
-          style={{ minWidth: "150px", marginBottom: "15px" }}
-        >
-          <Select value={city} onChange={onChangeCity}>
-            <MenuItem
-              id={`${province}-${allCities}`}
-              value={allCities}
-              style={{ fontSize: ".9em" }}
-            >
-              {allCities}
-            </MenuItem>
-            {province === allProvinces
-              ? Object.keys(regionMap)
-                  .sort()
-                  .map((r: string) => {
-                    const group = [<ListSubheader key={r}>{r}</ListSubheader>];
-                    Array.from(regionMap[r])
-                      .sort()
-                      .forEach((c: any) => {
-                        group.push(
-                          <MenuItem
-                            id={`${r}-${c}`}
-                            key={`${r}-${c}`}
-                            value={c}
-                            style={{ fontSize: ".9em" }}
-                          >
-                            {c}
-                          </MenuItem>
-                        );
-                      });
-                    return group;
-                  })
-              : Array.from(regionMap[province])
-                  .sort()
-                  .map((c: any) => {
-                    return (
-                      <MenuItem
-                        id={`${province}-${c}`}
-                        key={`${province}-${c}`}
-                        value={c}
-                        style={{ fontSize: ".9em" }}
-                      >
-                        {c}
-                      </MenuItem>
-                    );
-                  })}
-          </Select>
-        </FormControl>
-        <div style={{ height: "530px" }}>
+          <FormControl
+            variant="outlined"
+            style={{ width: "100%", marginBottom: "5px" }}
+          >
+            <Select value={province} onChange={onChangeProvince}>
+              <MenuItem value={allProvinces} style={{ fontSize: ".9em" }}>
+                {allProvinces}
+              </MenuItem>
+              {Object.keys(regionMap)
+                .sort(collator.compare)
+                .map((r: string) => {
+                  return (
+                    <MenuItem key={r} value={r} style={{ fontSize: ".9em" }}>
+                      {r}
+                    </MenuItem>
+                  );
+                })}
+            </Select>
+          </FormControl>
+          <div style={{ width: matches ? "0" : "20px" }}></div>
+          <FormControl
+            variant="outlined"
+            style={{ width: "100%", marginBottom: "15px" }}
+          >
+            <Select value={city} onChange={onChangeCity}>
+              <MenuItem
+                id={`${province}-${allCities}`}
+                value={allCities}
+                style={{ fontSize: ".9em" }}
+              >
+                {allCities}
+              </MenuItem>
+              {province === allProvinces
+                ? Object.keys(regionMap)
+                    .sort()
+                    .map((r: string) => {
+                      const group = [
+                        <ListSubheader key={r}>{r}</ListSubheader>,
+                      ];
+                      Array.from(regionMap[r])
+                        .sort()
+                        .forEach((c: any) => {
+                          group.push(
+                            <MenuItem
+                              id={`${r}-${c}`}
+                              key={`${r}-${c}`}
+                              value={c}
+                              style={{ fontSize: ".9em" }}
+                            >
+                              {c}
+                            </MenuItem>
+                          );
+                        });
+                      return group;
+                    })
+                : Array.from(regionMap[province])
+                    .sort()
+                    .map((c: any) => {
+                      return (
+                        <MenuItem
+                          id={`${province}-${c}`}
+                          key={`${province}-${c}`}
+                          value={c}
+                          style={{ fontSize: ".9em" }}
+                        >
+                          {c}
+                        </MenuItem>
+                      );
+                    })}
+            </Select>
+          </FormControl>
+        </div>
+        <div style={{ height: "570px" }}>
           <canvas
             ref={chartRef}
             style={{ height: "100% !important", flexGrow: 1 }}

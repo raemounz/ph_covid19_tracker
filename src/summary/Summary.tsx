@@ -56,10 +56,10 @@ const Summary: React.FC<Props> = (props: Props) => {
       setRecovered(7378);
       setDeath(1130);
       setActive(19951);
-      setConfirmedNew(660);
+      setConfirmedNew(661);
       setRecoveredNew(288);
       setDeathNew(14);
-      setActiveNew(660 - 288 - 14);
+      setActiveNew(661 - 288 - 14);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.data]);

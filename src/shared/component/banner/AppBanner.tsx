@@ -34,8 +34,8 @@ const AppBanner: React.FC<Props> = (props: Props) => {
         })}
         style={{
           borderRight: props.label === selected
-            ? "#f6b44e 10px solid"
-            : `${props.style.background} 10px solid`,
+            ? "#f6b44e 15px solid"
+            : `${props.style.background} 15px solid`,
         }}
       >
         <div
