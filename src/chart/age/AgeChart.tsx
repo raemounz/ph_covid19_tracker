@@ -32,6 +32,9 @@ const AgeChart: React.FC<Props> = (props: Props) => {
             labelString: "Age Group",
             display: true,
           },
+          gridLines: {
+            display: false,
+          },
         },
       ],
     },

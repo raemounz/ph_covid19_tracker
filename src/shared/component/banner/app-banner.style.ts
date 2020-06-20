@@ -12,7 +12,7 @@ export const bannerStyles = makeStyles(() =>
       fontSize: "1.6em",
       textAlign: "center",
       "&:hover": {
-        borderRight: "#f6b44e 15px solid !important"
+        borderRight: "#f6b44e 12px solid !important"
       }
     },
     selectable: {

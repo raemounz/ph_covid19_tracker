@@ -28,6 +28,9 @@ const ResidenceBarChart: React.FC<Props> = (props: Props) => {
             autoSkip: false,
             fontSize: 13,
           },
+          gridLines: {
+            display: false,
+          },
         },
       ],
     },

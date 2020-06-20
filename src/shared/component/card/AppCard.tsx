@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardHeader, CardContent } from "@material-ui/core";
+import { Card, CardContent } from "@material-ui/core";
 import { cardStyles } from "./app-card.style";
 
 interface Props {
@@ -8,18 +8,17 @@ interface Props {
   action?: any;
   style: any;
   content?: React.ReactElement;
+  selection?: any;
 }
 
 const AppCard: React.FC<Props> = (props: Props) => {
   const classes = cardStyles();
   return (
     <Card id={props.id} variant="outlined" style={{ ...props.style }}>
-      <CardHeader
-        title={props.title}
-        titleTypographyProps={{ variant: "subtitle1" }}
-        action={props.action}
-        style={{ ...props.style.header }}
-      ></CardHeader>
+      <div className={classes.header}>
+        {props.selection}
+        <div>{props.title}</div>
+      </div>
       <CardContent
         className={classes.content}
         style={{ ...props.style.content }}

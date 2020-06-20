@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import clsx from "clsx";
 import { Paper, CircularProgress, Tooltip } from "@material-ui/core";
 import { bannerStyles } from "./app-banner.style";
@@ -10,12 +10,13 @@ interface Props {
   increase: number | undefined;
   selectable: boolean;
   style: { background: string };
+  selected: string;
+  onClick: (selected: string) => void;
 }
 
 const AppBanner: React.FC<Props> = (props: Props) => {
   const classes = bannerStyles();
   const increase = Number(props.increase);
-  const [selected, setSelected] = useState("Confirmed-TODO");
 
   return (
     <Paper
@@ -33,10 +34,12 @@ const AppBanner: React.FC<Props> = (props: Props) => {
           [classes.selectable]: props.selectable,
         })}
         style={{
-          borderRight: props.label === selected
-            ? "#f6b44e 15px solid"
-            : `${props.style.background} 15px solid`,
+          borderRight:
+            props.label === props.selected
+              ? "#f6b44e 12px solid"
+              : `${props.style.background} 12px solid`,
         }}
+        onClick={() => props.onClick(props.label)}
       >
         <div
           className={clsx(classes.value, {

@@ -1,12 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Grid } from "@material-ui/core";
 import AppBanner from "../shared/component/banner/AppBanner";
-import { PHCase, RemovalType } from "../shared/service/main.service";
-import moment from "moment";
+import { PHCase, RemovalType, CaseType } from "../shared/service/main.service";
+import { Constants } from "../shared/Constants";
 
 interface Props {
   data: PHCase[] | undefined;
   date: string;
+  caseType: string;
+  onChangeCaseType: (caseType: string) => void;
 }
 
 const Summary: React.FC<Props> = (props: Props) => {
@@ -21,9 +23,7 @@ const Summary: React.FC<Props> = (props: Props) => {
 
   useEffect(() => {
     if (props.data) {
-      // const currentDate = moment(new Date(props.date), "YYYY-MM-DD").format("M/DD/YYYY");
       const currentDate = props.date;
-
       const _confirmed = props.data.length;
       const _recovered = props.data.filter(
         (d: PHCase) => d.RemovalType === RemovalType.Recovered
@@ -36,7 +36,8 @@ const Summary: React.FC<Props> = (props: Props) => {
       ).length;
       const _recoveredNew = props.data.filter(
         (d: PHCase) =>
-          d.DateRepRem === currentDate && d.RemovalType === RemovalType.Recovered
+          d.DateRepRem === currentDate &&
+          d.RemovalType === RemovalType.Recovered
       ).length;
       const _deathNew = props.data.filter(
         (d: PHCase) =>
@@ -51,15 +52,15 @@ const Summary: React.FC<Props> = (props: Props) => {
       setDeathNew(_deathNew);
       setActiveNew(_confirmedNew - _recoveredNew - _deathNew);
 
-      // Hardcode values since data is not available
-      setConfirmed(28459);
-      setRecovered(7378);
-      setDeath(1130);
-      setActive(19951);
-      setConfirmedNew(661);
-      setRecoveredNew(288);
-      setDeathNew(14);
-      setActiveNew(661 - 288 - 14);
+      // Hardcode values if latest data is not yet available
+      // setConfirmed(28459);
+      // setRecovered(7378);
+      // setDeath(1130);
+      // setActive(19951);
+      // setConfirmedNew(661);
+      // setRecoveredNew(288);
+      // setDeathNew(14);
+      // setActiveNew(661 - 288 - 14);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.data]);
@@ -69,38 +70,46 @@ const Summary: React.FC<Props> = (props: Props) => {
       <Grid container spacing={3}>
         <Grid item xs={12}>
           <AppBanner
-            label="Active"
+            label={CaseType.Active}
             value={active}
             increase={activeNew}
             selectable={false}
-            style={{ background: "#f6b44e" }}
+            style={{ background: Constants.activeColor }}
+            selected={props.caseType}
+            onClick={() => {}}
           />
         </Grid>
         <Grid item xs={12}>
           <AppBanner
-            label="Confirmed"
+            label={CaseType.Confirmed}
             value={confirmed}
             increase={confirmedNew}
             selectable={true}
-            style={{ background: "#df734f" }}
+            style={{ background: Constants.confirmedColor }}
+            selected={props.caseType}
+            onClick={props.onChangeCaseType}
           />
         </Grid>
         <Grid item xs={12}>
           <AppBanner
-            label="Recovered"
+            label={CaseType.Recovered}
             value={recovered}
             increase={recoveredNew}
             selectable={true}
-            style={{ background: "#bfa37e" }}
+            style={{ background: Constants.recoveredColor }}
+            selected={props.caseType}
+            onClick={props.onChangeCaseType}
           />
         </Grid>
         <Grid item xs={12}>
           <AppBanner
-            label="Deaths"
+            label={CaseType.Deaths}
             value={death}
             increase={deathNew}
             selectable={true}
-            style={{ background: "#4b4743" }}
+            style={{ background: Constants.deathColor }}
+            selected={props.caseType}
+            onClick={props.onChangeCaseType}
           />
         </Grid>
       </Grid>

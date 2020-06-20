@@ -2,7 +2,11 @@ import React, { useRef, useEffect, useState } from "react";
 import Chart, { InteractionMode } from "chart.js";
 import moment from "moment";
 import AppProgress from "../../shared/component/progress/AppProgress";
-import { PHCase } from "../../shared/service/main.service";
+import {
+  PHCase,
+  RemovalType,
+  CaseType,
+} from "../../shared/service/main.service";
 import {
   FormControl,
   Select,
@@ -11,24 +15,21 @@ import {
   useMediaQuery,
 } from "@material-ui/core";
 import theme from "../../shared/theme";
+import { Constants } from "../../shared/Constants";
 
 interface Props {
-  data: PHCase[] | undefined;
+  data: { data: PHCase[]; caseType: CaseType } | undefined;
   date: string;
 }
 
 const DailyTimeChart: React.FC<Props> = (props: Props) => {
   const chartRef = useRef<HTMLCanvasElement>(null);
   const [chart, setChart] = useState<Chart>();
-  const active = "active";
-  const confirmed = "confirmed";
-  const recovered = "recovered";
-  const deaths = "deaths";
   const tooltipMode: InteractionMode = "index";
-  // const cutoff = Date.parse("03/01/2020");
   const cutoff = Date.parse("02/01/2020");
   const matches = useMediaQuery(theme.breakpoints.down("xs"));
 
+  const dateFormat = "M/D/YY";
   const allProvinces = "All Regions";
   const allCities = "All Cities";
   const forValidation = "For Validation";
@@ -39,6 +40,10 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
     numeric: true,
     sensitivity: "base",
   });
+
+  const DailyConfirmed = "Daily Confirmed";
+  const DailyRecovered = "Daily Recovered";
+  const DailyDeaths = "Daily Deaths";
 
   const capitalize = (text: string) => {
     return text.charAt(0).toUpperCase() + text.slice(1);
@@ -113,72 +118,72 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
 
   const dataset: any = [
     {
-      label: capitalize(active),
+      label: CaseType.Active,
       fill: false,
       lineTension: 0,
       pointStyle: "circle",
       pointRadius: 0,
       borderWidth: 4,
-      borderColor: "#f6b44e",
-      backgroundColor: "#f6b44e",
+      borderColor: Constants.activeColor,
+      backgroundColor: Constants.activeColor,
       data: [],
       yAxisID: "cumulative-axis",
       type: "line",
     },
     {
-      label: capitalize(confirmed),
+      label: CaseType.Confirmed,
       fill: false,
       lineTension: 0,
       pointStyle: "circle",
       pointRadius: 0,
       borderWidth: 4,
-      borderColor: "#df734f",
-      backgroundColor: "#df734f",
+      borderColor: Constants.confirmedColor,
+      backgroundColor: Constants.confirmedColor,
       data: [],
       yAxisID: "cumulative-axis",
       type: "line",
     },
     {
-      label: capitalize(recovered),
+      label: CaseType.Recovered,
       fill: false,
       lineTension: 0,
       pointStyle: "circle",
       pointRadius: 0,
       borderWidth: 4,
-      borderColor: "#bfa37e",
-      backgroundColor: "#bfa37e",
+      borderColor: Constants.recoveredColor,
+      backgroundColor: Constants.recoveredColor,
       data: [],
       yAxisID: "cumulative-axis",
       type: "line",
     },
     {
-      label: capitalize(deaths),
+      label: CaseType.Deaths,
       fill: false,
       lineTension: 0,
       pointStyle: "circle",
       pointRadius: 0,
       borderWidth: 4,
-      borderColor: "#4b4743",
-      backgroundColor: "#4b4743",
+      borderColor: Constants.deathColor,
+      backgroundColor: Constants.deathColor,
       data: [],
       yAxisID: "cumulative-axis",
       type: "line",
     },
     {
-      label: "Daily Confirmed",
-      backgroundColor: "rgba(223, 115, 79, .6)",
+      label: DailyConfirmed,
+      backgroundColor: Constants.dailyConfirmedColor,
       data: [],
       yAxisID: "daily-axis",
     },
     {
-      label: "Daily Recovered",
-      backgroundColor: "rgba(191, 163, 126, .6)",
+      label: DailyRecovered,
+      backgroundColor: Constants.dailyRecoveredColor,
       data: [],
       yAxisID: "daily-axis",
     },
     {
-      label: "Daily Deaths",
-      backgroundColor: "rgba(75, 71, 67, .6)",
+      label: DailyDeaths,
+      backgroundColor: Constants.dailyDeathColor,
       data: [],
       yAxisID: "daily-axis",
     },
@@ -193,10 +198,10 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
   };
 
   useEffect(() => {
-    if (props.data) {
+    if (props.data?.data) {
       // Regions and Provinces
       const regMap = {};
-      props.data.forEach((d: PHCase) => {
+      props.data.data.forEach((d: PHCase) => {
         const region = `${d.RegionRes}` || forValidation;
         if (!regMap[region]) {
           regMap[region] = new Set();
@@ -205,18 +210,21 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
       });
       setRegionMap(regMap);
 
-      const canvas: HTMLCanvasElement = chartRef.current as HTMLCanvasElement;
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      const _chart = new Chart(canvas, {
-        type: "bar",
-        data: {
-          datasets: dataset,
-        },
-        options: option,
-      });
-      setChart(_chart);
-
-      populateDataset(_chart, props.data, province, city);
+      if (!chart) {
+        const canvas: HTMLCanvasElement = chartRef.current as HTMLCanvasElement;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        const _chart = new Chart(canvas, {
+          type: "bar",
+          data: {
+            datasets: dataset,
+          },
+          options: option,
+        });
+        setChart(_chart);
+        populateDataset(_chart, props.data.data, province, city);
+      } else {
+        populateDataset(undefined, props.data.data, province, city);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.data]);
@@ -265,23 +273,21 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
         }
       }
       filteredData.forEach((d: PHCase) => {
-        // const confDate = moment(d.DateRepConf, "DD/MM/YYYY").format("M/D/YY");
-        // const repRemDate = moment(d.DateRepRem, "DD/MM/YYYY").format("M/D/YY");
         const confDate = moment(
           new Date(d.DateOnset || d.DateSpecimen || d.DateRepConf)
-        ).format("M/D/YY");
-        if (d.RemovalType === "Died") {
+        ).format(dateFormat);
+        if (d.RemovalType === RemovalType.Died) {
           const diedDate = moment(new Date(d.DateDied || d.DateRepRem)).format(
-            "M/D/YY"
+            dateFormat
           );
           if (!dailyMap[diedDate]) {
             dailyMap[diedDate] = createMetric();
           }
           dailyMap[diedDate].death = dailyMap[diedDate].death + 1;
-        } else if (d.RemovalType === "Recovered") {
+        } else if (d.RemovalType === RemovalType.Recovered) {
           const recoveredDate = moment(
             new Date(d.DateRecover || d.DateRepRem)
-          ).format("M/D/YY");
+          ).format(dateFormat);
           if (!dailyMap[recoveredDate]) {
             dailyMap[recoveredDate] = createMetric();
           }
@@ -302,9 +308,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
         .forEach((date: string) => {
           if (new Date(date).getTime() >= cutoff) {
             dataset
-              .find(
-                (d: any) => d.label.toLowerCase() === recovered.toLowerCase()
-              )
+              .find((d: any) => d.label === CaseType.Recovered)
               .data.push({
                 x: new Date(date),
                 y: lastRecovered + dailyMap[date].recovered,
@@ -313,7 +317,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
           lastRecovered = lastRecovered + dailyMap[date].recovered;
           if (new Date(date).getTime() >= cutoff) {
             dataset
-              .find((d: any) => d.label.toLowerCase() === deaths.toLowerCase())
+              .find((d: any) => d.label === CaseType.Deaths)
               .data.push({
                 x: new Date(date),
                 y: lastDeath + dailyMap[date].death,
@@ -327,9 +331,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
           }
           if (new Date(date).getTime() >= cutoff) {
             dataset
-              .find(
-                (d: any) => d.label.toLowerCase() === confirmed.toLowerCase()
-              )
+              .find((d: any) => d.label === CaseType.Confirmed)
               .data.push({
                 x: new Date(date),
                 y: totalConfirmed,
@@ -338,81 +340,25 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
           lastConfirmed = totalConfirmed;
           if (new Date(date).getTime() >= cutoff) {
             dataset
-              .find((d: any) => d.label === "Daily Confirmed")
+              .find((d: any) => d.label === DailyConfirmed)
               .data.push({
                 x: new Date(date),
                 y: dailyMap[date].confirmed,
               });
             dataset
-              .find((d: any) => d.label === "Daily Recovered")
+              .find((d: any) => d.label === DailyRecovered)
               .data.push({
                 x: new Date(date),
                 y: dailyMap[date].recovered,
               });
             dataset
-              .find((d: any) => d.label === "Daily Deaths")
+              .find((d: any) => d.label === DailyDeaths)
               .data.push({
                 x: new Date(date),
                 y: dailyMap[date].death,
               });
           }
         });
-
-      // Populate date for latest date
-      // const latestDate = new Date(props.date);
-      // const confirmedData = dataset[1].data;
-      // if (
-      //   confirmedData.length > 0 &&
-      //   confirmedData[confirmedData.length - 1].x.getTime() <
-      //     latestDate.getTime()
-      // ) {
-      //   confirmedData.push({
-      //     x: latestDate,
-      //     y: confirmedData[confirmedData.length - 1].y,
-      //   });
-      // }
-      // const recoveredData = dataset[2].data;
-      // if (
-      //   recoveredData.length > 0 &&
-      //   recoveredData[recoveredData.length - 1].x.getTime() <
-      //     latestDate.getTime()
-      // ) {
-      //   recoveredData.push({
-      //     x: latestDate,
-      //     y: recoveredData[recoveredData.length - 1].y,
-      //   });
-      // }
-      // const deathData = dataset[3].data;
-      // if (
-      //   deathData.length > 0 &&
-      //   deathData[deathData.length - 1].x.getTime() < latestDate.getTime()
-      // ) {
-      //   deathData.push({ x: latestDate, y: deathData[deathData.length - 1].y });
-      // }
-      // const confirmedDataDaily = dataset[4].data;
-      // if (
-      //   confirmedDataDaily.length > 0 &&
-      //   confirmedDataDaily[confirmedDataDaily.length - 1].x.getTime() <
-      //     latestDate.getTime()
-      // ) {
-      //   confirmedDataDaily.push({ x: latestDate, y: 0 });
-      // }
-      // const recoveredDataDaily = dataset[5].data;
-      // if (
-      //   recoveredDataDaily.length > 0 &&
-      //   recoveredDataDaily[recoveredDataDaily.length - 1].x.getTime() <
-      //     latestDate.getTime()
-      // ) {
-      //   recoveredDataDaily.push({ x: latestDate, y: 0 });
-      // }
-      // const deathDataDaily = dataset[6].data;
-      // if (
-      //   deathDataDaily.length > 0 &&
-      //   deathDataDaily[deathDataDaily.length - 1].x.getTime() <
-      //     latestDate.getTime()
-      // ) {
-      //   deathDataDaily.push({ x: latestDate, y: 0 });
-      // }
 
       // Populate active cases
       const activeData = dataset[0].data;
@@ -432,11 +378,28 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
         });
       });
 
+      let _dataset = dataset.map((ds: any) => ds);
+      if (props.data?.caseType === CaseType.Confirmed) {
+        _dataset = dataset.filter((ds: any) =>
+          [CaseType.Active, CaseType.Confirmed, DailyConfirmed].includes(
+            ds.label
+          )
+        );
+      } else if (props.data?.caseType === CaseType.Recovered) {
+        _dataset = dataset.filter((ds: any) =>
+          [CaseType.Recovered, DailyRecovered].includes(ds.label)
+        );
+      } else if (props.data?.caseType === CaseType.Deaths) {
+        _dataset = dataset.filter((ds: any) =>
+          [CaseType.Deaths, DailyDeaths].includes(ds.label)
+        );
+      }
+
       if (_chart) {
-        _chart.data.datasets = dataset;
+        _chart.data.datasets = _dataset;
         _chart.update();
       } else if (chart) {
-        chart.data.datasets = dataset;
+        chart.data.datasets = _dataset;
         chart.update();
       }
     }
@@ -445,7 +408,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
   const onChangeProvince = (event: any) => {
     setProvince(event.target.value);
     setCity(allCities);
-    populateDataset(undefined, props.data, event.target.value, allCities);
+    populateDataset(undefined, props.data?.data, event.target.value, allCities);
   };
 
   const onChangeCity = (event: any, child: any) => {
@@ -455,7 +418,12 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
         _province = child.props.id.split("-")[0];
       }
       setCity(event.target.value);
-      populateDataset(undefined, props.data, _province, event.target.value);
+      populateDataset(
+        undefined,
+        props.data?.data,
+        _province,
+        event.target.value
+      );
     }
   };
 
@@ -543,7 +511,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
             </Select>
           </FormControl>
         </div>
-        <div style={{ height: "570px" }}>
+        <div style={{ height: "560px" }}>
           <canvas
             ref={chartRef}
             style={{ height: "100% !important", flexGrow: 1 }}
