@@ -53,14 +53,14 @@ const Summary: React.FC<Props> = (props: Props) => {
       setActiveNew(_confirmedNew - _recoveredNew - _deathNew);
 
       // Hardcode values if latest data is not yet available
-      // setConfirmed(28459);
-      // setRecovered(7378);
-      // setDeath(1130);
-      // setActive(19951);
-      // setConfirmedNew(661);
-      // setRecoveredNew(288);
-      // setDeathNew(14);
-      // setActiveNew(661 - 288 - 14);
+      setConfirmed(29400);
+      setRecovered(7650);
+      setDeath(1150);
+      setActive(20600);
+      setConfirmedNew(943);
+      setRecoveredNew(272);
+      setDeathNew(20);
+      setActiveNew(943 - 272 - 20);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.data]);
