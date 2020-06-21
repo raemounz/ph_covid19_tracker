@@ -4,7 +4,7 @@ export const bannerStyles = makeStyles(() =>
   createStyles({
     container: {
       display: "flex",
-      height: "100%",
+      height: "156px",
     },
     banner: {
       padding: "16px 6px 16px 16px",
@@ -12,11 +12,13 @@ export const bannerStyles = makeStyles(() =>
       fontSize: "1.6em",
       textAlign: "center",
       "&:hover": {
-        borderRight: "#f6b44e 12px solid !important"
-      }
+        borderRight: "#f6b44e 12px solid !important",
+      },
+      display: "flex",
+      flexDirection: "column"
     },
     selectable: {
-      cursor: "pointer"
+      cursor: "pointer",
     },
     value: {
       fontSize: "2.1em",
@@ -28,7 +30,10 @@ export const bannerStyles = makeStyles(() =>
       fontWeight: "normal",
     },
     increase: {
-      fontSize: ".8em"
+      fontSize: ".7em",
+    },
+    regionCity: {
+      fontSize: "0.54em",
     },
   })
 );

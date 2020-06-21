@@ -20,6 +20,7 @@ import { Constants } from "../../shared/Constants";
 interface Props {
   data: { data: PHCase[]; caseType: CaseType } | undefined;
   date: string;
+  onChangeRegionCity: (regionCity: any | undefined) => void;
 }
 
 const DailyTimeChart: React.FC<Props> = (props: Props) => {
@@ -30,17 +31,15 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
   const matches = useMediaQuery(theme.breakpoints.down("xs"));
 
   const dateFormat = "M/D/YY";
-  const allProvinces = "All Regions";
-  const allCities = "All Cities";
-  const forValidation = "For Validation";
   const [regionMap, setRegionMap] = useState({});
-  const [province, setProvince] = useState(allProvinces);
-  const [city, setCity] = useState(allCities);
+  const [province, setProvince] = useState(Constants.allProvinces);
+  const [city, setCity] = useState(Constants.allCities);
   const collator = new Intl.Collator(undefined, {
     numeric: true,
     sensitivity: "base",
   });
 
+  const [filteredCaseData, setFilteredCaseData] = useState<any>(undefined);
   const DailyConfirmed = "Daily Confirmed";
   const DailyRecovered = "Daily Recovered";
   const DailyDeaths = "Daily Deaths";
@@ -202,11 +201,11 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
       // Regions and Provinces
       const regMap = {};
       props.data.data.forEach((d: PHCase) => {
-        const region = `${d.RegionRes}` || forValidation;
+        const region = `${d.RegionRes}` || Constants.forValidation;
         if (!regMap[region]) {
           regMap[region] = new Set();
         }
-        regMap[region].add(d.CityMunRes || forValidation);
+        regMap[region].add(d.CityMunRes || Constants.forValidation);
       });
       setRegionMap(regMap);
 
@@ -244,8 +243,8 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
       // Clear chart data
       dataset.forEach((d: any) => (d.data = []));
 
-      if (_province === allProvinces) {
-        if (_city === allCities) {
+      if (_province === Constants.allProvinces) {
+        if (_city === Constants.allCities) {
           filteredData = data.filter(
             (d: PHCase) =>
               `${d.RegionRes}` !== _province && d.CityMunRes !== _city
@@ -254,21 +253,21 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
           filteredData = data.filter(
             (d: PHCase) =>
               `${d.RegionRes}` !== _province &&
-              (d.CityMunRes || forValidation) === _city
+              (d.CityMunRes || Constants.forValidation) === _city
           );
         }
       } else {
-        if (_city === allCities) {
+        if (_city === Constants.allCities) {
           filteredData = data.filter(
             (d: PHCase) =>
-              (`${d.RegionRes}` || forValidation) === _province &&
+              (`${d.RegionRes}` || Constants.forValidation) === _province &&
               d.CityMunRes !== _city
           );
         } else {
           filteredData = data.filter(
             (d: PHCase) =>
-              (`${d.RegionRes}` || forValidation) === _province &&
-              (d.CityMunRes || forValidation) === _city
+              (`${d.RegionRes}` || Constants.forValidation) === _province &&
+              (d.CityMunRes || Constants.forValidation) === _city
           );
         }
       }
@@ -378,6 +377,8 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
         });
       });
 
+      setFilteredCaseData(dataset);
+
       let _dataset = dataset.map((ds: any) => ds);
       if (props.data?.caseType === CaseType.Confirmed) {
         _dataset = dataset.filter((ds: any) =>
@@ -407,15 +408,20 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
 
   const onChangeProvince = (event: any) => {
     setProvince(event.target.value);
-    setCity(allCities);
-    populateDataset(undefined, props.data?.data, event.target.value, allCities);
+    setCity(Constants.allCities);
+    populateDataset(
+      undefined,
+      props.data?.data,
+      event.target.value,
+      Constants.allCities
+    );
   };
 
   const onChangeCity = (event: any, child: any) => {
     if (event.target.value) {
-      let _province = allProvinces;
+      let _province = Constants.allProvinces;
       if (child.props.id) {
-        _province = child.props.id.split("-")[0];
+        _province = child.props.id.split("|")[0];
       }
       setCity(event.target.value);
       populateDataset(
@@ -426,6 +432,35 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
       );
     }
   };
+
+  const getCaseTotal = (caseType: CaseType, data: any) => {
+    const _data = data.find((d: any) => d.label === caseType).data;
+    return _data[_data.length - 1].y;
+  };
+
+  useEffect(() => {
+    if (province !== Constants.allProvinces || city !== Constants.allCities) {
+      const _summary = {
+        [CaseType.Active]: getCaseTotal(CaseType.Active, filteredCaseData),
+        [CaseType.Confirmed]: getCaseTotal(
+          CaseType.Confirmed,
+          filteredCaseData
+        ),
+        [CaseType.Recovered]: getCaseTotal(
+          CaseType.Recovered,
+          filteredCaseData
+        ),
+        [CaseType.Deaths]: getCaseTotal(CaseType.Deaths, filteredCaseData),
+      };
+      props.onChangeRegionCity({
+        summary: _summary,
+        regionCity: `${province}, ${city}`,
+      });
+    } else {
+      props.onChangeRegionCity(undefined);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [province, city]);
 
   return (
     <>
@@ -444,8 +479,11 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
             style={{ width: "100%", marginBottom: "5px" }}
           >
             <Select value={province} onChange={onChangeProvince}>
-              <MenuItem value={allProvinces} style={{ fontSize: ".9em" }}>
-                {allProvinces}
+              <MenuItem
+                value={Constants.allProvinces}
+                style={{ fontSize: ".9em" }}
+              >
+                {Constants.allProvinces}
               </MenuItem>
               {Object.keys(regionMap)
                 .sort(collator.compare)
@@ -465,13 +503,13 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
           >
             <Select value={city} onChange={onChangeCity}>
               <MenuItem
-                id={`${province}-${allCities}`}
-                value={allCities}
+                id={`${province}|${Constants.allCities}`}
+                value={Constants.allCities}
                 style={{ fontSize: ".9em" }}
               >
-                {allCities}
+                {Constants.allCities}
               </MenuItem>
-              {province === allProvinces
+              {province === Constants.allProvinces
                 ? Object.keys(regionMap)
                     .sort()
                     .map((r: string) => {
@@ -483,8 +521,8 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
                         .forEach((c: any) => {
                           group.push(
                             <MenuItem
-                              id={`${r}-${c}`}
-                              key={`${r}-${c}`}
+                              id={`${r}|${c}`}
+                              key={`${r}|${c}`}
                               value={c}
                               style={{ fontSize: ".9em" }}
                             >
@@ -499,8 +537,8 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
                     .map((c: any) => {
                       return (
                         <MenuItem
-                          id={`${province}-${c}`}
-                          key={`${province}-${c}`}
+                          id={`${province}|${c}`}
+                          key={`${province}|${c}`}
                           value={c}
                           style={{ fontSize: ".9em" }}
                         >

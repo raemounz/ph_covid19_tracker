@@ -12,6 +12,7 @@ interface Props {
 
 const MainSummary: React.FC<Props> = (props: Props) => {
   const [caseType, setCaseType] = useState(CaseType.Confirmed);
+  const [regionCityData, setRegionCityData] = useState<any>();
 
   return (
     <Grid container spacing={3}>
@@ -19,7 +20,11 @@ const MainSummary: React.FC<Props> = (props: Props) => {
         <Summary
           data={props.data}
           date={props.date}
-          caseType={caseType}
+          filter={{
+            caseType: caseType,
+            summary: regionCityData?.summary,
+            regionCity: regionCityData?.regionCity,
+          }}
           onChangeCaseType={(_case: any) => {
             if (caseType === _case) {
               setCaseType(CaseType.All);
@@ -70,6 +75,7 @@ const MainSummary: React.FC<Props> = (props: Props) => {
             <DailyTimeChart
               data={{ data: props.data, caseType: caseType }}
               date={props.date}
+              onChangeRegionCity={setRegionCityData}
             />
           }
         ></AppCard>

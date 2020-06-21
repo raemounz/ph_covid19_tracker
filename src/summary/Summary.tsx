@@ -7,7 +7,7 @@ import { Constants } from "../shared/Constants";
 interface Props {
   data: PHCase[] | undefined;
   date: string;
-  caseType: string;
+  filter: any;
   onChangeCaseType: (caseType: string) => void;
 }
 
@@ -53,17 +53,24 @@ const Summary: React.FC<Props> = (props: Props) => {
       setActiveNew(_confirmedNew - _recoveredNew - _deathNew);
 
       // Hardcode values if latest data is not yet available
-      setConfirmed(29400);
-      setRecovered(7650);
-      setDeath(1150);
-      setActive(20600);
-      setConfirmedNew(943);
-      setRecoveredNew(272);
-      setDeathNew(20);
-      setActiveNew(943 - 272 - 20);
+      if (!props.filter.summary) {
+        setConfirmed(29400);
+        setRecovered(7650);
+        setDeath(1150);
+        setActive(20600);
+        setConfirmedNew(943);
+        setRecoveredNew(272);
+        setDeathNew(20);
+        setActiveNew(943 - 272 - 20);
+      } else {
+        setConfirmed(props.filter.summary[CaseType.Confirmed]);
+        setRecovered(props.filter.summary[CaseType.Recovered]);
+        setDeath(props.filter.summary[CaseType.Deaths]);
+        setActive(props.filter.summary[CaseType.Active]);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.data]);
+  }, [props.data, props.filter.summary]);
 
   return (
     <Grid item xs={12}>
@@ -75,7 +82,8 @@ const Summary: React.FC<Props> = (props: Props) => {
             increase={activeNew}
             selectable={false}
             style={{ background: Constants.activeColor }}
-            selected={props.caseType}
+            selected={props.filter.caseType}
+            regionCity={props.filter.regionCity}
             onClick={() => {}}
           />
         </Grid>
@@ -86,7 +94,8 @@ const Summary: React.FC<Props> = (props: Props) => {
             increase={confirmedNew}
             selectable={true}
             style={{ background: Constants.confirmedColor }}
-            selected={props.caseType}
+            selected={props.filter.caseType}
+            regionCity={props.filter.regionCity}
             onClick={props.onChangeCaseType}
           />
         </Grid>
@@ -97,7 +106,8 @@ const Summary: React.FC<Props> = (props: Props) => {
             increase={recoveredNew}
             selectable={true}
             style={{ background: Constants.recoveredColor }}
-            selected={props.caseType}
+            selected={props.filter.caseType}
+            regionCity={props.filter.regionCity}
             onClick={props.onChangeCaseType}
           />
         </Grid>
@@ -108,7 +118,8 @@ const Summary: React.FC<Props> = (props: Props) => {
             increase={deathNew}
             selectable={true}
             style={{ background: Constants.deathColor }}
-            selected={props.caseType}
+            selected={props.filter.caseType}
+            regionCity={props.filter.regionCity}
             onClick={props.onChangeCaseType}
           />
         </Grid>

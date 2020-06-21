@@ -7,7 +7,8 @@ interface Props {
   label: string;
   desc?: string;
   value: number | string | undefined;
-  increase: number | undefined;
+  increase?: number | undefined;
+  regionCity?: string | undefined;
   selectable: boolean;
   style: { background: string };
   selected: string;
@@ -51,14 +52,22 @@ const AppBanner: React.FC<Props> = (props: Props) => {
         <Tooltip title={props.desc || ""} placement="top">
           <div>{props.label}</div>
         </Tooltip>
-        <div className={classes.increase}>
-          {increase > 0
-            ? `+ ${increase.toLocaleString()}`
-            : increase < 0
-            ? `- ${Math.abs(increase).toLocaleString()}`
-            : props.value
-            ? "No increase"
-            : "---"}
+        <div
+          className={clsx(classes.increase, {
+            [classes.regionCity]: props.regionCity,
+          })}
+        >
+          {!props.value && props.value !== 0 ? "---" : ""}
+          {!props.increase || !props.regionCity
+            ? increase > 0
+              ? `+ ${increase.toLocaleString()}`
+              : increase < 0
+              ? `- ${Math.abs(increase).toLocaleString()}`
+              : props.value && !props.regionCity
+              ? "No increase"
+              : ""
+            : ""}
+          {!props.regionCity || props.regionCity}
         </div>
       </div>
     </Paper>
