@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import Chart from "chart.js";
 import AppProgress from "../../shared/component/progress/AppProgress";
+import { RemovalType } from "../../shared/service/main.service";
 
 interface Props {
   data: any;
@@ -57,10 +58,10 @@ const ResidenceBarChart: React.FC<Props> = (props: Props) => {
             notAdmitted: 0,
           };
         }
-        if (d.RemovalType === "Died") {
+        if (d.RemovalType === RemovalType.Died) {
           residenceMap[d.CityMunRes].death =
             residenceMap[d.CityMunRes].death + 1;
-        } else if (d.RemovalType === "Recovered") {
+        } else if (d.RemovalType === RemovalType.Recovered) {
           residenceMap[d.CityMunRes].recovered =
             residenceMap[d.CityMunRes].recovered + 1;
         } else if (d.Admitted === "Yes") {

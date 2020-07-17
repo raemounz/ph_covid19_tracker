@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import Chart from "chart.js";
 import AppProgress from "../../shared/component/progress/AppProgress";
 import { FormControl, Select, MenuItem } from "@material-ui/core";
+import { RemovalType } from "../../shared/service/main.service";
 
 interface Props {
   data: any;
@@ -84,19 +85,19 @@ const AgeChart: React.FC<Props> = (props: Props) => {
         if (d.Sex === "Male") {
           ageMap[d.AgeGroup].confirmed.male =
             ageMap[d.AgeGroup].confirmed.male + 1;
-          if (d.RemovalType === "Died") {
+          if (d.RemovalType === RemovalType.Died) {
             ageMap[d.AgeGroup].death.male = ageMap[d.AgeGroup].death.male + 1;
-          } else if (d.RemovalType === "Recovered") {
+          } else if (d.RemovalType === RemovalType.Recovered) {
             ageMap[d.AgeGroup].recovered.male =
               ageMap[d.AgeGroup].recovered.male + 1;
           }
         } else {
           ageMap[d.AgeGroup].confirmed.female =
             ageMap[d.AgeGroup].confirmed.female + 1;
-          if (d.RemovalType === "Died") {
+          if (d.RemovalType === RemovalType.Died) {
             ageMap[d.AgeGroup].death.female =
               ageMap[d.AgeGroup].death.female + 1;
-          } else if (d.RemovalType === "Recovered") {
+          } else if (d.RemovalType === RemovalType.Recovered) {
             ageMap[d.AgeGroup].recovered.female =
               ageMap[d.AgeGroup].recovered.female + 1;
           }

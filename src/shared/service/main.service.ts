@@ -106,8 +106,8 @@ export interface PHCase {
 }
 
 export enum RemovalType {
-  Recovered = "Recovered",
-  Died = "Died",
+  Recovered = "RECOVERED",
+  Died = "DIED",
 }
 
 export enum CaseType {

@@ -36,12 +36,12 @@ const Summary: React.FC<Props> = (props: Props) => {
       ).length;
       const _recoveredNew = props.data.filter(
         (d: PHCase) =>
-          d.DateRepRem === currentDate &&
+          d.DateRecover === currentDate &&
           d.RemovalType === RemovalType.Recovered
       ).length;
       const _deathNew = props.data.filter(
         (d: PHCase) =>
-          d.DateRepRem === currentDate && d.RemovalType === RemovalType.Died
+          d.DateDied === currentDate && d.RemovalType === RemovalType.Died
       ).length;
       setConfirmed(_confirmed);
       setRecovered(_recovered);

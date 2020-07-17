@@ -276,7 +276,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
           new Date(d.DateOnset || d.DateSpecimen || d.DateRepConf)
         ).format(dateFormat);
         if (d.RemovalType === RemovalType.Died) {
-          const diedDate = moment(new Date(d.DateDied || d.DateRepRem)).format(
+          const diedDate = moment(new Date(d.DateDied || d.DateRepConf)).format(
             dateFormat
           );
           if (!dailyMap[diedDate]) {
@@ -285,7 +285,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
           dailyMap[diedDate].death = dailyMap[diedDate].death + 1;
         } else if (d.RemovalType === RemovalType.Recovered) {
           const recoveredDate = moment(
-            new Date(d.DateRecover || d.DateRepRem)
+            new Date(d.DateRecover || d.DateRepConf)
           ).format(dateFormat);
           if (!dailyMap[recoveredDate]) {
             dailyMap[recoveredDate] = createMetric();
