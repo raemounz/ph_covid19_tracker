@@ -22,7 +22,7 @@ import html2canvas from "html2canvas";
 import MainSummary from "./summary/MainSummary";
 
 const App: React.FC = () => {
-  const date = "2020-07-16";
+  const date = "2020-07-18";
   const [data, setData] = useState<PHCase[]>();
 
   useEffect(() => {
