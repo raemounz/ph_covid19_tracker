@@ -54,14 +54,14 @@ const Summary: React.FC<Props> = (props: Props) => {
 
       // Hardcode values if latest data is not yet available
       if (!props.filter.summary) {
-        setConfirmed(80448);
-        setRecovered(26110);
-        setDeath(1932);
-        setActive(52406);
-        setConfirmedNew(80448 - 78412);
-        setRecoveredNew(26110 - 25752);
-        setDeathNew(1932 - 1897);
-        setActiveNew((80448 - 78412) - (26110 - 25752) - (1932 - 1897));
+        setConfirmed(85486);
+        setRecovered(26996);
+        setDeath(1962);
+        setActive(56528);
+        setConfirmedNew(85486 - 83673);
+        setRecoveredNew(26996 - 26617);
+        setDeathNew(1962 - 1947);
+        setActiveNew((85486 - 83673) - (26996 - 26617) - (1962 - 1947));
       } else {
         setConfirmed(props.filter.summary[CaseType.Confirmed]);
         setRecovered(props.filter.summary[CaseType.Recovered]);
