@@ -48,9 +48,9 @@ const Summary: React.FC<Props> = (props: Props) => {
       setDeath(_death);
       setActive(_confirmed - _recovered - _death);
       setConfirmedNew(_confirmedNew);
-      setRecoveredNew(_recoveredNew);
-      setDeathNew(_deathNew);
-      setActiveNew(_confirmedNew - _recoveredNew - _deathNew);
+      // setRecoveredNew(_recoveredNew);
+      // setDeathNew(_deathNew);
+      // setActiveNew(_confirmedNew - _recoveredNew - _deathNew);
 
       // Hardcode values if latest data is not yet available
       if (!props.filter.summary) {
