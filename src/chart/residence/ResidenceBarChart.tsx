@@ -64,7 +64,7 @@ const ResidenceBarChart: React.FC<Props> = (props: Props) => {
         } else if (d.RemovalType === RemovalType.Recovered) {
           residenceMap[d.CityMunRes].recovered =
             residenceMap[d.CityMunRes].recovered + 1;
-        } else if (d.Admitted === "Yes") {
+        } else if (d.Admitted === "YES") {
           residenceMap[d.CityMunRes].admitted =
             residenceMap[d.CityMunRes].admitted + 1;
         } else {
