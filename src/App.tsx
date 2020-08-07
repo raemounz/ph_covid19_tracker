@@ -20,9 +20,10 @@ import ResidenceBarChart from "./chart/residence/ResidenceBarChart";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import html2canvas from "html2canvas";
 import MainSummary from "./summary/MainSummary";
+import MainAgeChart from "./chart/age/MainAgeChart";
 
 const App: React.FC = () => {
-  const date = "2020-08-05";
+  const date = "2020-08-07";
   const [data, setData] = useState<PHCase[]>();
 
   useEffect(() => {
@@ -65,12 +66,12 @@ const App: React.FC = () => {
                 <Grid item xs={12} md={6}>
                   <AppCard
                     id="localCases"
-                    title="Local Cases"
+                    title="Local Cases (Top 30 Cities)"
                     style={{
-                      height: "650px",
+                      height: "600px",
                       content: {
                         position: "relative",
-                        height: "calc(100% - 92px)",
+                        height: "calc(100% - 76px)",
                         padding: "0 16px",
                         overflow: "auto",
                       },
@@ -87,20 +88,7 @@ const App: React.FC = () => {
                     content={<ResidenceBarChart data={data} />}
                   ></AppCard>
                 </Grid>
-                <Grid item xs={12} md={6}>
-                  <AppCard
-                    id="casesByAgeGroup"
-                    title="Cases by Age Group"
-                    style={{
-                      height: "650px",
-                      content: {
-                        height: "calc(100% - 60px)",
-                        paddingTop: 0,
-                      },
-                    }}
-                    content={<AgeChart data={data} />}
-                  ></AppCard>
-                </Grid>
+                <MainAgeChart data={data} />
               </Grid>
             </Grid>
             <Grid item xs={12}>

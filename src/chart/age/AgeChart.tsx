@@ -1,19 +1,18 @@
 import React, { useRef, useEffect, useState } from "react";
 import Chart from "chart.js";
 import AppProgress from "../../shared/component/progress/AppProgress";
-import { FormControl, Select, MenuItem } from "@material-ui/core";
-import { RemovalType } from "../../shared/service/main.service";
+import { RemovalType, PHCase } from "../../shared/service/main.service";
 
 interface Props {
-  data: any;
+  data: { data: PHCase[]; caseType: string } | undefined;
 }
 
 const AgeChart: React.FC<Props> = (props: Props) => {
   const chartRef = useRef<HTMLCanvasElement>(null);
   const [chart, setChart] = useState<Chart>();
-  const [caseType, setCaseType] = useState("confirmed");
   const [dataMap, setDataMap] = useState({});
   const [labels, setLabels] = useState<string[]>([]);
+  const [isDataLoaded, setIsDataLoaded] = useState(false);
 
   const caseColor = {
     active: { male: "#f6b44e", female: "rgba(246, 180, 78, .6)" },
@@ -59,9 +58,9 @@ const AgeChart: React.FC<Props> = (props: Props) => {
   };
 
   useEffect(() => {
-    if (props.data) {
+    if (props.data?.data) {
       const ageMap = {};
-      props.data.forEach((d: any) => {
+      props.data.data.forEach((d: any) => {
         if (!ageMap[d.AgeGroup]) {
           ageMap[d.AgeGroup] = {
             active: {
@@ -82,7 +81,7 @@ const AgeChart: React.FC<Props> = (props: Props) => {
             },
           };
         }
-        if (d.Sex === "Male") {
+        if (d.Sex === "MALE") {
           ageMap[d.AgeGroup].confirmed.male =
             ageMap[d.AgeGroup].confirmed.male + 1;
           if (d.RemovalType === RemovalType.Died) {
@@ -127,19 +126,35 @@ const AgeChart: React.FC<Props> = (props: Props) => {
         });
       setLabels(_labels);
 
-      const canvas: HTMLCanvasElement = chartRef.current as HTMLCanvasElement;
-      // eslint-disable-next-line react-hooks/exhaustive-deps
-      const _chart = new Chart(canvas, {
-        type: "horizontalBar",
-        data: {
-          labels: _labels,
-          datasets: [],
-        },
-        options: option,
-      });
-      setChart(_chart);
-      populateDataset(_chart, ageMap, _labels, caseType);
+      if (!isDataLoaded) {
+        const canvas: HTMLCanvasElement = chartRef.current as HTMLCanvasElement;
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+        const _chart = new Chart(canvas, {
+          type: "horizontalBar",
+          data: {
+            labels: _labels,
+            datasets: [],
+          },
+          options: option,
+        });
+        setChart(_chart);
+        setIsDataLoaded(true);
+        populateDataset(
+          _chart,
+          ageMap,
+          _labels,
+          props.data.caseType.toLowerCase()
+        );
+      } else {
+        populateDataset(
+          undefined,
+          ageMap,
+          _labels,
+          props.data.caseType.toLowerCase()
+        );
+      }
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.data]);
 
   const populateDataset = (
@@ -169,11 +184,6 @@ const AgeChart: React.FC<Props> = (props: Props) => {
     }
   };
 
-  const onChangeCaseType = (event) => {
-    setCaseType(event.target.value);
-    populateDataset(undefined, dataMap, labels, event.target.value);
-  };
-
   return (
     <>
       {!props.data && <AppProgress />}
@@ -183,25 +193,6 @@ const AgeChart: React.FC<Props> = (props: Props) => {
           flexDirection: "column",
         }}
       >
-        <FormControl
-          variant="outlined"
-          style={{ minWidth: "150px", marginBottom: "15px" }}
-        >
-          <Select value={caseType} onChange={onChangeCaseType}>
-            <MenuItem value="active" style={{ fontSize: ".9em" }}>
-              Active
-            </MenuItem>
-            <MenuItem value="confirmed" style={{ fontSize: ".9em" }}>
-              Confirmed
-            </MenuItem>
-            <MenuItem value="recovered" style={{ fontSize: ".9em" }}>
-              Recovered
-            </MenuItem>
-            <MenuItem value="death" style={{ fontSize: ".9em" }}>
-              Deaths
-            </MenuItem>
-          </Select>
-        </FormControl>
         <div style={{ height: "520px" }}>
           <canvas
             ref={chartRef}

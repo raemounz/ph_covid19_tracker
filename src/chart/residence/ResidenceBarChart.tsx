@@ -24,7 +24,6 @@ const ResidenceBarChart: React.FC<Props> = (props: Props) => {
       ],
       yAxes: [
         {
-          barPercentage: 1,
           ticks: {
             autoSkip: false,
             fontSize: 13,
@@ -85,7 +84,7 @@ const ResidenceBarChart: React.FC<Props> = (props: Props) => {
             0
           );
           return residence2 - residence1;
-        });
+        }).slice(0, 30);
 
       const datasets = [
         {
@@ -139,15 +138,16 @@ const ResidenceBarChart: React.FC<Props> = (props: Props) => {
   }, [props.data]);
 
   return (
-    <div style={{ height: "28000px" }}>
+    <div style={{ height: "930px" }}>
       {!props.data && <AppProgress />}
       <canvas
         ref={chartRef}
         style={{
-          height: "28000px !important",
+          height: "930px !important",
           position: "absolute",
-          left: 0,
+          left: 16,
           top: 0,
+          bottom: 16
         }}
       ></canvas>
     </div>
