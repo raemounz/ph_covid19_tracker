@@ -6,11 +6,10 @@ const publicPath = path.join(__dirname, "..", "build");
 
 app.use(express.static(publicPath));
 app.use((req, res, next) => {
-  if (req.header('x-forwarded-proto') !== 'https') {
-    res.redirect(`https://${req.header('host')}${req.url}`)
-  } else {
-    next();
+  if (!req.secure && req.get('x-forwarded-proto') !== 'https' && process.env.NODE_ENV !== "development") {
+    return res.redirect('https://' + req.get('host') + req.url);
   }
+  next();
 });
 
 app.get("*", (req, res) => {
