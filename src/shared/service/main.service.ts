@@ -1,5 +1,4 @@
 import axios from "axios";
-import cases from "../../data/case.json";
 
 const nameMap = {
   "City of Manila": "Manila City",
@@ -129,12 +128,8 @@ class MainService {
     );
   }
 
-  getPHCases(): Promise<any> {
-    return new Promise((resolve: any) => {
-      setTimeout(() => {
-        resolve(cases);
-      }, 500);
-    });
+  getPHCases(url: string): Promise<any> {
+    return axios.get(`${url}/data/cases.csv`);
   }
 
   getGlobalCases(): Promise<any> {

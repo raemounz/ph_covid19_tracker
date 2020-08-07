@@ -13,7 +13,6 @@ import {
 import theme from "./shared/theme";
 import AppCard from "./shared/component/card/AppCard";
 import Header from "./header/Header";
-import AgeChart from "./chart/age/AgeChart";
 import GlobalList from "./chart/list/GlobalList";
 import { mainService, PHCase } from "./shared/service/main.service";
 import ResidenceBarChart from "./chart/residence/ResidenceBarChart";
@@ -21,14 +20,18 @@ import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import html2canvas from "html2canvas";
 import MainSummary from "./summary/MainSummary";
 import MainAgeChart from "./chart/age/MainAgeChart";
+import { readString } from "react-papaparse";
 
 const App: React.FC = () => {
   const date = "2020-08-07";
+  // const url = "http://localhost:3000";
+  const url = "https://covid19ph-tracker.herokuapp.com";
   const [data, setData] = useState<PHCase[]>();
 
   useEffect(() => {
-    mainService.getPHCases().then((response: any) => {
-      setData(response);
+    mainService.getPHCases(url).then((response: any) => {
+      const cases: any = readString(response.data, { header: true });
+      setData(cases.data);
     });
   }, []);
 
