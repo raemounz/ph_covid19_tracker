@@ -25,13 +25,19 @@ import { readString } from "react-papaparse";
 const App: React.FC = () => {
   const date = "2020-08-07";
   // const url = "http://localhost:3000";
-  const url = "https://covid19ph-tracker.herokuapp.com";
+  const url = "http://covid19ph-tracker.herokuapp.com";
+  const securedUrl = "https://covid19ph-tracker.herokuapp.com";
   const [data, setData] = useState<PHCase[]>();
 
   useEffect(() => {
-    mainService.getPHCases(url).then((response: any) => {
+    mainService.getPHCases(securedUrl).then((response: any) => {
       const cases: any = readString(response.data, { header: true });
       setData(cases.data);
+    }).catch(() => {
+      mainService.getPHCases(url).then((response: any) => {
+        const cases: any = readString(response.data, { header: true });
+        setData(cases.data);
+      })
     });
   }, []);
 
