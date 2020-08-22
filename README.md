@@ -6,7 +6,7 @@ This project provides timely information of COVID-19 cases in the Philippines.
 
 [<span style="font-size:16px">Live Demo</span>](https://covid19ph-tracker.herokuapp.com)
 
-![PH COVID-19 Tracker Preview](src/images/preview_v4.png)
+![PH COVID-19 Tracker Preview](src/images/preview_v5.png)
 
 ## Run
 
