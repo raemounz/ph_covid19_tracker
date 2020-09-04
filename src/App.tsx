@@ -23,7 +23,7 @@ import MainAgeChart from "./chart/age/MainAgeChart";
 import { readString } from "react-papaparse";
 
 const App: React.FC = () => {
-  const date = "2020-09-03";
+  const date = "2020-09-04";
   // const securedUrl = "http://localhost:3000";
   const url = "http://covid19ph-tracker.herokuapp.com";
   const securedUrl = "https://covid19ph-tracker.herokuapp.com";
