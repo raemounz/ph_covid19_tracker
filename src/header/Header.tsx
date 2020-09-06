@@ -33,11 +33,37 @@ const Header: React.FC<Props> = (props: Props) => {
           </div>
           <div style={{ marginTop: "10px" }}>Sources:</div>
           <ul>
-            <li>Department of Health of the Philippines (DOH)</li>
-            <li>NovelCOVID/API</li>
+            <li>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="http://www.doh.gov.ph/"
+                className={classes.link}
+              >
+                Department of Health of the Philippines (DOH)
+              </a>
+            </li>
+            <li>
+              <a
+                target="_blank"
+                rel="noopener noreferrer"
+                href="https://github.com/disease-sh/API"
+                className={classes.link}
+              >
+                NovelCOVID/API
+              </a>
+            </li>
           </ul>
           <div style={{ marginTop: "10px" }}>Developed by</div>
           <div>Raymond Halim</div>
+          <a
+            target="_blank"
+            rel="noopener noreferrer"
+            href="http://raymondhalim.com"
+            className={classes.link}
+          >
+            http://raymondhalim.com
+          </a>
         </div>
       </Dialog>
     </div>

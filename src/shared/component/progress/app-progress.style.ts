@@ -7,7 +7,7 @@ export const progressStyles = makeStyles(() =>
       height: "100%",
       width: "100%",
       justifyContent: "center",
-      alignItems: "center"
-    }
+      alignItems: "center",
+    },
   })
 );

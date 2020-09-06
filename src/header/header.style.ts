@@ -20,7 +20,7 @@ export const headerStyles = makeStyles((theme: Theme) =>
         fontSize: ".7em",
         marginBottom: "5px",
       },
-      fontWeight: "normal"
+      fontWeight: "normal",
     },
     about: {
       display: "flex",
@@ -33,6 +33,9 @@ export const headerStyles = makeStyles((theme: Theme) =>
       width: "55px",
       height: "36px",
       margin: "auto 15px auto 0",
+    },
+    link: {
+      textDecoration: "none",
     },
   })
 );

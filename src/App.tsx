@@ -7,39 +7,38 @@ import {
   Typography,
   ThemeProvider,
   Grid,
-  IconButton,
-  Tooltip,
 } from "@material-ui/core";
 import theme from "./shared/theme";
-import AppCard from "./shared/component/card/AppCard";
 import Header from "./header/Header";
 import GlobalList from "./chart/list/GlobalList";
+// eslint-disable-next-line no-unused-vars
 import { mainService, PHCase } from "./shared/service/main.service";
 import ResidenceBarChart from "./chart/residence/ResidenceBarChart";
-import CameraAltIcon from "@material-ui/icons/CameraAlt";
 import html2canvas from "html2canvas";
 import MainSummary from "./summary/MainSummary";
 import MainAgeChart from "./chart/age/MainAgeChart";
 import { readString } from "react-papaparse";
 
 const App: React.FC = () => {
-  const date = "2020-09-05";
-  // const securedUrl = "http://localhost:3000";
-  const url = "http://covid19ph-tracker.herokuapp.com";
-  const securedUrl = "https://covid19ph-tracker.herokuapp.com";
+  const date = `${process.env.REACT_APP_DATA_DATE}`;
   const [data, setData] = useState<PHCase[]>();
 
   useEffect(() => {
-    mainService.getPHCases(securedUrl).then((response: any) => {
-      const cases: any = readString(response.data, { header: true });
-      setData(cases.data);
-    }).catch(() => {
-      mainService.getPHCases(url).then((response: any) => {
-        const cases: any = readString(response.data, { header: true });
-        setData(cases.data);
-      })
-    });
+    mainService
+      .getPHCases(`${process.env.REACT_APP_DATA_URL_SECURED}`)
+      .then((response: any) => processData(response.data))
+      .catch(() => {
+        // This is a workaround if the triggered heroku site is http instead of https
+        mainService
+          .getPHCases(`${process.env.REACT_APP_DATA_URL}`)
+          .then((response: any) => processData(response.data));
+      });
   }, []);
+
+  const processData = (data: any) => {
+    const cases: any = readString(data, { header: true });
+    setData(cases.data);
+  };
 
   const takeScreenshot = (id: string) => {
     const element = document.getElementById(id) as HTMLElement;
@@ -49,7 +48,7 @@ const App: React.FC = () => {
       win.document.write(
         '<iframe src="' +
           dataUrl +
-          '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;" allowfullscreen></iframe>'
+          '" frameborder="0" style="border:0; top:0px; left:0px; bottom:0px; right:0px; width:100%; height:100%;"></iframe>'
       );
     });
   };
@@ -68,51 +67,22 @@ const App: React.FC = () => {
         <main className="container">
           <Grid container spacing={3}>
             <Grid item xs={12}>
-              <MainSummary data={data} date={date} />
+              <MainSummary
+                data={data}
+                date={date}
+                takeScreenshot={takeScreenshot}
+              />
             </Grid>
             <Grid item xs={12}>
               <Grid container spacing={3}>
                 <Grid item xs={12} md={6}>
-                  <AppCard
-                    id="localCases"
-                    title="Local Cases (Top 30 Cities)"
-                    style={{
-                      height: "600px",
-                      content: {
-                        position: "relative",
-                        height: "calc(100% - 76px)",
-                        padding: "0 16px",
-                        overflow: "auto",
-                      },
-                    }}
-                    action={
-                      <Tooltip title="Take a screenshot">
-                        <IconButton
-                          onClick={() => takeScreenshot("localCases")}
-                        >
-                          <CameraAltIcon />
-                        </IconButton>
-                      </Tooltip>
-                    }
-                    content={<ResidenceBarChart data={data} />}
-                  ></AppCard>
+                  <ResidenceBarChart data={data} />
                 </Grid>
                 <MainAgeChart data={data} />
               </Grid>
             </Grid>
             <Grid item xs={12}>
-              <AppCard
-                id="globalCases"
-                title="Global Cases"
-                style={{
-                  height: "588px",
-                  content: {
-                    height: "calc(100% - 60px)",
-                    paddingTop: 0,
-                  },
-                }}
-                content={<GlobalList />}
-              ></AppCard>
+              <GlobalList />
             </Grid>
           </Grid>
         </main>

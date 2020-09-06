@@ -64,7 +64,6 @@ const AppBanner: React.FC<Props> = (props: Props) => {
               : increase < 0
               ? `- ${Math.abs(increase).toLocaleString()}`
               : props.value && !props.regionCity
-              // ? "No increase"
               ? "---"
               : ""
             : ""}

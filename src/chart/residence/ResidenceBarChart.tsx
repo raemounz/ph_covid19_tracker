@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from "react";
 import Chart from "chart.js";
 import AppProgress from "../../shared/component/progress/AppProgress";
 import { RemovalType } from "../../shared/service/main.service";
+import AppCard from "../../shared/component/card/AppCard";
 
 interface Props {
   data: any;
@@ -84,7 +85,8 @@ const ResidenceBarChart: React.FC<Props> = (props: Props) => {
             0
           );
           return residence2 - residence1;
-        }).slice(0, 30);
+        })
+        .slice(0, 30);
 
       const datasets = [
         {
@@ -138,19 +140,34 @@ const ResidenceBarChart: React.FC<Props> = (props: Props) => {
   }, [props.data]);
 
   return (
-    <div style={{ height: "930px" }}>
-      {!props.data && <AppProgress />}
-      <canvas
-        ref={chartRef}
-        style={{
-          height: "930px !important",
-          position: "absolute",
-          left: 16,
-          top: 0,
-          bottom: 16
-        }}
-      ></canvas>
-    </div>
+    <AppCard
+      id="localCases"
+      title="Local Cases (Top 30 Cities)"
+      style={{
+        height: "600px",
+        content: {
+          position: "relative",
+          height: "calc(100% - 76px)",
+          padding: "0 16px",
+          overflow: "auto",
+        },
+      }}
+      content={
+        <div style={{ height: !props.data ? "600px" : "930px" }}>
+          {!props.data && <AppProgress />}
+          <canvas
+            ref={chartRef}
+            style={{
+              height: "930px !important",
+              position: "absolute",
+              left: 16,
+              top: 0,
+              bottom: 16,
+            }}
+          ></canvas>
+        </div>
+      }
+    ></AppCard>
   );
 };
 

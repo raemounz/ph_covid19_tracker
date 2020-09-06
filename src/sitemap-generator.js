@@ -8,11 +8,9 @@ const router = require("./routes.tsx").default;
 const Sitemap = require("react-router-sitemap").default;
 
 function generateSitemap() {
-  return (
-    new Sitemap(router())
-      .build("https://covid19ph-tracker.herokuapp.com")
-      .save("build/sitemap.xml")
-  );
+  return new Sitemap(router())
+    .build("https://covid19ph-tracker.herokuapp.com")
+    .save("build/sitemap.xml");
 }
 
 generateSitemap();

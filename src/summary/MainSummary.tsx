@@ -1,13 +1,22 @@
 import React, { useState } from "react";
-import { Grid, FormControl, Select, MenuItem } from "@material-ui/core";
+import {
+  Grid,
+  FormControl,
+  Select,
+  MenuItem,
+  Tooltip,
+  IconButton,
+} from "@material-ui/core";
 import Summary from "./Summary";
 import AppCard from "../shared/component/card/AppCard";
 import DailyTimeChart from "../chart/time/DailyTimeChart";
 import { CaseType } from "../shared/service/main.service";
+import CameraAltIcon from "@material-ui/icons/CameraAlt";
 
 interface Props {
   data: any;
   date: any;
+  takeScreenshot: any;
 }
 
 const MainSummary: React.FC<Props> = (props: Props) => {
@@ -15,7 +24,7 @@ const MainSummary: React.FC<Props> = (props: Props) => {
   const [regionCityData, setRegionCityData] = useState<any>();
 
   return (
-    <Grid container spacing={3}>
+    <Grid container spacing={3} id="mainSummary">
       <Grid item xs={12} md={3}>
         <Summary
           data={props.data}
@@ -77,6 +86,18 @@ const MainSummary: React.FC<Props> = (props: Props) => {
               date={props.date}
               onChangeRegionCity={setRegionCityData}
             />
+          }
+          action={
+            <span>
+              <Tooltip title="Take a screenshot">
+                <IconButton
+                  data-html2canvas-ignore
+                  onClick={() => props.takeScreenshot("mainSummary")}
+                >
+                  <CameraAltIcon />
+                </IconButton>
+              </Tooltip>
+            </span>
           }
         ></AppCard>
       </Grid>

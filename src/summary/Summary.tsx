@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Grid } from "@material-ui/core";
 import AppBanner from "../shared/component/banner/AppBanner";
+// eslint-disable-next-line no-unused-vars
 import { PHCase, RemovalType, CaseType } from "../shared/service/main.service";
 import { Constants } from "../shared/Constants";
 
@@ -17,9 +18,6 @@ const Summary: React.FC<Props> = (props: Props) => {
   const [death, setDeath] = useState<number | string>();
   const [active, setActive] = useState<number | string>();
   const [confirmedNew, setConfirmedNew] = useState<number>();
-  const [recoveredNew, setRecoveredNew] = useState<number>();
-  const [deathNew, setDeathNew] = useState<number>();
-  const [activeNew, setActiveNew] = useState<number>();
 
   useEffect(() => {
     if (props.data) {
@@ -34,40 +32,11 @@ const Summary: React.FC<Props> = (props: Props) => {
       const _confirmedNew = props.data.filter(
         (d: PHCase) => d.DateRepConf === currentDate
       ).length;
-      const _recoveredNew = props.data.filter(
-        (d: PHCase) =>
-          d.DateRecover === currentDate &&
-          d.RemovalType === RemovalType.Recovered
-      ).length;
-      const _deathNew = props.data.filter(
-        (d: PHCase) =>
-          d.DateDied === currentDate && d.RemovalType === RemovalType.Died
-      ).length;
       setConfirmed(_confirmed);
       setRecovered(_recovered);
       setDeath(_death);
       setActive(_confirmed - _recovered - _death);
       setConfirmedNew(_confirmedNew);
-      // setRecoveredNew(_recoveredNew);
-      // setDeathNew(_deathNew);
-      // setActiveNew(_confirmedNew - _recoveredNew - _deathNew);
-
-      // Hardcode values if latest data is not yet available
-      if (!props.filter.summary) {
-        // setConfirmed(85486);
-        // setRecovered(26996);
-        // setDeath(1962);
-        // setActive(56528);
-        // setConfirmedNew(85486 - 83673);
-        // setRecoveredNew(26996 - 26617);
-        // setDeathNew(1962 - 1947);
-        // setActiveNew((85486 - 83673) - (26996 - 26617) - (1962 - 1947));
-      } else {
-        setConfirmed(props.filter.summary[CaseType.Confirmed]);
-        setRecovered(props.filter.summary[CaseType.Recovered]);
-        setDeath(props.filter.summary[CaseType.Deaths]);
-        setActive(props.filter.summary[CaseType.Active]);
-      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.data, props.filter.summary]);
@@ -79,7 +48,6 @@ const Summary: React.FC<Props> = (props: Props) => {
           <AppBanner
             label={CaseType.Active}
             value={active}
-            increase={activeNew}
             selectable={false}
             style={{ background: Constants.activeColor }}
             selected={props.filter.caseType}
@@ -103,7 +71,6 @@ const Summary: React.FC<Props> = (props: Props) => {
           <AppBanner
             label={CaseType.Recovered}
             value={recovered}
-            increase={recoveredNew}
             selectable={true}
             style={{ background: Constants.recoveredColor }}
             selected={props.filter.caseType}
@@ -115,7 +82,6 @@ const Summary: React.FC<Props> = (props: Props) => {
           <AppBanner
             label={CaseType.Deaths}
             value={death}
-            increase={deathNew}
             selectable={true}
             style={{ background: Constants.deathColor }}
             selected={props.filter.caseType}

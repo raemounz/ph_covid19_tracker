@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useRef, useEffect, useState } from "react";
 import Chart from "chart.js";
 import AppProgress from "../../shared/component/progress/AppProgress";
@@ -10,8 +11,6 @@ interface Props {
 const AgeChart: React.FC<Props> = (props: Props) => {
   const chartRef = useRef<HTMLCanvasElement>(null);
   const [chart, setChart] = useState<Chart>();
-  const [dataMap, setDataMap] = useState({});
-  const [labels, setLabels] = useState<string[]>([]);
   const [isDataLoaded, setIsDataLoaded] = useState(false);
 
   const caseColor = {
@@ -115,8 +114,6 @@ const AgeChart: React.FC<Props> = (props: Props) => {
           _ageGroup.death.female;
       });
 
-      setDataMap(ageMap);
-
       const _labels = Object.keys(ageMap)
         .filter((group: string) => group)
         .sort((group1: string, group2: string) => {
@@ -124,7 +121,6 @@ const AgeChart: React.FC<Props> = (props: Props) => {
           const grp2 = getAge(group2);
           return grp1 - grp2;
         });
-      setLabels(_labels);
 
       if (!isDataLoaded) {
         const canvas: HTMLCanvasElement = chartRef.current as HTMLCanvasElement;
@@ -186,7 +182,7 @@ const AgeChart: React.FC<Props> = (props: Props) => {
 
   return (
     <>
-      {!props.data && <AppProgress />}
+      {!props.data?.data && <AppProgress />}
       <div
         style={{
           display: !props.data ? "none" : "flex",

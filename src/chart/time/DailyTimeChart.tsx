@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { useRef, useEffect, useState } from "react";
 import Chart, { InteractionMode } from "chart.js";
 import moment from "moment";
@@ -464,91 +465,96 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
 
   return (
     <>
-      {!props.data && <AppProgress />}
+      {!props.data?.data && <AppProgress />}
       <div
         style={{
           display: !props.data ? "none" : "flex",
           flexDirection: "column",
         }}
       >
-        <div
-          style={{ display: "flex", flexDirection: matches ? "column" : "row" }}
-        >
-          <FormControl
-            variant="outlined"
-            style={{ width: "100%", marginBottom: "5px" }}
+        {!props.data?.data || (
+          <div
+            style={{
+              display: "flex",
+              flexDirection: matches ? "column" : "row",
+            }}
           >
-            <Select value={province} onChange={onChangeProvince}>
-              <MenuItem
-                value={Constants.allProvinces}
-                style={{ fontSize: ".9em" }}
-              >
-                {Constants.allProvinces}
-              </MenuItem>
-              {Object.keys(regionMap)
-                .sort(collator.compare)
-                .map((r: string) => {
-                  return (
-                    <MenuItem key={r} value={r} style={{ fontSize: ".9em" }}>
-                      {r}
-                    </MenuItem>
-                  );
-                })}
-            </Select>
-          </FormControl>
-          <div style={{ width: matches ? "0" : "20px" }}></div>
-          <FormControl
-            variant="outlined"
-            style={{ width: "100%", marginBottom: "15px" }}
-          >
-            <Select value={city} onChange={onChangeCity}>
-              <MenuItem
-                id={`${province}|${Constants.allCities}`}
-                value={Constants.allCities}
-                style={{ fontSize: ".9em" }}
-              >
-                {Constants.allCities}
-              </MenuItem>
-              {province === Constants.allProvinces
-                ? Object.keys(regionMap)
-                    .sort()
-                    .map((r: string) => {
-                      const group = [
-                        <ListSubheader key={r}>{r}</ListSubheader>,
-                      ];
-                      Array.from(regionMap[r])
-                        .sort()
-                        .forEach((c: any) => {
-                          group.push(
-                            <MenuItem
-                              id={`${r}|${c}`}
-                              key={`${r}|${c}`}
-                              value={c}
-                              style={{ fontSize: ".9em" }}
-                            >
-                              {c}
-                            </MenuItem>
-                          );
-                        });
-                      return group;
-                    })
-                : Array.from(regionMap[province])
-                    .sort()
-                    .map((c: any) => {
-                      return (
-                        <MenuItem
-                          id={`${province}|${c}`}
-                          key={`${province}|${c}`}
-                          value={c}
-                          style={{ fontSize: ".9em" }}
-                        >
-                          {c}
-                        </MenuItem>
-                      );
-                    })}
-            </Select>
-          </FormControl>
-        </div>
+            <FormControl
+              variant="outlined"
+              style={{ width: "100%", marginBottom: "5px" }}
+            >
+              <Select value={province} onChange={onChangeProvince}>
+                <MenuItem
+                  value={Constants.allProvinces}
+                  style={{ fontSize: ".9em" }}
+                >
+                  {Constants.allProvinces}
+                </MenuItem>
+                {Object.keys(regionMap)
+                  .sort(collator.compare)
+                  .map((r: string) => {
+                    return (
+                      <MenuItem key={r} value={r} style={{ fontSize: ".9em" }}>
+                        {r}
+                      </MenuItem>
+                    );
+                  })}
+              </Select>
+            </FormControl>
+            <div style={{ width: matches ? "0" : "20px" }}></div>
+            <FormControl
+              variant="outlined"
+              style={{ width: "100%", marginBottom: "15px" }}
+            >
+              <Select value={city} onChange={onChangeCity}>
+                <MenuItem
+                  id={`${province}|${Constants.allCities}`}
+                  value={Constants.allCities}
+                  style={{ fontSize: ".9em" }}
+                >
+                  {Constants.allCities}
+                </MenuItem>
+                {province === Constants.allProvinces
+                  ? Object.keys(regionMap)
+                      .sort()
+                      .map((r: string) => {
+                        const group = [
+                          <ListSubheader key={r}>{r}</ListSubheader>,
+                        ];
+                        Array.from(regionMap[r])
+                          .sort()
+                          .forEach((c: any) => {
+                            group.push(
+                              <MenuItem
+                                id={`${r}|${c}`}
+                                key={`${r}|${c}`}
+                                value={c}
+                                style={{ fontSize: ".9em" }}
+                              >
+                                {c}
+                              </MenuItem>
+                            );
+                          });
+                        return group;
+                      })
+                  : Array.from(regionMap[province])
+                      .sort()
+                      .map((c: any) => {
+                        return (
+                          <MenuItem
+                            id={`${province}|${c}`}
+                            key={`${province}|${c}`}
+                            value={c}
+                            style={{ fontSize: ".9em" }}
+                          >
+                            {c}
+                          </MenuItem>
+                        );
+                      })}
+              </Select>
+            </FormControl>
+          </div>
+        )}
         <div style={{ height: "560px" }}>
           <canvas
             ref={chartRef}

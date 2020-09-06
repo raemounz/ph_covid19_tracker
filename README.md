@@ -10,7 +10,7 @@ This project provides timely information of COVID-19 cases in the Philippines.
 
 ## Run
 
-To run the app in the development mode, run `npm start`.
+To run the app in the development mode, run `npm run start:dev`.
 
 Open http://localhost:3000/.
 

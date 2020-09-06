@@ -12,6 +12,8 @@ import {
 import { globalListStyles } from "./global-list.style";
 import AppProgress from "../../shared/component/progress/AppProgress";
 import clsx from "clsx";
+import AppCard from "../../shared/component/card/AppCard";
+import { Constants } from "../../shared/Constants";
 
 const GlobalList: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
@@ -39,10 +41,10 @@ const GlobalList: React.FC = () => {
   ];
 
   const legends = [
-    { label: "Active", background: "#f6b44e" },
-    { label: "Confirmed", background: "#df734f" },
-    { label: "Recovered", background: "#bfa37e" },
-    { label: "Deaths", background: "#4b4743" },
+    { label: "Active", background: Constants.activeColor },
+    { label: "Confirmed", background: Constants.confirmedColor },
+    { label: "Recovered", background: Constants.recoveredColor },
+    { label: "Deaths", background: Constants.deathColor },
   ];
 
   useEffect(() => {
@@ -77,133 +79,155 @@ const GlobalList: React.FC = () => {
   };
 
   return (
-    <>
-      {isLoading ? (
-        <AppProgress />
-      ) : (
-        <div
-          style={{
-            display: isLoading ? "none" : "flex",
-            flexDirection: "column",
-            height: "100%",
-          }}
+    <AppCard
+      id="globalCases"
+      title="Cases"
+      style={{
+        height: "542px",
+        content: {
+          height: "calc(100% - 60px)",
+          paddingTop: 0,
+        },
+      }}
+      selection={
+        <FormControl
+          variant="outlined"
+          style={{ minWidth: "120px", top: "-3px", marginRight: "8px" }}
         >
-          <FormControl
-            variant="outlined"
-            style={{ minWidth: "150px", marginBottom: "10px" }}
-          >
-            <Select value={continent} onChange={onChangeContinent}>
-              {[allCountries].map((option: string) => {
-                const options = [
+          <Select value={continent} onChange={onChangeContinent}>
+            {[allCountries].map((option: string) => {
+              const options = [
+                <MenuItem
+                  key={option}
+                  value={option}
+                  style={{ fontSize: ".9em" }}
+                >
+                  {option}
+                </MenuItem>,
+                <MenuItem
+                  key={southEastAsia}
+                  value={southEastAsia}
+                  style={{ fontSize: ".9em" }}
+                >
+                  {southEastAsia}
+                </MenuItem>,
+              ];
+              Object.keys(continentMap).map((continent: string) => {
+                options.push(
                   <MenuItem
-                    key={option}
-                    value={option}
+                    key={continent}
+                    value={continent}
                     style={{ fontSize: ".9em" }}
                   >
-                    {option}
-                  </MenuItem>,
-                  <MenuItem
-                    key={southEastAsia}
-                    value={southEastAsia}
-                    style={{ fontSize: ".9em" }}
-                  >
-                    {southEastAsia}
-                  </MenuItem>,
-                ];
-                Object.keys(continentMap).map((continent: string) => {
-                  options.push(
-                    <MenuItem
-                      key={continent}
-                      value={continent}
-                      style={{ fontSize: ".9em" }}
-                    >
-                      {continent}
-                    </MenuItem>
-                  );
-                });
-                return options;
-              })}
-            </Select>
-          </FormControl>
-          <div className={classes.legend}>
-            {legends.map((legend: any) => {
-              return (
-                <div className={classes.legendItem} key={legend.label}>
-                  <div
-                    className={classes.legendBox}
-                    style={{ background: legend.background }}
-                  ></div>
-                  <div className={classes.legendLabel}>{legend.label}</div>
-                </div>
-              );
+                    {continent}
+                  </MenuItem>
+                );
+              });
+              return options;
             })}
-          </div>
-          <div style={{ height: "100%", flexGrow: 1, overflow: "auto" }}>
-            <List>
-              {cases
-                .filter((c: any) =>
-                  continent === allCountries
-                    ? true
-                    : continent === southEastAsia
-                    ? southEastCountries.includes(c.country)
-                    : continent === c.continent
-                )
-                .map((d: any, index: number) => {
+          </Select>
+        </FormControl>
+      }
+      content={
+        <>
+          {isLoading ? (
+            <AppProgress />
+          ) : (
+            <div
+              style={{
+                display: isLoading ? "none" : "flex",
+                flexDirection: "column",
+                height: "100%",
+              }}
+            >
+              <div className={classes.legend}>
+                {legends.map((legend: any) => {
                   return (
-                    <ListItem
-                      key={d.country}
-                      style={{ paddingRight: "8px", paddingLeft: "8px" }}
-                      className={clsx({ [classes.odd]: index % 2 === 0 }, classes.listItem)}
-                    >
+                    <div className={classes.legendItem} key={legend.label}>
                       <div
-                        className={clsx(classes.container, {
-                          [classes.containerCol]: matches,
-                        })}
-                      >
-                        <div className={classes.flagCountry}>
-                          <img src={d.flag} className={classes.flag}></img>
-                          <div className={classes.country}>{d.country}</div>
-                        </div>
-                        <div
-                          style={{
-                            display: "flex",
-                            flexDirection: "row",
-                            marginTop: matches ? "10px" : 0,
-                            overflow: "auto",
-                          }}
-                        >
-                          <div
-                            className={`${classes.metric} ${classes.active}`}
-                          >
-                            {(
-                              d.cases -
-                              d.recovered -
-                              d.deaths
-                            ).toLocaleString()}
-                          </div>
-                          <div className={`${classes.metric} ${classes.cases}`}>
-                            {d.cases ? d.cases.toLocaleString() : "-"}
-                          </div>
-                          <div
-                            className={`${classes.metric} ${classes.recovered}`}
-                          >
-                            {d.recovered ? d.recovered.toLocaleString() : "-"}
-                          </div>
-                          <div
-                            className={`${classes.metric} ${classes.deaths}`}
-                          >
-                            {d.deaths ? d.deaths.toLocaleString() : "-"}
-                          </div>
-                        </div>
-                      </div>
-                    </ListItem>
+                        className={classes.legendBox}
+                        style={{ background: legend.background }}
+                      ></div>
+                      <div className={classes.legendLabel}>{legend.label}</div>
+                    </div>
                   );
                 })}
-            </List>
-          </div>
-        </div>
-      )}
-    </>
+              </div>
+              <div style={{ height: "100%", flexGrow: 1, overflow: "auto" }}>
+                <List>
+                  {cases
+                    .filter((c: any) =>
+                      continent === allCountries
+                        ? true
+                        : continent === southEastAsia
+                        ? southEastCountries.includes(c.country)
+                        : continent === c.continent
+                    )
+                    .map((d: any, index: number) => {
+                      return (
+                        <ListItem
+                          key={d.country}
+                          style={{ paddingRight: "8px", paddingLeft: "8px" }}
+                          className={clsx(
+                            { [classes.odd]: index % 2 === 0 },
+                            classes.listItem
+                          )}
+                        >
+                          <div
+                            className={clsx(classes.container, {
+                              [classes.containerCol]: matches,
+                            })}
+                          >
+                            <div className={classes.flagCountry}>
+                              <img src={d.flag} className={classes.flag}></img>
+                              <div className={classes.country}>{d.country}</div>
+                            </div>
+                            <div
+                              style={{
+                                display: "flex",
+                                flexDirection: "row",
+                                marginTop: matches ? "10px" : 0,
+                                overflow: "auto",
+                              }}
+                            >
+                              <div
+                                className={`${classes.metric} ${classes.active}`}
+                              >
+                                {(
+                                  d.cases -
+                                  d.recovered -
+                                  d.deaths
+                                ).toLocaleString()}
+                              </div>
+                              <div
+                                className={`${classes.metric} ${classes.cases}`}
+                              >
+                                {d.cases ? d.cases.toLocaleString() : "-"}
+                              </div>
+                              <div
+                                className={`${classes.metric} ${classes.recovered}`}
+                              >
+                                {d.recovered
+                                  ? d.recovered.toLocaleString()
+                                  : "-"}
+                              </div>
+                              <div
+                                className={`${classes.metric} ${classes.deaths}`}
+                              >
+                                {d.deaths ? d.deaths.toLocaleString() : "-"}
+                              </div>
+                            </div>
+                          </div>
+                        </ListItem>
+                      );
+                    })}
+                </List>
+              </div>
+            </div>
+          )}
+        </>
+      }
+    ></AppCard>
   );
 };
 

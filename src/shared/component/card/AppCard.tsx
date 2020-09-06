@@ -18,6 +18,7 @@ const AppCard: React.FC<Props> = (props: Props) => {
       <div className={classes.header}>
         {props.selection}
         <div>{props.title}</div>
+        {!props.action || <div className={classes.action}>{props.action}</div>}
       </div>
       <CardContent
         className={classes.content}

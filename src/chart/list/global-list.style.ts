@@ -52,8 +52,8 @@ export const globalListStyles = makeStyles(() =>
     listItem: {
       border: "1px solid #fff",
       "&:hover": {
-        border: "1px solid #bfa37e"
-      }
+        border: "1px solid #bfa37e",
+      },
     },
     odd: {
       background: "#f0e9e3",

@@ -15,7 +15,7 @@ export const bannerStyles = makeStyles(() =>
         borderRight: "#f6b44e 12px solid !important",
       },
       display: "flex",
-      flexDirection: "column"
+      flexDirection: "column",
     },
     selectable: {
       cursor: "pointer",
