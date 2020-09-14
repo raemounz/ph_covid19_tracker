@@ -37,6 +37,12 @@ const Summary: React.FC<Props> = (props: Props) => {
       setDeath(_death);
       setActive(_confirmed - _recovered - _death);
       setConfirmedNew(_confirmedNew);
+      if (props.filter.summary) {
+        setConfirmed(props.filter.summary[CaseType.Confirmed]);
+        setRecovered(props.filter.summary[CaseType.Recovered]);
+        setDeath(props.filter.summary[CaseType.Deaths]);
+        setActive(props.filter.summary[CaseType.Active]);
+      }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [props.data, props.filter.summary]);

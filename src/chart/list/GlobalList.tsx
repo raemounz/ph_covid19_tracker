@@ -112,7 +112,7 @@ const GlobalList: React.FC = () => {
                   {southEastAsia}
                 </MenuItem>,
               ];
-              Object.keys(continentMap).map((continent: string) => {
+              Object.keys(continentMap).forEach((continent: string) => {
                 options.push(
                   <MenuItem
                     key={continent}
@@ -179,7 +179,11 @@ const GlobalList: React.FC = () => {
                             })}
                           >
                             <div className={classes.flagCountry}>
-                              <img src={d.flag} className={classes.flag}></img>
+                              <img
+                                src={d.flag}
+                                alt={d.country}
+                                className={classes.flag}
+                              ></img>
                               <div className={classes.country}>{d.country}</div>
                             </div>
                             <div
