@@ -159,7 +159,7 @@ const AgeChart: React.FC<Props> = (props: Props) => {
     _labels: string[],
     _caseType: string
   ) => {
-    let dataset = [
+    const dataset = [
       {
         label: "Male",
         backgroundColor: caseColor[_caseType].male,

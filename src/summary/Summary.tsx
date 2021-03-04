@@ -9,6 +9,7 @@ interface Props {
   data: PHCase[] | undefined;
   date: string;
   filter: any;
+  // eslint-disable-next-line no-unused-vars
   onChangeCaseType: (caseType: string) => void;
 }
 

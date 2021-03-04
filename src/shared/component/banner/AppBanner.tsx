@@ -12,6 +12,7 @@ interface Props {
   selectable: boolean;
   style: { background: string };
   selected: string;
+  // eslint-disable-next-line no-unused-vars
   onClick: (selected: string) => void;
 }
 
