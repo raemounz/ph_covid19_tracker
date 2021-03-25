@@ -274,7 +274,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
       }
       filteredData.forEach((d: PHCase) => {
         const confDate = moment(
-          new Date(d.DateOnset || d.DateSpecimen || d.DateRepConf)
+          new Date(d.DateRepConf || d.DateResultRelease || d.DateSpecimen || d.DateOnset )
         ).format(dateFormat);
         if (d.RemovalType === RemovalType.Died) {
           const diedDate = moment(new Date(d.DateDied || d.DateRepConf)).format(

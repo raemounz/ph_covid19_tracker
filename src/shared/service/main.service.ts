@@ -19,6 +19,7 @@ export interface PHCase {
   Sex: string;
   DateSpecimen: string;
   DateOnset: string;
+  DateResultRelease: string;
 }
 
 export enum RemovalType {
