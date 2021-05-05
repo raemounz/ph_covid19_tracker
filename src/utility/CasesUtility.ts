@@ -6,7 +6,7 @@ const csv = require("csv");
 const fs = require("fs");
 
 function processData() {
-  fs.createReadStream("/Users/raymondhalim/Downloads/DOH COVID Data Drop_ 20210503 - 04 Case Information.csv")
+  fs.createReadStream("/Users/raymondhalim/Downloads/DOH COVID Data Drop_ 20210504 - 04 Case Information.csv")
     .pipe(csv.parse({ columns: true }))
     .pipe(
       csv.transform((input) => {
