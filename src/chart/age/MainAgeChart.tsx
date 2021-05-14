@@ -2,16 +2,13 @@ import React, { useState } from "react";
 import { Grid, FormControl, Select, MenuItem } from "@material-ui/core";
 import AppCard from "../../shared/component/card/AppCard";
 import AgeChart from "./AgeChart";
+import { CaseType } from "../../shared/service/main.service";
 
-interface Props {
-  data: any;
-}
-
-const MainAgeChart: React.FC<Props> = (props: Props) => {
-  const [caseType, setCaseType] = useState("Confirmed");
+const MainAgeChart: React.FC = () => {
+  const [caseType, setCaseType] = useState(CaseType.Confirmed);
 
   return (
-    <Grid item xs={12} md={6}>
+    <Grid item xs={12} lg={6}>
       <AppCard
         id="casesByAgeGroup"
         title="Cases by Age Group"
@@ -31,8 +28,9 @@ const MainAgeChart: React.FC<Props> = (props: Props) => {
               value={caseType}
               onChange={(event: any) => setCaseType(event.target.value)}
             >
-              {["Active", "Confirmed", "Recovered", "Death"].map(
-                (item: string) => (
+              {Object.keys(CaseType)
+                .filter((ct: string) => ct !== CaseType.All)
+                .map((item: string) => (
                   <MenuItem
                     key={item}
                     value={item}
@@ -40,12 +38,11 @@ const MainAgeChart: React.FC<Props> = (props: Props) => {
                   >
                     {item}
                   </MenuItem>
-                )
-              )}
+                ))}
             </Select>
           </FormControl>
         }
-        content={<AgeChart data={{ data: props.data, caseType: caseType }} />}
+        content={<AgeChart caseType={caseType} />}
       ></AppCard>
     </Grid>
   );

@@ -14,26 +14,19 @@ import { CaseType } from "../shared/service/main.service";
 import CameraAltIcon from "@material-ui/icons/CameraAlt";
 
 interface Props {
-  data: any;
-  date: any;
   takeScreenshot: any;
 }
 
 const MainSummary: React.FC<Props> = (props: Props) => {
   const [caseType, setCaseType] = useState(CaseType.Confirmed);
-  const [regionCityData, setRegionCityData] = useState<any>();
+  const [regionCity, setRegionCity] = useState<any>();
 
   return (
     <Grid container spacing={3} id="mainSummary">
-      <Grid item xs={12} md={3}>
+      <Grid item xs={12} lg={3}>
         <Summary
-          data={props.data}
-          date={props.date}
-          filter={{
-            caseType: caseType,
-            summary: regionCityData?.summary,
-            regionCity: regionCityData?.regionCity,
-          }}
+          caseType={caseType}
+          onChangeRegionCity={setRegionCity}
           onChangeCaseType={(_case: any) => {
             if (caseType === _case) {
               setCaseType(CaseType.All);
@@ -43,7 +36,7 @@ const MainSummary: React.FC<Props> = (props: Props) => {
           }}
         />
       </Grid>
-      <Grid item xs={12} md={9}>
+      <Grid item xs={12} lg={9}>
         <AppCard
           id="casesByTime"
           title="Cases by Time"
@@ -81,11 +74,7 @@ const MainSummary: React.FC<Props> = (props: Props) => {
             </FormControl>
           }
           content={
-            <DailyTimeChart
-              data={{ data: props.data, caseType: caseType }}
-              date={props.date}
-              onChangeRegionCity={setRegionCityData}
-            />
+            <DailyTimeChart caseType={caseType} regionCity={regionCity} />
           }
           action={
             <span>

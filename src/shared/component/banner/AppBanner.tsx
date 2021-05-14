@@ -1,24 +1,22 @@
 import React from "react";
 import clsx from "clsx";
-import { Paper, CircularProgress, Tooltip } from "@material-ui/core";
+import { Paper, CircularProgress } from "@material-ui/core";
 import { bannerStyles } from "./app-banner.style";
 
 interface Props {
   label: string;
-  desc?: string;
   value: number | string | undefined;
   increase?: number | undefined;
-  regionCity?: string | undefined;
   selectable: boolean;
-  style: { background: string };
+  style: { background: string; minHeight?: number };
   selected: string;
+  inProgress: boolean;
   // eslint-disable-next-line no-unused-vars
   onClick: (selected: string) => void;
 }
 
 const AppBanner: React.FC<Props> = (props: Props) => {
   const classes = bannerStyles();
-  const increase = Number(props.increase);
 
   return (
     <Paper
@@ -44,32 +42,29 @@ const AppBanner: React.FC<Props> = (props: Props) => {
         onClick={() => props.onClick(props.label)}
       >
         <div
-          className={clsx(classes.value, {
-            [classes.valueNoData]: props.value === "No data",
-          })}
+          className={clsx(
+            classes.value,
+            {
+              [classes.valueNoData]: props.value === "No data",
+            },
+            { [classes.inProgressValue]: props.inProgress }
+          )}
         >
-          {props.value?.toLocaleString() || <CircularProgress size={30} />}
+          {props.inProgress && (
+            <CircularProgress size={30} style={{ position: "absolute" }} />
+          )}
+          {props.value?.toLocaleString()}
         </div>
-        <Tooltip title={props.desc || ""} placement="top">
-          <div>{props.label}</div>
-        </Tooltip>
-        <div
-          className={clsx(classes.increase, {
-            [classes.regionCity]: props.regionCity,
-          })}
-        >
-          {!props.value && props.value !== 0 ? "---" : ""}
-          {!props.increase || !props.regionCity
-            ? increase > 0
-              ? `+ ${increase.toLocaleString()}`
-              : increase < 0
-              ? `- ${Math.abs(increase).toLocaleString()}`
-              : props.value && !props.regionCity
-              ? "---"
-              : ""
-            : ""}
-          {!props.regionCity || props.regionCity}
-        </div>
+        <div>{props.label}</div>
+        {props.increase && (
+          <div
+            className={clsx(classes.increase, {
+              [classes.inProgressValue]: props.inProgress,
+            })}
+          >
+            {props.increase.toLocaleString()} new cases
+          </div>
+        )}
       </div>
     </Paper>
   );

@@ -6,7 +6,7 @@ export const Constants = {
   dailyConfirmedColor: "rgba(223, 115, 79, .6)",
   dailyRecoveredColor: "rgba(191, 163, 126, .6)",
   dailyDeathColor: "rgba(75, 71, 67, .6)",
-  allProvinces: "All Regions",
+  allRegions: "All Regions",
   allCities: "All Cities",
   forValidation: "For Validation"
 };

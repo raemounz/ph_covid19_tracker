@@ -1,99 +1,103 @@
 import React, { useEffect, useState } from "react";
 import { Grid } from "@material-ui/core";
+import { CaseType, mainService } from "../shared/service/main.service";
 import AppBanner from "../shared/component/banner/AppBanner";
-// eslint-disable-next-line no-unused-vars
-import { PHCase, RemovalType, CaseType } from "../shared/service/main.service";
 import { Constants } from "../shared/Constants";
+import RegionCity from "./RegionCity";
 
 interface Props {
-  data: PHCase[] | undefined;
-  date: string;
-  filter: any;
+  caseType: CaseType;
   // eslint-disable-next-line no-unused-vars
   onChangeCaseType: (caseType: string) => void;
+  // eslint-disable-next-line no-unused-vars
+  onChangeRegionCity: (regionCity: any) => void;
 }
 
 const Summary: React.FC<Props> = (props: Props) => {
-  const [confirmed, setConfirmed] = useState<number | string>();
-  const [recovered, setRecovered] = useState<number | string>();
-  const [death, setDeath] = useState<number | string>();
-  const [active, setActive] = useState<number | string>();
-  const [confirmedNew, setConfirmedNew] = useState<number>();
+  const [summary, setSummary] = useState<any>([]);
+  const [newCases, setNewCases] = useState<any>();
+  const [regionCity, setRegionCity] = useState<any>({
+    region: Constants.allRegions,
+    city: Constants.allCities,
+  });
+  const [inProgress, setInProgress] = useState(false);
 
   useEffect(() => {
-    if (props.data) {
-      const currentDate = props.date;
-      const _confirmed = props.data.length;
-      const _recovered = props.data.filter(
-        (d: PHCase) => d.RemovalType === RemovalType.Recovered
-      ).length;
-      const _death = props.data.filter(
-        (d: PHCase) => d.RemovalType === RemovalType.Died
-      ).length;
-      const _confirmedNew = props.data.filter(
-        (d: PHCase) => d.DateRepConf === currentDate
-      ).length;
-      setConfirmed(_confirmed);
-      setRecovered(_recovered);
-      setDeath(_death);
-      setActive(_confirmed - _recovered - _death);
-      setConfirmedNew(_confirmedNew);
-      if (props.filter.summary) {
-        setConfirmed(props.filter.summary[CaseType.Confirmed]);
-        setRecovered(props.filter.summary[CaseType.Recovered]);
-        setDeath(props.filter.summary[CaseType.Deaths]);
-        setActive(props.filter.summary[CaseType.Active]);
-      }
+    if (regionCity) {
+      setInProgress(true);
+      mainService
+        .getSummary(
+          regionCity.region === Constants.allRegions ? "" : regionCity.region,
+          regionCity.city === Constants.allCities ? "" : regionCity.city
+        )
+        .then((response: any) => {
+          setSummary(response.data.summary);
+          setNewCases(response.data.newCases);
+          setInProgress(false);
+        });
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [props.data, props.filter.summary]);
+  }, [regionCity]);
+
+  const getSummaryCount = (caseType: CaseType) => {
+    return summary.find(
+      (s: any) => s.case.toLowerCase() === caseType.toLowerCase()
+    )?.count;
+  };
 
   return (
     <Grid item xs={12}>
       <Grid container spacing={3}>
         <Grid item xs={12}>
+          <RegionCity
+            onChangeRegionCity={(rc: any) => {
+              setRegionCity(rc);
+              props.onChangeRegionCity(rc);
+            }}
+          />
+        </Grid>
+        <Grid item xs={12}>
           <AppBanner
             label={CaseType.Active}
-            value={active}
+            value={getSummaryCount(CaseType.Active)}
             selectable={false}
             style={{ background: Constants.activeColor }}
-            selected={props.filter.caseType}
-            regionCity={props.filter.regionCity}
+            selected={props.caseType}
             onClick={() => {}}
+            inProgress={inProgress}
           />
         </Grid>
         <Grid item xs={12}>
           <AppBanner
             label={CaseType.Confirmed}
-            value={confirmed}
-            increase={confirmedNew}
+            value={getSummaryCount(CaseType.Confirmed)}
+            increase={newCases}
             selectable={true}
-            style={{ background: Constants.confirmedColor }}
-            selected={props.filter.caseType}
-            regionCity={props.filter.regionCity}
+            style={{ background: Constants.confirmedColor, minHeight: 147 }}
+            selected={props.caseType}
             onClick={props.onChangeCaseType}
+            inProgress={inProgress}
           />
         </Grid>
         <Grid item xs={12}>
           <AppBanner
             label={CaseType.Recovered}
-            value={recovered}
+            value={getSummaryCount(CaseType.Recovered)}
             selectable={true}
             style={{ background: Constants.recoveredColor }}
-            selected={props.filter.caseType}
-            regionCity={props.filter.regionCity}
+            selected={props.caseType}
             onClick={props.onChangeCaseType}
+            inProgress={inProgress}
           />
         </Grid>
         <Grid item xs={12}>
           <AppBanner
             label={CaseType.Deaths}
-            value={death}
+            value={getSummaryCount(CaseType.Deaths)}
             selectable={true}
             style={{ background: Constants.deathColor }}
-            selected={props.filter.caseType}
-            regionCity={props.filter.regionCity}
+            selected={props.caseType}
             onClick={props.onChangeCaseType}
+            inProgress={inProgress}
           />
         </Grid>
       </Grid>

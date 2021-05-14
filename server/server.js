@@ -4,11 +4,16 @@ const app = express();
 const port = process.env.PORT || 3000;
 const publicPath = path.join(__dirname, "..", "build");
 const { MongoClient } = require("mongodb");
+const cors = require("cors");
+
+if (process.env.NODE_ENV === "production") {
+  app.use(cors());
+}
 
 app.use(express.static(publicPath));
 
-const db_username = `${process.env.REACT_APP_DB_USERNAME}`;
-const db_password = `${process.env.REACT_APP_DB_PASSWORD}`;
+const db_username = `${process.env.DB_USERNAME}`;
+const db_password = `${process.env.DB_PASSWORD}`;
 const uri = `mongodb+srv://${db_username}:${db_password}@phcovid19tracker.qnzno.mongodb.net/phcovid19`;
 
 MongoClient.connect(uri, (error, client) => {
@@ -63,7 +68,13 @@ MongoClient.connect(uri, (error, client) => {
       },
     ];
     coll.aggregate(query, (cmdErr, result) => {
-      result.toArray((err, r) => res.json(r));
+      result.toArray((err, r) => {
+        const map = {};
+        r.forEach((_r) => {
+          map[_r.region] = _r.cities;
+        });
+        res.json(map);
+      });
     });
   });
 
@@ -79,24 +90,54 @@ MongoClient.connect(uri, (error, client) => {
     }
     const query = [
       {
-        $group: {
-          _id: {
-            $cond: {
-              if: { $eq: ["$RemovalType", "DIED"] },
-              then: "DEATHS",
-              else: { $ifNull: ["$RemovalType", "ACTIVE"] },
+        $facet: {
+          summary: [
+            {
+              $group: {
+                _id: {
+                  $cond: {
+                    if: { $eq: ["$RemovalType", "DIED"] },
+                    then: "DEATHS",
+                    else: { $ifNull: ["$RemovalType", "ACTIVE"] },
+                  },
+                },
+                count: {
+                  $sum: 1,
+                },
+              },
             },
-          },
-          count: {
-            $sum: 1,
-          },
-        },
-      },
-      {
-        $project: {
-          case: "$_id",
-          count: "$count",
-          _id: 0,
+            {
+              $project: {
+                case: "$_id",
+                count: "$count",
+                _id: 0,
+              },
+            },
+          ],
+          increase: [
+            {
+              $group: {
+                _id: "$DateRepConf",
+                count: {
+                  $sum: 1,
+                },
+              },
+            },
+            {
+              $sort: {
+                _id: -1,
+              },
+            },
+            {
+              $limit: 1,
+            },
+            {
+              $project: {
+                count: "$count",
+                _id: 0,
+              },
+            },
+          ],
         },
       },
     ];
@@ -105,9 +146,11 @@ MongoClient.connect(uri, (error, client) => {
     }
     coll.aggregate(query, (cmdErr, result) => {
       result.toArray((err, r) => {
-        const total = r.reduce((a, b) => a + b.count, 0);
-        r.push({ case: "CONFIRMED", count: total });
-        res.json(r);
+        const total = r[0].summary.reduce((a, b) => a + b.count, 0);
+        r[0].summary.push({ case: "CONFIRMED", count: total });
+        r[0].newCases = r[0].increase[0]?.count;
+        delete r[0].increase;
+        res.json(r[0]);
       });
     });
   });
@@ -206,7 +249,7 @@ MongoClient.connect(uri, (error, client) => {
                     case: {
                       $eq: ["$RemovalType", "DIED"],
                     },
-                    then: "DIED",
+                    then: "DEATHS",
                   },
                   {
                     case: {
@@ -264,6 +307,12 @@ MongoClient.connect(uri, (error, client) => {
       result.toArray((err, r) => {
         r.forEach((_r) => {
           _r.cases.push({ case: "TOTAL", count: _r.total });
+          _r.cases.push({
+            case: "ACTIVE",
+            count: _r.cases
+              .filter((c) => ["ADMITTED", "NOT ADMITTED"].includes(c.case))
+              .reduce((a, b) => a + b.count, 0),
+          });
           delete _r.total;
         });
         res.json(r);
@@ -280,7 +329,11 @@ MongoClient.connect(uri, (error, client) => {
               $ifNull: ["$AgeGroup", "For Validation"],
             },
             status: {
-              $ifNull: ["$RemovalType", "ACTIVE"],
+              $cond: {
+                if: { $eq: ["$RemovalType", "DIED"] },
+                then: "DEATHS",
+                else: { $ifNull: ["$RemovalType", "ACTIVE"] },
+              },
             },
             sex: "$Sex",
           },
@@ -318,11 +371,26 @@ MongoClient.connect(uri, (error, client) => {
           const totalFemale = _r.cases
             .filter((c) => c.sex === "FEMALE")
             .reduce((a, b) => a + b.count, 0);
-          _r.cases.push({ case: "TOTAL", sex: "MALE", count: totalMale });
-          _r.cases.push({ case: "TOTAL", sex: "FEMALE", count: totalFemale });
+          _r.cases.push({ case: "CONFIRMED", sex: "MALE", count: totalMale });
+          _r.cases.push({
+            case: "CONFIRMED",
+            sex: "FEMALE",
+            count: totalFemale,
+          });
         });
-
-        res.json(r);
+        const ageMap = {};
+        r.forEach((_r) => {
+          ageMap[_r.ageGroup] = {};
+          _r.cases.forEach((c) => {
+            let caseType = ageMap[_r.ageGroup][c.case];
+            if (!caseType) {
+              caseType = {};
+            }
+            caseType[c.sex] = c.count;
+            ageMap[_r.ageGroup][c.case] = caseType;
+          });
+        });
+        res.json(ageMap);
       });
     });
   });

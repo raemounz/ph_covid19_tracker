@@ -1,23 +1,27 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import moment from "moment";
 import { headerStyles } from "./header.style";
 import { IconButton, Dialog, DialogTitle } from "@material-ui/core";
 import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
+import { mainService } from "../shared/service/main.service";
 
-interface Props {
-  date: string;
-}
-
-const Header: React.FC<Props> = (props: Props) => {
+const Header: React.FC = () => {
   const classes = headerStyles();
   const [showAbout, setShowAbout] = useState(false);
+  const [date, setDate] = useState<any>();
+
+  useEffect(() => {
+    mainService.getReportDate().then((response: any) => {
+      setDate(response.data.date);
+    });
+  }, []);
 
   return (
     <div className={classes.container}>
       <div className={classes.title}>
         <div>PH COVID-19 Tracker&nbsp;</div>
         <div className={classes.date}>
-          (as of {moment(props.date, "YYYY-MM-DD").format("ll")})
+          (as of {date && moment(date, "YYYY-MM-DD").format("ll")})
         </div>
       </div>
       <span style={{ flexGrow: 1 }}></span>

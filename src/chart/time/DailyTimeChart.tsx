@@ -3,25 +3,13 @@ import React, { useRef, useEffect, useState } from "react";
 import Chart, { InteractionMode } from "chart.js";
 import moment from "moment";
 import AppProgress from "../../shared/component/progress/AppProgress";
-import {
-  PHCase,
-  RemovalType,
-  CaseType,
-} from "../../shared/service/main.service";
-import {
-  FormControl,
-  Select,
-  MenuItem,
-  ListSubheader,
-  useMediaQuery,
-} from "@material-ui/core";
-import theme from "../../shared/theme";
+import { CaseType } from "../../shared/service/main.service";
 import { Constants } from "../../shared/Constants";
 
 interface Props {
-  data: { data: PHCase[]; caseType: CaseType } | undefined;
-  date: string;
-  onChangeRegionCity: (regionCity: any | undefined) => void;
+  data?: any;
+  caseType: CaseType;
+  regionCity: any;
 }
 
 const DailyTimeChart: React.FC<Props> = (props: Props) => {
@@ -29,17 +17,8 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
   const [chart, setChart] = useState<Chart>();
   const tooltipMode: InteractionMode = "index";
   const cutoff = Date.parse("02/01/2020");
-  const matches = useMediaQuery(theme.breakpoints.down("xs"));
-
+  
   const dateFormat = "M/D/YY";
-  const [regionMap, setRegionMap] = useState({});
-  const [province, setProvince] = useState(Constants.allProvinces);
-  const [city, setCity] = useState(Constants.allCities);
-  const collator = new Intl.Collator(undefined, {
-    numeric: true,
-    sensitivity: "base",
-  });
-
   const [filteredCaseData, setFilteredCaseData] = useState<any>(undefined);
   const DailyConfirmed = "Daily Confirmed";
   const DailyRecovered = "Daily Recovered";
@@ -198,17 +177,21 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
   };
 
   useEffect(() => {
+
+  }, [props.regionCity]);
+
+  useEffect(() => {
     if (props.data?.data) {
       // Regions and Provinces
-      const regMap = {};
-      props.data.data.forEach((d: PHCase) => {
-        const region = `${d.RegionRes}` || Constants.forValidation;
-        if (!regMap[region]) {
-          regMap[region] = new Set();
-        }
-        regMap[region].add(d.CityMunRes || Constants.forValidation);
-      });
-      setRegionMap(regMap);
+      // const regMap = {};
+      // props.data.data.forEach((d: any) => {
+      //   const region = `${d.RegionRes}` || Constants.forValidation;
+      //   if (!regMap[region]) {
+      //     regMap[region] = new Set();
+      //   }
+      //   regMap[region].add(d.CityMunRes || Constants.forValidation);
+      // });
+      // setRegionMap(regMap);
 
       if (!chart) {
         const canvas: HTMLCanvasElement = chartRef.current as HTMLCanvasElement;
@@ -221,9 +204,9 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
           options: option,
         });
         setChart(_chart);
-        populateDataset(_chart, props.data.data, province, city);
+        populateDataset(_chart, props.data.data, "province", "city");
       } else {
-        populateDataset(undefined, props.data.data, province, city);
+        populateDataset(undefined, props.data.data, "province", "city");
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -231,7 +214,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
 
   const populateDataset = (
     _chart: Chart | undefined,
-    data: PHCase[] | undefined,
+    data: any[] | undefined,
     _province: string,
     _city: string
   ) => {
@@ -239,20 +222,19 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
       // Daily cases
       const dailyMap = {};
       const sameRemConfDate: any = [];
-      let filteredData: PHCase[];
+      let filteredData: any[];
 
       // Clear chart data
       dataset.forEach((d: any) => (d.data = []));
 
-      if (_province === Constants.allProvinces) {
+      if (_province === Constants.allRegions) {
         if (_city === Constants.allCities) {
           filteredData = data.filter(
-            (d: PHCase) =>
-              `${d.RegionRes}` !== _province && d.CityMunRes !== _city
+            (d: any) => `${d.RegionRes}` !== _province && d.CityMunRes !== _city
           );
         } else {
           filteredData = data.filter(
-            (d: PHCase) =>
+            (d: any) =>
               `${d.RegionRes}` !== _province &&
               (d.CityMunRes || Constants.forValidation) === _city
           );
@@ -260,40 +242,45 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
       } else {
         if (_city === Constants.allCities) {
           filteredData = data.filter(
-            (d: PHCase) =>
+            (d: any) =>
               (`${d.RegionRes}` || Constants.forValidation) === _province &&
               d.CityMunRes !== _city
           );
         } else {
           filteredData = data.filter(
-            (d: PHCase) =>
+            (d: any) =>
               (`${d.RegionRes}` || Constants.forValidation) === _province &&
               (d.CityMunRes || Constants.forValidation) === _city
           );
         }
       }
-      filteredData.forEach((d: PHCase) => {
+      filteredData.forEach((d: any) => {
         const confDate = moment(
-          new Date(d.DateRepConf || d.DateResultRelease || d.DateSpecimen || d.DateOnset )
+          new Date(
+            d.DateRepConf ||
+              d.DateResultRelease ||
+              d.DateSpecimen ||
+              d.DateOnset
+          )
         ).format(dateFormat);
-        if (d.RemovalType === RemovalType.Died) {
-          const diedDate = moment(new Date(d.DateDied || d.DateRepConf)).format(
-            dateFormat
-          );
-          if (!dailyMap[diedDate]) {
-            dailyMap[diedDate] = createMetric();
-          }
-          dailyMap[diedDate].death = dailyMap[diedDate].death + 1;
-        } else if (d.RemovalType === RemovalType.Recovered) {
-          const recoveredDate = moment(
-            new Date(d.DateRecover || d.DateRepConf)
-          ).format(dateFormat);
-          if (!dailyMap[recoveredDate]) {
-            dailyMap[recoveredDate] = createMetric();
-          }
-          dailyMap[recoveredDate].recovered =
-            dailyMap[recoveredDate].recovered + 1;
-        }
+        // if (d.RemovalType === RemovalType.Died) {
+        //   const diedDate = moment(new Date(d.DateDied || d.DateRepConf)).format(
+        //     dateFormat
+        //   );
+        //   if (!dailyMap[diedDate]) {
+        //     dailyMap[diedDate] = createMetric();
+        //   }
+        //   dailyMap[diedDate].death = dailyMap[diedDate].death + 1;
+        // } else if (d.RemovalType === RemovalType.Recovered) {
+        //   const recoveredDate = moment(
+        //     new Date(d.DateRecover || d.DateRepConf)
+        //   ).format(dateFormat);
+        //   if (!dailyMap[recoveredDate]) {
+        //     dailyMap[recoveredDate] = createMetric();
+        //   }
+        //   dailyMap[recoveredDate].recovered =
+        //     dailyMap[recoveredDate].recovered + 1;
+        // }
         if (!dailyMap[confDate]) {
           dailyMap[confDate] = createMetric();
         }
@@ -407,61 +394,17 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
     }
   };
 
-  const onChangeProvince = (event: any) => {
-    setProvince(event.target.value);
-    setCity(Constants.allCities);
-    populateDataset(
-      undefined,
-      props.data?.data,
-      event.target.value,
-      Constants.allCities
-    );
-  };
-
-  const onChangeCity = (event: any, child: any) => {
-    if (event.target.value) {
-      let _province = Constants.allProvinces;
-      if (child.props.id) {
-        _province = child.props.id.split("|")[0];
-      }
-      setCity(event.target.value);
-      populateDataset(
-        undefined,
-        props.data?.data,
-        _province,
-        event.target.value
-      );
-    }
-  };
-
   const getCaseTotal = (caseType: CaseType, data: any) => {
     const _data = data.find((d: any) => d.label === caseType).data;
     return _data[_data.length - 1].y;
   };
 
-  useEffect(() => {
-    if (province !== Constants.allProvinces || city !== Constants.allCities) {
-      const _summary = {
-        [CaseType.Active]: getCaseTotal(CaseType.Active, filteredCaseData),
-        [CaseType.Confirmed]: getCaseTotal(
-          CaseType.Confirmed,
-          filteredCaseData
-        ),
-        [CaseType.Recovered]: getCaseTotal(
-          CaseType.Recovered,
-          filteredCaseData
-        ),
-        [CaseType.Deaths]: getCaseTotal(CaseType.Deaths, filteredCaseData),
-      };
-      props.onChangeRegionCity({
-        summary: _summary,
-        regionCity: `${province}, ${city}`,
-      });
-    } else {
-      props.onChangeRegionCity(undefined);
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [province, city]);
+  // useEffect(() => {
+  //   props.onChangeRegionCity({
+  //     region: province,
+  //     city: city,
+  //   });
+  // }, [province, city]);
 
   return (
     <>
@@ -472,89 +415,7 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
           flexDirection: "column",
         }}
       >
-        {!props.data?.data || (
-          <div
-            style={{
-              display: "flex",
-              flexDirection: matches ? "column" : "row",
-            }}
-          >
-            <FormControl
-              variant="outlined"
-              style={{ width: "100%", marginBottom: "5px" }}
-            >
-              <Select value={province} onChange={onChangeProvince}>
-                <MenuItem
-                  value={Constants.allProvinces}
-                  style={{ fontSize: ".9em" }}
-                >
-                  {Constants.allProvinces}
-                </MenuItem>
-                {Object.keys(regionMap)
-                  .sort(collator.compare)
-                  .map((r: string) => {
-                    return (
-                      <MenuItem key={r} value={r} style={{ fontSize: ".9em" }}>
-                        {r}
-                      </MenuItem>
-                    );
-                  })}
-              </Select>
-            </FormControl>
-            <div style={{ width: matches ? "0" : "20px" }}></div>
-            <FormControl
-              variant="outlined"
-              style={{ width: "100%", marginBottom: "15px" }}
-            >
-              <Select value={city} onChange={onChangeCity}>
-                <MenuItem
-                  id={`${province}|${Constants.allCities}`}
-                  value={Constants.allCities}
-                  style={{ fontSize: ".9em" }}
-                >
-                  {Constants.allCities}
-                </MenuItem>
-                {province === Constants.allProvinces
-                  ? Object.keys(regionMap)
-                      .sort()
-                      .map((r: string) => {
-                        const group = [
-                          <ListSubheader key={r}>{r}</ListSubheader>,
-                        ];
-                        Array.from(regionMap[r])
-                          .sort()
-                          .forEach((c: any) => {
-                            group.push(
-                              <MenuItem
-                                id={`${r}|${c}`}
-                                key={`${r}|${c}`}
-                                value={c}
-                                style={{ fontSize: ".9em" }}
-                              >
-                                {c}
-                              </MenuItem>
-                            );
-                          });
-                        return group;
-                      })
-                  : Array.from(regionMap[province])
-                      .sort()
-                      .map((c: any) => {
-                        return (
-                          <MenuItem
-                            id={`${province}|${c}`}
-                            key={`${province}|${c}`}
-                            value={c}
-                            style={{ fontSize: ".9em" }}
-                          >
-                            {c}
-                          </MenuItem>
-                        );
-                      })}
-              </Select>
-            </FormControl>
-          </div>
-        )}
+        {" "}
         <div style={{ height: "560px" }}>
           <canvas
             ref={chartRef}

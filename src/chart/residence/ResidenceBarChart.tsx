@@ -1,14 +1,11 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import Chart from "chart.js";
 import AppProgress from "../../shared/component/progress/AppProgress";
-import { RemovalType } from "../../shared/service/main.service";
 import AppCard from "../../shared/component/card/AppCard";
+import { mainService } from "../../shared/service/main.service";
 
-interface Props {
-  data: any;
-}
-
-const ResidenceBarChart: React.FC<Props> = (props: Props) => {
+const ResidenceBarChart: React.FC = () => {
+  const [inProgress, setInProgress] = useState(false);
   const chartRef = useRef<HTMLCanvasElement>(null);
   let chart: Chart;
 
@@ -46,84 +43,50 @@ const ResidenceBarChart: React.FC<Props> = (props: Props) => {
     },
   };
 
+  const data = {
+    ACTIVE: {
+      data: [],
+      backgroundColor: "#f6b44e",
+      label: "Active",
+      stack: "active",
+    },
+    ADMITTED: {
+      data: [],
+      backgroundColor: "#df734f",
+      label: "Admitted",
+      stack: "cases",
+    },
+    RECOVERED: {
+      data: [],
+      backgroundColor: "#bfa37e",
+      label: "Recovered",
+      stack: "cases",
+    },
+    DEATHS: {
+      data: [],
+      backgroundColor: "#4b4743",
+      label: "Deaths",
+      stack: "cases",
+    },
+    "NOT ADMITTED": {
+      data: [],
+      backgroundColor: "rgba(223, 115, 79, .6)",
+      label: "Not Admitted",
+      stack: "cases",
+    },
+  };
+
   useEffect(() => {
-    if (props.data) {
-      const residenceMap = {};
-      props.data.forEach((d: any) => {
-        if (!residenceMap[d.CityMunRes]) {
-          residenceMap[d.CityMunRes] = {
-            admitted: 0,
-            recovered: 0,
-            death: 0,
-            notAdmitted: 0,
-          };
-        }
-        if (d.RemovalType === RemovalType.Died) {
-          residenceMap[d.CityMunRes].death =
-            residenceMap[d.CityMunRes].death + 1;
-        } else if (d.RemovalType === RemovalType.Recovered) {
-          residenceMap[d.CityMunRes].recovered =
-            residenceMap[d.CityMunRes].recovered + 1;
-        } else if (d.Admitted === "YES") {
-          residenceMap[d.CityMunRes].admitted =
-            residenceMap[d.CityMunRes].admitted + 1;
-        } else {
-          residenceMap[d.CityMunRes].notAdmitted =
-            residenceMap[d.CityMunRes].notAdmitted + 1;
-        }
+    setInProgress(true);
+    mainService.getTop30Cities().then((response: any) => {
+      const labels: string[] = [];
+      response.data.forEach((d: any) => {
+        labels.push(d.city);
+        d.cases
+          .filter((c: any) => c.case !== "TOTAL")
+          .forEach((c: any) => data[c.case].data.push(c.count));
       });
-
-      const labels = Object.keys(residenceMap)
-        .filter((provCity: string) => provCity)
-        .sort((provCity1: string, provCity2: string) => {
-          const residence1: any = Object.values(residenceMap[provCity1]).reduce(
-            (a: any, b: any) => a + b,
-            0
-          );
-          const residence2: any = Object.values(residenceMap[provCity2]).reduce(
-            (a: any, b: any) => a + b,
-            0
-          );
-          return residence2 - residence1;
-        })
-        .slice(0, 30);
-
-      const datasets = [
-        {
-          label: "Active",
-          backgroundColor: "#f6b44e",
-          data: labels.map((label: string) => {
-            const _totalActive =
-              residenceMap[label].admitted + residenceMap[label].notAdmitted;
-            return _totalActive >= 0 ? _totalActive : 0;
-          }),
-          stack: "active",
-        },
-        {
-          label: "Admitted",
-          backgroundColor: "#df734f",
-          data: labels.map((label: string) => residenceMap[label].admitted),
-          stack: "cases",
-        },
-        {
-          label: "Recovered",
-          backgroundColor: "#bfa37e",
-          data: labels.map((label: string) => residenceMap[label].recovered),
-          stack: "cases",
-        },
-        {
-          label: "Deaths",
-          backgroundColor: "#4b4743",
-          data: labels.map((label: string) => residenceMap[label].death),
-          stack: "cases",
-        },
-        {
-          label: "Not Admitted",
-          backgroundColor: "rgba(223, 115, 79, .6)",
-          data: labels.map((label: string) => residenceMap[label].notAdmitted),
-          stack: "cases",
-        },
-      ];
+      const datasets = Object.keys(data).map((c: any) => data[c]);
 
       const canvas: HTMLCanvasElement = chartRef.current as HTMLCanvasElement;
       // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -136,8 +99,9 @@ const ResidenceBarChart: React.FC<Props> = (props: Props) => {
         options: option,
       });
       chart.update();
-    }
-  }, [props.data]);
+      setInProgress(false);
+    });
+  }, []);
 
   return (
     <AppCard
@@ -153,8 +117,8 @@ const ResidenceBarChart: React.FC<Props> = (props: Props) => {
         },
       }}
       content={
-        <div style={{ height: !props.data ? "600px" : "930px" }}>
-          {!props.data && <AppProgress />}
+        <div style={{ height: inProgress ? "600px" : "930px" }}>
+          {inProgress && <AppProgress />}
           <canvas
             ref={chartRef}
             style={{

@@ -4,10 +4,10 @@ export const bannerStyles = makeStyles(() =>
   createStyles({
     container: {
       display: "flex",
-      height: "156px",
+      minHeight: 125,
     },
     banner: {
-      padding: "16px 6px 16px 16px",
+      padding: "10px 6px 16px 16px",
       width: "100%",
       fontSize: "1.6em",
       textAlign: "center",
@@ -22,6 +22,13 @@ export const bannerStyles = makeStyles(() =>
     },
     value: {
       fontSize: "2.1em",
+      display: "flex",
+      flexGrow: 1,
+      alignItems: "center",
+      justifyContent: "center",
+    },
+    inProgressValue: {
+      color: "transparent",
     },
     valueNoData: {
       fontSize: ".9em",

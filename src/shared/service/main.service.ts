@@ -1,32 +1,6 @@
 /* eslint-disable no-unused-vars */
 import axios from "axios";
 
-export interface PHCase {
-  Admitted: string;
-  Age: string;
-  AgeGroup: string;
-  CaseCode: string;
-  DateDied: string;
-  DateRecover: string;
-  DateRepConf: string;
-  DateRepRem: string;
-  MunCityPSGC: string;
-  CityMunRes: string;
-  ProvPSGC: string;
-  RegionPSGC: string;
-  RegionRes: string;
-  RemovalType: RemovalType;
-  Sex: string;
-  DateSpecimen: string;
-  DateOnset: string;
-  DateResultRelease: string;
-}
-
-export enum RemovalType {
-  Recovered = "RECOVERED",
-  Died = "DIED",
-}
-
 export enum CaseType {
   All = "All",
   Active = "Active",
@@ -36,12 +10,32 @@ export enum CaseType {
 }
 
 class MainService {
-  getPHCases(url: string): Promise<any> {
-    return axios.get(`${url}/data/cases.csv`);
+  getReportDate(): Promise<any> {
+    return axios.get(`/asof`);
+  }
+
+  getAreas(): Promise<any> {
+    return axios.get(`/areas`);
+  }
+
+  getSummary(region: string, city: string): Promise<any> {
+    return axios.get(`/summary?region=${region}&city=${city}`);
+  }
+
+  getTimeseries(region: string, city: string): Promise<any> {
+    return axios.get(`/timeseries?region=${region}&city=${city}`);
+  }
+
+  getTop30Cities(): Promise<any> {
+    return axios.get(`/top?limit=30`);
+  }
+
+  getAgeGroup(): Promise<any> {
+    return axios.get(`/agegroup`);
   }
 
   getGlobalCases(): Promise<any> {
-    return axios.get("https://corona.lmao.ninja/v2/countries");
+    return axios.get(`https://corona.lmao.ninja/v2/countries`);
   }
 }
 
