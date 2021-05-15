@@ -27,7 +27,7 @@ class MainService {
   }
 
   getTop30Cities(): Promise<any> {
-    return axios.get(`/top?limit=30`);
+    return axios.get(`/top?limit=31`);
   }
 
   getAgeGroup(): Promise<any> {

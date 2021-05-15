@@ -21,7 +21,12 @@ const RegionCity: React.FC<Props> = (props: Props) => {
   });
 
   useEffect(() => {
-    mainService.getAreas().then((response: any) => setRegionMap(response.data));
+    mainService.getAreas().then((response: any) => {
+      // Exclude 'For Validation' records
+      const _responseData = response.data;
+      delete _responseData[Constants.forValidation];
+      setRegionMap(_responseData);
+    });
   }, []);
 
   const onChangeProvince = (event: any) => {

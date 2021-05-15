@@ -3,6 +3,7 @@ import Chart from "chart.js";
 import AppProgress from "../../shared/component/progress/AppProgress";
 import AppCard from "../../shared/component/card/AppCard";
 import { mainService } from "../../shared/service/main.service";
+import { Constants } from "../../shared/Constants";
 
 const ResidenceBarChart: React.FC = () => {
   const [inProgress, setInProgress] = useState(false);
@@ -80,12 +81,15 @@ const ResidenceBarChart: React.FC = () => {
     setInProgress(true);
     mainService.getTop30Cities().then((response: any) => {
       const labels: string[] = [];
-      response.data.forEach((d: any) => {
-        labels.push(d.city);
-        d.cases
-          .filter((c: any) => c.case !== "TOTAL")
-          .forEach((c: any) => data[c.case].data.push(c.count));
-      });
+      // Exclude 'For Validation' records
+      response.data
+        .filter((d: any) => d.city !== Constants.forValidation)
+        .forEach((d: any) => {
+          labels.push(d.city);
+          d.cases
+            .filter((c: any) => c.case !== "TOTAL")
+            .forEach((c: any) => data[c.case].data.push(c.count));
+        });
       const datasets = Object.keys(data).map((c: any) => data[c]);
 
       const canvas: HTMLCanvasElement = chartRef.current as HTMLCanvasElement;
