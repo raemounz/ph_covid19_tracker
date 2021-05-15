@@ -6,9 +6,16 @@ const publicPath = path.join(__dirname, "..", "build");
 const { MongoClient } = require("mongodb");
 const cors = require("cors");
 
-if (process.env.NODE_ENV === "production") {
-  app.use(cors());
-}
+var whitelist = `${process.env.ALLOWED_ORIGINS}`;
+var corsOptions = {
+  origin: (origin, callback) => {
+    if (!origin || whitelist.split(",").indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error(`Request from ${origin} is not allowed.`));
+    }
+  },
+};
 
 app.use(express.static(publicPath));
 
@@ -45,7 +52,7 @@ MongoClient.connect(uri, (error, client) => {
     });
   });
 
-  app.get("/areas", (req, res) => {
+  app.get("/areas", cors(corsOptions), (req, res) => {
     const query = [
       {
         $group: {
@@ -78,7 +85,7 @@ MongoClient.connect(uri, (error, client) => {
     });
   });
 
-  app.get("/summary", (req, res) => {
+  app.get("/summary", cors(corsOptions), (req, res) => {
     const region = req.query.region;
     const city = req.query.city;
     const match = { $match: {} };
@@ -155,7 +162,7 @@ MongoClient.connect(uri, (error, client) => {
     });
   });
 
-  app.get("/timeseries", (req, res) => {
+  app.get("/timeseries", cors(corsOptions), (req, res) => {
     const region = req.query.region;
     const city = req.query.city;
     const match = { $match: {} };
@@ -245,7 +252,10 @@ MongoClient.connect(uri, (error, client) => {
           if (!activeCase) {
             _r.cases.push({ case: "ACTIVE", count: 0 });
           }
-          _r.cases.push({ case: "TOTAL ACTIVE", count: CONFIRMED - RECOVERED - DEATHS });
+          _r.cases.push({
+            case: "TOTAL ACTIVE",
+            count: CONFIRMED - RECOVERED - DEATHS,
+          });
           _r.cases.push({ case: "TOTAL RECOVERED", count: RECOVERED });
           _r.cases.push({ case: "TOTAL DEATHS", count: DEATHS });
           _r.cases.push({ case: "TOTAL CONFIRMED", count: CONFIRMED });
@@ -255,7 +265,7 @@ MongoClient.connect(uri, (error, client) => {
     });
   });
 
-  app.get("/top", (req, res) => {
+  app.get("/top", cors(corsOptions), (req, res) => {
     const limit = Number(req.query.limit) || 30;
     const query = [
       {
@@ -342,7 +352,7 @@ MongoClient.connect(uri, (error, client) => {
     });
   });
 
-  app.get("/agegroup", (req, res) => {
+  app.get("/agegroup", cors(corsOptions), (req, res) => {
     const query = [
       {
         $group: {
@@ -424,4 +434,6 @@ MongoClient.connect(uri, (error, client) => {
   app.listen(port, () => {
     console.log(`Server is up on port ${port}!`);
   });
+
+  app.use((err, req, res, next) => res.status(401).send(err.message));
 });
