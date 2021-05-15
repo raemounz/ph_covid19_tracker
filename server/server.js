@@ -215,7 +215,7 @@ MongoClient.connect(uri, (error, client) => {
       },
       {
         $sort: {
-          date: -1,
+          date: 1,
         },
       },
     ];
@@ -223,10 +223,32 @@ MongoClient.connect(uri, (error, client) => {
       query.unshift(match);
     }
     coll.aggregate(query, (cmdErr, result) => {
+      let CONFIRMED = 0;
+      let RECOVERED = 0;
+      let DEATHS = 0;
       result.toArray((err, r) => {
         r.forEach((_r) => {
           const total = _r.cases.reduce((a, b) => a + b.count, 0);
-          _r.cases.push({ case: "TOTAL", count: total });
+          _r.cases.push({ case: "CONFIRMED", count: total });
+          const recoveredCase = _r.cases.find((c) => c.case === "RECOVERED");
+          const deathCase = _r.cases.find((c) => c.case === "DEATHS");
+          const activeCase = _r.cases.find((c) => c.case === "ACTIVE");
+          RECOVERED += recoveredCase?.count || 0;
+          DEATHS += deathCase?.count || 0;
+          CONFIRMED += total;
+          if (!recoveredCase) {
+            _r.cases.push({ case: "RECOVERED", count: 0 });
+          }
+          if (!deathCase) {
+            _r.cases.push({ case: "DEATHS", count: 0 });
+          }
+          if (!activeCase) {
+            _r.cases.push({ case: "ACTIVE", count: 0 });
+          }
+          _r.cases.push({ case: "TOTAL ACTIVE", count: CONFIRMED - RECOVERED - DEATHS });
+          _r.cases.push({ case: "TOTAL RECOVERED", count: RECOVERED });
+          _r.cases.push({ case: "TOTAL DEATHS", count: DEATHS });
+          _r.cases.push({ case: "TOTAL CONFIRMED", count: CONFIRMED });
         });
         res.json(r);
       });
