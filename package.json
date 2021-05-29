@@ -39,6 +39,7 @@
     "react-router-dom": "^5.2.0",
     "react-router-sitemap": "^1.2.0",
     "react-scripts": "4.0.3",
+    "redis": "^3.1.2",
     "typeface-roboto": "0.0.75",
     "typescript": "^3.9.9"
   },
