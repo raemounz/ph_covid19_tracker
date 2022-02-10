@@ -1,17 +1,18 @@
 import React, { useState } from "react";
 import {
-  Grid,
   FormControl,
-  Select,
-  MenuItem,
-  Tooltip,
+  Grid,
   IconButton,
-} from "@material-ui/core";
+  MenuItem,
+  Select,
+  Tooltip,
+} from "@mui/material";
+import CameraAltOutlinedIcon from '@mui/icons-material/CameraAltOutlined';
+
 import Summary from "./Summary";
 import AppCard from "../shared/component/card/AppCard";
 import DailyTimeChart from "../chart/time/DailyTimeChart";
 import { CaseType } from "../shared/service/main.service";
-import CameraAltIcon from "@material-ui/icons/CameraAlt";
 
 interface Props {
   takeScreenshot: any;
@@ -24,17 +25,7 @@ const MainSummary: React.FC<Props> = (props: Props) => {
   return (
     <Grid container spacing={3} id="mainSummary">
       <Grid item xs={12} lg={3}>
-        <Summary
-          caseType={caseType}
-          onChangeRegionCity={setRegionCity}
-          onChangeCaseType={(_case: any) => {
-            if (caseType === _case) {
-              setCaseType(CaseType.All);
-            } else {
-              setCaseType(_case);
-            }
-          }}
-        />
+        <Summary caseType={caseType} onChangeRegionCity={setRegionCity} />
       </Grid>
       <Grid item xs={12} lg={9}>
         <AppCard
@@ -53,7 +44,9 @@ const MainSummary: React.FC<Props> = (props: Props) => {
           selection={
             <FormControl
               variant="outlined"
-              style={{ minWidth: "120px", top: "-3px", marginRight: "8px" }}
+              size="small"
+              color="secondary"
+              style={{ minWidth: 120, top: -3, marginRight: 8 }}
             >
               <Select
                 value={caseType}
@@ -62,11 +55,7 @@ const MainSummary: React.FC<Props> = (props: Props) => {
                 {Object.keys(CaseType)
                   .filter((c: string) => c !== CaseType.Active)
                   .map((item: string) => (
-                    <MenuItem
-                      key={item}
-                      value={item}
-                      style={{ fontSize: ".9em" }}
-                    >
+                    <MenuItem key={item} value={item}>
                       {item}
                     </MenuItem>
                   ))}
@@ -83,7 +72,7 @@ const MainSummary: React.FC<Props> = (props: Props) => {
                   data-html2canvas-ignore
                   onClick={() => props.takeScreenshot("mainSummary")}
                 >
-                  <CameraAltIcon />
+                  <CameraAltOutlinedIcon />
                 </IconButton>
               </Tooltip>
             </span>

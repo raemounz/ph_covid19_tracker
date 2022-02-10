@@ -1,4 +1,4 @@
-import { makeStyles, createStyles } from "@material-ui/core";
+import { createStyles, makeStyles } from "@mui/styles";
 
 export const cardStyles = makeStyles(() =>
   createStyles({
@@ -7,7 +7,7 @@ export const cardStyles = makeStyles(() =>
       display: "flex",
       flexDirection: "row",
       padding: "16px",
-      lineHeight: "30px",
+      lineHeight: "36px",
       fontSize: "1rem",
       letterSpacing: "0.00938em",
       position: "relative",

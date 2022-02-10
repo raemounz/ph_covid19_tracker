@@ -1,4 +1,4 @@
-import { makeStyles, createStyles } from "@material-ui/core";
+import { createStyles, makeStyles } from "@mui/styles";
 
 export const progressStyles = makeStyles(() =>
   createStyles({

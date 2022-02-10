@@ -1,24 +1,26 @@
-import { makeStyles, createStyles } from "@material-ui/core";
+import { createStyles, makeStyles } from "@mui/styles";
+
+import { Constants } from "../../Constants";
 
 export const bannerStyles = makeStyles(() =>
   createStyles({
     container: {
       display: "flex",
-      minHeight: 125,
     },
     banner: {
-      padding: "10px 6px 16px 16px",
+      padding: "10px 6px 10px 16px",
+      height: 140,
       width: "100%",
       fontSize: "1.6em",
       textAlign: "center",
-      "&:hover": {
-        borderRight: "#f6b44e 12px solid !important",
-      },
       display: "flex",
       flexDirection: "column",
     },
     selectable: {
       cursor: "pointer",
+      "&:hover": {
+        borderRight: `${Constants.dailyConfirmedColor} 12px solid !important`,
+      },
     },
     value: {
       fontSize: "2.1em",

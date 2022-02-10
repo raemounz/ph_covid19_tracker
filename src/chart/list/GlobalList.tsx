@@ -1,17 +1,12 @@
 import React, { useEffect, useState } from "react";
+import clsx from "clsx";
+import { createTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { FormControl, List, ListItem, MenuItem, Select } from "@mui/material";
+
 import { mainService } from "../../shared/service/main.service";
-import {
-  List,
-  ListItem,
-  createMuiTheme,
-  useMediaQuery,
-  FormControl,
-  Select,
-  MenuItem,
-} from "@material-ui/core";
 import { globalListStyles } from "./global-list.style";
 import AppProgress from "../../shared/component/progress/AppProgress";
-import clsx from "clsx";
 import AppCard from "../../shared/component/card/AppCard";
 import { Constants } from "../../shared/Constants";
 
@@ -19,11 +14,12 @@ const GlobalList: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [cases, setCases] = useState([]);
   const classes = globalListStyles();
-  const theme = createMuiTheme();
-  const matches = useMediaQuery(theme.breakpoints.down("xs"));
+  const theme = createTheme();
+  const matches = useMediaQuery(theme.breakpoints.down("sm"));
   const others = "Others";
   const allCountries = "All Countries";
   const southEastAsia = "Southeast Asia";
+  const listDivId = "globalCasesList";
   const [continentMap, setContinentMap] = useState({});
   const [continent, setContinent] = useState(southEastAsia);
   const southEastCountries = [
@@ -76,6 +72,21 @@ const GlobalList: React.FC = () => {
 
   const onChangeContinent = (event: any) => {
     setContinent(event.target.value);
+    const list = document.getElementById(listDivId);
+    if (list) {
+      list.scrollTop = 0;
+    }
+  };
+
+  const filterCountries = () => {
+    return cases.filter((c: any) => {
+      if (continent === allCountries) {
+        return true;
+      } else if (continent === southEastAsia) {
+        return southEastCountries.includes(c.country);
+      }
+      return continent === c.continent;
+    });
   };
 
   return (
@@ -92,34 +103,24 @@ const GlobalList: React.FC = () => {
       selection={
         <FormControl
           variant="outlined"
-          style={{ minWidth: "120px", top: "-3px", marginRight: "8px" }}
+          size="small"
+          color="secondary"
+          className={classes.selection}
         >
           <Select value={continent} onChange={onChangeContinent}>
             {[allCountries].map((option: string) => {
               const options = [
-                <MenuItem
-                  key={option}
-                  value={option}
-                  style={{ fontSize: ".9em" }}
-                >
+                <MenuItem key={option} value={option}>
                   {option}
                 </MenuItem>,
-                <MenuItem
-                  key={southEastAsia}
-                  value={southEastAsia}
-                  style={{ fontSize: ".9em" }}
-                >
+                <MenuItem key={southEastAsia} value={southEastAsia}>
                   {southEastAsia}
                 </MenuItem>,
               ];
-              Object.keys(continentMap).forEach((continent: string) => {
+              Object.keys(continentMap).forEach((_continent: string) => {
                 options.push(
-                  <MenuItem
-                    key={continent}
-                    value={continent}
-                    style={{ fontSize: ".9em" }}
-                  >
-                    {continent}
+                  <MenuItem key={_continent} value={_continent}>
+                    {_continent}
                   </MenuItem>
                 );
               });
@@ -153,78 +154,71 @@ const GlobalList: React.FC = () => {
                   );
                 })}
               </div>
-              <div style={{ height: "100%", flexGrow: 1, overflow: "auto" }}>
+              <div
+                id={listDivId}
+                style={{ height: "100%", flexGrow: 1, overflow: "auto" }}
+              >
                 <List>
-                  {cases
-                    .filter((c: any) =>
-                      continent === allCountries
-                        ? true
-                        : continent === southEastAsia
-                        ? southEastCountries.includes(c.country)
-                        : continent === c.continent
-                    )
-                    .map((d: any, index: number) => {
-                      return (
-                        <ListItem
-                          key={d.country}
-                          style={{ paddingRight: "8px", paddingLeft: "8px" }}
-                          className={clsx(
-                            { [classes.odd]: index % 2 === 0 },
-                            classes.listItem
-                          )}
+                  {filterCountries().map((d: any, index: number) => {
+                    return (
+                      <ListItem
+                        key={d.country}
+                        style={{ paddingRight: 8, paddingLeft: 8 }}
+                        className={clsx(
+                          { [classes.odd]: index % 2 === 0 },
+                          classes.listItem
+                        )}
+                      >
+                        <div
+                          className={clsx(classes.container, {
+                            [classes.containerCol]: matches,
+                          })}
                         >
+                          <div className={classes.flagCountry}>
+                            <img
+                              src={d.flag}
+                              alt={d.country}
+                              className={classes.flag}
+                            ></img>
+                            <div className={classes.country}>{d.country}</div>
+                          </div>
                           <div
-                            className={clsx(classes.container, {
-                              [classes.containerCol]: matches,
-                            })}
+                            style={{
+                              display: "flex",
+                              flexDirection: "row",
+                              marginTop: matches ? 10 : 0,
+                              overflow: "auto",
+                            }}
                           >
-                            <div className={classes.flagCountry}>
-                              <img
-                                src={d.flag}
-                                alt={d.country}
-                                className={classes.flag}
-                              ></img>
-                              <div className={classes.country}>{d.country}</div>
+                            <div
+                              className={`${classes.metric} ${classes.active}`}
+                            >
+                              {(
+                                d.cases -
+                                d.recovered -
+                                d.deaths
+                              ).toLocaleString()}
                             </div>
                             <div
-                              style={{
-                                display: "flex",
-                                flexDirection: "row",
-                                marginTop: matches ? "10px" : 0,
-                                overflow: "auto",
-                              }}
+                              className={`${classes.metric} ${classes.cases}`}
                             >
-                              <div
-                                className={`${classes.metric} ${classes.active}`}
-                              >
-                                {(
-                                  d.cases -
-                                  d.recovered -
-                                  d.deaths
-                                ).toLocaleString()}
-                              </div>
-                              <div
-                                className={`${classes.metric} ${classes.cases}`}
-                              >
-                                {d.cases ? d.cases.toLocaleString() : "-"}
-                              </div>
-                              <div
-                                className={`${classes.metric} ${classes.recovered}`}
-                              >
-                                {d.recovered
-                                  ? d.recovered.toLocaleString()
-                                  : "-"}
-                              </div>
-                              <div
-                                className={`${classes.metric} ${classes.deaths}`}
-                              >
-                                {d.deaths ? d.deaths.toLocaleString() : "-"}
-                              </div>
+                              {d.cases?.toLocaleString()}
+                            </div>
+                            <div
+                              className={`${classes.metric} ${classes.recovered}`}
+                            >
+                              {d.recovered?.toLocaleString()}
+                            </div>
+                            <div
+                              className={`${classes.metric} ${classes.deaths}`}
+                            >
+                              {d.deaths?.toLocaleString()}
                             </div>
                           </div>
-                        </ListItem>
-                      );
-                    })}
+                        </div>
+                      </ListItem>
+                    );
+                  })}
                 </List>
               </div>
             </div>

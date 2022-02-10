@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { IconButton, Dialog, DialogTitle } from "@mui/material";
+import InfoOutlinedIcon from "@mui/icons-material/InfoOutlined";
 import moment from "moment";
+
 import { headerStyles } from "./header.style";
-import { IconButton, Dialog, DialogTitle } from "@material-ui/core";
-import InfoOutlinedIcon from "@material-ui/icons/InfoOutlined";
 import { mainService } from "../shared/service/main.service";
 
 const Header: React.FC = () => {
@@ -41,7 +42,7 @@ const Header: React.FC = () => {
               <a
                 target="_blank"
                 rel="noopener noreferrer"
-                href="http://www.doh.gov.ph/"
+                href="https://doh.gov.ph/"
                 className={classes.link}
               >
                 Department of Health of the Philippines (DOH)

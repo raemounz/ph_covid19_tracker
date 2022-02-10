@@ -1,8 +1,9 @@
 import React, { useEffect, useRef, useState } from "react";
-import Chart from "chart.js";
+import Chart, { ChartOptions } from "chart.js/auto";
+
 import AppProgress from "../../shared/component/progress/AppProgress";
 import AppCard from "../../shared/component/card/AppCard";
-import { mainService } from "../../shared/service/main.service";
+import { CaseType, mainService } from "../../shared/service/main.service";
 import { Constants } from "../../shared/Constants";
 
 const ResidenceBarChart: React.FC = () => {
@@ -10,35 +11,36 @@ const ResidenceBarChart: React.FC = () => {
   const chartRef = useRef<HTMLCanvasElement>(null);
   let chart: Chart;
 
-  const option: any = {
+  const option: ChartOptions = {
     maintainAspectRatio: false,
-    scales: {
-      xAxes: [
-        {
-          position: "top",
-          ticks: {
-            fontSize: 13,
-          },
-        },
-      ],
-      yAxes: [
-        {
-          ticks: {
-            autoSkip: false,
-            fontSize: 13,
-          },
-          gridLines: {
-            display: false,
-          },
-        },
-      ],
+    indexAxis: "y",
+    interaction: {
+      intersect: true,
+      mode: "index",
     },
-    tooltips: {
-      callbacks: {
-        footer: (tooltipItem: any) => {
-          return `Total: ${tooltipItem
-            .filter((item: any) => item.datasetIndex > 0)
-            .reduce((a: any, b: any) => a + Number(b.value), 0)}`;
+    scales: {
+      x: {
+        ticks: {
+          font: {
+            size: 13,
+          },
+        },
+      },
+      y: {
+        grid: {
+          display: false,
+        },
+      },
+    },
+    plugins: {
+      tooltip: {
+        callbacks: {
+          footer: (tooltipItems: any) => {
+            return `Total: ${tooltipItems
+              .filter((item: any) => item.datasetIndex > 0)
+              .reduce((a: any, b: any) => a + Number(b.parsed.x), 0)
+              .toLocaleString()}`;
+          },
         },
       },
     },
@@ -47,31 +49,31 @@ const ResidenceBarChart: React.FC = () => {
   const data = {
     ACTIVE: {
       data: [],
-      backgroundColor: "#f6b44e",
-      label: "Active",
+      backgroundColor: Constants.activeColor,
+      label: CaseType.Active,
       stack: "active",
     },
     ADMITTED: {
       data: [],
-      backgroundColor: "#df734f",
+      backgroundColor: Constants.confirmedColor,
       label: "Admitted",
       stack: "cases",
     },
     RECOVERED: {
       data: [],
-      backgroundColor: "#bfa37e",
-      label: "Recovered",
+      backgroundColor: Constants.recoveredColor,
+      label: CaseType.Recovered,
       stack: "cases",
     },
     DEATHS: {
       data: [],
-      backgroundColor: "#4b4743",
-      label: "Deaths",
+      backgroundColor: Constants.deathColor,
+      label: CaseType.Deaths,
       stack: "cases",
     },
     "NOT ADMITTED": {
       data: [],
-      backgroundColor: "rgba(223, 115, 79, .6)",
+      backgroundColor: Constants.dailyConfirmedColor,
       label: "Not Admitted",
       stack: "cases",
     },
@@ -95,7 +97,7 @@ const ResidenceBarChart: React.FC = () => {
       const canvas: HTMLCanvasElement = chartRef.current as HTMLCanvasElement;
       // eslint-disable-next-line react-hooks/exhaustive-deps
       chart = new Chart(canvas, {
-        type: "horizontalBar",
+        type: "bar",
         data: {
           labels: labels,
           datasets: datasets,
@@ -112,7 +114,7 @@ const ResidenceBarChart: React.FC = () => {
       id="localCases"
       title="Local Cases (Top 30 Cities)"
       style={{
-        height: "600px",
+        height: 600,
         content: {
           position: "relative",
           height: "calc(100% - 76px)",
@@ -121,7 +123,7 @@ const ResidenceBarChart: React.FC = () => {
         },
       }}
       content={
-        <div style={{ height: inProgress ? "600px" : "930px" }}>
+        <div style={{ height: inProgress ? 600 : 930 }}>
           {inProgress && <AppProgress />}
           <canvas
             ref={chartRef}

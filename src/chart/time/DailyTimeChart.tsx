@@ -1,7 +1,9 @@
 /* eslint-disable no-unused-vars */
 import React, { useRef, useEffect, useState } from "react";
-import Chart, { InteractionMode } from "chart.js";
+import Chart, { ChartOptions } from "chart.js/auto";
+import "chartjs-adapter-moment";
 import moment from "moment";
+
 import AppProgress from "../../shared/component/progress/AppProgress";
 import { CaseType, mainService } from "../../shared/service/main.service";
 import { Constants } from "../../shared/Constants";
@@ -14,7 +16,6 @@ interface Props {
 const DailyTimeChart: React.FC<Props> = (props: Props) => {
   const chartRef = useRef<HTMLCanvasElement>(null);
   const [chart, setChart] = useState<Chart>();
-  const tooltipMode: InteractionMode = "index";
 
   const [caseType, setCaseType] = useState<any>(CaseType.Confirmed);
   const [regionCity, setRegionCity] = useState<any>({
@@ -43,68 +44,67 @@ const DailyTimeChart: React.FC<Props> = (props: Props) => {
     return text.charAt(0).toUpperCase() + text.slice(1);
   };
 
-  const option = {
+  const option: ChartOptions | any = {
     maintainAspectRatio: false,
     scales: {
-      yAxes: [
-        {
-          id: "daily-axis",
-          type: "linear",
-          position: "right",
-          stacked: true,
-          scaleLabel: {
-            labelString: "Daily",
-            display: true,
-          },
-          ticks: {
-            beginAtZero: true,
-            precision: 0,
-            min: 0,
-            maxTicksLimit: 25,
-          },
+      "daily-axis": {
+        type: "linear",
+        position: "right",
+        stacked: true,
+        title: {
+          display: true,
+          text: "Daily",
         },
-        {
-          id: "cumulative-axis",
-          type: "linear",
-          position: "right",
-          scaleLabel: {
-            labelString: "Cummulative",
-            display: true,
-          },
-          ticks: {
-            beginAtZero: true,
-            precision: 0,
-            min: 0,
-          },
+        display: true,
+        min: 0,
+        beginAtZero: true,
+        ticks: {
+          precision: 0,
+          maxTicksLimit: 25,
         },
-      ],
-      xAxes: [
-        {
-          type: "time",
-          stacked: true,
-          offset: true,
-          gridLines: {
-            display: false,
-          },
+      },
+      "cumulative-axis": {
+        type: "linear",
+        position: "right",
+        title: {
+          display: true,
+          text: "Cummulative",
         },
-      ],
+        display: true,
+        min: 0,
+        beginAtZero: true,
+        ticks: {
+          precision: 0,
+        },
+      },
+      x: {
+        type: "time",
+        display: true,
+        stacked: true,
+        offset: true,
+        grid: {
+          display: false,
+        },
+      },
     },
-    tooltips: {
-      mode: tooltipMode,
-      intersect: false,
-      callbacks: {
-        title: (tooltipItem: any) => {
-          const date = Date.parse(tooltipItem[0].label);
-          return moment(date).format("ll");
-        },
-        label: (tooltipItem: any, d: any) => {
-          let label = d.datasets[tooltipItem.datasetIndex].label || "";
-          if (label) {
-            label = ` ${capitalize(
-              label
-            )}: ${tooltipItem.yLabel.toLocaleString()}`;
-          }
-          return label;
+    plugins: {
+      tooltip: {
+        mode: "index",
+        intersect: false,
+        callbacks: {
+          title: (tooltipItems: any) => {
+            const date = Date.parse(tooltipItems[0].label);
+            return moment(date).format("LL");
+          },
+          label: (tooltipItem: any) => {
+            let label = tooltipItem.dataset.label;
+            if (label) {
+              label = ` ${capitalize(
+                label
+              )}: ${tooltipItem.parsed.y.toLocaleString()}`;
+            }
+            return label;
+          },
         },
       },
     },

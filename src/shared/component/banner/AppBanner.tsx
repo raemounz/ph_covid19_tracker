@@ -1,18 +1,15 @@
 import React from "react";
+import { CircularProgress, Paper } from "@mui/material";
 import clsx from "clsx";
-import { Paper, CircularProgress } from "@material-ui/core";
+
 import { bannerStyles } from "./app-banner.style";
 
 interface Props {
   label: string;
   value: number | string | undefined;
   increase?: number | undefined;
-  selectable: boolean;
-  style: { background: string; minHeight?: number };
-  selected: string;
+  style?: any;
   inProgress: boolean;
-  // eslint-disable-next-line no-unused-vars
-  onClick: (selected: string) => void;
 }
 
 const AppBanner: React.FC<Props> = (props: Props) => {
@@ -20,27 +17,16 @@ const AppBanner: React.FC<Props> = (props: Props) => {
 
   return (
     <Paper
-      elevation={3}
+      elevation={0}
       className={classes.container}
       style={{
         ...props.style,
-        color: "#fff",
+        color: props.style.color || "#fff",
         borderRadius: 0,
         boxShadow: "unset",
       }}
     >
-      <div
-        className={clsx(classes.banner, {
-          [classes.selectable]: props.selectable,
-        })}
-        style={{
-          borderRight:
-            props.label === props.selected
-              ? "#f6b44e 12px solid"
-              : `${props.style.background} 12px solid`,
-        }}
-        onClick={() => props.onClick(props.label)}
-      >
+      <div className={classes.banner}>
         <div
           className={clsx(
             classes.value,
