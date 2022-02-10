@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Grid } from "@material-ui/core";
+import { Grid } from "@mui/material";
+
 import { CaseType, mainService } from "../shared/service/main.service";
 import AppBanner from "../shared/component/banner/AppBanner";
 import { Constants } from "../shared/Constants";
@@ -7,8 +8,6 @@ import RegionCity from "./RegionCity";
 
 interface Props {
   caseType: CaseType;
-  // eslint-disable-next-line no-unused-vars
-  onChangeCaseType: (caseType: string) => void;
   // eslint-disable-next-line no-unused-vars
   onChangeRegionCity: (regionCity: any) => void;
 }
@@ -46,7 +45,7 @@ const Summary: React.FC<Props> = (props: Props) => {
 
   return (
     <Grid item xs={12}>
-      <Grid container spacing={3}>
+      <Grid container spacing={0}>
         <Grid item xs={12}>
           <RegionCity
             onChangeRegionCity={(rc: any) => {
@@ -59,10 +58,10 @@ const Summary: React.FC<Props> = (props: Props) => {
           <AppBanner
             label={CaseType.Active}
             value={getSummaryCount(CaseType.Active)}
-            selectable={false}
-            style={{ background: Constants.activeColor }}
-            selected={props.caseType}
-            onClick={() => {}}
+            style={{
+              background: Constants.activeColor,
+              color: Constants.grayFontColor,
+            }}
             inProgress={inProgress}
           />
         </Grid>
@@ -71,10 +70,7 @@ const Summary: React.FC<Props> = (props: Props) => {
             label={CaseType.Confirmed}
             value={getSummaryCount(CaseType.Confirmed)}
             increase={newCases}
-            selectable={true}
-            style={{ background: Constants.confirmedColor, minHeight: 147 }}
-            selected={props.caseType}
-            onClick={props.onChangeCaseType}
+            style={{ background: Constants.confirmedColor, minHeight: 167 }}
             inProgress={inProgress}
           />
         </Grid>
@@ -82,10 +78,10 @@ const Summary: React.FC<Props> = (props: Props) => {
           <AppBanner
             label={CaseType.Recovered}
             value={getSummaryCount(CaseType.Recovered)}
-            selectable={true}
-            style={{ background: Constants.recoveredColor }}
-            selected={props.caseType}
-            onClick={props.onChangeCaseType}
+            style={{
+              background: Constants.recoveredColor,
+              color: Constants.grayFontColor,
+            }}
             inProgress={inProgress}
           />
         </Grid>
@@ -93,10 +89,7 @@ const Summary: React.FC<Props> = (props: Props) => {
           <AppBanner
             label={CaseType.Deaths}
             value={getSummaryCount(CaseType.Deaths)}
-            selectable={true}
             style={{ background: Constants.deathColor }}
-            selected={props.caseType}
-            onClick={props.onChangeCaseType}
             inProgress={inProgress}
           />
         </Grid>

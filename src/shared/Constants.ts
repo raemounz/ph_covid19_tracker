@@ -1,12 +1,14 @@
 export const Constants = {
-  activeColor: "#f6b44e",
-  confirmedColor: "#df734f",
-  recoveredColor: "#bfa37e",
-  deathColor: "#4b4743",
-  dailyConfirmedColor: "rgba(223, 115, 79, .6)",
-  dailyRecoveredColor: "rgba(191, 163, 126, .6)",
-  dailyDeathColor: "rgba(75, 71, 67, .6)",
+  activeColor: "#d0d0d0",
+  confirmedColor: "#d22122",
+  recoveredColor: "#e7e7e7",
+  deathColor: "#808080",
+  grayFontColor: "#5c5c5c",
+  dailyActiveColor: "#e4e4e4",
+  dailyConfirmedColor: "#eb7e7f",
+  dailyRecoveredColor: "#f1f1f1",
+  dailyDeathColor: "#a7a7a7",
   allRegions: "All Regions",
   allCities: "All Cities",
-  forValidation: "For Validation"
+  forValidation: "For Validation",
 };

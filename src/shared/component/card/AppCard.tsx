@@ -1,5 +1,6 @@
 import React from "react";
-import { Card, CardContent } from "@material-ui/core";
+import { Card, CardContent } from "@mui/material";
+
 import { cardStyles } from "./app-card.style";
 
 interface Props {

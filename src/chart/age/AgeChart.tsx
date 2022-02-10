@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import React, { useRef, useEffect, useState } from "react";
-import Chart from "chart.js";
+import Chart, { ChartOptions } from "chart.js/auto";
+
 import AppProgress from "../../shared/component/progress/AppProgress";
 import { CaseType, mainService } from "../../shared/service/main.service";
 import { Constants } from "../../shared/Constants";
@@ -14,41 +15,49 @@ const AgeChart: React.FC<Props> = (props: Props) => {
   const [chart, setChart] = useState<Chart>();
   const [labels, setLabels] = useState<any>([]);
   const [data, setData] = useState<any>(undefined);
+  const [MALE, FEMALE] = ["Male", "Female"];
 
   const caseColor = {
-    [CaseType.Active]: { MALE: "#f6b44e", FEMALE: "rgba(246, 180, 78, .6)" },
-    [CaseType.Confirmed]: { MALE: "#df734f", FEMALE: "rgba(223, 115, 79, .6)" },
-    [CaseType.Recovered]: {
-      MALE: "#bfa37e",
-      FEMALE: "rgba(191, 163, 126, .6)",
+    [CaseType.Active]: {
+      [MALE]: Constants.activeColor,
+      [FEMALE]: Constants.dailyActiveColor,
     },
-    [CaseType.Deaths]: { MALE: "#4b4743", FEMALE: "rgba(75, 71, 67, .6)" },
+    [CaseType.Confirmed]: {
+      [MALE]: Constants.confirmedColor,
+      [FEMALE]: Constants.dailyConfirmedColor,
+    },
+    [CaseType.Recovered]: {
+      [MALE]: Constants.recoveredColor,
+      [FEMALE]: Constants.dailyRecoveredColor,
+    },
+    [CaseType.Deaths]: {
+      [MALE]: Constants.deathColor,
+      [FEMALE]: Constants.dailyDeathColor,
+    },
   };
 
-  const option = {
+  const option: ChartOptions = {
     maintainAspectRatio: false,
-    scales: {
-      xAxes: [{ stacked: true }],
-      yAxes: [
-        {
-          stacked: true,
-          scaleLabel: {
-            labelString: "Age Group",
-            display: true,
-          },
-          gridLines: {
-            display: false,
-          },
-        },
-      ],
+    indexAxis: "y",
+    interaction: {
+      intersect: true,
+      mode: "index",
     },
-    tooltips: {
-      callbacks: {
-        footer: (tooltipItem: any) => {
-          return `Total: ${tooltipItem.reduce(
-            (a: any, b: any) => a + Number(b.value),
-            0
-          )}`;
+    scales: {
+      y: {
+        grid: {
+          display: false,
+        },
+      },
+    },
+    plugins: {
+      tooltip: {
+        callbacks: {
+          footer: (tooltipItems: any) => {
+            return `Total: ${tooltipItems
+              .reduce((a: any, b: any) => a + Number(b.parsed.x), 0)
+              .toLocaleString()}`;
+          },
         },
       },
     },
@@ -70,7 +79,7 @@ const AgeChart: React.FC<Props> = (props: Props) => {
 
       const canvas: HTMLCanvasElement = chartRef.current as HTMLCanvasElement;
       const _chart = new Chart(canvas, {
-        type: "horizontalBar",
+        type: "bar",
         data: {
           labels: _labels,
           datasets: [],
@@ -88,15 +97,15 @@ const AgeChart: React.FC<Props> = (props: Props) => {
     if (data && chart) {
       const dataset = [
         {
-          label: "Male",
-          backgroundColor: caseColor[props.caseType].MALE,
+          label: MALE,
+          backgroundColor: caseColor[props.caseType][MALE],
           data: labels.map(
             (label: string) => data[label][props.caseType.toUpperCase()].MALE
           ),
         },
         {
-          label: "Female",
-          backgroundColor: caseColor[props.caseType].FEMALE,
+          label: FEMALE,
+          backgroundColor: caseColor[props.caseType][FEMALE],
           data: labels.map(
             (label: string) => data[label][props.caseType.toUpperCase()].FEMALE
           ),
@@ -116,7 +125,7 @@ const AgeChart: React.FC<Props> = (props: Props) => {
           flexDirection: "column",
         }}
       >
-        <div style={{ height: "520px" }}>
+        <div style={{ height: 520 }}>
           <canvas
             ref={chartRef}
             style={{ height: "100% !important", flexGrow: 1 }}

@@ -1,5 +1,5 @@
-// eslint-disable-next-line no-unused-vars
-import { makeStyles, createStyles, Theme } from "@material-ui/core";
+import { Theme } from "@mui/material/styles";
+import { createStyles, makeStyles } from "@mui/styles";
 
 export const headerStyles = makeStyles((theme: Theme) =>
   createStyles({

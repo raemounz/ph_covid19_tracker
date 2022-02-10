@@ -1,10 +1,6 @@
 import React, { useEffect, useState } from "react";
-import {
-  FormControl,
-  Select,
-  MenuItem,
-  ListSubheader,
-} from "@material-ui/core";
+import { FormControl, ListSubheader, MenuItem, Select } from "@mui/material";
+
 import { mainService } from "../shared/service/main.service";
 import { Constants } from "../shared/Constants";
 
@@ -52,33 +48,48 @@ const RegionCity: React.FC<Props> = (props: Props) => {
       style={{
         display: "flex",
         flexDirection: "column",
+        marginBottom: 24,
       }}
     >
       <FormControl
         variant="outlined"
+        size="small"
+        color="secondary"
         style={{ width: "100%", marginBottom: "5px" }}
       >
-        <Select value={regionCity.region} onChange={onChangeProvince}>
-          <MenuItem value={Constants.allRegions} style={{ fontSize: ".9em" }}>
+        <Select
+          value={regionCity.region}
+          onChange={onChangeProvince}
+          style={{ background: "#fff" }}
+        >
+          <MenuItem value={Constants.allRegions}>
             {Constants.allRegions}
           </MenuItem>
           {Object.keys(regionMap)
             .sort()
             .map((r: string) => {
               return (
-                <MenuItem key={r} value={r} style={{ fontSize: ".9em" }}>
+                <MenuItem key={r} value={r}>
                   {r}
                 </MenuItem>
               );
             })}
         </Select>
       </FormControl>
-      <FormControl variant="outlined" style={{ width: "100%" }}>
-        <Select value={regionCity.city} onChange={onChangeCity}>
+      <FormControl
+        variant="outlined"
+        size="small"
+        color="secondary"
+        style={{ width: "100%" }}
+      >
+        <Select
+          value={regionCity.city}
+          onChange={onChangeCity}
+          style={{ background: "#fff" }}
+        >
           <MenuItem
             id={`${regionCity.region}|${Constants.allCities}`}
             value={Constants.allCities}
-            style={{ fontSize: ".9em" }}
           >
             {Constants.allCities}
           </MenuItem>
@@ -91,12 +102,7 @@ const RegionCity: React.FC<Props> = (props: Props) => {
                     .sort()
                     .forEach((c: any) => {
                       group.push(
-                        <MenuItem
-                          id={`${r}|${c}`}
-                          key={`${r}|${c}`}
-                          value={c}
-                          style={{ fontSize: ".9em" }}
-                        >
+                        <MenuItem id={`${r}|${c}`} key={`${r}|${c}`} value={c}>
                           {c}
                         </MenuItem>
                       );
@@ -111,7 +117,6 @@ const RegionCity: React.FC<Props> = (props: Props) => {
                       id={`${regionCity.region}|${c}`}
                       key={`${regionCity.region}|${c}`}
                       value={c}
-                      style={{ fontSize: ".9em" }}
                     >
                       {c}
                     </MenuItem>

@@ -1,6 +1,7 @@
 import React from "react";
+import { CircularProgress } from "@mui/material";
+
 import { progressStyles } from "./app-progress.style";
-import { CircularProgress } from "@material-ui/core";
 
 const AppProgress: React.FC = () => {
   const classes = progressStyles();

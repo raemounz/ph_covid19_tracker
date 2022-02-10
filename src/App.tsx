@@ -1,18 +1,13 @@
 import React from "react";
-import "./App.scss";
-import {
-  CssBaseline,
-  AppBar,
-  Toolbar,
-  Typography,
-  ThemeProvider,
-  Grid,
-} from "@material-ui/core";
+import { AppBar, CssBaseline, Grid, Toolbar, Typography } from "@mui/material";
+import { ThemeProvider } from "@mui/material/styles";
+import html2canvas from "html2canvas";
+
+import "./App.css";
 import theme from "./shared/theme";
 import Header from "./header/Header";
 import GlobalList from "./chart/list/GlobalList";
 import ResidenceBarChart from "./chart/residence/ResidenceBarChart";
-import html2canvas from "html2canvas";
 import MainSummary from "./summary/MainSummary";
 import MainAgeChart from "./chart/age/MainAgeChart";
 

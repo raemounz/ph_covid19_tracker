@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Grid, FormControl, Select, MenuItem } from "@material-ui/core";
+import { FormControl, Grid, MenuItem, Select } from "@mui/material";
+
 import AppCard from "../../shared/component/card/AppCard";
 import AgeChart from "./AgeChart";
 import { CaseType } from "../../shared/service/main.service";
@@ -22,7 +23,9 @@ const MainAgeChart: React.FC = () => {
         selection={
           <FormControl
             variant="outlined"
-            style={{ minWidth: "120px", top: "-3px", marginRight: "8px" }}
+            size="small"
+            color="secondary"
+            style={{ minWidth: 120, top: -3, marginRight: 8 }}
           >
             <Select
               value={caseType}
@@ -31,11 +34,7 @@ const MainAgeChart: React.FC = () => {
               {Object.keys(CaseType)
                 .filter((ct: string) => ct !== CaseType.All)
                 .map((item: string) => (
-                  <MenuItem
-                    key={item}
-                    value={item}
-                    style={{ fontSize: ".9em" }}
-                  >
+                  <MenuItem key={item} value={item}>
                     {item}
                   </MenuItem>
                 ))}
